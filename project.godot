@@ -79,5 +79,21 @@ translation/localization/locales=["en"]
 internal/variables={}
 internal/play_dialog_path=""
 internal/play_start_id=""
-internal/last_opened_files=[]
-internal/last_selected_file_index=-1
+internal/last_opened_files=[{
+"path": "res://Characters/Oberon/Oberon.tres",
+"uid": 9140000643239417756,
+"view_state": {
+"portrait_search": "",
+"portrait_tree_state": {
+"selected_path": "",
+"tree_items": {}
+},
+"section_visibility": {
+"dialog_box_settings": true,
+"portrait_list": true,
+"portrait_settings": true
+},
+"selected_portrait_path": ""
+}
+}]
+internal/last_selected_file_index=0
