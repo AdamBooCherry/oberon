@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="SproutyDialogsCharacterData" format=3 uid="uid://btfy3hul0e6dk"]
+
+[ext_resource type="Script" uid="uid://kwoapf8il7ee" path="res://addons/sprouty_dialogs/resources/character_data.gd" id="1_1tc2k"]
+
+[resource]
+script = ExtResource("1_1tc2k")
+key_name = "Postmaster"
+display_name = {
+"default": "Postmaster General",
+"en": ""
+}

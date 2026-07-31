@@ -11,12 +11,15 @@ config_version=5
 [application]
 
 config/name="Oberon"
+config/version="1.0.0"
+run/main_scene="uid://d2jm65ledp7y3"
 config/features=PackedStringArray("4.7", "GL Compatibility")
 config/icon="res://icon.svg"
 
 [autoload]
 
 SproutyDialogs="*uid://c8gxm75j80u8c"
+DebugMenu="*uid://cggqb75a8w8r"
 
 [display]
 
@@ -25,7 +28,7 @@ window/stretch/aspect="expand"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/sprouty_dialogs/plugin.cfg", "res://addons/yard/plugin.cfg")
+enabled=PackedStringArray("res://addons/debug_menu/plugin.cfg", "res://addons/sprouty_dialogs/plugin.cfg", "res://addons/yard/plugin.cfg")
 
 [input]
 
@@ -82,6 +85,70 @@ internal/play_start_id=""
 internal/last_opened_files=[{
 "path": "res://Characters/Oberon/Oberon.tres",
 "uid": 9140000643239417756,
+"view_state": {
+"portrait_search": "",
+"portrait_tree_state": {
+"selected_path": "",
+"tree_items": {}
+},
+"section_visibility": {
+"dialog_box_settings": true,
+"portrait_list": true,
+"portrait_settings": true
+},
+"selected_portrait_path": ""
+}
+}, {
+"path": "res://Characters/Oberon/Postmaster.tres",
+"uid": 3731838210734678012,
+"view_state": {
+"portrait_search": "",
+"portrait_tree_state": {
+"selected_path": "",
+"tree_items": {}
+},
+"section_visibility": {
+"dialog_box_settings": true,
+"portrait_list": true,
+"portrait_settings": true
+},
+"selected_portrait_path": ""
+}
+}, {
+"path": "res://Characters/Oberon/Johnny Whitehat.tres",
+"uid": 479802286907209335,
+"view_state": {
+"portrait_search": "",
+"portrait_tree_state": {
+"selected_path": "",
+"tree_items": {}
+},
+"section_visibility": {
+"dialog_box_settings": true,
+"portrait_list": true,
+"portrait_settings": true
+},
+"selected_portrait_path": ""
+}
+}, {
+"path": "res://Characters/Oberon/Redcap.tres",
+"uid": 6183434470362757357,
+"view_state": {
+"portrait_search": "",
+"portrait_tree_state": {
+"selected_path": "",
+"tree_items": {}
+},
+"section_visibility": {
+"dialog_box_settings": true,
+"portrait_list": true,
+"portrait_settings": true
+},
+"selected_portrait_path": ""
+}
+}, {
+"path": "res://Characters/Oberon/Dad.tres",
+"uid": 3825621221927805803,
 "view_state": {
 "portrait_search": "",
 "portrait_tree_state": {

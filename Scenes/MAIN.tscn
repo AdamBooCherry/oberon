@@ -1,8 +1,104 @@
 [gd_scene format=3 uid="uid://d2jm65ledp7y3"]
 
+[ext_resource type="PackedScene" uid="uid://30mbu523chth" path="res://Scenes/Shadow.tscn" id="1_8as8m"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_8as8m"]
+sky_top_color = Color(0, 0, 0, 1)
+sky_horizon_color = Color(1, 0.58431375, 0.23529412, 1)
+sky_curve = 0.0609191
+ground_bottom_color = Color(0.13399999, 0.18460003, 0.2, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_rqf0l"]
+sky_material = SubResource("ProceduralSkyMaterial_8as8m")
+
+[sub_resource type="Environment" id="Environment_c5rrr"]
+background_mode = 2
+sky = SubResource("Sky_rqf0l")
+ambient_light_color = Color(0.19607843, 0, 0, 1)
+fog_enabled = true
+fog_sky_affect = 0.147
+adjustment_enabled = true
+
+[sub_resource type="Curve3D" id="Curve3D_8as8m"]
+closed = true
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -2.8899221, 0.042602755, 1.0935059, 0, 0, 0, 0, 0, 0, -2.7646637, 0.05154991, -1.6688232, 0, 0, 0, 0, 0, 0, 2.451476, 0.00681442, -2.2838135, 0, 0, 0, 0, 0, 0, 4.1712136, -0.02312534, 0.4731264, 0, 0, 0, 0, 0, 0, 0.76942813, -0.011079596, 1.59021, 0, 0, 0, 0, 0, 0, -0.19455878, 0.309848, 1.2653639, 0, 0, 0, 0, 0, 0, -0.43277806, 0.38915527, 1.1850884, 0, 0, 0, 0, 0, 0, -0.17005914, 0.37460387, 1.2205994),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 8
+
+[sub_resource type="GDScript" id="GDScript_wuii1"]
+script/source = "extends PathFollow3D
+
+@export var speed:= .2
+
+func _physics_process(delta: float) -> void:
+	progress_ratio += delta * speed
+"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wuii1"]
+emission_enabled = true
+emission = Color(0, 1, 1, 1)
+disable_receive_shadows = true
+
 [node name="MAIN" type="Node3D" unique_id=2005868454]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=331212326]
+environment = SubResource("Environment_c5rrr")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1763283718]
+transform = Transform3D(-0.86602545, -0.30074096, 0.39944336, 2.2351742e-08, 0.7988865, 0.60148185, -0.50000006, 0.52089846, -0.691856, 0, 0, 0)
+shadow_enabled = true
+sky_mode = 1
 
 [node name="Environment" type="Node3D" parent="." unique_id=761346827]
 
 [node name="CSGBox3D" type="CSGBox3D" parent="Environment" unique_id=1535395889]
 size = Vector3(7.515381, 0.001, 5.647461)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Environment" unique_id=815509556]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.063070536, 0)
+size = Vector3(116.65332, 0.001, 153.63184)
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1116715472]
+transform = Transform3D(0.6655769, -0.16876185, 0.7269985, -0.018927759, 0.9699687, 0.24249236, -0.7460892, -0.17515779, 0.6423945, 3.3981745, 1.8331866, 1.4335837)
+
+[node name="Path3D" type="Path3D" parent="." unique_id=677423410]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.19, 0)
+curve = SubResource("Curve3D_8as8m")
+
+[node name="PathFollow3D" type="PathFollow3D" parent="Path3D" unique_id=1566899701]
+transform = Transform3D(-0.998966, -0.00014656976, 0.045298245, 0, 0.99998903, 0.003235634, -0.045298345, 0.0032323084, -0.99896383, -2.8899221, 0.042602755, 1.0935059)
+use_model_front = true
+tilt_enabled = false
+script = SubResource("GDScript_wuii1")
+speed = 0.1
+
+[node name="Shadow" parent="Path3D/PathFollow3D" unique_id=558998045 instance=ExtResource("1_8as8m")]
+
+[node name="Willowisp" type="Node3D" parent="." unique_id=1639977570]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2546631, 0)
+metadata/_edit_group_ = true
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="Willowisp" unique_id=1831548786]
+cast_shadow = 0
+radius = 0.1
+material = SubResource("StandardMaterial3D_wuii1")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Willowisp" unique_id=821848223]
+light_color = Color(0, 1, 1, 1)
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="." unique_id=70867664]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6455145, 1.3382356, -1.5876977)
+height = 2.7470703
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="." unique_id=959611113]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.2877905, 1.4232415, 0.45024025)
+radius = 0.2055664
+height = 2.7470703
+
+[node name="CSGCylinder3D3" type="CSGCylinder3D" parent="." unique_id=1217483268]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.94443035, 1.1346673, 1.3570824)
+radius = 0.2055664
+height = 2.1699219
