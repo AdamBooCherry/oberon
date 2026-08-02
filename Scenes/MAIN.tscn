@@ -1,6 +1,8 @@
 [gd_scene format=3 uid="uid://d2jm65ledp7y3"]
 
+[ext_resource type="Script" uid="uid://bkbqspmutvdh1" path="res://Scenes/fixed_camera.gd" id="1_5c1w6"]
 [ext_resource type="PackedScene" uid="uid://30mbu523chth" path="res://Scenes/Shadow.tscn" id="1_8as8m"]
+[ext_resource type="Script" uid="uid://drpmv38e02bjw" path="res://Scenes/camera_trigger_area.gd" id="2_125yk"]
 [ext_resource type="Texture2D" uid="uid://ccp6a8yu6t3ky" path="res://Assets/Particle FX/light_03.png" id="2_rqf0l"]
 [ext_resource type="PackedScene" uid="uid://xsvwiv3yinpe" path="res://Assets/Placeholders/Male Locomotion Pack/idle.fbx" id="3_c5rrr"]
 [ext_resource type="PackedScene" uid="uid://dtjgiqp4jij8g" path="res://Player/Dad/PlayerDad.tscn" id="4_783md"]
@@ -54,15 +56,16 @@ emission = Color(0, 1, 1, 1)
 emission_texture = ExtResource("2_rqf0l")
 billboard_mode = 1
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_wuii1"]
+size = Vector3(4.8203125, 1, 8.376953)
+
 [node name="MAIN" type="Node3D" unique_id=2005868454]
+
+[node name="Player" parent="." unique_id=1848596107 instance=ExtResource("4_783md")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.8112345, 0, -1.7608321)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=331212326]
 environment = SubResource("Environment_c5rrr")
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1763283718]
-transform = Transform3D(-0.86602545, -0.30074096, 0.39944336, 2.2351742e-08, 0.7988865, 0.60148185, -0.50000006, 0.52089846, -0.691856, 0, 0, 0)
-shadow_enabled = true
-sky_mode = 1
 
 [node name="Environment" type="Node3D" parent="." unique_id=761346827]
 
@@ -71,58 +74,98 @@ use_collision = true
 size = Vector3(7.515381, 0.001, 5.647461)
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="Environment" unique_id=815509556]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.063070536, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0153131485, -0.063070536, 0.0033740997)
 use_collision = true
 size = Vector3(116.65332, 0.001, 153.63184)
 
-[node name="Camera3D" type="Camera3D" parent="." unique_id=1116715472]
-transform = Transform3D(0.6655769, -0.16876185, 0.7269985, -0.018927759, 0.9699687, 0.24249236, -0.7460892, -0.17515779, 0.6423945, 3.3981745, 1.8331866, 1.4335837)
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="Environment" unique_id=70867664]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6455145, 1.3382356, -1.5876977)
+use_collision = true
+height = 2.7470703
 
-[node name="Path3D" type="Path3D" parent="." unique_id=677423410]
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="Environment" unique_id=959611113]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.2877905, 1.4232415, 0.45024025)
+use_collision = true
+radius = 0.2055664
+height = 2.7470703
+
+[node name="CSGCylinder3D3" type="CSGCylinder3D" parent="Environment" unique_id=1217483268]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.94443035, 1.1346673, 1.3570824)
+use_collision = true
+radius = 0.2055664
+height = 2.1699219
+
+[node name="Lights" type="Node3D" parent="Environment" unique_id=1831114679]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Environment/Lights" unique_id=1763283718]
+transform = Transform3D(-0.86602545, -0.30074093, 0.39944327, 2.2351742e-08, 0.79888654, 0.6014818, -0.50000006, 0.5208986, -0.691856, 0, 0, 0)
+shadow_enabled = true
+sky_mode = 1
+
+[node name="Mobs" type="Node3D" parent="." unique_id=1632374207]
+
+[node name="Path3D" type="Path3D" parent="Mobs" unique_id=677423410]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.19, 0)
 curve = SubResource("Curve3D_8as8m")
 
-[node name="PathFollow3D" type="PathFollow3D" parent="Path3D" unique_id=1566899701]
-transform = Transform3D(-0.998966, -0.00014656966, 0.045298215, 0, 0.9999883, 0.0032356316, -0.045298345, 0.003232306, -0.9989631, -2.8899221, 0.042602755, 1.0935059)
+[node name="PathFollow3D" type="PathFollow3D" parent="Mobs/Path3D" unique_id=1566899701]
+transform = Transform3D(-0.998966, -0.00014656951, 0.045298167, 0, 0.9999873, 0.0032356284, -0.045298345, 0.0032323028, -0.9989621, -2.8899221, 0.042602755, 1.0935059)
 use_model_front = true
 tilt_enabled = false
 script = SubResource("GDScript_wuii1")
 speed = 0.1
 
-[node name="Shadow" parent="Path3D/PathFollow3D" unique_id=558998045 instance=ExtResource("1_8as8m")]
+[node name="Shadow" parent="Mobs/Path3D/PathFollow3D" unique_id=558998045 instance=ExtResource("1_8as8m")]
 
-[node name="Willowisp" type="Node3D" parent="." unique_id=1639977570]
+[node name="Willowisp" type="Node3D" parent="Mobs" unique_id=1639977570]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2546631, 0)
 metadata/_edit_group_ = true
 
-[node name="CSGSphere3D" type="CSGSphere3D" parent="Willowisp" unique_id=1831548786]
+[node name="CSGSphere3D" type="CSGSphere3D" parent="Mobs/Willowisp" unique_id=1831548786]
 cast_shadow = 0
 radius = 0.1
 material = SubResource("StandardMaterial3D_wuii1")
 
-[node name="OmniLight3D" type="OmniLight3D" parent="Willowisp" unique_id=821848223]
+[node name="OmniLight3D" type="OmniLight3D" parent="Mobs/Willowisp" unique_id=821848223]
 light_color = Color(0, 1, 1, 1)
 
-[node name="Sprite3D" type="Sprite3D" parent="Willowisp" unique_id=206031528]
+[node name="Sprite3D" type="Sprite3D" parent="Mobs/Willowisp" unique_id=206031528]
 material_override = SubResource("StandardMaterial3D_02crh")
 pixel_size = 0.0015
 texture = ExtResource("2_rqf0l")
 
-[node name="CSGCylinder3D" type="CSGCylinder3D" parent="." unique_id=70867664]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6455145, 1.3382356, -1.5876977)
-height = 2.7470703
-
-[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="." unique_id=959611113]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.2877905, 1.4232415, 0.45024025)
-radius = 0.2055664
-height = 2.7470703
-
-[node name="CSGCylinder3D3" type="CSGCylinder3D" parent="." unique_id=1217483268]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.94443035, 1.1346673, 1.3570824)
-radius = 0.2055664
-height = 2.1699219
-
-[node name="idle" parent="." unique_id=689174022 instance=ExtResource("3_c5rrr")]
+[node name="idle" parent="Mobs" unique_id=689174022 instance=ExtResource("3_c5rrr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.0912552, 0, 2.3948596)
 
-[node name="Player" parent="." unique_id=1848596107 instance=ExtResource("4_783md")]
+[node name="Cameras" type="Node3D" parent="." unique_id=1546480802]
+
+[node name="FixedCamera 01" type="Camera3D" parent="Cameras" unique_id=2053712340 node_paths=PackedStringArray("trigger_area")]
+transform = Transform3D(0.6655769, -0.16876186, 0.7269985, -0.018927759, 0.9699687, 0.24249236, -0.7460892, -0.17515777, 0.6423945, 3.3981745, 1.8331866, 1.4335837)
+script = ExtResource("1_5c1w6")
+trigger_area = NodePath("CameraTriggerArea")
+metadata/_custom_type_script = "uid://bkbqspmutvdh1"
+
+[node name="CameraTriggerArea" type="Area3D" parent="Cameras/FixedCamera 01" unique_id=1297313390]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 0)
+top_level = true
+script = ExtResource("2_125yk")
+metadata/_custom_type_script = "uid://drpmv38e02bjw"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Cameras/FixedCamera 01/CameraTriggerArea" unique_id=547600625]
+shape = SubResource("BoxShape3D_wuii1")
+debug_color = Color(1, 1, 0, 1)
+
+[node name="FixedCamera 02" type="Camera3D" parent="Cameras" unique_id=1886893528 node_paths=PackedStringArray("trigger_area")]
+transform = Transform3D(0.6655769, -0.16876185, 0.7269985, -0.018927759, 0.9699687, 0.24249236, -0.7460892, -0.17515779, 0.6423945, -1.6541927, 1.8331866, 4.09647)
+script = ExtResource("1_5c1w6")
+trigger_area = NodePath("CameraTriggerArea")
+metadata/_custom_type_script = "uid://bkbqspmutvdh1"
+
+[node name="CameraTriggerArea" type="Area3D" parent="Cameras/FixedCamera 02" unique_id=1098226413]
+transform = Transform3D(0.66557705, -0.018927744, -0.7460893, -0.16876186, 0.9699687, -0.17515776, 0.72699845, 0.24249233, 0.6423944, 3.2422917, -0.4233616, -3.809359)
+script = ExtResource("2_125yk")
+metadata/_custom_type_script = "uid://drpmv38e02bjw"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Cameras/FixedCamera 02/CameraTriggerArea" unique_id=1959963815]
+shape = SubResource("BoxShape3D_wuii1")
+debug_color = Color(1, 1, 0, 1)

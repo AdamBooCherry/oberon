@@ -32,6 +32,10 @@ window/stretch/aspect="expand"
 
 enabled=PackedStringArray("res://addons/debug_menu/plugin.cfg", "res://addons/sprouty_dialogs/plugin.cfg", "res://addons/yard/plugin.cfg")
 
+[global_group]
+
+Player=""
+
 [input]
 
 dialogs_continue_action={

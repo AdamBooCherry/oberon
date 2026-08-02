@@ -11,6 +11,7 @@
 [ext_resource type="Animation" uid="uid://df2ou3ofh55jn" path="res://Assets/Animations/right_turn_90.anim" id="7_ksbj2"]
 [ext_resource type="Animation" uid="uid://cdgo040lsykam" path="res://Assets/Animations/standard_run.anim" id="8_oyr5w"]
 [ext_resource type="Animation" uid="uid://lkrhs63we4e1" path="res://Assets/Animations/walking.anim" id="9_q34ba"]
+[ext_resource type="Script" uid="uid://c2mdxfrt61wob" path="res://Player/Dad/camera_activator.gd" id="12_y2jqa"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yos4t"]
 resource_name = "Eyes_MAT"
@@ -1145,7 +1146,10 @@ _data = {
 radius = 0.26171875
 height = 1.6064453
 
-[node name="Player" type="CharacterBody3D" unique_id=1848596107 node_paths=PackedStringArray("animation_player")]
+[sub_resource type="SphereShape3D" id="SphereShape3D_wuii1"]
+radius = 0.14970765
+
+[node name="Player" type="CharacterBody3D" unique_id=1848596107 node_paths=PackedStringArray("animation_player") groups=["Player"]]
 script = ExtResource("1_ow4g2")
 animation_player = NodePath("AnimationPlayer")
 metadata/_custom_type_script = "uid://dcqqn7kv1j4ow"
@@ -1644,3 +1648,12 @@ autoplay = &"idle"
 [node name="Collision" type="CollisionShape3D" parent="." unique_id=1638792007]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7897339, 0)
 shape = SubResource("CapsuleShape3D_wuii1")
+
+[node name="CameraActivator" type="Area3D" parent="." unique_id=1326259805]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.19232178, 0)
+collision_mask = 0
+script = ExtResource("12_y2jqa")
+metadata/_custom_type_script = "uid://c2mdxfrt61wob"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CameraActivator" unique_id=1019123650]
+shape = SubResource("SphereShape3D_wuii1")

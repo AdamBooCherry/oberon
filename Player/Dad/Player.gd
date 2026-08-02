@@ -8,6 +8,9 @@ class_name Player
 @export var turn_speed: float = 2.5
 @export var gravity: float = 9.8
 
+@export_category("Animation Settings")
+@export var default_blend_time := 0.5
+
 @export_group("References")
 @export var animation_player: AnimationPlayer
 
@@ -21,7 +24,7 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 	
 	# 2. Update Animations after physics/velocity is resolved
-	handle_animations()
+	#handle_animations()
 
 
 func handle_turn(delta: float) -> void:
@@ -79,7 +82,7 @@ func handle_animations() -> void:
 
 	# Play animation if it's not already running
 	if animation_player.current_animation != target_anim:
-		animation_player.play(target_anim)
+		animation_player.play(target_anim, default_blend_time)
 		
 	# Reverse animation playback rate when walking backward
 	if move_input > 0:
