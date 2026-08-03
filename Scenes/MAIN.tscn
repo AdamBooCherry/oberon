@@ -3,9 +3,10 @@
 [ext_resource type="Script" uid="uid://bkbqspmutvdh1" path="res://Scenes/fixed_camera.gd" id="1_5c1w6"]
 [ext_resource type="PackedScene" uid="uid://30mbu523chth" path="res://Scenes/Shadow.tscn" id="1_8as8m"]
 [ext_resource type="Script" uid="uid://drpmv38e02bjw" path="res://Scenes/camera_trigger_area.gd" id="2_125yk"]
-[ext_resource type="Texture2D" uid="uid://c4315gjdfs4ye" path="res://Assets/Particle FX/circle_05.png" id="2_kjvde"]
+[ext_resource type="Texture2D" uid="uid://rcmbuqxvak2w" path="res://Assets/Particle FX/star_06.png" id="2_mhs8k"]
 [ext_resource type="Texture2D" uid="uid://ccp6a8yu6t3ky" path="res://Assets/Particle FX/light_03.png" id="2_rqf0l"]
 [ext_resource type="PackedScene" uid="uid://xsvwiv3yinpe" path="res://Assets/Placeholders/Male Locomotion Pack/idle.fbx" id="3_c5rrr"]
+[ext_resource type="PackedScene" uid="uid://cqcsv7x0vouop" path="res://Prototyping/ForestTestArea.tscn" id="3_mhs8k"]
 [ext_resource type="PackedScene" uid="uid://dtjgiqp4jij8g" path="res://Player/Dad/PlayerDad.tscn" id="4_783md"]
 [ext_resource type="Texture2D" uid="uid://cy5fjldems1xk" path="res://Assets/Placeholders/Tonic Seizure_0.png" id="8_n02r8"]
 [ext_resource type="Script" uid="uid://bvtfxcsh87kix" path="res://Scenes/path_camera.gd" id="8_pe4ny"]
@@ -41,7 +42,7 @@ transparency = 1
 blend_mode = 1
 shading_mode = 0
 vertex_color_use_as_albedo = true
-albedo_texture = ExtResource("2_kjvde")
+albedo_texture = ExtResource("2_mhs8k")
 billboard_mode = 3
 billboard_keep_scale = true
 particles_anim_h_frames = 1
@@ -1150,11 +1151,6 @@ environment = SubResource("Environment_c5rrr")
 
 [node name="Environment" type="Node3D" parent="." unique_id=761346827]
 
-[node name="CSGBox3D2" type="CSGBox3D" parent="Environment" unique_id=815509556]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 70.458466, -0.30256617, 0.037792206)
-use_collision = true
-size = Vector3(116.65332, 0.47999218, 153.63184)
-
 [node name="CSGBox3D3" type="CSGBox3D" parent="Environment" unique_id=1018050377]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.828886, -0.2949978, 0.037792206)
 use_collision = true
@@ -1261,9 +1257,9 @@ use_collision = true
 size = Vector3(24.984833, 3.0675108, 4.180664)
 
 [node name="CSGBox3D4" type="CSGBox3D" parent="Environment" unique_id=955257583]
-transform = Transform3D(0.99999803, -4.0277933e-05, 0.0020333256, 3.951007e-05, 1, 0.00037646588, -0.0020333407, -0.0003763845, 0.999998, 2.1662474, -0.06405366, -2.6319258)
+transform = Transform3D(0.99999803, -4.0277933e-05, 0.0020333256, 3.951007e-05, 1, 0.00037646588, -0.0020333407, -0.0003763845, 0.999998, -1.172598, -0.06418558, -2.6251369)
 use_collision = true
-size = Vector3(20.48352, 0.001, 27.156616)
+size = Vector3(13.805817, 0.001, 27.156616)
 
 [node name="CSGCylinder3D4" type="CSGCylinder3D" parent="Environment" unique_id=317409394]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -36.91382, -0.10214043, -0.111115694)
@@ -1435,6 +1431,9 @@ scale_amount_max = 1.2
 scale_amount_curve = SubResource("Curve_1tvcf")
 color_ramp = SubResource("Gradient_kjvde")
 
+[node name="ForestArea" parent="Environment" unique_id=1541254729 instance=ExtResource("3_mhs8k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 64.16425, 0, 0)
+
 [node name="Mobs" type="Node3D" parent="." unique_id=1632374207]
 
 [node name="Path3D" type="Path3D" parent="Mobs" unique_id=677423410]
@@ -1442,7 +1441,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.19, 0)
 curve = SubResource("Curve3D_8as8m")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="Mobs/Path3D" unique_id=1566899701]
-transform = Transform3D(-0.998966, -0.00014656944, 0.045298144, 0, 0.99998677, 0.0032356265, -0.045298345, 0.003232301, -0.99896157, -2.8899221, 0.042602755, 1.0935059)
+transform = Transform3D(-0.998966, -0.0001465694, 0.04529813, 0, 0.99998647, 0.0032356256, -0.045298345, 0.0032323, -0.99896127, -2.8899221, 0.042602755, 1.0935059)
 use_model_front = true
 tilt_enabled = false
 script = SubResource("GDScript_wuii1")
@@ -1572,7 +1571,7 @@ path_follow_3d = NodePath("PathFollow3D")
 metadata/_custom_type_script = "uid://bvtfxcsh87kix"
 
 [node name="PathFollow3D" type="PathFollow3D" parent="Cameras/PathCamera 01" unique_id=1058889538]
-transform = Transform3D(-0.02868, 0.0068713655, -0.9995196, 0.049977258, 0.998672, 0.0054318146, 0.998315, -0.049797732, -0.028986532, -31.546108, 0.5577812, -0.80570316)
+transform = Transform3D(-0.02868, 0.0068713636, -0.9995196, 0.049977258, 0.9986717, 0.0054318146, 0.998315, -0.049797717, -0.028986532, -31.546108, 0.5577812, -0.80570316)
 
 [node name="FixedCamera 03" type="Camera3D" parent="Cameras/PathCamera 01/PathFollow3D" unique_id=2051940256 node_paths=PackedStringArray("trigger_area")]
 transform = Transform3D(-0.9943459, 3.7234443e-07, 0.1062636, -0.0324026, 0.95240223, -0.30320588, -0.10120441, -0.30493054, -0.9470043, 0, 0, -3)

@@ -1,5 +1,7 @@
 [gd_scene format=3 uid="uid://cqcsv7x0vouop"]
 
-[node name="CSGBox3D2" type="CSGBox3D" unique_id=1541254729]
+[node name="ForestArea" type="Node3D" unique_id=2065995814]
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="." unique_id=1541254729]
 use_collision = true
 size = Vector3(116.65332, 0.47999218, 153.63184)
