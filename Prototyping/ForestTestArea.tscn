@@ -1,7 +1,50 @@
 [gd_scene format=3 uid="uid://cqcsv7x0vouop"]
 
+[ext_resource type="Texture2D" uid="uid://rcmbuqxvak2w" path="res://Assets/Particle FX/star_06.png" id="1_x4qiq"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kjvde"]
+transparency = 1
+blend_mode = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("1_x4qiq")
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_v0phy"]
+material = SubResource("StandardMaterial3D_kjvde")
+
+[sub_resource type="Curve" id="Curve_wj5n6"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.24063401, 0.99842274), 0.0, 0.0, 0, 0, Vector2(0.8544668, 0.7618296), -0.7517386, -0.7517386, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="Gradient" id="Gradient_ex3c0"]
+offsets = PackedFloat32Array(0, 0.359375, 0.5569532, 0.571875, 0.5877009, 0.7603075, 0.775, 0.7903564)
+colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1)
+
 [node name="ForestArea" type="Node3D" unique_id=2065995814]
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="." unique_id=1541254729]
 use_collision = true
 size = Vector3(116.65332, 0.47999218, 153.63184)
+
+[node name="CPUParticles3D" type="CPUParticles3D" parent="." unique_id=664091001]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.372, 0)
+amount = 100
+lifetime = 10.0
+mesh = SubResource("QuadMesh_v0phy")
+emission_shape = 3
+emission_box_extents = Vector3(58.1, 5, 71.52)
+emission_colors = PackedColorArray(0, 1, 0, 1)
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 0.1
+initial_velocity_max = 0.3
+linear_accel_min = -0.05
+linear_accel_max = 0.05
+scale_amount_min = 0.7
+scale_amount_max = 1.2
+scale_amount_curve = SubResource("Curve_wj5n6")
+color_ramp = SubResource("Gradient_ex3c0")
