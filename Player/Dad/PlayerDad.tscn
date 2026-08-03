@@ -1149,6 +1149,28 @@ height = 1.6064453
 [sub_resource type="SphereShape3D" id="SphereShape3D_wuii1"]
 radius = 0.14970765
 
+[sub_resource type="GDScript" id="GDScript_0c8vy"]
+script/source = "extends Camera3D
+
+func _ready() -> void:
+	CameraManager.change_to_debug_camera.connect(_switch_to_debug)
+	
+func _switch_to_debug():
+	make_current()
+	pass
+"
+
+[sub_resource type="GDScript" id="GDScript_y2jqa"]
+script/source = "extends VisibleOnScreenNotifier3D
+
+func _ready() -> void:
+	screen_exited.connect(_on_screen_exited)
+	
+
+func _on_screen_exited():
+	CameraManager.start_off_camera_timer()
+"
+
 [node name="Player" type="CharacterBody3D" unique_id=1848596107 node_paths=PackedStringArray("animation_player") groups=["Player"]]
 script = ExtResource("1_ow4g2")
 animation_player = NodePath("AnimationPlayer")
@@ -1657,3 +1679,11 @@ metadata/_custom_type_script = "uid://c2mdxfrt61wob"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CameraActivator" unique_id=1019123650]
 shape = SubResource("SphereShape3D_wuii1")
+
+[node name="DebugCamera" type="Camera3D" parent="." unique_id=146490043]
+transform = Transform3D(-1, 7.5938175e-08, -4.3314376e-08, 0, 0.49545872, 0.8686315, 8.742278e-08, 0.8686315, -0.49545872, 0, 7.0584717, -3.168157)
+script = SubResource("GDScript_0c8vy")
+
+[node name="VisibleOnScreenNotifier3D" type="VisibleOnScreenNotifier3D" parent="." unique_id=329350705]
+aabb = AABB(-0.3434047, 0.079453945, -0.31536078, 0.6868094, 1.6113558, 0.63072157)
+script = SubResource("GDScript_y2jqa")

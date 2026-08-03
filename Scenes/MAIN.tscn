@@ -91,19 +91,19 @@ emission_texture = ExtResource("2_rqf0l")
 billboard_mode = 1
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_wuii1"]
-size = Vector3(3.52063, 1, 12.990234)
+size = Vector3(4.6007423, 1, 12.990234)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_mhs8k"]
-size = Vector3(7.2944336, 1, 9.024448)
+size = Vector3(6.4156494, 1, 9.024448)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_u7fix"]
 size = Vector3(2.9763184, 1, 11.205235)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_qbiqt"]
-size = Vector3(6.1966553, 1, 3.1765308)
+size = Vector3(5.3528748, 1, 2.7094812)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_jixpw"]
-size = Vector3(10.479492, 1, 8.658909)
+size = Vector3(10.479492, 1, 2.9808216)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_4d07p"]
 size = Vector3(6.0411377, 1, 10.561104)
@@ -114,7 +114,7 @@ size = Vector3(11.197266, 1, 3.9677315)
 [sub_resource type="Curve3D" id="Curve3D_125yk"]
 _data = {
 "points": PackedVector3Array(0, 0, 0, 0, 0, 0, -31.546108, 0.5577812, -0.80570316, 0, 0, 0, 0, 0, 0, -8.249257, 0.4311762, -0.1300869),
-"tilts": PackedFloat32Array(-0.5, 0.5)
+"tilts": PackedFloat32Array(-0.05, 0.5)
 }
 point_count = 2
 
@@ -1171,17 +1171,17 @@ use_collision = true
 size = Vector3(16.06543, 3.0675108, 4.180664)
 
 [node name="CSGBox3D10" type="CSGBox3D" parent="Environment" unique_id=757273108]
-transform = Transform3D(0.33029836, 0, -0.9438766, 0, 1, 0, 0.9438766, 0, 0.33029836, -47.36936, 1.0063336, 4.9289255)
+transform = Transform3D(0.42188543, 0, -0.90664923, 0, 1, 0, 0.90664923, 0, 0.42188543, -47.36936, 1.0063336, 4.9289255)
 use_collision = true
 size = Vector3(16.06543, 3.0675108, 4.180664)
 
 [node name="CSGBox3D8" type="CSGBox3D" parent="Environment" unique_id=317408089]
-transform = Transform3D(-0.94513845, 0, -0.32667005, 0, 1, 0, 0.32667005, 0, -0.94513845, -40.789238, 1.0063336, -12.6119175)
+transform = Transform3D(-0.93307954, 0, -0.35967016, 0, 1, 0, 0.35967016, 0, -0.93307954, -40.39267, 1.0063336, -11.147569)
 use_collision = true
 size = Vector3(17.109375, 3.0675108, 4.180664)
 
 [node name="CSGBox3D9" type="CSGBox3D" parent="Environment" unique_id=889024876]
-transform = Transform3D(-0.91007143, 0, 0.4144516, 0, 1, 0, -0.4144516, 0, -0.91007143, -33.227676, 1.0063336, -13.037271)
+transform = Transform3D(-0.91007143, 0, 0.4144516, 0, 1, 0, -0.4144516, 0, -0.91007143, -33.904087, 1.0063355, -11.205622)
 use_collision = true
 size = Vector3(13.325298, 3.0675108, 4.180664)
 
@@ -1196,14 +1196,64 @@ use_collision = true
 size = Vector3(6.6445313, 3.0675108, 4.180664)
 
 [node name="CSGBox3D13" type="CSGBox3D" parent="Environment" unique_id=1807427258]
-transform = Transform3D(0.96909744, 0, 0.24667817, 0, 1, 0, -0.24667817, 0, 0.96909744, -34.46041, 1.0063336, 11.984313)
+transform = Transform3D(0.9495377, 0, 0.31365296, 0, 1, 0, -0.31365296, 0, 0.9495377, -34.40395, 1.0063336, 11.178346)
 use_collision = true
 size = Vector3(17.109375, 3.0675108, 4.180664)
 
 [node name="CSGBox3D14" type="CSGBox3D" parent="Environment" unique_id=1844092026]
-transform = Transform3D(0.87232083, 0, -0.48893398, 0, 1, 0, 0.48893398, 0, 0.87232083, -42.9003, 1.0063336, 9.990114)
+transform = Transform3D(0.93270636, 0, -0.36063653, 0, 1, 0, 0.36063653, 0, 0.93270636, -42.649155, 1.0063336, 9.716325)
 use_collision = true
 size = Vector3(13.325298, 3.0675108, 4.180664)
+
+[node name="CSGBox3D15" type="CSGBox3D" parent="Environment" unique_id=1195283280]
+transform = Transform3D(0.87232083, 0, -0.48893398, 0, 1, 0, 0.48893398, 0, 0.87232083, -53.412132, 7.834427, 22.812094)
+use_collision = true
+size = Vector3(10.280151, 16.723698, 23.772827)
+
+[node name="CSGBox3D18" type="CSGBox3D" parent="Environment" unique_id=1022428408]
+transform = Transform3D(0.9598931, 0, 0.280366, 0, 1, 0, -0.280366, 0, 0.9598931, -165.65665, 137.37326, -140.55208)
+use_collision = true
+size = Vector3(10.280151, 275.80133, 10.164856)
+
+[node name="CSGBox3D19" type="CSGBox3D" parent="Environment" unique_id=687138161]
+transform = Transform3D(0.9598931, 0, 0.280366, 0, 1, 0, -0.280366, 0, 0.9598931, -89.26895, 137.37326, 268.86487)
+use_collision = true
+size = Vector3(10.280151, 275.80133, 10.164856)
+
+[node name="CSGBox3D20" type="CSGBox3D" parent="Environment" unique_id=233037884]
+transform = Transform3D(0.9598931, 0, 0.280366, 0, 1, 0, -0.280366, 0, 0.9598931, -160.28897, 137.37323, 123.44537)
+use_collision = true
+size = Vector3(10.280151, 275.80133, 10.164856)
+
+[node name="CSGBox3D21" type="CSGBox3D" parent="Environment" unique_id=1555489914]
+transform = Transform3D(0.9598931, 0, 0.280366, 0, 1, 0, -0.280366, 0, 0.9598931, 33.819427, 137.37323, 225.5859)
+use_collision = true
+size = Vector3(10.280151, 275.80133, 10.164856)
+
+[node name="CSGBox3D22" type="CSGBox3D" parent="Environment" unique_id=624761273]
+transform = Transform3D(0.9598931, 0, 0.280366, 0, 1, 0, -0.280366, 0, 0.9598931, -154.09062, 137.37323, -347.06418)
+use_collision = true
+size = Vector3(10.280151, 275.80133, 10.164856)
+
+[node name="CSGBox3D23" type="CSGBox3D" parent="Environment" unique_id=1091885410]
+transform = Transform3D(0.9598931, 0, 0.280366, 0, 1, 0, -0.280366, 0, 0.9598931, -434.21674, 137.37323, -305.70462)
+use_collision = true
+size = Vector3(10.280151, 275.80133, 10.164856)
+
+[node name="CSGBox3D24" type="CSGBox3D" parent="Environment" unique_id=1487773110]
+transform = Transform3D(0.9598931, 0, 0.280366, 0, 1, 0, -0.280366, 0, 0.9598931, -364.30627, 342.14642, -569.69446)
+use_collision = true
+size = Vector3(10.280151, 685.3477, 10.164856)
+
+[node name="CSGBox3D16" type="CSGBox3D" parent="Environment" unique_id=1168804315]
+transform = Transform3D(0.87232083, 0, -0.48893398, 0, 1, 0, 0.48893398, 0, 0.87232083, -94.78583, 24.040955, -16.26453)
+use_collision = true
+size = Vector3(23.600586, 49.13675, 41.26367)
+
+[node name="CSGBox3D17" type="CSGBox3D" parent="Environment" unique_id=1086394358]
+transform = Transform3D(0.87232083, 0, -0.48893398, 0, 1, 0, 0.48893398, 0, 0.87232083, -94.78583, 24.040955, -16.26453)
+use_collision = true
+size = Vector3(23.600586, 49.13675, 41.26367)
 
 [node name="CSGBox3D6" type="CSGBox3D" parent="Environment" unique_id=884449279]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.125044, 1.0063298, -7.407505)
@@ -1211,12 +1261,12 @@ use_collision = true
 size = Vector3(24.984833, 3.0675108, 4.180664)
 
 [node name="CSGBox3D4" type="CSGBox3D" parent="Environment" unique_id=955257583]
-transform = Transform3D(0.99999803, -4.0277933e-05, 0.0020333256, 3.951007e-05, 1, 0.00037646588, -0.0020333407, -0.0003763845, 0.999998, 1.6388988, -0.06307006, 0.037792206)
+transform = Transform3D(0.99999803, -4.0277933e-05, 0.0020333256, 3.951007e-05, 1, 0.00037646588, -0.0020333407, -0.0003763845, 0.999998, 2.1662474, -0.06405366, -2.6319258)
 use_collision = true
-size = Vector3(19.417969, 0.001, 32.493896)
+size = Vector3(20.48352, 0.001, 27.156616)
 
 [node name="CSGCylinder3D4" type="CSGCylinder3D" parent="Environment" unique_id=317409394]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -36.91382, -0.012570143, -0.111115694)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -36.91382, -0.10214043, -0.111115694)
 material_override = SubResource("StandardMaterial3D_125yk")
 use_collision = true
 radius = 10.342285
@@ -1273,19 +1323,19 @@ area_size = Vector2(4.534748, 1.5955162)
 [node name="Post Office" type="Node3D" parent="Environment" unique_id=1831075657]
 
 [node name="CSGBox3D" type="CSGBox3D" parent="Environment/Post Office" unique_id=2068821842]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.731021, 1.7444974, 9.167572)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.731021, 1.7444974, 6.3864746)
 use_collision = true
-size = Vector3(1, 3.6141357, 15.124756)
+size = Vector3(1, 3.6141357, 9.562561)
 
 [node name="CSGBox3D4" type="CSGBox3D" parent="Environment/Post Office" unique_id=1212955516]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.6771574, 1.7444974, 9.167572)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.6771574, 1.7444974, 6.1285095)
 use_collision = true
-size = Vector3(1, 3.6141357, 15.124756)
+size = Vector3(1, 3.6141357, 9.046631)
 
 [node name="CSGBox3D5" type="CSGBox3D" parent="Environment/Post Office" unique_id=532838543]
-transform = Transform3D(-0.04117533, 0, 0.99915195, 0, 1, 0, -0.99915195, 0, -0.04117533, 1.6188245, 1.7444974, 16.712925)
+transform = Transform3D(-0.04117533, 0, 0.99915195, 0, 1, 0, -0.99915195, 0, -0.04117533, -2.2214983, 1.7444974, 10.876734)
 use_collision = true
-size = Vector3(1, 3.6141357, 20.220093)
+size = Vector3(1, 3.6141357, 11.80307)
 
 [node name="CSGBox3D6" type="CSGBox3D" parent="Environment/Post Office" unique_id=501977364]
 transform = Transform3D(-0.04117533, 0, 0.99915195, 0, 1, 0, -0.99915195, 0, -0.04117533, -2.0236602, 1.7444974, -12.665277)
@@ -1392,7 +1442,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.19, 0)
 curve = SubResource("Curve3D_8as8m")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="Mobs/Path3D" unique_id=1566899701]
-transform = Transform3D(-0.998966, -0.00014656948, 0.045298155, 0, 0.99998707, 0.0032356274, -0.045298345, 0.003232302, -0.99896187, -2.8899221, 0.042602755, 1.0935059)
+transform = Transform3D(-0.998966, -0.00014656944, 0.045298144, 0, 0.99998677, 0.0032356265, -0.045298345, 0.003232301, -0.99896157, -2.8899221, 0.042602755, 1.0935059)
 use_model_front = true
 tilt_enabled = false
 script = SubResource("GDScript_wuii1")
@@ -1438,7 +1488,7 @@ script = ExtResource("2_125yk")
 metadata/_custom_type_script = "uid://drpmv38e02bjw"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Cameras/FixedCamera 01/CameraTriggerArea" unique_id=547600625]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.4509888, 0, -0.5834961)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.991045, 0, -0.5834961)
 shape = SubResource("BoxShape3D_wuii1")
 debug_color = Color(1, 1, 0, 1)
 
@@ -1457,7 +1507,7 @@ script = ExtResource("2_125yk")
 metadata/_custom_type_script = "uid://drpmv38e02bjw"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Cameras/FixedCamera 02/CameraTriggerArea" unique_id=1959963815]
-transform = Transform3D(1, -2.646978e-23, 0, -3.5527137e-15, 1, 0, 0, 0, 1, -2.5983887, -8.940697e-08, -1.2621711)
+transform = Transform3D(1, -2.646978e-23, 0, -3.5527137e-15, 1, 0, 0, 0, 1, -3.0377808, -8.940697e-08, -1.2621711)
 shape = SubResource("BoxShape3D_mhs8k")
 debug_color = Color(1, 1, 0, 1)
 
@@ -1467,7 +1517,7 @@ shape = SubResource("BoxShape3D_u7fix")
 debug_color = Color(1, 1, 0, 1)
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="Cameras/FixedCamera 02/CameraTriggerArea" unique_id=1042543602]
-transform = Transform3D(0.7234947, 4.0924366e-09, 0.6903299, -3.7054434e-08, 1, 3.2906367e-08, -0.6903299, -4.9387367e-08, 0.7234947, -2.086586, 2.9802322e-08, 4.0014277)
+transform = Transform3D(0.7234947, 4.0924366e-09, 0.6903299, -3.7054434e-08, 1, 3.2906367e-08, -0.6903299, -4.9387367e-08, 0.7234947, -2.5530305, -2.9802322e-08, 4.1237183)
 shape = SubResource("BoxShape3D_qbiqt")
 debug_color = Color(1, 1, 0, 1)
 
@@ -1475,7 +1525,7 @@ debug_color = Color(1, 1, 0, 1)
 transform = Transform3D(0.6655769, -0.16876186, 0.7269985, -0.018927759, 0.9699687, 0.24249236, -0.7460892, -0.17515777, 0.6423945, -1.6541927, 1.8331866, 13.429357)
 
 [node name="Camera3D" type="Camera3D" parent="Cameras/FixedCamera 04" unique_id=911688064 node_paths=PackedStringArray("trigger_area")]
-transform = Transform3D(0.5001792, 0.2008249, -0.84231246, -0.21918422, 0.97041965, 0.10121307, 0.83772266, 0.13399696, 0.5294013, 0, 0, 0)
+transform = Transform3D(0.65854204, 0.6256439, -0.41820127, 0.02786937, 0.5350598, 0.8443544, 0.75202775, -0.56769776, 0.3349231, 0.62074184, 3.756234, -3.4727988)
 script = ExtResource("1_5c1w6")
 trigger_area = NodePath("../CameraTriggerArea")
 metadata/_custom_type_script = "uid://bkbqspmutvdh1"
@@ -1486,7 +1536,7 @@ script = ExtResource("2_125yk")
 metadata/_custom_type_script = "uid://drpmv38e02bjw"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Cameras/FixedCamera 04/CameraTriggerArea" unique_id=1410044816]
-transform = Transform3D(1, -2.646978e-23, 0, -3.5527137e-15, 1, 0, 0, 0, 1, 0.11485195, -2.9802322e-08, 3.3828802)
+transform = Transform3D(1, -2.646978e-23, 0, -3.5527137e-15, 1, 0, 0, 0, 1, 0.11485195, -8.940697e-08, 0.5438366)
 shape = SubResource("BoxShape3D_jixpw")
 debug_color = Color(1, 1, 0, 1)
 
@@ -1522,7 +1572,7 @@ path_follow_3d = NodePath("PathFollow3D")
 metadata/_custom_type_script = "uid://bvtfxcsh87kix"
 
 [node name="PathFollow3D" type="PathFollow3D" parent="Cameras/PathCamera 01" unique_id=1058889538]
-transform = Transform3D(-0.022835948, 0.018661654, -0.9995233, 0.4794082, 0.87751645, 0.0054318183, 0.87727046, -0.47905686, -0.028986637, -31.546108, 0.5577812, -0.80570316)
+transform = Transform3D(-0.02868, 0.0068713655, -0.9995196, 0.049977258, 0.998672, 0.0054318146, 0.998315, -0.049797732, -0.028986532, -31.546108, 0.5577812, -0.80570316)
 
 [node name="FixedCamera 03" type="Camera3D" parent="Cameras/PathCamera 01/PathFollow3D" unique_id=2051940256 node_paths=PackedStringArray("trigger_area")]
 transform = Transform3D(-0.9943459, 3.7234443e-07, 0.1062636, -0.0324026, 0.95240223, -0.30320588, -0.10120441, -0.30493054, -0.9470043, 0, 0, -3)
