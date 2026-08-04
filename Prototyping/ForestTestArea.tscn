@@ -28,8 +28,9 @@ colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 
 [node name="ForestArea" type="Node3D" unique_id=2065995814]
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="." unique_id=1541254729]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.477577, 0, 3.1358643)
 use_collision = true
-size = Vector3(116.65332, 0.47999218, 153.63184)
+size = Vector3(69.698166, 0.47999218, 157.19946)
 
 [node name="CPUParticles3D" type="CPUParticles3D" parent="." unique_id=664091001]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.372, 0)
@@ -48,3 +49,78 @@ scale_amount_min = 0.7
 scale_amount_max = 1.2
 scale_amount_curve = SubResource("Curve_wj5n6")
 color_ramp = SubResource("Gradient_ex3c0")
+
+[node name="EnteranceMarker" type="CSGBox3D" parent="." unique_id=588524270]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -57.44924, 0.7323779, 0)
+
+[node name="PostOfficePlaceholder" type="CSGBox3D" parent="EnteranceMarker" unique_id=1885863208]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.11821, 1.956666, -1.039917)
+size = Vector3(10.411133, 3.9441528, 22.331787)
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="EnteranceMarker" unique_id=745624450]
+transform = Transform3D(9.903215, 0, 0, 0, 1, 0, 0, 0, 9.903215, -6.628227, 26.047558, -0.30963326)
+height = 44.67517
+
+[node name="Zone one" type="Node3D" parent="." unique_id=1716999965]
+
+[node name="RoomAlphaPlaceholder" type="CSGBox3D" parent="Zone one" unique_id=222882951]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -51.365166, 1.956666, -1.0715714)
+size = Vector3(10.411133, 3.9441528, 22.331787)
+
+[node name="RoomAlphaPlaceholder3" type="CSGBox3D" parent="Zone one" unique_id=947672704]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31.858902, 1.956666, 18.478952)
+size = Vector3(15.705078, 3.9441528, 13.519897)
+
+[node name="RoomAlphaPlaceholder2" type="CSGBox3D" parent="Zone one" unique_id=832564532]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -34.250656, 1.956666, 6.745537)
+size = Vector3(7.7094727, 3.9441528, 21.213318)
+
+[node name="RoomGammaPlaceholder" type="CSGBox3D" parent="Zone one" unique_id=971621437]
+transform = Transform3D(-0.0012354553, -0.0008333005, 0.99999887, -0.00017157846, 0.99999964, 0.0008330877, -0.99999917, -0.00017054216, -0.0012355988, -49.13445, 1.9541707, 14.676678)
+size = Vector3(6.2418213, 3.9441528, 15.477997)
+
+[node name="RoomGammaPlaceholder2" type="CSGBox3D" parent="Zone one" unique_id=1347632895]
+transform = Transform3D(0.99999917, 0.0001705422, 0.0012355553, -0.00017157846, 0.99999964, 0.0008330877, -0.0012354117, -0.0008333006, 0.99999887, -26.83473, 1.9541707, -5.480233)
+size = Vector3(6.2418213, 3.9441528, 15.477997)
+
+[node name="RoomGammaPlaceholder3" type="CSGBox3D" parent="Zone one" unique_id=742606177]
+transform = Transform3D(0.99999917, 0.0001705422, 0.0012355553, -0.00017157846, 0.99999964, 0.0008330877, -0.0012354117, -0.0008333006, 0.99999887, -34.09121, 1.9541707, -5.480233)
+size = Vector3(6.2418213, 3.9441528, 15.477997)
+
+[node name="RoomGammaPlaceholder4" type="CSGBox3D" parent="Zone one" unique_id=48575660]
+transform = Transform3D(0.99999917, 0.0001705422, 0.0012355553, -0.00017157846, 0.99999964, 0.0008330877, -0.0012354117, -0.0008333006, 0.99999887, -41.50379, 1.9541707, -5.2872515)
+size = Vector3(6.2418213, 3.9441528, 15.477997)
+
+[node name="RoomBetaPlaceholder" type="CSGBox3D" parent="Zone one" unique_id=2108004641]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -40.108112, 1.956666, -17.969841)
+size = Vector3(8.108704, 3.9441528, 33.01245)
+
+[node name="Zone Two" type="Node3D" parent="." unique_id=260791181]
+
+[node name="RoomAlphaZone2PH" type="CSGBox3D" parent="Zone Two" unique_id=2143053605]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -45.594868, 1.956666, -35.260902)
+size = Vector3(24.12793, 3.9441528, 22.03894)
+
+[node name="RoomAlphaZone2PH2" type="CSGBox3D" parent="Zone Two" unique_id=1660665257]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -29.41822, 1.956666, 38.26593)
+size = Vector3(24.12793, 3.9441528, 22.03894)
+
+[node name="RoomAlphaZone2PH3" type="CSGBox3D" parent="Zone Two" unique_id=1636627449]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -5.9562907, 1.956666, 27.476372)
+size = Vector3(47.50171, 3.9441528, 22.03894)
+
+[node name="RoomAlphaZone2PH4" type="CSGBox3D" parent="Zone Two" unique_id=1643628443]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -8.837669, 1.956666, -22.843838)
+size = Vector3(50.392883, 3.9441528, 27.801697)
+
+[node name="RoomBetaZone2PH" type="CSGBox3D" parent="Zone Two" unique_id=1229905703]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -49.188576, 1.956666, 33.82641)
+size = Vector3(29.265625, 3.9441528, 15.705475)
+
+[node name="RoomBetaPlaceholder3" type="CSGBox3D" parent="." unique_id=74244826]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -26.045856, 1.956666, -60.621754)
+size = Vector3(23.940346, 3.9441528, 61.136963)
+
+[node name="RoomBetaPlaceholder4" type="CSGBox3D" parent="." unique_id=2109004258]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -26.045856, 1.956666, 64.56938)
+size = Vector3(23.940346, 3.9441528, 61.136963)
