@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://cw3kf747q80xn" path="res://Scenes/Camp Post.tscn" id="3_c5rrr"]
 [ext_resource type="PackedScene" uid="uid://cqcsv7x0vouop" path="res://Prototyping/ForestTestArea.tscn" id="3_mhs8k"]
+[ext_resource type="PackedScene" uid="uid://c4m3x1xtpkt8p" path="res://Assets/Placeholders/Johnny Whitehat/Whitehat.tscn" id="4_5c1w6"]
 [ext_resource type="PackedScene" uid="uid://dtjgiqp4jij8g" path="res://Player/Dad/PlayerDad.tscn" id="4_783md"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_8as8m"]
@@ -43,3 +44,6 @@ environment = SubResource("Environment_c5rrr")
 transform = Transform3D(-0.86602545, -0.30074093, 0.39944327, 2.2351742e-08, 0.79888654, 0.6014818, -0.50000006, 0.5208986, -0.691856, 0, 0, 0)
 shadow_enabled = true
 sky_mode = 1
+
+[node name="Whitehat" parent="." unique_id=1448585377 instance=ExtResource("4_5c1w6")]
+transform = Transform3D(0.6959113, 0, -0.7181278, 0, 1, 0, 0.7181278, 0, 0.6959113, 2.5599194, -0.06230475, -2.1471138)

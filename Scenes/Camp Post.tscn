@@ -1137,54 +1137,54 @@ use_collision = true
 size = Vector3(28.858215, 0.46485546, 10.941406)
 
 [node name="CSGBox3D5" type="CSGBox3D" parent="Camp" unique_id=1310223667]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.92607, 1.0063298, 7.61462)
+transform = Transform3D(0.995412, 0, 0.09568131, 0, 1, 0, -0.09568131, 0, 0.995412, -18.139818, 1.0063298, 4.703443)
 use_collision = true
-size = Vector3(24.352509, 3.0675108, 4.180664)
+size = Vector3(21.36343, 3.0675108, 4.180664)
 
 [node name="CSGBox3D7" type="CSGBox3D" parent="Camp" unique_id=393168945]
-transform = Transform3D(-0.4038002, 0, -0.9148472, 0, 1, 0, 0.9148472, 0, -0.4038002, -46.65638, 1.0063336, -6.311737)
+transform = Transform3D(-0.4038002, 0, -0.9148472, 0, 1, 0, 0.9148472, 0, -0.4038002, -47.564537, 1.0063336, -4.2542243)
 use_collision = true
-size = Vector3(16.06543, 3.0675108, 4.180664)
+size = Vector3(11.567383, 3.0675108, 4.180664)
 
 [node name="CSGBox3D10" type="CSGBox3D" parent="Camp" unique_id=1730534399]
-transform = Transform3D(0.42188543, 0, -0.90664923, 0, 1, 0, 0.90664923, 0, 0.42188543, -47.36936, 1.0063336, 4.9289255)
+transform = Transform3D(0.42188543, 0, -0.90664923, 0, 1, 0, 0.90664923, 0, 0.42188543, -47.910004, 1.0063336, 3.7670598)
 use_collision = true
-size = Vector3(16.06543, 3.0675108, 4.180664)
+size = Vector3(13.502441, 3.0675108, 4.180664)
 
 [node name="CSGBox3D8" type="CSGBox3D" parent="Camp" unique_id=995598565]
-transform = Transform3D(-0.93307954, 0, -0.35967016, 0, 1, 0, 0.35967016, 0, -0.93307954, -40.39267, 1.0063336, -11.147569)
+transform = Transform3D(-0.93307954, 0, -0.35967016, 0, 1, 0, 0.35967016, 0, -0.93307954, -41.44247, 1.0063336, -10.742908)
 use_collision = true
-size = Vector3(17.109375, 3.0675108, 4.180664)
+size = Vector3(10.378967, 3.0675108, 4.180664)
 
 [node name="CSGBox3D9" type="CSGBox3D" parent="Camp" unique_id=1963410410]
-transform = Transform3D(-0.91007143, 0, 0.4144516, 0, 1, 0, -0.4144516, 0, -0.91007143, -33.904087, 1.0063355, -11.205622)
+transform = Transform3D(-0.91007143, 0, 0.4144516, 0, 1, 0, -0.4144516, 0, -0.91007143, -33.35702, 1.0063355, -10.956486)
 use_collision = true
-size = Vector3(13.325298, 3.0675108, 4.180664)
+size = Vector3(10.22256, 3.0675108, 4.180664)
 
 [node name="CSGBox3D11" type="CSGBox3D" parent="Camp" unique_id=2064412330]
-transform = Transform3D(0.47871816, 0, 0.8779686, 0, 1, 0, -0.8779686, 0, 0.47871816, -31.540098, 1.0063336, 9.574716)
+transform = Transform3D(0.47871816, 0, 0.8779686, 0, 1, 0, -0.8779686, 0, 0.47871816, -27.943932, 1.0063336, 8.25729)
 use_collision = true
-size = Vector3(7.0620117, 3.0675108, 4.180664)
+size = Vector3(4.1913757, 3.0675108, 4.180664)
 
 [node name="CSGBox3D12" type="CSGBox3D" parent="Camp" unique_id=1104667304]
-transform = Transform3D(-0.2503991, 0, 0.96814275, 0, 1, 0, -0.96814275, 0, -0.2503991, -28.916235, 1.0063336, -10.080021)
+transform = Transform3D(-0.2503991, 0, 0.96814275, 0, 1, 0, -0.96814275, 0, -0.2503991, -28.30548, 1.0063336, -8.109571)
 use_collision = true
-size = Vector3(6.6445313, 3.0675108, 4.180664)
+size = Vector3(5.135132, 3.0675108, 3.9848633)
 
 [node name="CSGBox3D13" type="CSGBox3D" parent="Camp" unique_id=1169624697]
-transform = Transform3D(0.9495377, 0, 0.31365296, 0, 1, 0, -0.31365296, 0, 0.9495377, -34.40395, 1.0063336, 11.178346)
+transform = Transform3D(0.935912, 0, 0.3522339, 0, 1, 0, -0.3522339, 0, 0.935912, -32.85212, 1.0063336, 10.0743265)
 use_collision = true
-size = Vector3(17.109375, 3.0675108, 4.180664)
+size = Vector3(10.785095, 3.0675108, 4.180664)
 
 [node name="CSGBox3D14" type="CSGBox3D" parent="Camp" unique_id=374349119]
-transform = Transform3D(0.93270636, 0, -0.36063653, 0, 1, 0, 0.36063653, 0, 0.93270636, -42.649155, 1.0063336, 9.716325)
+transform = Transform3D(0.93270636, 0, -0.36063653, 0, 1, 0, 0.36063653, 0, 0.93270636, -40.862732, 1.0063336, 10.407055)
 use_collision = true
-size = Vector3(13.325298, 3.0675108, 4.180664)
+size = Vector3(9.49468, 3.0675108, 4.180664)
 
 [node name="CSGBox3D6" type="CSGBox3D" parent="Camp" unique_id=1674391726]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.125044, 1.0063298, -7.407505)
+transform = Transform3D(0.9863134, 0, -0.16488127, 0, 1, 0, 0.16488127, 0, 0.9863134, -18.525629, 1.0063288, -5.2768326)
 use_collision = true
-size = Vector3(24.984833, 3.0675108, 4.180664)
+size = Vector3(21.71862, 3.0675108, 4.180664)
 
 [node name="CSGCylinder3D4" type="CSGCylinder3D" parent="Camp" unique_id=2136226268]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -36.91382, -0.10214043, -0.111115694)
@@ -1307,7 +1307,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.19, 0)
 curve = SubResource("Curve3D_8as8m")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="Mobs/Path3D" unique_id=27730672]
-transform = Transform3D(-0.998966, -0.00014656933, 0.045298114, 0, 0.9999861, 0.0032356244, -0.045298345, 0.003232299, -0.9989609, -2.8899221, 0.042602755, 1.0935059)
+transform = Transform3D(-0.998966, -0.00014656932, 0.04529811, 0, 0.99998605, 0.0032356242, -0.045298345, 0.0032322987, -0.99896085, -2.8899221, 0.042602755, 1.0935059)
 use_model_front = true
 tilt_enabled = false
 script = SubResource("GDScript_wuii1")
@@ -2040,7 +2040,7 @@ path_follow_3d = NodePath("PathFollow3D")
 metadata/_custom_type_script = "uid://bvtfxcsh87kix"
 
 [node name="PathFollow3D" type="PathFollow3D" parent="Cameras/PathCamera 01" unique_id=1638274718]
-transform = Transform3D(-0.02868, 0.0068713613, -0.9995196, 0.049977258, 0.99867135, 0.0054318146, 0.998315, -0.0497977, -0.028986532, -31.546108, 0.5577812, -0.80570316)
+transform = Transform3D(-0.02868, 0.006871361, -0.9995196, 0.049977258, 0.9986713, 0.0054318146, 0.998315, -0.049797695, -0.028986532, -31.546108, 0.5577812, -0.80570316)
 
 [node name="FixedCamera 03" type="Camera3D" parent="Cameras/PathCamera 01/PathFollow3D" unique_id=716717068 node_paths=PackedStringArray("trigger_area")]
 transform = Transform3D(-0.9943459, 3.7234443e-07, 0.1062636, -0.0324026, 0.95240223, -0.30320588, -0.10120441, -0.30493054, -0.9470043, 0, 0, -3)

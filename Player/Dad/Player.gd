@@ -24,7 +24,7 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 	
 	# 2. Update Animations after physics/velocity is resolved
-	#handle_animations()
+	handle_animations()
 
 
 func handle_turn(delta: float) -> void:
