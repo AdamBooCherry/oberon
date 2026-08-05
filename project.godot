@@ -21,14 +21,15 @@ config/icon="res://icon.svg"
 SproutyDialogs="*uid://c8gxm75j80u8c"
 DebugMenu="*uid://cggqb75a8w8r"
 CameraManager="*uid://hoki1ltgbq5o"
+Overlays="*uid://c8m8u4d3p64m4"
+InventoryManager="*uid://ct406r0iuwatw"
 
 [display]
 
-window/size/viewport_width=1280
-window/size/viewport_height=720
+window/size/viewport_width=640
+window/size/viewport_height=480
 window/size/always_on_top=true
-window/stretch/mode="canvas_items"
-window/stretch/aspect="expand"
+window/stretch/mode="viewport"
 
 [editor_plugins]
 
@@ -84,6 +85,7 @@ sprint={
 
 [rendering]
 
+textures/canvas_textures/default_texture_filter=0
 rendering_device/driver.windows="d3d12"
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"

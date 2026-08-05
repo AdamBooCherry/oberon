@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://c8m8u4d3p64m4"]
+
+[ext_resource type="Shader" uid="uid://l8e122k8gwl8" path="res://Shaders/dither.gdshader" id="1_j7dna"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wuii1"]
+shader = ExtResource("1_j7dna")
+shader_parameter/impact = 0.0
+shader_parameter/impact_center = Vector2(0.5, 0.5)
+shader_parameter/zoom_strength = 0.045
+shader_parameter/shake_strength = 0.012
+shader_parameter/line_density = 72.0
+shader_parameter/line_cut = 0.82
+shader_parameter/line_distortion = 24.0
+shader_parameter/posterize_steps = 3.0
+shader_parameter/contrast = 2.6
+shader_parameter/flash_strength = 0.35
+shader_parameter/vignette_strength = 0.55
+shader_parameter/ink_color = Color(0.02, 0.018, 0.015, 1)
+shader_parameter/paper_color = Color(1, 0.96, 0.86, 1)
+
+[node name="Overlays" type="CanvasLayer" unique_id=413102782]
+layer = -1
+
+[node name="Panel" type="ColorRect" parent="." unique_id=1356898584]
+material = SubResource("ShaderMaterial_wuii1")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2

@@ -8,8 +8,10 @@
 [ext_resource type="Script" uid="uid://drpmv38e02bjw" path="res://Scenes/camera_trigger_area.gd" id="6_1qq0c"]
 [ext_resource type="Script" uid="uid://bvtfxcsh87kix" path="res://Scenes/path_camera.gd" id="7_4yug1"]
 [ext_resource type="Texture2D" uid="uid://cy5fjldems1xk" path="res://Assets/Placeholders/Tonic Seizure_0.png" id="8_0flev"]
+[ext_resource type="PackedScene" uid="uid://c4m3x1xtpkt8p" path="res://Assets/Placeholders/Johnny Whitehat/Whitehat.tscn" id="8_bxb4o"]
 [ext_resource type="Texture2D" uid="uid://detj0nmxsadq5" path="res://Assets/Placeholders/Tonic Seizure_2.png" id="9_r6gak"]
 [ext_resource type="ArrayMesh" uid="uid://dhhn5aj0n7ydd" path="res://Prototyping/Test Geometry/placeholder Oberon.tres" id="10_lqkgr"]
+[ext_resource type="PackedScene" uid="uid://cdffe7bphgot8" path="res://Characters/Frog/SilverFrog.tscn" id="12_npf7y"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_125yk"]
 
@@ -1307,7 +1309,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.19, 0)
 curve = SubResource("Curve3D_8as8m")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="Mobs/Path3D" unique_id=27730672]
-transform = Transform3D(-0.998966, -0.00014656932, 0.04529811, 0, 0.99998605, 0.0032356242, -0.045298345, 0.0032322987, -0.99896085, -2.8899221, 0.042602755, 1.0935059)
+transform = Transform3D(-0.998966, -0.00014656923, 0.045298085, 0, 0.99998546, 0.0032356223, -0.045298345, 0.0032322968, -0.99896026, -2.8899221, 0.042602755, 1.0935059)
 use_model_front = true
 tilt_enabled = false
 script = SubResource("GDScript_wuii1")
@@ -1938,6 +1940,9 @@ skeleton = NodePath("..")
 libraries/ = SubResource("AnimationLibrary_gkc71")
 autoplay = &"mixamo_com"
 
+[node name="Whitehat" parent="Mobs" unique_id=1448585377 instance=ExtResource("8_bxb4o")]
+transform = Transform3D(0.6959113, 0, -0.7181278, 0, 1, 0, 0.7181278, 0, 0.6959113, 2.5599194, -0.06230475, -2.1471138)
+
 [node name="Cameras" type="Node3D" parent="." unique_id=2075750856]
 
 [node name="FixedCamera 01" type="Node3D" parent="Cameras" unique_id=166643542]
@@ -2040,7 +2045,7 @@ path_follow_3d = NodePath("PathFollow3D")
 metadata/_custom_type_script = "uid://bvtfxcsh87kix"
 
 [node name="PathFollow3D" type="PathFollow3D" parent="Cameras/PathCamera 01" unique_id=1638274718]
-transform = Transform3D(-0.02868, 0.006871361, -0.9995196, 0.049977258, 0.9986713, 0.0054318146, 0.998315, -0.049797695, -0.028986532, -31.546108, 0.5577812, -0.80570316)
+transform = Transform3D(-0.02868, 0.0068713566, -0.9995196, 0.049977258, 0.9986707, 0.0054318146, 0.998315, -0.049797665, -0.028986532, -31.546108, 0.5577812, -0.80570316)
 
 [node name="FixedCamera 03" type="Camera3D" parent="Cameras/PathCamera 01/PathFollow3D" unique_id=716717068 node_paths=PackedStringArray("trigger_area")]
 transform = Transform3D(-0.9943459, 3.7234443e-07, 0.1062636, -0.0324026, 0.95240223, -0.30320588, -0.10120441, -0.30493054, -0.9470043, 0, 0, -3)
@@ -2139,3 +2144,6 @@ sides = 4
 transform = Transform3D(0.87232083, 0, -0.48893398, 0, 1, 0, 0.48893398, 0, 0.87232083, -53.412132, 7.834427, 22.812094)
 use_collision = true
 size = Vector3(10.280151, 16.723698, 23.772827)
+
+[node name="SilverFrog" parent="." unique_id=969271597 instance=ExtResource("12_npf7y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.969874, 0.0009806976, 0.14772868)
