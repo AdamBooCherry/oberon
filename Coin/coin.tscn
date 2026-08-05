@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://b4lro5g46q76v"]
+
+[ext_resource type="Texture2D" uid="uid://c4315gjdfs4ye" path="res://Assets/Particle FX/circle_05.png" id="1_5u43v"]
+[ext_resource type="Script" uid="uid://cy6q6bvv2enjc" path="res://Coin/coin.gd" id="1_ewyp4"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cojvj"]
+transparency = 1
+blend_mode = 1
+albedo_texture = ExtResource("1_5u43v")
+emission_enabled = true
+emission = Color(0.63, 1, 0.95683336, 1)
+billboard_mode = 1
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_wuii1"]
+
+[node name="Coin" type="Node3D" unique_id=1570438271 node_paths=PackedStringArray("area_3d")]
+script = ExtResource("1_ewyp4")
+area_3d = NodePath("Area3D")
+metadata/_custom_type_script = "uid://cy6q6bvv2enjc"
+
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=156145433]
+material_override = SubResource("StandardMaterial3D_cojvj")
+pixel_size = 0.001
+texture = ExtResource("1_5u43v")
+
+[node name="Area3D" type="Area3D" parent="." unique_id=396496358]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=821974514]
+shape = SubResource("SphereShape3D_wuii1")

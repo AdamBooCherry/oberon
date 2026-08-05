@@ -9,9 +9,11 @@
 [ext_resource type="Script" uid="uid://drpmv38e02bjw" path="res://Scenes/camera_trigger_area.gd" id="6_1qq0c"]
 [ext_resource type="Script" uid="uid://bvtfxcsh87kix" path="res://Scenes/path_camera.gd" id="7_4yug1"]
 [ext_resource type="PackedScene" uid="uid://c4m3x1xtpkt8p" path="res://Assets/Placeholders/Johnny Whitehat/Whitehat.tscn" id="8_bxb4o"]
+[ext_resource type="PackedScene" uid="uid://b4lro5g46q76v" path="res://Coin/coin.tscn" id="11_bxb4o"]
 [ext_resource type="PackedScene" uid="uid://cdffe7bphgot8" path="res://Characters/Frog/SilverFrog.tscn" id="12_npf7y"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_125yk"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0wmpe"]
+albedo_color = Color(0.23, 0.11653333, 0.045999996, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_npf7y"]
 albedo_color = Color(0.47120005, 0.43200004, 0.6, 1)
@@ -125,6 +127,7 @@ transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 4.89
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.99127, -0.2949978, 0.037792206)
 use_collision = true
 size = Vector3(28.858215, 0.46485546, 10.941406)
+material = SubResource("StandardMaterial3D_0wmpe")
 
 [node name="CSGBox3D5" type="CSGBox3D" parent="Camp" unique_id=1310223667]
 transform = Transform3D(0.995412, 0, 0.09568131, 0, 1, 0, -0.09568131, 0, 0.995412, -18.139818, 1.0063298, 4.703443)
@@ -178,10 +181,10 @@ size = Vector3(21.71862, 3.0675108, 4.180664)
 
 [node name="CSGCylinder3D4" type="CSGCylinder3D" parent="Camp" unique_id=2136226268]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -36.91382, -0.10214043, -0.111115694)
-material_override = SubResource("StandardMaterial3D_125yk")
 use_collision = true
 radius = 10.342285
 height = 0.1
+material = SubResource("StandardMaterial3D_0wmpe")
 
 [node name="CSGCylinder3D5" type="CSGCylinder3D" parent="Camp" unique_id=712025689]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -47.844772, 1.0491486, -0.111115694)
@@ -303,7 +306,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.19, 0)
 curve = SubResource("Curve3D_8as8m")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="Mobs/Path3D" unique_id=27730672]
-transform = Transform3D(-0.998966, -0.00014656899, 0.045298006, 0, 0.9999837, 0.0032356167, -0.045298345, 0.0032322912, -0.9989585, -2.8899221, 0.042602755, 1.0935059)
+transform = Transform3D(-0.998966, -0.00014656893, 0.045297988, 0, 0.9999833, 0.0032356153, -0.045298345, 0.0032322898, -0.9989581, -2.8899221, 0.042602755, 1.0935059)
 use_model_front = true
 tilt_enabled = false
 script = SubResource("GDScript_wuii1")
@@ -459,7 +462,7 @@ path_follow_3d = NodePath("PathFollow3D")
 metadata/_custom_type_script = "uid://bvtfxcsh87kix"
 
 [node name="PathFollow3D" type="PathFollow3D" parent="Cameras/PathCamera 01" unique_id=1638274718]
-transform = Transform3D(-0.029283984, -0.005194345, -0.99950427, 0.049977183, 0.9986591, -0.006654269, 0.99830323, -0.050147366, -0.028986093, -31.546108, 0.5577812, -0.80570316)
+transform = Transform3D(-0.029283984, -0.005194345, -0.99950385, 0.049977183, 0.9986591, -0.0066542663, 0.99830323, -0.050147366, -0.02898608, -31.546108, 0.5577812, -0.80570316)
 
 [node name="FixedCamera 03" type="Camera3D" parent="Cameras/PathCamera 01/PathFollow3D" unique_id=716717068 node_paths=PackedStringArray("trigger_area")]
 transform = Transform3D(-0.9943459, 3.7234443e-07, 0.1062636, -0.0324026, 0.95240223, -0.30320588, -0.10120441, -0.30493054, -0.9470043, 0, 0, -3)
@@ -523,6 +526,7 @@ size = Vector3(23.600586, 49.13675, 41.26367)
 [node name="CSGBox3D17" type="CSGBox3D" parent="Environment" unique_id=1052533134]
 transform = Transform3D(0.87232083, 0, -0.48893398, 0, 1, 0, 0.48893398, 0, 0.87232083, -94.78583, 24.040955, -16.26453)
 use_collision = true
+flip_faces = true
 size = Vector3(23.600586, 49.13675, 41.26367)
 
 [node name="CSGCylinder3D2" type="CSGCylinder3D" parent="Environment" unique_id=1431317021]
@@ -556,7 +560,17 @@ sides = 4
 [node name="CSGBox3D15" type="CSGBox3D" parent="Environment" unique_id=914181476]
 transform = Transform3D(0.87232083, 0, -0.48893398, 0, 1, 0, 0.48893398, 0, 0.87232083, -53.412132, 7.834427, 22.812094)
 use_collision = true
+flip_faces = true
 size = Vector3(10.280151, 16.723698, 23.772827)
 
 [node name="SilverFrog" parent="." unique_id=969271597 instance=ExtResource("12_npf7y")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2920623, 0.0009806976, -1.2356961)
+
+[node name="Coin" parent="." unique_id=2132586193 instance=ExtResource("11_bxb4o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -39.224636, 0.20386025, 4.9508104)
+
+[node name="Coin2" parent="." unique_id=596335422 instance=ExtResource("11_bxb4o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -39.54351, 0.20386025, 3.7243412)
+
+[node name="Coin3" parent="." unique_id=1412081099 instance=ExtResource("11_bxb4o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38.584373, 0.20386025, -4.31971)
