@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://dv0te4be2v0p8"]
+
+[ext_resource type="Script" uid="uid://buu6dtvleoesf" path="res://Scenes/cutscene_box.gd" id="1_evell"]
+[ext_resource type="PackedScene" uid="uid://c4m3x1xtpkt8p" path="res://Assets/Placeholders/Johnny Whitehat/Whitehat.tscn" id="2_fioy5"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wuii1"]
+cull_mode = 1
+shading_mode = 0
+albedo_color = Color(0, 0, 0, 1)
+
+[node name="CutsceneBox" type="Node3D" unique_id=1662951017 node_paths=PackedStringArray("camera_3d")]
+script = ExtResource("1_evell")
+camera_3d = NodePath("Camera3D")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=2036082203]
+size = Vector3(5, 5, 5)
+material = SubResource("StandardMaterial3D_wuii1")
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1953533427]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3261875, 2.2489727)
+
+[node name="Whitehat" parent="." unique_id=1448585377 instance=ExtResource("2_fioy5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5053365, 0)

@@ -2,6 +2,11 @@
 
 [ext_resource type="Texture2D" uid="uid://c4315gjdfs4ye" path="res://Assets/Particle FX/circle_05.png" id="1_5u43v"]
 [ext_resource type="Script" uid="uid://cy6q6bvv2enjc" path="res://Coin/coin.gd" id="1_ewyp4"]
+[ext_resource type="AudioStream" uid="uid://cwmanln426syf" path="res://Audio/270410__littlerobotsoundfactory__pickup_gold_04.wav" id="3_0wmpe"]
+
+[sub_resource type="Curve" id="Curve_ewyp4"]
+_data = [Vector2(0, 0.038366318), 0.0, 0.0, 0, 0, Vector2(0.48360655, 1), 4.5867004, 0.0, 0, 0]
+point_count = 2
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cojvj"]
 transparency = 1
@@ -13,9 +18,17 @@ billboard_mode = 1
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_wuii1"]
 
-[node name="Coin" type="Node3D" unique_id=1570438271 node_paths=PackedStringArray("area_3d")]
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_rmlog"]
+random_pitch = 1.122462
+streams_count = 1
+stream_0/stream = ExtResource("3_0wmpe")
+
+[node name="Coin" type="Node3D" unique_id=1570438271 node_paths=PackedStringArray("area_3d", "pickup")]
 script = ExtResource("1_ewyp4")
 area_3d = NodePath("Area3D")
+max_speed = 30.0
+speed_curve = SubResource("Curve_ewyp4")
+pickup = NodePath("Pickup")
 metadata/_custom_type_script = "uid://cy6q6bvv2enjc"
 
 [node name="Sprite3D" type="Sprite3D" parent="." unique_id=156145433]
@@ -27,3 +40,7 @@ texture = ExtResource("1_5u43v")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=821974514]
 shape = SubResource("SphereShape3D_wuii1")
+
+[node name="Pickup" type="AudioStreamPlayer3D" parent="." unique_id=1139800880]
+stream = SubResource("AudioStreamRandomizer_rmlog")
+max_polyphony = 10
