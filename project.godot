@@ -16,9 +16,12 @@ run/main_scene="uid://d2jm65ledp7y3"
 config/features=PackedStringArray("4.7", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[audio]
+
+buses/default_bus_layout="uid://b61cgnfor8qxo"
+
 [autoload]
 
-SproutyDialogs="*uid://c8gxm75j80u8c"
 DebugMenu="*uid://cggqb75a8w8r"
 CameraManager="*uid://hoki1ltgbq5o"
 Overlays="*uid://c8m8u4d3p64m4"
@@ -34,7 +37,7 @@ window/stretch/mode="viewport"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/anthonyec.camera_preview/plugin.cfg", "res://addons/debug_menu/plugin.cfg", "res://addons/sprouty_dialogs/plugin.cfg", "res://addons/yard/plugin.cfg")
+enabled=PackedStringArray("res://addons/anthonyec.camera_preview/plugin.cfg", "res://addons/debug_menu/plugin.cfg")
 
 [global_group]
 
@@ -100,6 +103,16 @@ inventory={
 ]
 }
 
+[internationalization]
+
+locale/translations=PackedStringArray("res://addons/maaacks_game_template/base/translations/menus_translations.en.translation", "res://addons/maaacks_game_template/base/translations/menus_translations.fr.translation")
+
+[maaacks_game_template]
+
+disable_install_audio_busses=true
+disable_update_check=false
+disable_install_wizard=true
+
 [physics]
 
 3d/physics_engine="Jolt Physics"
@@ -122,7 +135,7 @@ general/canvas/portraits_canvas_layer=1
 general/custom/use_custom_event_nodes=false
 general/custom/custom_event_nodes_folder=""
 general/custom/custom_event_interpreter=-1
-text/default_typing_speed=0.05
+text/default_typing_speed=0.02
 text/open_url_on_meta_tag_click=true
 text/display/new_line_as_new_dialog=true
 text/display/split_dialog_by_max_characters=false
@@ -139,9 +152,22 @@ translation/characters/use_csv_for_character_names=false
 translation/characters/character_names_csv=-1
 translation/localization/default_locale="en"
 translation/localization/locales=["en"]
-internal/variables={}
+internal/variables={
+"Postmaster": {
+"color": Color(0.337, 0.62, 1, 1),
+"index": 0,
+"variables": {
+"has_been_talked_to": {
+"index": 0,
+"metadata": {},
+"type": 1,
+"value": false
+}
+}
+}
+}
 internal/play_dialog_path="res://addons/sprouty_dialogs/dialogs/postmaster.tres"
-internal/play_start_id="FIRST"
+internal/play_start_id="STANDARD"
 internal/last_opened_files=[{
 "path": "res://Characters/Oberon/Oberon.tres",
 "uid": 9140000643239417756,
@@ -226,8 +252,8 @@ internal/last_opened_files=[{
 "path": "res://addons/sprouty_dialogs/dialogs/postmaster.tres",
 "uid": 8423479898938644321,
 "view_state": {
-"scroll_offset": Vector2(-38.15678, -33.93078),
-"zoom": 0.49022233
+"scroll_offset": Vector2(30.971373, 48.809948),
+"zoom": 0.49022144
 }
 }]
-internal/last_selected_file_index=1
+internal/last_selected_file_index=5

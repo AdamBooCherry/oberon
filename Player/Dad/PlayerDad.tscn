@@ -1926,6 +1926,8 @@ func _switch_to_debug():
 
 [node name="Player" type="CharacterBody3D" unique_id=1848596107 node_paths=PackedStringArray("animation_player") groups=["Player"]]
 script = ExtResource("1_ow4g2")
+move_speed = 2.5
+run_speed = 4.0
 animation_player = NodePath("AnimationPlayer")
 metadata/_custom_type_script = "uid://dcqqn7kv1j4ow"
 

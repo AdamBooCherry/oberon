@@ -37,6 +37,7 @@ func handle_movement(delta: float) -> void:
 		handle_run(delta)
 	else:
 		handle_walk(delta)
+	#handle_run(delta)
 
 
 func handle_walk(delta: float) -> void:
