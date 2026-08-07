@@ -1,7 +1,12 @@
 extends Node3D
 class_name CutsceneBox
 
+@export var cutscene_id: StringName = ""
+
+@export_group("References")
 @export var camera_3d: Camera3D
+
+
 
 func start_cutscene():
 	camera_3d.make_current()

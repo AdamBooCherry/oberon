@@ -9,7 +9,5 @@ class_name FrogMob
 ## catch
 ## gets added to inventory/currency
 
-
-
 func get_picked_up():
 	pass

@@ -15,6 +15,7 @@
 [ext_resource type="Script" uid="uid://c2mdxfrt61wob" path="res://Player/Dad/camera_activator.gd" id="12_y2jqa"]
 [ext_resource type="Script" uid="uid://c6btljfv6try7" path="res://Player/Dad/coin_collector.gd" id="14_ksbj2"]
 [ext_resource type="AudioStream" uid="uid://cwmanln426syf" path="res://Audio/270410__littlerobotsoundfactory__pickup_gold_04.wav" id="15_oyr5w"]
+[ext_resource type="Script" uid="uid://syjej4ydbk61" path="res://Player/Dad/interaction_detector.gd" id="16_q34ba"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yos4t"]
 resource_name = "Eyes_MAT"
@@ -1906,7 +1907,7 @@ height = 1.6064453
 radius = 0.14970765
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_0c8vy"]
-radius = 2.0
+radius = 1.5
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_cg837"]
 random_pitch = 1.122462
@@ -2442,6 +2443,19 @@ metadata/_custom_type_script = "uid://c6btljfv6try7"
 shape = SubResource("SphereShape3D_0c8vy")
 
 [node name="Pickup" type="AudioStreamPlayer" parent="CoinCollector" unique_id=1747696200]
+stream = SubResource("AudioStreamRandomizer_cg837")
+pitch_scale = 2.0
+max_polyphony = 10
+
+[node name="InteractionDetector" type="Area3D" parent="." unique_id=60512516]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2947866, 0)
+script = ExtResource("16_q34ba")
+metadata/_custom_type_script = "uid://syjej4ydbk61"
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="InteractionDetector" unique_id=1269772887]
+shape = SubResource("SphereShape3D_0c8vy")
+
+[node name="Pickup" type="AudioStreamPlayer" parent="InteractionDetector" unique_id=1244623578]
 stream = SubResource("AudioStreamRandomizer_cg837")
 pitch_scale = 2.0
 max_polyphony = 10

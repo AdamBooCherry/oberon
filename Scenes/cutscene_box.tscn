@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dv0te4be2v0p8"]
 
 [ext_resource type="Script" uid="uid://buu6dtvleoesf" path="res://Scenes/cutscene_box.gd" id="1_evell"]
-[ext_resource type="PackedScene" uid="uid://c4m3x1xtpkt8p" path="res://Assets/Placeholders/Johnny Whitehat/Whitehat.tscn" id="2_fioy5"]
+[ext_resource type="PackedScene" uid="uid://c4m3x1xtpkt8p" path="res://Characters/Whitehat/Whitehat.tscn" id="2_fioy5"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wuii1"]
 cull_mode = 1

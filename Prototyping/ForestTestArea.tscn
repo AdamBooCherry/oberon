@@ -127,3 +127,4 @@ transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -26.
 size = Vector3(23.940346, 3.9441528, 61.136963)
 
 [node name="CutsceneBox" parent="." unique_id=1662951017 instance=ExtResource("2_v0phy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.926882, -14.063704, 0)
