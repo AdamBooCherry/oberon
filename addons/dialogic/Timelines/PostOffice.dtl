@@ -13,5 +13,9 @@ Postmaster: Welcome! I'm Postmaster General around these here parts.
 
 
 label STANDARD
-Postmaster: Welcome back sir!
+if {game_has_started} == false:
+	Postmaster: Welcome back sir! Enjoy the game!
+elif {game_has_started} == true:
+	Postmaster: Hello sir! what services can I offer you?
+
 [end_timeline]

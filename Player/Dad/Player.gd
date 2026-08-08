@@ -13,8 +13,33 @@ class_name Player
 
 @export_group("References")
 @export var animation_player: AnimationPlayer
+@export var interaction_detector: InteractionDetector
+
+var _was_in_dialogue: bool = false
 
 func _physics_process(delta: float) -> void:
+	var is_in_dialogue: bool = Dialogic.current_timeline != null
+	
+	# Handle state toggles when entering or exiting dialogue
+	if is_in_dialogue != _was_in_dialogue:
+		_was_in_dialogue = is_in_dialogue
+		_set_dialogue_state(is_in_dialogue)
+
+	# Freeze player entirely if Dialogic is currently running a timeline
+	if is_in_dialogue:
+		# Let gravity still apply so they don't float in mid-air if a cutscene starts mid-fall
+		if not is_on_floor():
+			velocity.y -= gravity * delta
+		else:
+			velocity.x = 0.0
+			velocity.z = 0.0
+		
+		move_and_slide()
+		
+		# Force transition to idle animation during dialogue
+		_play_dialogue_idle()
+		return
+
 	# 1. Apply Gravity
 	if not is_on_floor():
 		velocity.y -= gravity * delta
@@ -37,7 +62,6 @@ func handle_movement(delta: float) -> void:
 		handle_run(delta)
 	else:
 		handle_walk(delta)
-	#handle_run(delta)
 
 
 func handle_walk(delta: float) -> void:
@@ -90,3 +114,21 @@ func handle_animations() -> void:
 		animation_player.speed_scale = -1.0
 	else:
 		animation_player.speed_scale = 1.0
+
+
+func _play_dialogue_idle() -> void:
+	if not animation_player:
+		return
+		
+	if animation_player.current_animation != "idle":
+		animation_player.play("idle", default_blend_time)
+		animation_player.speed_scale = 1.0
+
+
+func _set_dialogue_state(in_dialogue: bool) -> void:
+	if interaction_detector:
+		# Disabling monitoring stops the detector from firing new area entries/exits during chat
+		interaction_detector.monitorable = not in_dialogue
+		
+		# Optional: If you want to force-hide open interaction icons when dialogue starts, 
+		# you could handle clearing active states here if needed.

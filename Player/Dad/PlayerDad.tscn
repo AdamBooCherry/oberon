@@ -1924,11 +1924,12 @@ func _switch_to_debug():
 	make_current()
 "
 
-[node name="Player" type="CharacterBody3D" unique_id=1848596107 node_paths=PackedStringArray("animation_player") groups=["Player"]]
+[node name="Player" type="CharacterBody3D" unique_id=1848596107 node_paths=PackedStringArray("animation_player", "interaction_detector") groups=["Player"]]
 script = ExtResource("1_ow4g2")
 move_speed = 2.5
 run_speed = 4.0
 animation_player = NodePath("AnimationPlayer")
+interaction_detector = NodePath("InteractionDetector")
 metadata/_custom_type_script = "uid://dcqqn7kv1j4ow"
 
 [node name="Skeleton3D" type="Skeleton3D" parent="." unique_id=1707992556]
