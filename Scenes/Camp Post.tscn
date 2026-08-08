@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://bkbqspmutvdh1" path="res://Scenes/fixed_camera.gd" id="5_4hc50"]
 [ext_resource type="PackedScene" uid="uid://ceia36mgvgfw2" path="res://Characters/Oberon/Oberon.tscn" id="5_mpywm"]
 [ext_resource type="Script" uid="uid://drpmv38e02bjw" path="res://Scenes/camera_trigger_area.gd" id="6_1qq0c"]
+[ext_resource type="Resource" uid="uid://dmg3n78b21fic" path="res://addons/dialogic/Timelines/PostOffice.dtl" id="7_1qq0c"]
 [ext_resource type="Script" uid="uid://bvtfxcsh87kix" path="res://Scenes/path_camera.gd" id="7_4yug1"]
 [ext_resource type="PackedScene" uid="uid://ckfs7csw46e8r" path="res://Characters/Postmaster/postmaster.tscn" id="7_npf7y"]
 [ext_resource type="Script" uid="uid://c6y1b7v2oiq81" path="res://Characters/Postmaster/interaction_area.gd" id="8_1qq0c"]
@@ -84,30 +85,33 @@ script/source = "extends Node3D
 
 @export var interaction_area: InteractionArea
 @export var postmaster: CharacterBody3D
-#@export var sprouty_data: SproutyDialogsDialogueData
+@export var post_office: DialogicTimeline
 
 var has_been_interacted_with: bool = false
 
 func _ready() -> void:
 	interaction_area.player_interaction_started.connect(_on_interaction_started)
-	#SproutyDialogs.signal_event.connect(_on_sprouty_signal)
+	Dialogic.signal_event.connect(_on_dialogic_signal)
 
 func _on_interaction_started():
 	if has_been_interacted_with == false:
-		#SproutyDialogs.start_dialog(sprouty_data,\"FIRST\")
+		print(has_been_interacted_with)
+		Dialogic.start(post_office, 0)
 		has_been_interacted_with = true
 	
-	#elif has_been_interacted_with == true:
-		#SproutyDialogs.start_dialog(sprouty_data,\"STANDARD\")
+	elif has_been_interacted_with == true:
+		print(has_been_interacted_with)
+		Dialogic.start(post_office, \"STANDARD\")
 
-func _on_sprouty_signal(signal_id: String, _args: Array):
-	if signal_id == \"PostmasterShoot\":
+func _on_dialogic_signal(argument: Variant):
+	if argument is not String:
+		return
+	
+	if argument == \"Postmaster Shoot\":
 		_shoot_player()
-		pass
-	pass
 
 func _shoot_player():
-	pass
+	get_tree().quit()
 "
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_r6gak"]
@@ -119,6 +123,8 @@ blend_mode = 1
 no_depth_test = true
 shading_mode = 0
 albedo_texture = ExtResource("9_4yug1")
+billboard_mode = 1
+billboard_keep_scale = true
 stencil_flags = 2
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_1qq0c"]
@@ -130,6 +136,8 @@ blend_mode = 1
 no_depth_test = true
 shading_mode = 0
 albedo_texture = SubResource("CompressedTexture2D_1qq0c")
+billboard_mode = 1
+billboard_keep_scale = true
 stencil_flags = 2
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_4yug1"]
@@ -365,7 +373,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.19, 0)
 curve = SubResource("Curve3D_8as8m")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="Mobs/Path3D" unique_id=27730672]
-transform = Transform3D(-0.998966, -0.0001465687, 0.045297917, 0, 0.99998176, 0.0032356104, -0.045298345, 0.003232285, -0.99895656, -2.8899221, 0.042602755, 1.0935059)
+transform = Transform3D(-0.998966, -0.00014656865, 0.045297902, 0, 0.99998146, 0.0032356095, -0.045298345, 0.0032322838, -0.99895626, -2.8899221, 0.042602755, 1.0935059)
 use_model_front = true
 tilt_enabled = false
 script = SubResource("GDScript_wuii1")
@@ -404,26 +412,26 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.1224296, 0.10358226, -7.57
 script = SubResource("GDScript_4hc50")
 interaction_area = NodePath("InteractionArea")
 postmaster = NodePath("Postmaster")
+post_office = ExtResource("7_1qq0c")
 
 [node name="Postmaster" parent="Mobs/PostOffice" unique_id=405108321 instance=ExtResource("7_npf7y")]
 
-[node name="InteractionArea" type="Area3D" parent="Mobs/PostOffice" unique_id=1175027093 node_paths=PackedStringArray("interaction_icon")]
+[node name="InteractionArea" type="Area3D" parent="Mobs/PostOffice" unique_id=1175027093]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.1668482)
 script = ExtResource("8_1qq0c")
-interaction_icon = NodePath("InteractionIcon")
 metadata/_custom_type_script = "uid://c6y1b7v2oiq81"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Mobs/PostOffice/InteractionArea" unique_id=1836177947]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8780786, 0)
 shape = SubResource("SphereShape3D_r6gak")
 
-[node name="InteractionIcon" type="Sprite3D" parent="Mobs/PostOffice/InteractionArea" unique_id=2018041111]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.105442286, 0.8225007, -0.23008108)
+[node name="InteractionIcon" type="Sprite3D" parent="Mobs/PostOffice/InteractionArea" unique_id=1689123953]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.97496414, 0)
 material_override = SubResource("StandardMaterial3D_4hc50")
 pixel_size = 0.001
 texture = ExtResource("9_4yug1")
 
-[node name="Sprite3D2" type="Sprite3D" parent="Mobs/PostOffice/InteractionArea/InteractionIcon" unique_id=493583326]
+[node name="Sprite3D" type="Sprite3D" parent="Mobs/PostOffice/InteractionArea/InteractionIcon" unique_id=1287936997]
 transform = Transform3D(1.4283557, -1.4283557, 0, 1.4283557, 1.4283557, 0, 0, 0, 2.02, 0, 0, 0)
 material_override = SubResource("StandardMaterial3D_lqkgr")
 pixel_size = 0.001
@@ -551,7 +559,7 @@ path_follow_3d = NodePath("PathFollow3D")
 metadata/_custom_type_script = "uid://bvtfxcsh87kix"
 
 [node name="PathFollow3D" type="PathFollow3D" parent="Cameras/PathCamera 01" unique_id=1638274718]
-transform = Transform3D(-0.029283984, -0.005194345, -0.9995023, 0.049977183, 0.9986591, -0.006654256, 0.99830323, -0.050147366, -0.028986035, -31.546108, 0.5577812, -0.80570316)
+transform = Transform3D(-0.029283984, -0.005194345, -0.999502, 0.049977183, 0.9986591, -0.0066542537, 0.99830323, -0.050147366, -0.028986027, -31.546108, 0.5577812, -0.80570316)
 
 [node name="FixedCamera 03" type="Camera3D" parent="Cameras/PathCamera 01/PathFollow3D" unique_id=716717068 node_paths=PackedStringArray("trigger_area")]
 transform = Transform3D(-0.9943459, 3.7234443e-07, 0.1062636, -0.0324026, 0.95240223, -0.30320588, -0.10120441, -0.30493054, -0.9470043, 0, 0, -3)
@@ -655,41 +663,43 @@ size = Vector3(10.280151, 16.723698, 23.772827)
 [node name="SilverFrog" parent="." unique_id=969271597 instance=ExtResource("12_npf7y")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2920623, 0.0009806976, -1.2356961)
 
-[node name="Coin" parent="." unique_id=2132586193 instance=ExtResource("11_bxb4o")]
+[node name="CoinRoot" type="Node3D" parent="." unique_id=1345453457]
+
+[node name="Coin" parent="CoinRoot" unique_id=2132586193 instance=ExtResource("11_bxb4o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34.75895, 0.20386025, 0.34615088)
 
-[node name="Coin2" parent="." unique_id=596335422 instance=ExtResource("11_bxb4o")]
+[node name="Coin2" parent="CoinRoot" unique_id=596335422 instance=ExtResource("11_bxb4o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34.19523, 0.20386025, 1.8769588)
 
-[node name="Coin4" parent="." unique_id=1570438271 instance=ExtResource("11_bxb4o")]
+[node name="Coin4" parent="CoinRoot" unique_id=1570438271 instance=ExtResource("11_bxb4o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34.11425, 0.20386073, -0.525857)
 
-[node name="Coin5" parent="." unique_id=768008836 instance=ExtResource("11_bxb4o")]
+[node name="Coin5" parent="CoinRoot" unique_id=768008836 instance=ExtResource("11_bxb4o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -33.55053, 0.20386073, 1.004951)
 
-[node name="Coin6" parent="." unique_id=798848788 instance=ExtResource("11_bxb4o")]
+[node name="Coin6" parent="CoinRoot" unique_id=798848788 instance=ExtResource("11_bxb4o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -33.652817, 0.20386073, -0.11621189)
 
-[node name="Coin7" parent="." unique_id=1989496625 instance=ExtResource("11_bxb4o")]
+[node name="Coin7" parent="CoinRoot" unique_id=1989496625 instance=ExtResource("11_bxb4o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -33.089096, 0.20386073, 1.4145961)
 
-[node name="Coin8" parent="." unique_id=393257186 instance=ExtResource("11_bxb4o")]
+[node name="Coin8" parent="CoinRoot" unique_id=393257186 instance=ExtResource("11_bxb4o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32.619774, 0.2038612, -1.1418738)
 
-[node name="Coin9" parent="." unique_id=1534838433 instance=ExtResource("11_bxb4o")]
+[node name="Coin9" parent="CoinRoot" unique_id=1534838433 instance=ExtResource("11_bxb4o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32.056053, 0.2038612, 0.38893414)
 
-[node name="Coin10" parent="." unique_id=1616927892 instance=ExtResource("11_bxb4o")]
+[node name="Coin10" parent="CoinRoot" unique_id=1616927892 instance=ExtResource("11_bxb4o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32.073036, 0.2038612, -2.859119)
 
-[node name="Coin11" parent="." unique_id=18921682 instance=ExtResource("11_bxb4o")]
+[node name="Coin11" parent="CoinRoot" unique_id=18921682 instance=ExtResource("11_bxb4o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31.509314, 0.2038612, -1.328311)
 
-[node name="Coin12" parent="." unique_id=541635243 instance=ExtResource("11_bxb4o")]
+[node name="Coin12" parent="CoinRoot" unique_id=541635243 instance=ExtResource("11_bxb4o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.708307, 0.2038612, -2.161694)
 
-[node name="Coin13" parent="." unique_id=1223460859 instance=ExtResource("11_bxb4o")]
+[node name="Coin13" parent="CoinRoot" unique_id=1223460859 instance=ExtResource("11_bxb4o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.144587, 0.2038612, -0.6308861)
 
-[node name="Coin3" parent="." unique_id=1412081099 instance=ExtResource("11_bxb4o")]
+[node name="Coin3" parent="CoinRoot" unique_id=1412081099 instance=ExtResource("11_bxb4o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35.608246, 0.20386025, -10.317232)

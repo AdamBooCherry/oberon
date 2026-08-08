@@ -12,24 +12,30 @@ var _current_tween: Tween
 func _ready() -> void:
 	area_entered.connect(_on_area_entered)
 	area_exited.connect(_on_area_exited)
-	_hide_icon()
+	
+	if interaction_icon:
+		interaction_icon.scale = Vector3(0.01, 0.01, 0.01)
+		interaction_icon.visible = false
 
 func _unhandled_input(event: InputEvent) -> void:
-	if event.is_action_pressed("interact"):
+	# Only allow interaction if the player is actually inside this specific area
+	if _player_is_in_area and event.is_action_pressed("interact"):
 		player_interaction_started.emit()
-		pass
 
 func _on_area_entered(area: Area3D) -> void:
 	if area is InteractionDetector:
-		_show_icon()
 		_player_is_in_area = true
+		_show_icon()
 
 func _on_area_exited(area: Area3D) -> void:
 	if area is InteractionDetector:
-		_hide_icon()
 		_player_is_in_area = false
+		_hide_icon()
 
 func _show_icon() -> void:
+	if not interaction_icon:
+		return
+		
 	if _current_tween and _current_tween.is_valid():
 		_current_tween.kill()
 		
@@ -37,16 +43,19 @@ func _show_icon() -> void:
 	
 	_current_tween = create_tween()
 	_current_tween.tween_property(interaction_icon, "scale", Vector3.ONE, fade_duration)\
-		.set_trans(Tween.TRANS_SINE)\
+		.set_trans(Tween.TRANS_EXPO)\
 		.set_ease(Tween.EASE_OUT)
 
 func _hide_icon() -> void:
+	if not interaction_icon:
+		return
+		
 	if _current_tween and _current_tween.is_valid():
 		_current_tween.kill()
 		
 	_current_tween = create_tween()
-	_current_tween.tween_property(interaction_icon, "scale", Vector3(0.01,0.01,0.01), fade_duration)\
-		.set_trans(Tween.TRANS_SINE)\
+	_current_tween.tween_property(interaction_icon, "scale", Vector3(0.01, 0.01, 0.01), fade_duration)\
+		.set_trans(Tween.TRANS_EXPO)\
 		.set_ease(Tween.EASE_IN)
 		
 	_current_tween.tween_callback(func():

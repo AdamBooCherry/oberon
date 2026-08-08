@@ -1,0 +1,17 @@
+label FIRST
+Postmaster: Welcome! I'm Postmaster General around these here parts.
+- Thanks!
+	label Enjoy the game sir!
+	[end_timeline]
+
+- Fuck off!
+	Postmaster: WHAT THE FUCK DID YOU SAY TO ME YOU LITTLE BITCH
+	Postmaster: I'm shooting you with a gun! I'm killing you!
+	[signal arg="Postmaster Shoot"]
+
+[end_timeline]
+
+
+label STANDARD
+Postmaster: Welcome back sir!
+[end_timeline]
