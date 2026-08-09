@@ -5,9 +5,7 @@ Postmaster: Welcome! I'm Postmaster General around these here parts.
 	[end_timeline]
 
 - Fuck off!
-	Postmaster: WHAT THE FUCK DID YOU SAY TO ME YOU LITTLE BITCH
-	Postmaster: I'm shooting you with a gun! I'm killing you!
-	[signal arg="Postmaster Shoot"]
+	jump SHOOT
 
 [end_timeline]
 
@@ -15,7 +13,39 @@ Postmaster: Welcome! I'm Postmaster General around these here parts.
 label STANDARD
 if {game_has_started} == false:
 	Postmaster: Welcome back sir! Enjoy the game!
+
 elif {game_has_started} == true:
 	Postmaster: Hello sir! what services can I offer you?
-
+	- Nothing right now.
+		[end_timeline]
+	- I'd like to buy a stamp please
+		Postmaster: Of course! That will be 150 gold please.
+		- I'm sorry, I don't have enough money. | [if {InventoryManager.current_currency} <= 150.0] [else="hide"]
+			jump SHOOT
+		- Here you go! (pay 150 gold) | [if {InventoryManager.current_currency} >= 150.0] [else="hide"]
+			do InventoryManager.decrease_currency(150.0)
+			set {InventoryManager.has_postage} = true
+			jump STANDARD
+		- Actually, lets go back real quick.
+			Postmaster: Sure thing.
+			jump STANDARD
+	- I'd like to mail a silver frog to the king of the elves please.
+		Postmaster: Of course sir. Please offer your frog and your postage.
+		- Uhhhh, I don't actually have a frog.
+			jump SHOOT
+		- Uhhhh, I don't actually have a stamp.
+			jump SHOOT
+		- Here you go! | [if {InventoryManager.has_frog} == true && {InventoryManager.has_postage} == true] [else="disable"]
+			set {InventoryManager.has_frog} = false
+			set {InventoryManager.has_postage} = false
+			[signal arg="WIN_GAME"]
+		- Actually, lets go back real quick.
+			Postmaster: Sure thing.
+			jump STANDARD
 [end_timeline]
+
+
+label SHOOT
+Postmaster: WHAT THE FUCK DID YOU SAY TO ME YOU LITTLE BITCH
+Postmaster: I'm shooting you with a gun! I'm killing you!
+[signal arg="POSTMASTER_SHOOT"]
