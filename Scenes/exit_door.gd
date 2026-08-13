@@ -21,8 +21,11 @@ func _on_dialogic_event(argument: Variant):
 		_open_door_start_game()
 
 func _open_door_start_game():
+	interaction_area.monitoring = false
+	interaction_area.monitorable = false
 	exit_door.play("open")
 	exit_door.play("DoorAction")
+	## disable prompt
 	## play animation
 	## take hand of glory
 	## RE Door animation

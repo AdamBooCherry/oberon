@@ -11,7 +11,7 @@ var current_currency: int = 200:
 		current_currency = max(0, value) # Prevents negative currency
 		currency_changed.emit(current_currency)
 
-var has_frog: bool = true:
+var has_frog: bool = false:
 	set(value):
 		if has_frog != value:
 			has_frog = value

@@ -51,7 +51,7 @@ transform = Transform3D(-0.25459456, 0, -0.9670479, 0, 1, 0, 0.9670479, 0, -0.25
 [node name="Environment" type="Node3D" parent="SubViewport/MAIN" unique_id=129132500]
 
 [node name="ForestArea" parent="SubViewport/MAIN/Environment" unique_id=1541254729 instance=ExtResource("3_mhs8k")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 64.16425, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 62.855, 0, -1)
 
 [node name="Camp Post" parent="SubViewport/MAIN/Environment" unique_id=1057817875 instance=ExtResource("3_c5rrr")]
 

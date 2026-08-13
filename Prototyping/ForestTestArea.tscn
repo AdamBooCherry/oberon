@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://rcmbuqxvak2w" path="res://Assets/Particle FX/star_06.png" id="1_x4qiq"]
 [ext_resource type="PackedScene" uid="uid://dv0te4be2v0p8" path="res://Scenes/cutscene_box.tscn" id="2_v0phy"]
+[ext_resource type="Script" uid="uid://dmwodoestuixu" path="res://Prototyping/editor_only_geo.gd" id="2_wj5n6"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kjvde"]
 transparency = 1
@@ -29,9 +30,9 @@ colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 
 [node name="ForestArea" type="Node3D" unique_id=2065995814]
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="." unique_id=1541254729]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.477577, 0, 3.1358643)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.628494, 0, 3.1358643)
 use_collision = true
-size = Vector3(69.698166, 0.47999218, 157.19946)
+size = Vector3(70, 0.001, 157.199)
 
 [node name="CPUParticles3D" type="CPUParticles3D" parent="." unique_id=664091001]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.372, 0)
@@ -51,16 +52,21 @@ scale_amount_max = 1.2
 scale_amount_curve = SubResource("Curve_wj5n6")
 color_ramp = SubResource("Gradient_ex3c0")
 
-[node name="EnteranceMarker" type="CSGBox3D" parent="." unique_id=588524270]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -57.44924, 0.7323779, 0)
+[node name="EntrancePlaceholder" type="Node3D" parent="." unique_id=1629939824]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -57.449, 0, 0)
 
-[node name="PostOfficePlaceholder" type="CSGBox3D" parent="EnteranceMarker" unique_id=1885863208]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.11821, 1.956666, -1.039917)
-size = Vector3(10.411133, 3.9441528, 22.331787)
+[node name="EnteranceMarker" type="CSGBox3D" parent="EntrancePlaceholder" unique_id=588524270]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2318778, 0)
 
-[node name="CSGCylinder3D" type="CSGCylinder3D" parent="EnteranceMarker" unique_id=745624450]
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="EntrancePlaceholder" unique_id=745624450]
 transform = Transform3D(9.903215, 0, 0, 0, 1, 0, 0, 0, 9.903215, -6.628227, 26.047558, -0.30963326)
 height = 44.67517
+script = ExtResource("2_wj5n6")
+
+[node name="PostOfficePlaceholder" type="CSGBox3D" parent="EntrancePlaceholder" unique_id=1885863208]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.11821, 1.9566661, -1.039917)
+size = Vector3(10.411133, 3.9441528, 22.331787)
+script = ExtResource("2_wj5n6")
 
 [node name="Zone one" type="Node3D" parent="." unique_id=1716999965]
 

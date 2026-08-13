@@ -17,7 +17,9 @@
 [ext_resource type="PackedScene" uid="uid://c4m3x1xtpkt8p" path="res://Characters/Whitehat/Whitehat.tscn" id="8_bxb4o"]
 [ext_resource type="Texture2D" uid="uid://dgk1yrqjq8mcu" path="res://Assets/Particle FX/window_04.png" id="9_4yug1"]
 [ext_resource type="PackedScene" uid="uid://b4lro5g46q76v" path="res://Coin/coin.tscn" id="11_bxb4o"]
+[ext_resource type="Script" uid="uid://us7xil373pqc" path="res://Scenes/whitehat_by_door.gd" id="11_lqkgr"]
 [ext_resource type="PackedScene" uid="uid://cdffe7bphgot8" path="res://Characters/Frog/SilverFrog.tscn" id="12_npf7y"]
+[ext_resource type="Resource" uid="uid://4bpku3cyxox1" path="res://addons/dialogic/Timelines/WhitehatByDoor.dtl" id="12_ohe8u"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0wmpe"]
 albedo_color = Color(0.23, 0.11653333, 0.045999996, 1)
@@ -1307,20 +1309,27 @@ emission_texture = ExtResource("3_npf7y")
 billboard_mode = 1
 
 [sub_resource type="GDScript" id="GDScript_1qq0c"]
-script/source = "extends Node3D
+script/source = "## orchestrator script for an interaction with a 
+extends Node3D
 
-@export var oberon_throne: DialogicTimeline
+@export var timeline: DialogicTimeline
 @export var interaction_area: InteractionArea
-@export var oberon: Node3D
+@export var oberon: Oberon
 
 func _ready() -> void:
 	interaction_area.player_interaction_started.connect(_on_interaction_started)
-	pass
 
 func _on_interaction_started():
-	Dialogic.start(oberon_throne,\"STANDARD\")
-	pass
+	Dialogic.start(timeline,\"STANDARD\")
+	oberon.animation_player.play(\"Salsa\", 1)
+	
+	await Dialogic.timeline_ended
+	
+	oberon.animation_player.play(\"Float\", 3)
 "
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_ohe8u"]
+radius = 4.865
 
 [sub_resource type="GDScript" id="GDScript_4hc50"]
 script/source = "extends Node3D
@@ -1497,10 +1506,9 @@ height = 3.2973206
 
 [node name="Post Office" type="Node3D" parent="." unique_id=62572950]
 
-[node name="ExitDoor" type="Node3D" parent="Post Office" unique_id=1176798394 node_paths=PackedStringArray("door_mesh", "interaction_area", "exit_door")]
+[node name="ExitDoor" type="Node3D" parent="Post Office" unique_id=1176798394 node_paths=PackedStringArray("interaction_area", "exit_door")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.6553135, 1.2383753, 0.15030813)
 script = ExtResource("1_0flev")
-door_mesh = NodePath("../../../../../../../../../../../../../../../../../../../@SceneImportSettingsDialog@3042/@VBoxContainer@2614/@HSplitContainer@2628/@HSplitContainer@2634/@VBoxContainer@2674/@SubViewportContainer@2675/@SubViewport@2676/arms_low_poly/WGT-rig_f_middle_02_R")
 interaction_area = NodePath("InteractionArea")
 game = ExtResource("2_r6gak")
 exit_door = NodePath("ExitDoor")
@@ -3924,7 +3932,7 @@ use_collision = true
 size = Vector3(1, 3.6141357, 9.046631)
 
 [node name="CSGBox3D5" type="CSGBox3D" parent="Post Office/CSGs" unique_id=242304785]
-transform = Transform3D(-0.04117533, 0, 0.99915195, 0, 1, 0, -0.99915195, 0, -0.04117533, -2.2214983, 1.7444974, 10.876734)
+transform = Transform3D(-0.04117533, 0, 0.99915195, 0, 1, 0, -0.99915195, 0, -0.04117533, -2.2214983, 1.7444974, 4.791273)
 use_collision = true
 size = Vector3(1, 3.6141357, 11.80307)
 
@@ -3987,8 +3995,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.731021, 4.508936, -5.16959
 use_collision = true
 size = Vector3(1, 9.143013, 8.119568)
 
-[node name="CSGBox3D15" type="CSGBox3D" parent="Post Office/CSGs" unique_id=2020310888]
-transform = Transform3D(0.99999803, -4.0277933e-05, 0.0020333256, 3.951007e-05, 1, 0.00037646588, -0.0020333407, -0.0003763845, 0.999998, -1.3876559, -0.0632325, -0.069915295)
+[node name="Floor" type="CSGBox3D" parent="Post Office/CSGs" unique_id=2020310888]
+transform = Transform3D(0.99999803, -4.0277933e-05, 0.0020333256, 3.951007e-05, 1, 0.00037646588, -0.0020333407, -0.0003763845, 0.999998, -1.388, 0, -0.07)
 use_collision = true
 size = Vector3(13.365311, 0.001, 22.047058)
 metadata/_edit_lock_ = true
@@ -4018,7 +4026,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.19, 0)
 curve = SubResource("Curve3D_8as8m")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="Mobs/Path3D" unique_id=27730672]
-transform = Transform3D(-0.998966, -0.00014656862, 0.045297895, 0, 0.9999813, 0.0032356088, -0.045298345, 0.0032322833, -0.9989561, -2.8899221, 0.042602755, 1.0935059)
+transform = Transform3D(-0.998966, -0.00014656842, 0.04529783, 0, 0.99997985, 0.0032356041, -0.045298345, 0.0032322786, -0.99895465, -2.8899221, 0.042602755, 1.0935059)
 use_model_front = true
 tilt_enabled = false
 script = SubResource("GDScript_wuii1")
@@ -4049,9 +4057,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.0912552, 0, 2.3948596)
 [node name="Oberon Root" type="Node3D" parent="Mobs" unique_id=1593333430 node_paths=PackedStringArray("interaction_area", "oberon")]
 transform = Transform3D(0.30709141, -0.47910768, 1.9173288, 0.8387727, 1.7885071, 0.3125741, -1.7894568, 0.756107, 0.475549, -46.932476, 4.0966725, -1.4031925)
 script = SubResource("GDScript_1qq0c")
-oberon_throne = ExtResource("5_4yug1")
+timeline = ExtResource("5_4yug1")
 interaction_area = NodePath("InteractionArea")
-oberon = NodePath("../Oberon")
+oberon = NodePath("Oberon")
 
 [node name="InteractionArea" type="Area3D" parent="Mobs/Oberon Root" unique_id=552473020 node_paths=PackedStringArray("interaction_icon")]
 transform = Transform3D(0.07677293, 0.20969318, -0.44736424, -0.11977693, 0.4471269, 0.18902682, 0.47933233, 0.0781436, 0.11888723, -1.2598479, -1.9065104, 1.514658)
@@ -4061,7 +4069,7 @@ metadata/_custom_type_script = "uid://c6y1b7v2oiq81"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Mobs/Oberon Root/InteractionArea" unique_id=528031869]
 transform = Transform3D(1, -4.4408905e-16, -8.881784e-16, 0, 1, 0, 0, 0, 1, -3.173, 0, 0)
-shape = SubResource("SphereShape3D_r6gak")
+shape = SubResource("SphereShape3D_ohe8u")
 debug_color = Color(1, 1, 0, 1)
 
 [node name="InteractionIcon" type="Sprite3D" parent="Mobs/Oberon Root/InteractionArea" unique_id=296390791]
@@ -4076,11 +4084,41 @@ material_override = SubResource("StandardMaterial3D_lqkgr")
 pixel_size = 0.001
 texture = SubResource("CompressedTexture2D_4yug1")
 
-[node name="Oberon" parent="Mobs" unique_id=401101956 instance=ExtResource("5_mpywm")]
-transform = Transform3D(0.30709141, -0.47910768, 1.9173288, 0.8387727, 1.7885071, 0.3125741, -1.7894568, 0.756107, 0.475549, -46.932476, 4.0966725, -1.4031925)
+[node name="Oberon" parent="Mobs/Oberon Root" unique_id=401101956 instance=ExtResource("5_mpywm")]
+transform = Transform3D(1.0000001, 2.9802322e-08, -1.4901161e-08, 0, 1, 0, 1.4901161e-08, 7.450581e-09, 1.0000001, 0, 0, 0)
 
-[node name="Whitehat" parent="Mobs" unique_id=1448585377 instance=ExtResource("8_bxb4o")]
-transform = Transform3D(0.6959113, 0, -0.7181278, 0, 1, 0, 0.7181278, 0, 0.6959113, 2.5599194, -0.06230475, -2.1471138)
+[node name="WhitehatByDoor" type="Node3D" parent="Mobs" unique_id=1085022933 node_paths=PackedStringArray("whitehat", "interaction_area")]
+transform = Transform3D(-0.63700354, 0, -0.77086097, 0, 1, 0, 0.77086097, 0, -0.63700354, 2.3841982, -0.03438212, 3.189297)
+script = ExtResource("11_lqkgr")
+whitehat = NodePath("Whitehat")
+interaction_area = NodePath("InteractionArea")
+dialogue_root = ExtResource("12_ohe8u")
+
+[node name="Whitehat" parent="Mobs/WhitehatByDoor" unique_id=1448585377 instance=ExtResource("8_bxb4o")]
+transform = Transform3D(0.9999999, 0, -2.9802322e-08, 0, 1, 0, 2.9802322e-08, 0, 0.9999999, 0, 0, 0)
+
+[node name="InteractionArea" type="Area3D" parent="Mobs/WhitehatByDoor" unique_id=1630507209 node_paths=PackedStringArray("interaction_icon")]
+transform = Transform3D(-0.63700336, 0, 0.7708608, 0, 1, 0, -0.7708608, 0, -0.63700336, 0, 0, 0)
+script = ExtResource("8_1qq0c")
+interaction_icon = NodePath("InteractionIcon")
+metadata/_custom_type_script = "uid://c6y1b7v2oiq81"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Mobs/WhitehatByDoor/InteractionArea" unique_id=805438604]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8780786, 0)
+shape = SubResource("SphereShape3D_r6gak")
+debug_color = Color(1, 1, 0, 1)
+
+[node name="InteractionIcon" type="Sprite3D" parent="Mobs/WhitehatByDoor/InteractionArea" unique_id=978055783]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.97496414, 0)
+material_override = SubResource("StandardMaterial3D_4hc50")
+pixel_size = 0.001
+texture = ExtResource("9_4yug1")
+
+[node name="Sprite3D" type="Sprite3D" parent="Mobs/WhitehatByDoor/InteractionArea/InteractionIcon" unique_id=647879254]
+transform = Transform3D(1.4283557, -1.4283557, 0, 1.4283557, 1.4283557, 0, 0, 0, 2.02, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_lqkgr")
+pixel_size = 0.001
+texture = SubResource("CompressedTexture2D_4yug1")
 
 [node name="PostOffice" type="Node3D" parent="Mobs" unique_id=814220805 node_paths=PackedStringArray("interaction_area", "postmaster")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.1224296, 0.10358226, -7.5739236)
@@ -4166,7 +4204,7 @@ shape = SubResource("BoxShape3D_qbiqt")
 debug_color = Color(1, 1, 0, 1)
 
 [node name="FixedCamera 04" type="Node3D" parent="Cameras" unique_id=1183588956]
-transform = Transform3D(0.6655769, -0.16876186, 0.7269985, -0.018927759, 0.9699687, 0.24249236, -0.7460892, -0.17515777, 0.6423945, -1.6541927, 1.8331866, 13.429357)
+transform = Transform3D(0.6655769, -0.16876186, 0.7269985, -0.018927759, 0.9699687, 0.24249236, -0.7460892, -0.17515777, 0.6423945, -1.6541927, 1.8331866, 20.11818)
 
 [node name="Camera3D" type="Camera3D" parent="Cameras/FixedCamera 04" unique_id=675315054 node_paths=PackedStringArray("trigger_area")]
 transform = Transform3D(0.65854204, 0.6256439, -0.41820127, 0.02786937, 0.5350598, 0.8443544, 0.75202775, -0.56769776, 0.3349231, 0.62074184, 3.756234, -3.4727988)
@@ -4236,7 +4274,7 @@ path_follow_3d = NodePath("PathFollow3D")
 metadata/_custom_type_script = "uid://bvtfxcsh87kix"
 
 [node name="PathFollow3D" type="PathFollow3D" parent="Cameras/PathCamera 01" unique_id=1638274718]
-transform = Transform3D(-0.029283984, -0.005194345, -0.9995018, 0.049977183, 0.9986591, -0.0066542528, 0.99830323, -0.050147366, -0.028986022, -31.546108, 0.5577812, -0.80570316)
+transform = Transform3D(-0.029283984, -0.005194345, -0.9995004, 0.049977183, 0.9986591, -0.006654243, 0.99830323, -0.050147366, -0.028985979, -31.546108, 0.5577812, -0.80570316)
 
 [node name="FixedCamera 03" type="Camera3D" parent="Cameras/PathCamera 01/PathFollow3D" unique_id=716717068 node_paths=PackedStringArray("trigger_area")]
 transform = Transform3D(-0.9943459, 3.7234443e-07, 0.1062636, -0.0324026, 0.95240223, -0.30320588, -0.10120441, -0.30493054, -0.9470043, 0, 0, -3)
@@ -4338,7 +4376,7 @@ flip_faces = true
 size = Vector3(10.280151, 16.723698, 23.772827)
 
 [node name="SilverFrog" parent="." unique_id=969271597 instance=ExtResource("12_npf7y")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2920623, 0.0009806976, -1.2356961)
+transform = Transform3D(0.47598508, 0, -0.87945336, 0, 1, 0, 0.87945336, 0, 0.47598508, 2.9021218, 0.0009806976, -2.602307)
 
 [node name="CoinRoot" type="Node3D" parent="." unique_id=1345453457]
 
