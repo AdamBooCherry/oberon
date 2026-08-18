@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://cy5fjldems1xk" path="res://Assets/Placeholders/Tonic Seizure_0.png" id="1_x2llu"]
 [ext_resource type="Texture2D" uid="uid://detj0nmxsadq5" path="res://Assets/Placeholders/Tonic Seizure_2.png" id="2_dq2tx"]
 [ext_resource type="Animation" uid="uid://bdwto7mavj0d" path="res://Characters/Oberon/Animations/Float.anim" id="4_dq2tx"]
-[ext_resource type="Animation" uid="uid://gqqa5jwloygw" path="res://Characters/Oberon/Animations/Salsa.anim" id="5_xku6b"]
+[ext_resource type="Animation" uid="uid://bp5mat45nggvf" path="res://Characters/Oberon/Animations/Salsa.anim" id="5_xku6b"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wpkrv"]
 resource_name = "Demon_MAT"
@@ -688,7 +688,7 @@ bones/0/name = "mixamorig_Hips"
 bones/0/parent = -1
 bones/0/rest = Transform3D(1, -1.7453292e-06, 0, 1.7453292e-06, 1, 0, 0, 0, 1, -1.3101888e-05, 1.2337663, 0.0072650625)
 bones/0/enabled = true
-bones/0/position = Vector3(0.00069665967, 0.83871686, 0.017418569)
+bones/0/position = Vector3(-1.3101888e-05, 1.2337663, 0.0072650625)
 bones/0/rotation = Quaternion(0, 0, 0, 1)
 bones/0/scale = Vector3(1, 1, 1)
 bones/1/name = "mixamorig_Spine"
@@ -1239,41 +1239,49 @@ bones/78/rotation = Quaternion(0, 0, 0, 1)
 bones/78/scale = Vector3(1, 1, 1)
 
 [node name="LP_Eyes_ring" type="MeshInstance3D" parent="Tonic Seizure/Skeleton3D" unique_id=1979603629]
+layers = 3
 mesh = SubResource("ArrayMesh_jlhta")
 skin = SubResource("Skin_rrun1")
 skeleton = NodePath("..")
 
 [node name="LP_shoulder1" type="MeshInstance3D" parent="Tonic Seizure/Skeleton3D" unique_id=205736257]
+layers = 3
 mesh = SubResource("ArrayMesh_oupti")
 skin = SubResource("Skin_10iab")
 skeleton = NodePath("..")
 
 [node name="LP_shoulder2" type="MeshInstance3D" parent="Tonic Seizure/Skeleton3D" unique_id=1255147008]
+layers = 3
 mesh = SubResource("ArrayMesh_fvgsf")
 skin = SubResource("Skin_10iab")
 skeleton = NodePath("..")
 
 [node name="LP_lower_armor_horns" type="MeshInstance3D" parent="Tonic Seizure/Skeleton3D" unique_id=1756387620]
+layers = 3
 mesh = SubResource("ArrayMesh_jt5x8")
 skin = SubResource("Skin_10iab")
 skeleton = NodePath("..")
 
 [node name="LP_shoulder_rings" type="MeshInstance3D" parent="Tonic Seizure/Skeleton3D" unique_id=1124050882]
+layers = 3
 mesh = SubResource("ArrayMesh_k6bpu")
 skin = SubResource("Skin_10iab")
 skeleton = NodePath("..")
 
 [node name="LP_Lower_shoes" type="MeshInstance3D" parent="Tonic Seizure/Skeleton3D" unique_id=1718010392]
+layers = 3
 mesh = SubResource("ArrayMesh_k2337")
 skin = SubResource("Skin_10iab")
 skeleton = NodePath("..")
 
 [node name="LP_Upper_body" type="MeshInstance3D" parent="Tonic Seizure/Skeleton3D" unique_id=1506949327]
+layers = 3
 mesh = SubResource("ArrayMesh_hjtap")
 skin = SubResource("Skin_10iab")
 skeleton = NodePath("..")
 
 [node name="LP_upper_cloth" type="MeshInstance3D" parent="Tonic Seizure/Skeleton3D" unique_id=1531415026]
+layers = 3
 mesh = SubResource("ArrayMesh_oi0xt")
 skin = SubResource("Skin_10iab")
 skeleton = NodePath("..")
@@ -1283,18 +1291,18 @@ libraries/ = SubResource("AnimationLibrary_gkc71")
 
 [node name="AreaLight3D" type="AreaLight3D" parent="." unique_id=1790158547]
 transform = Transform3D(0.73368686, -0.003938555, -0.6794763, -0.67948776, -0.0042527122, -0.7336745, 0, 0.9999832, -0.0057963585, -2.1425323, 0.4920292, 0)
-layers = 2
 light_color = Color(1, 0, 0.7666664, 1)
 light_energy = 4.261
+light_cull_mask = 4293918722
 area_range = 12.224
 area_attenuation = -0.776
 area_size = Vector2(6.612986, 7.449707)
 
 [node name="AreaLight3D2" type="AreaLight3D" parent="." unique_id=732139214]
 transform = Transform3D(-0.5215692, 0.004945505, 0.85319465, 0.853209, 0.0030232018, 0.52156043, 1.200139e-10, 0.9999832, -0.0057963585, 2.9962826, 5.679454, 0)
-layers = 2
 light_color = Color(0, 1, 0.5500002, 1)
 light_energy = 4.261
+light_cull_mask = 4293918722
 area_range = 12.224
 area_attenuation = -0.776
 area_size = Vector2(6.612986, 7.449707)

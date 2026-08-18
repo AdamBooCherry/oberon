@@ -20,6 +20,6 @@ func _on_trigger_area_entered(area: Area3D):
 		self.make_current()
 		CameraManager.stop_off_camera_timer()
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	if follow_player and player:
 		look_at(player.global_position)

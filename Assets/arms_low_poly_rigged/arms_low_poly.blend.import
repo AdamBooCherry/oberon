@@ -4,11 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://dyg8ppp14lvob"
-valid=false
+path="res://.godot/imported/arms_low_poly.blend-da96c3f74be244311249e4b88a74b0c7.scn"
 
 [deps]
 
 source_file="res://Assets/arms_low_poly_rigged/arms_low_poly.blend"
+dest_files=["res://.godot/imported/arms_low_poly.blend-da96c3f74be244311249e4b88a74b0c7.scn"]
 
 [params]
 
