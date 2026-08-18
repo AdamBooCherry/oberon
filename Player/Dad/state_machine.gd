@@ -22,7 +22,7 @@ func init(player_ref: Player) -> void:
 	if initial_state:
 		initial_state.enter()
 		current_state = initial_state
-		print("[%s] Initialized with state: %s" % [name, initial_state.name])
+		#print("[%s] Initialized with state: %s" % [name, initial_state.name])
 
 func change_state(new_state_name: String) -> void:
 	var target_state = states.get(new_state_name.to_lower())
@@ -31,10 +31,10 @@ func change_state(new_state_name: String) -> void:
 		return
 		
 	if current_state:
-		print("[%s] Exiting: %s" % [name, current_state.name])
+		#print("[%s] Exiting: %s" % [name, current_state.name])
 		current_state.exit()
 		
-	print("[%s] Entering: %s" % [name, target_state.name])
+	#print("[%s] Entering: %s" % [name, target_state.name])
 	current_state = target_state
 	current_state.enter()
 
