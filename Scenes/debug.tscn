@@ -1,0 +1,54 @@
+[gd_scene format=3 uid="uid://cu6qmtq6rjja"]
+
+[ext_resource type="PackedScene" uid="uid://dtjgiqp4jij8g" path="res://Player/Dad/PlayerDad.tscn" id="1_axs6p"]
+[ext_resource type="PackedScene" uid="uid://cdffe7bphgot8" path="res://Characters/Frog/SilverFrog.tscn" id="2_5k3ys"]
+[ext_resource type="PackedScene" uid="uid://brvyfw32spq8" path="res://Characters/Frog/frog_collect.tscn" id="3_5k3ys"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_axs6p"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_5k3ys"]
+sky_material = SubResource("ProceduralSkyMaterial_axs6p")
+
+[sub_resource type="Environment" id="Environment_6fqrn"]
+background_mode = 2
+sky = SubResource("Sky_5k3ys")
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_cojvj"]
+vertices = PackedVector3Array(1.25, 0.45177528, 5.75, 4.75, 0.45177528, 0.75, 4.75, 0.45177528, -0.75, -2.5, 0.45177528, 5.75, -24.5, 0.45177528, 7, 5.75, 0.45177528, -24.5, -24.5, 0.45177528, -24.5, -2.75, 0.45177528, 7, 5.75, 0.45177528, -1, 6.75, 0.45177528, -1, 7, 0.45177528, 0, 24.5, 0.45177528, 0, 24.5, 0.45177528, -24.5, 5, 0.45177528, 1.25, 1.75, 0.45177528, 6, 6.75, 0.45177528, 1.25, 1.75, 0.45177528, 8.25, -0.5, 0.45177528, 24.5, 24.5, 0.45177528, 24.5, -0.5, 0.45177528, 8.5, -1.75, 2.7017753, 6.75, -1.75, 2.7017753, 7.5, 0.75, 2.7017753, 7.5, 0.75, 2.7017753, 6.75, -2.5, 0.45177528, 8.5, -24.5, 0.45177528, 24.5)
+polygons = [PackedInt32Array(1, 0, 2), PackedInt32Array(2, 0, 3), PackedInt32Array(3, 4, 2), PackedInt32Array(2, 4, 5), PackedInt32Array(5, 4, 6), PackedInt32Array(3, 7, 4), PackedInt32Array(5, 8, 2), PackedInt32Array(10, 9, 11), PackedInt32Array(11, 9, 12), PackedInt32Array(12, 9, 5), PackedInt32Array(9, 8, 5), PackedInt32Array(14, 0, 13), PackedInt32Array(13, 0, 1), PackedInt32Array(11, 15, 10), PackedInt32Array(13, 15, 14), PackedInt32Array(14, 15, 16), PackedInt32Array(16, 15, 17), PackedInt32Array(17, 15, 11), PackedInt32Array(17, 11, 18), PackedInt32Array(17, 19, 16), PackedInt32Array(23, 22, 20), PackedInt32Array(20, 22, 21), PackedInt32Array(24, 19, 17), PackedInt32Array(24, 17, 7), PackedInt32Array(7, 17, 4), PackedInt32Array(4, 17, 25)]
+
+[node name="Debug" type="Node3D" unique_id=1641071436]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1793315184]
+environment = SubResource("Environment_6fqrn")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1935233321]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+shadow_enabled = true
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="." unique_id=516402288]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.4995, 0)
+navigation_mesh = SubResource("NavigationMesh_cojvj")
+
+[node name="Floor" type="CSGBox3D" parent="NavigationRegion3D" unique_id=129588990]
+use_collision = true
+size = Vector3(50, 0.01, 50)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="NavigationRegion3D/Floor" unique_id=20510607]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.8866563, 0.45177528, 0)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="NavigationRegion3D/Floor" unique_id=1819852045]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5360875, 1.1583183, 7.0620537)
+size = Vector3(3.0837402, 2.413086, 1.5021973)
+
+[node name="Player" parent="." unique_id=1848596107 instance=ExtResource("1_axs6p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.3283958, 0.42890072, 0.74661565)
+
+[node name="Frog" parent="." unique_id=2044770608 instance=ExtResource("2_5k3ys")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8571235, -0.33460212, 0.44726896)
+detection_radius = 3.0
+
+[node name="FrogCollect" parent="." unique_id=580072353 instance=ExtResource("3_5k3ys")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.539044, 0)

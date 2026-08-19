@@ -1,7 +1,7 @@
 class_name State
 extends Node
 
-var player: Player
+var player: Node # Changed from 'Player' to 'Node' so it accepts FrogMob, Player, or anything else!
 var parent_state_machine: StateMachine
 
 func enter() -> void:

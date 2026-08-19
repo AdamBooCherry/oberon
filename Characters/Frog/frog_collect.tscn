@@ -1,0 +1,49 @@
+[gd_scene format=3 uid="uid://brvyfw32spq8"]
+
+[ext_resource type="Texture2D" uid="uid://b411p8e61fb0w" path="res://Assets/Particle FX/magic_05.png" id="1_syc2g"]
+[ext_resource type="Script" uid="uid://cd84uw7jueq2i" path="res://Characters/Frog/frog_collect.gd" id="1_vyg8d"]
+[ext_resource type="AudioStream" uid="uid://d2j8xm2ydd14x" path="res://Audio/592346__axilirate__collect-crystal.wav" id="3_ufuo0"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cojvj"]
+transparency = 1
+blend_mode = 1
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("1_syc2g")
+billboard_mode = 1
+billboard_keep_scale = true
+
+[sub_resource type="QuadMesh" id="QuadMesh_wuii1"]
+material = SubResource("StandardMaterial3D_cojvj")
+
+[sub_resource type="Curve" id="Curve_5k3ys"]
+_data = [Vector2(0, 0.011976123), 0.0, 0.0, 0, 0, Vector2(0.17763157, 0.8730539), -3.0582047, -3.0582047, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Gradient" id="Gradient_5k3ys"]
+offsets = PackedFloat32Array(0, 0.44871795, 0.75174826, 1)
+colors = PackedColorArray(1, 0.8666667, 0, 1, 0, 0.8166666, 1, 1, 0.9333334, 0, 1, 1, 1, 1, 1, 1)
+
+[node name="FrogCollect" type="Node3D" unique_id=580072353 node_paths=PackedStringArray("cpu_particles_3d", "audio_stream_player_3d")]
+script = ExtResource("1_vyg8d")
+cpu_particles_3d = NodePath("CPUParticles3D")
+audio_stream_player_3d = NodePath("AudioStreamPlayer3D")
+
+[node name="CPUParticles3D" type="CPUParticles3D" parent="." unique_id=539311772]
+emitting = false
+amount = 30
+one_shot = true
+explosiveness = 0.9
+fixed_fps = 12
+mesh = SubResource("QuadMesh_wuii1")
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+direction = Vector3(0, 1, 0)
+gravity = Vector3(0, -6, 0)
+initial_velocity_min = 3.0
+initial_velocity_max = 6.0
+scale_amount_min = 0.0
+scale_amount_curve = SubResource("Curve_5k3ys")
+color_initial_ramp = SubResource("Gradient_5k3ys")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." unique_id=511844641]
+stream = ExtResource("3_ufuo0")

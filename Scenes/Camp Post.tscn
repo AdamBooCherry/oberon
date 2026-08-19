@@ -20,8 +20,6 @@
 [ext_resource type="Script" uid="uid://us7xil373pqc" path="res://Scenes/whitehat_by_door.gd" id="11_lqkgr"]
 [ext_resource type="PackedScene" uid="uid://cdffe7bphgot8" path="res://Characters/Frog/SilverFrog.tscn" id="12_npf7y"]
 [ext_resource type="Resource" uid="uid://4bpku3cyxox1" path="res://addons/dialogic/Timelines/WhitehatByDoor.dtl" id="12_ohe8u"]
-[ext_resource type="Script" uid="uid://buu6dtvleoesf" path="res://Scenes/cutscene_box.gd" id="21_pk8lo"]
-[ext_resource type="PackedScene" uid="uid://cyl6evyrblby0" path="res://Player/Dad/glory_hand.tscn" id="22_jca4r"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0wmpe"]
 albedo_color = Color(0.23, 0.11653333, 0.045999996, 1)
@@ -1408,11 +1406,6 @@ point_count = 2
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_pe4ny"]
 size = Vector3(26.56649, 1, 24.882813)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jca4r"]
-cull_mode = 1
-shading_mode = 0
-albedo_color = Color(0, 0, 0, 1)
 
 [node name="Camp Post" type="Node3D" unique_id=1057817875]
 
@@ -4033,7 +4026,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.19, 0)
 curve = SubResource("Curve3D_8as8m")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="Mobs/Path3D" unique_id=27730672]
-transform = Transform3D(-0.998966, -0.00014656823, 0.045297775, 0, 0.9999786, 0.0032356002, -0.045298345, 0.0032322747, -0.9989534, -2.8899221, 0.042602755, 1.0935059)
+transform = Transform3D(-0.998966, -0.0001465682, 0.045297764, 0, 0.99997836, 0.0032355993, -0.045298345, 0.0032322737, -0.99895316, -2.8899221, 0.042602755, 1.0935059)
 use_model_front = true
 tilt_enabled = false
 script = SubResource("GDScript_wuii1")
@@ -4281,7 +4274,7 @@ path_follow_3d = NodePath("PathFollow3D")
 metadata/_custom_type_script = "uid://bvtfxcsh87kix"
 
 [node name="PathFollow3D" type="PathFollow3D" parent="Cameras/PathCamera 01" unique_id=1638274718]
-transform = Transform3D(-0.029283984, -0.005194345, -0.99949914, 0.049977183, 0.9986591, -0.0066542346, 0.99830323, -0.050147366, -0.028985944, -31.546108, 0.5577812, -0.80570316)
+transform = Transform3D(-0.029283984, -0.005194345, -0.9994989, 0.049977183, 0.9986591, -0.006654233, 0.99830323, -0.050147366, -0.028985936, -31.546108, 0.5577812, -0.80570316)
 
 [node name="FixedCamera 03" type="Camera3D" parent="Cameras/PathCamera 01/PathFollow3D" unique_id=716717068 node_paths=PackedStringArray("trigger_area")]
 transform = Transform3D(-0.9943459, 3.7234443e-07, 0.1062636, -0.0324026, 0.95240223, -0.30320588, -0.10120441, -0.30493054, -0.9470043, 0, 0, -3)
@@ -4382,7 +4375,7 @@ use_collision = true
 flip_faces = true
 size = Vector3(10.280151, 16.723698, 23.772827)
 
-[node name="SilverFrog" parent="." unique_id=969271597 instance=ExtResource("12_npf7y")]
+[node name="Frog2" parent="." unique_id=2044770608 instance=ExtResource("12_npf7y")]
 transform = Transform3D(0.47598508, 0, -0.87945336, 0, 1, 0, 0.87945336, 0, 0.47598508, 2.9021218, 0.0009806976, -2.602307)
 
 [node name="CoinRoot" type="Node3D" parent="." unique_id=1345453457]
@@ -4425,26 +4418,3 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.144587, 0.2038612, -0.630
 
 [node name="Coin3" parent="CoinRoot" unique_id=1412081099 instance=ExtResource("11_bxb4o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35.608246, 0.20386025, -10.317232)
-
-[node name="Inventory" type="Node3D" parent="." unique_id=2072020 node_paths=PackedStringArray("camera_3d")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.926882, -24.307114, 0)
-script = ExtResource("21_pk8lo")
-camera_3d = NodePath("Camera3D")
-metadata/_custom_type_script = "uid://buu6dtvleoesf"
-
-[node name="CSGBox3D" type="CSGBox3D" parent="Inventory" unique_id=2036082203]
-size = Vector3(5, 5, 5)
-material = SubResource("StandardMaterial3D_jca4r")
-
-[node name="Camera3D" type="Camera3D" parent="Inventory" unique_id=1953533427]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3261875, 2.2489727)
-
-[node name="GloryHand" parent="Inventory/Camera3D" unique_id=510088701 instance=ExtResource("22_jca4r")]
-transform = Transform3D(-8.04077e-09, 4.296547e-08, -1, 0.98293537, 0.18395136, 0, 0.18395136, -0.98293537, -4.371139e-08, -0.2477436, -0.069999695, -0.49)
-
-[node name="Frog" parent="Inventory/Camera3D" unique_id=2044770608 instance=ExtResource("12_npf7y")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.569561, -0.29014587, -1.4520717)
-
-[node name="Label3D" type="Label3D" parent="Inventory/Camera3D" unique_id=1273219405]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.555418, 0.4824581, -1.1703355)
-text = "Money: $458"
