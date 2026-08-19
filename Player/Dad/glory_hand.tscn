@@ -480,10 +480,17 @@ gradient = SubResource("Gradient_2vy5l")
 shading_mode = 0
 albedo_texture = SubResource("GradientTexture1D_2vy5l")
 
-[node name="GloryHand" type="Node3D" unique_id=224527026 node_paths=PackedStringArray("animation_player")]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cojvj"]
+transparency = 1
+blend_mode = 1
+cull_mode = 1
+albedo_color = Color(1, 1, 1, 0.32156864)
+
+[node name="GloryHand" type="Node3D" unique_id=224527026 node_paths=PackedStringArray("animation_player", "light_sphere")]
 transform = Transform3D(0.18395136, -0.98293537, 0, 0.98293537, 0.18395136, 0, 0, 0, 1, 0, 0, 0)
 script = ExtResource("1_048vv")
 animation_player = NodePath("AnimationPlayer")
+light_sphere = NodePath("LightSphere")
 metadata/_custom_type_script = "uid://dqv60wotdrpmj"
 
 [node name="HOGLowPolySkeleton" type="Node3D" parent="." unique_id=1013967695]
@@ -796,3 +803,8 @@ radius = 0.015
 material = SubResource("StandardMaterial3D_wuii1")
 script = ExtResource("4_dvbse")
 glory_hand = NodePath("../..")
+
+[node name="LightSphere" type="CSGSphere3D" parent="." unique_id=221700675]
+transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0, 1, 0.31852978, 0.059611235, 0)
+radius = 0.30282533
+material = SubResource("StandardMaterial3D_cojvj")
