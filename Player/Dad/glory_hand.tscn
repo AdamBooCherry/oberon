@@ -1,5 +1,10 @@
 [gd_scene format=4 uid="uid://cyl6evyrblby0"]
 
+[ext_resource type="Script" uid="uid://dqv60wotdrpmj" path="res://Player/Dad/glory_hand.gd" id="1_048vv"]
+[ext_resource type="Script" uid="uid://b6srreicxq1k6" path="res://Player/Dad/glory_hand_light.gd" id="2_fouho"]
+[ext_resource type="Script" uid="uid://de2cpyif2dypp" path="res://Player/Dad/3d_wiggle.gd" id="2_wn1r4"]
+[ext_resource type="Script" uid="uid://dq8ugxiy8xwam" path="res://Player/Dad/flame.gd" id="4_dvbse"]
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7ulfo"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_oxap2"]
@@ -466,7 +471,7 @@ _data = {
 }
 
 [sub_resource type="Gradient" id="Gradient_2vy5l"]
-colors = PackedColorArray(0, 1, 0, 1, 1, 1, 1, 1)
+colors = PackedColorArray(1, 0, 1, 1, 1, 1, 1, 1)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_2vy5l"]
 gradient = SubResource("Gradient_2vy5l")
@@ -475,8 +480,11 @@ gradient = SubResource("Gradient_2vy5l")
 shading_mode = 0
 albedo_texture = SubResource("GradientTexture1D_2vy5l")
 
-[node name="GloryHand" type="Node3D" unique_id=510088701]
+[node name="GloryHand" type="Node3D" unique_id=224527026 node_paths=PackedStringArray("animation_player")]
 transform = Transform3D(0.18395136, -0.98293537, 0, 0.98293537, 0.18395136, 0, 0, 0, 1, 0, 0, 0)
+script = ExtResource("1_048vv")
+animation_player = NodePath("AnimationPlayer")
+metadata/_custom_type_script = "uid://dqv60wotdrpmj"
 
 [node name="HOGLowPolySkeleton" type="Node3D" parent="." unique_id=1013967695]
 transform = Transform3D(0.20776063, 0.9719688, -0.11005463, -0.97817576, 0.20675531, -0.020596165, 0.0027355496, 0.11193185, 0.9937121, 0, 0, 0)
@@ -499,56 +507,56 @@ bones/1/parent = 0
 bones/1/rest = Transform3D(-0.0143213235, 0.007860313, 0.99986655, -0.10808849, 0.99409705, -0.009363135, -0.994038, -0.10820816, -0.01338718, 2.4738256e-10, 0.017399317, 1.1641532e-10)
 bones/1/enabled = true
 bones/1/position = Vector3(2.4738256e-10, 0.017399317, 1.1641532e-10)
-bones/1/rotation = Quaternion(-0.081358805, 0.7195745, -0.0062329965, 0.6896046)
+bones/1/rotation = Quaternion(-0.03524442, 0.71095115, -0.041342977, 0.7011399)
 bones/1/scale = Vector3(0.9999998, 0.9999999, 1)
 bones/2/name = "hand.L"
 bones/2/parent = 1
 bones/2/rest = Transform3D(0.9996201, -0.0028799241, 0.02741649, -0.00016240183, 0.9938957, 0.11032354, -0.02756686, -0.110286064, 0.9935175, -3.4924597e-10, 0.037973035, -1.6880222e-09)
 bones/2/enabled = true
 bones/2/position = Vector3(-3.4924597e-10, 0.037973035, -1.6880222e-09)
-bones/2/rotation = Quaternion(-0.04900567, -0.046060566, 0.0323243, 0.9972122)
+bones/2/rotation = Quaternion(-0.3006365, 0.0003015997, 0.06622577, 0.9514367)
 bones/2/scale = Vector3(1.0000001, 1, 1)
 bones/3/name = "palm.01.L"
 bones/3/parent = 2
 bones/3/rest = Transform3D(0.062994175, 0.04627759, 0.99694026, 0.16139868, 0.9853027, -0.055935763, -0.98487663, 0.16442849, 0.054599192, -0.001280477, 0.04234945, 0.031724147)
 bones/3/enabled = true
 bones/3/position = Vector3(-0.001280477, 0.04234945, 0.031724147)
-bones/3/rotation = Quaternion(0.098937266, 0.75412095, 0.05057024, 0.6472679)
+bones/3/rotation = Quaternion(0.075980514, 0.6833208, 0.039693188, 0.72506833)
 bones/3/scale = Vector3(0.9999999, 0.9999998, 0.9999999)
 bones/4/name = "f_index.01.L"
 bones/4/parent = 3
 bones/4/rest = Transform3D(0.98053974, -0.0017530628, 0.19631301, 0.0058561945, 0.99977624, -0.020322446, -0.19623348, 0.02107661, 0.98033065, -7.610652e-09, 0.0563625, 2.2118911e-09)
 bones/4/enabled = true
 bones/4/position = Vector3(-7.610652e-09, 0.0563625, 2.2118911e-09)
-bones/4/rotation = Quaternion(-0.01631991, 0.07883217, -0.02340498, 0.9964795)
+bones/4/rotation = Quaternion(0.06478388, 0.09014789, -0.0092598945, 0.99377596)
 bones/4/scale = Vector3(1, 0.99999994, 1)
 bones/5/name = "f_index.02.L"
 bones/5/parent = 4
 bones/5/rest = Transform3D(0.9706048, -0.006510354, 0.24059147, -0.009434703, 0.99783653, 0.065063134, -0.24049458, -0.065420486, 0.96844333, -1.6298145e-09, 0.040370245, 2.0954758e-09)
 bones/5/enabled = true
 bones/5/position = Vector3(-1.6298145e-09, 0.040370245, 2.0954758e-09)
-bones/5/rotation = Quaternion(0.19609872, 0.017134367, -0.011057328, 0.98037213)
+bones/5/rotation = Quaternion(-0.03288135, 0.12123177, -0.0007368775, 0.9920792)
 bones/5/scale = Vector3(1.0000001, 1, 0.99999994)
 bones/6/name = "f_index.03.L"
 bones/6/parent = 5
 bones/6/rest = Transform3D(0.77134347, 0.04013523, 0.63515246, -0.054770134, 0.99849313, 0.003419373, -0.6340582, -0.037424892, 0.7723792, -4.0163286e-09, 0.0354165, -1.1641532e-10)
 bones/6/enabled = true
 bones/6/position = Vector3(-4.0163286e-09, 0.0354165, -1.1641532e-10)
-bones/6/rotation = Quaternion(0.34863096, 0.25595477, 0.16169947, 0.88701576)
+bones/6/rotation = Quaternion(-0.010850827, 0.3371834, -0.02521293, 0.94103885)
 bones/6/scale = Vector3(1.0000001, 1, 1)
 bones/7/name = "thumb.01.L"
 bones/7/parent = 3
 bones/7/rest = Transform3D(0.13263272, -0.75203377, 0.645642, 0.521464, 0.60690224, 0.5997873, -0.842902, 0.2571276, 0.4726537, -0.00091673713, 0.007779637, 0.014285216)
 bones/7/enabled = true
 bones/7/position = Vector3(-0.00091673713, 0.007779637, 0.014285216)
-bones/7/rotation = Quaternion(-0.2731118, 0.7135134, 0.39861318, 0.50736195)
+bones/7/rotation = Quaternion(0.19691841, 0.79109854, 0.41266567, 0.40631688)
 bones/7/scale = Vector3(0.99999994, 0.9999998, 0.9999999)
 bones/8/name = "thumb.02.L"
 bones/8/parent = 7
 bones/8/rest = Transform3D(0.8932131, -0.2260644, 0.38867104, 0.27992505, 0.9560507, -0.087229826, -0.35186967, 0.1867136, 0.91723806, 3.7252903e-09, 0.041744705, -1.21071935e-08)
 bones/8/enabled = true
 bones/8/position = Vector3(3.7252903e-09, 0.041744705, -1.21071935e-08)
-bones/8/rotation = Quaternion(0.070576794, 0.19078748, 0.13035944, 0.970374)
+bones/8/rotation = Quaternion(0.34416175, 0.38655534, 0.46451128, 0.7185799)
 bones/8/scale = Vector3(0.99999994, 1, 0.99999994)
 bones/9/name = "thumb.03.L"
 bones/9/parent = 8
@@ -569,77 +577,77 @@ bones/11/parent = 10
 bones/11/rest = Transform3D(0.9739067, -0.033578392, 0.224451, 0.01526663, 0.9964469, 0.08282795, -0.22643474, -0.07724008, 0.97095895, -4.0308805e-09, 0.062452998, -7.858034e-10)
 bones/11/enabled = true
 bones/11/position = Vector3(-4.0308805e-09, 0.062452998, -7.858034e-10)
-bones/11/rotation = Quaternion(0.0878696, 0.1779291, 0.0066775894, 0.9800896)
+bones/11/rotation = Quaternion(0.6288694, 0.056350198, -0.10010802, 0.7689775)
 bones/11/scale = Vector3(1, 0.99999994, 1)
 bones/12/name = "f_middle.02.L"
 bones/12/parent = 11
 bones/12/rest = Transform3D(0.99398714, 0.02883163, -0.10563197, -0.028897632, 0.999582, 0.0009059396, 0.10561393, 0.002152022, 0.9944048, -1.7389539e-09, 0.039689437, -1.1641532e-10)
 bones/12/enabled = true
 bones/12/position = Vector3(-1.7389539e-09, 0.039689437, -1.1641532e-10)
-bones/12/rotation = Quaternion(0.15847394, -0.053025194, -0.025496654, 0.9856086)
+bones/12/rotation = Quaternion(0.67252535, -0.06463122, -0.08179868, 0.73269475)
 bones/12/scale = Vector3(0.9999999, 1, 0.9999999)
 bones/13/name = "f_middle.03.L"
 bones/13/parent = 12
 bones/13/rest = Transform3D(0.98966867, -0.04191158, 0.13711044, 0.047342215, 0.9982083, -0.036588162, -0.1353313, 0.042701263, 0.98987985, 3.5361154e-09, 0.03805916, -2.3283064e-10)
 bones/13/enabled = true
 bones/13/position = Vector3(3.5361154e-09, 0.03805916, -2.3283064e-10)
-bones/13/rotation = Quaternion(0.22366928, 0.063717574, 0.00988018, 0.97252995)
+bones/13/rotation = Quaternion(0.18366352, 0.0592946, 0.0073442534, 0.9811717)
 bones/13/scale = Vector3(0.99999994, 0.9999999, 1)
 bones/14/name = "palm.03.L"
 bones/14/parent = 2
 bones/14/rest = Transform3D(-0.00020968914, 0.01083005, 0.99994147, -0.036606357, 0.9992711, -0.0108304685, -0.9993298, -0.03660648, 0.00018691241, -0.009810967, 0.0437988, -0.0043723844)
 bones/14/enabled = true
 bones/14/position = Vector3(-0.009810967, 0.0437988, -0.0043723844)
-bones/14/rotation = Quaternion(-0.019488445, 0.6602407, -0.029330477, 0.75022817)
+bones/14/rotation = Quaternion(-0.009114886, 0.706982, -0.016774451, 0.70697385)
 bones/14/scale = Vector3(1, 1, 1.0000001)
 bones/15/name = "f_ring.01.L"
 bones/15/parent = 14
 bones/15/rest = Transform3D(0.99462485, -0.008222407, 0.10321739, 0.0030104874, 0.99871707, 0.050549135, -0.10350062, -0.049966697, 0.99337345, 5.820766e-11, 0.06835138, -1.5133992e-09)
 bones/15/enabled = true
 bones/15/position = Vector3(5.820766e-11, 0.06835138, -1.5133992e-09)
-bones/15/rotation = Quaternion(0.09172301, 0.08548029, 0.02048078, 0.99189746)
+bones/15/rotation = Quaternion(0.636766, 0.0807731, -0.124829285, 0.7565861)
 bones/15/scale = Vector3(1, 1, 0.99999994)
 bones/16/name = "f_ring.02.L"
 bones/16/parent = 15
 bones/16/rest = Transform3D(0.9701695, -0.035539415, -0.23980844, 0.030663935, 0.99924076, -0.024032587, 0.24048048, 0.015962211, 0.9705227, 1.6298145e-09, 0.034766495, 1.1641532e-10)
 bones/16/enabled = true
 bones/16/position = Vector3(1.6298145e-09, 0.034766495, 1.1641532e-10)
-bones/16/rotation = Quaternion(0.047531314, -0.0576477, 0.02282529, 0.9969436)
+bones/16/rotation = Quaternion(0.6606297, -0.058208354, -0.16113351, 0.73090094)
 bones/16/scale = Vector3(0.99999994, 0.99999994, 1)
 bones/17/name = "f_ring.03.L"
 bones/17/parent = 16
 bones/17/rest = Transform3D(0.9613894, -0.002330011, 0.27518168, 0.0017090584, 0.9999956, 0.0024962754, -0.27518627, -0.0019295915, 0.9613889, -1.1641532e-10, 0.035426453, -5.820766e-10)
 bones/17/enabled = true
 bones/17/position = Vector3(-1.1641532e-10, 0.035426453, -5.820766e-10)
-bones/17/rotation = Quaternion(0.21908303, 0.21317115, 0.030249435, 0.9516542)
+bones/17/rotation = Quaternion(0.15898953, 0.14129922, -0.038428918, 0.9763606)
 bones/17/scale = Vector3(1, 1.0000001, 0.9999999)
 bones/18/name = "palm.04.L"
 bones/18/parent = 2
 bones/18/rest = Transform3D(-0.10627447, 0.06723598, 0.992061, -0.0016426032, 0.99769783, -0.067793995, -0.9943354, -0.008834332, -0.1059194, -0.012998384, 0.041212287, -0.028169626)
 bones/18/enabled = true
 bones/18/position = Vector3(-0.012998384, 0.041212287, -0.028169626)
-bones/18/rotation = Quaternion(-0.009750574, 0.57838106, -0.06315882, 0.8132596)
+bones/18/rotation = Quaternion(0.02206201, 0.74328524, -0.025773507, 0.6681138)
 bones/18/scale = Vector3(0.99999994, 0.9999998, 1)
 bones/19/name = "f_pinky.01.L"
 bones/19/parent = 18
 bones/19/rest = Transform3D(0.97591627, 0.14718519, -0.16100916, -0.11699282, 0.9760955, 0.18316728, 0.18411982, -0.15991901, 0.9698071, -5.820766e-11, 0.062622935, -5.820766e-10)
 bones/19/enabled = true
 bones/19/position = Vector3(-5.820766e-11, 0.062622935, -5.820766e-10)
-bones/19/rotation = Quaternion(0.0023019079, -0.11913065, 0.0075355154, 0.9928474)
+bones/19/rotation = Quaternion(0.5827623, 0.00029574148, -0.19789918, 0.78817767)
 bones/19/scale = Vector3(0.99999994, 1, 1)
 bones/20/name = "f_pinky.02.L"
 bones/20/parent = 19
 bones/20/rest = Transform3D(0.98004603, -0.03362048, 0.19590656, 0.05561348, 0.9926086, -0.10786668, -0.19083203, 0.11660936, 0.9746719, -3.4924597e-09, 0.030553391, 4.656613e-10)
 bones/20/enabled = true
 bones/20/position = Vector3(-3.4924597e-09, 0.030553391, 4.656613e-10)
-bones/20/rotation = Quaternion(0.19292687, 0.2942272, -0.015818443, 0.935927)
+bones/20/rotation = Quaternion(0.6943392, 0.1718562, -0.12378837, 0.6877754)
 bones/20/scale = Vector3(1, 0.99999994, 0.99999994)
 bones/21/name = "f_pinky.03.L"
 bones/21/parent = 20
 bones/21/rest = Transform3D(0.9084812, -0.053651687, -0.4144679, 0.04576387, 0.99853295, -0.028946405, 0.4154129, 0.0073296092, 0.9096035, 6.9849193e-10, 0.02663703, 0)
 bones/21/enabled = true
 bones/21/position = Vector3(6.9849193e-10, 0.02663703, 0)
-bones/21/rotation = Quaternion(0.04384277, -0.16991174, 0.026361924, 0.9841305)
+bones/21/rotation = Quaternion(0.16427878, -0.19447035, -0.028795706, 0.96662545)
 bones/21/scale = Vector3(1.0000001, 1.0000001, 1)
 bones/22/name = "forearm.L.003"
 bones/22/parent = -1
@@ -653,7 +661,7 @@ bones/23/parent = 22
 bones/23/rest = Transform3D(0.9948789, 0.001506976, 0.10106332, -0.0021422752, 0.9999786, 0.006177914, -0.10105185, -0.006362781, 0.9948608, 9.276846e-10, 0.035875406, -4.1472958e-10)
 bones/23/enabled = true
 bones/23/position = Vector3(9.276846e-10, 0.035875406, -4.1472958e-10)
-bones/23/rotation = Quaternion(0.0036610067, -0.013096273, 0.03800554, 0.999185)
+bones/23/rotation = Quaternion(-0.0031392097, 0.050593883, -0.00091348856, 0.99871397)
 bones/23/scale = Vector3(1, 0.99999994, 1)
 bones/24/name = "forearm.L.004"
 bones/24/parent = -1
@@ -667,7 +675,7 @@ bones/25/parent = 24
 bones/25/rest = Transform3D(0.98975, 0.010061246, -0.14245524, -0.010136334, 0.99994844, 0.00019859639, 0.14244992, 0.0012474132, 0.9898011, 2.3719622e-09, 0.035875373, 4.0745363e-10)
 bones/25/enabled = true
 bones/25/position = Vector3(2.3719622e-09, 0.035875373, 4.0745363e-10)
-bones/25/rotation = Quaternion(0.003721367, -0.01440329, -0.005665872, 0.9998734)
+bones/25/rotation = Quaternion(0.00026287808, -0.07140951, -0.0050623794, 0.9974343)
 bones/25/scale = Vector3(0.99999994, 0.9999998, 0.9999999)
 
 [node name="Bone_L" type="MeshInstance3D" parent="HOGLowPolySkeleton/Skeleton3D" unique_id=572618527]
@@ -700,11 +708,12 @@ metadata/extras = {
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=312259480]
 libraries/ = SubResource("AnimationLibrary_8t5vn")
 
-[node name="Light" type="OmniLight3D" parent="." unique_id=979646811]
+[node name="Light" type="OmniLight3D" parent="." unique_id=979646811 node_paths=PackedStringArray("glory_hand")]
 transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0, 1, 0, 0, 0)
-light_color = Color(0, 1, 0, 1)
-omni_range = 4096.0
-omni_attenuation = 2.0
+light_color = Color(1, 0, 1, 1)
+omni_range = 1.0
+script = ExtResource("2_fouho")
+glory_hand = NodePath("..")
 metadata/extras = {
 "DM": {},
 "M3": {}
@@ -713,27 +722,77 @@ metadata/extras = {
 [node name="RemoteTransform3D" type="RemoteTransform3D" parent="." unique_id=1408770817]
 remote_path = NodePath("../Light")
 
-[node name="CSGSphere3D" type="CSGSphere3D" parent="RemoteTransform3D" unique_id=608380121]
-transform = Transform3D(2.9999998, 0, 0, 0, 0.99999976, 0, 0, 0, 1, 0.3969732, 0.07429153, 0)
-radius = 0.015
-material = SubResource("StandardMaterial3D_wuii1")
+[node name="Wiggle3d" type="Node3D" parent="." unique_id=1313905860]
+transform = Transform3D(2.9999993, 0, 0, -5.9604645e-08, 0.99999964, 0, 0, 0, 1, 0.3969732, 0.07429153, 0)
+script = ExtResource("2_wn1r4")
+position_amplitude = Vector3(0.01, 0, 0.01)
+rotation_amplitude = Vector3(2, 2, 2)
+scale_amplitude = Vector3(1, 0, 1)
+metadata/_custom_type_script = "uid://de2cpyif2dypp"
 
-[node name="CSGSphere3D2" type="CSGSphere3D" parent="RemoteTransform3D" unique_id=1964131752]
-transform = Transform3D(2.9999998, 0, 0, 0, 0.99999964, 0, 0, 0, 1, 0.3817006, 0.07143334, -0.046138957)
+[node name="CSGSphere3D" type="CSGSphere3D" parent="Wiggle3d" unique_id=608380121 node_paths=PackedStringArray("glory_hand")]
+transform = Transform3D(1.0000001, -3.7252903e-09, 0, -5.9604645e-08, 1.0000001, 0, 0, 0, 1, 0, 0, 0)
 radius = 0.015
 material = SubResource("StandardMaterial3D_wuii1")
+script = ExtResource("4_dvbse")
+glory_hand = NodePath("../..")
 
-[node name="CSGSphere3D3" type="CSGSphere3D" parent="RemoteTransform3D" unique_id=1043472158]
-transform = Transform3D(2.9999998, 0, 0, 0, 0.9999996, 0, 0, 0, 1, 0.3817006, 0.07143335, 0.0466659)
-radius = 0.015
-material = SubResource("StandardMaterial3D_wuii1")
+[node name="Wiggle3D" type="Node3D" parent="." unique_id=1354472720]
+transform = Transform3D(2.9999993, 0, 0, -5.9604645e-08, 0.9999995, 0, 0, 0, 1, 0.3817006, 0.07143334, -0.046138957)
+script = ExtResource("2_wn1r4")
+position_amplitude = Vector3(0.01, 0, 0.01)
+rotation_amplitude = Vector3(2, 2, 2)
+scale_amplitude = Vector3(1, 0, 1)
+metadata/_custom_type_script = "uid://de2cpyif2dypp"
 
-[node name="CSGSphere3D4" type="CSGSphere3D" parent="RemoteTransform3D" unique_id=332107354]
-transform = Transform3D(2.9999995, 0, 0, -5.9604645e-08, 0.9999995, 0, 0, 0, 1, 0.3214172, 0.060151625, 0.08455156)
+[node name="CSGSphere3D2" type="CSGSphere3D" parent="Wiggle3D" unique_id=1964131752 node_paths=PackedStringArray("glory_hand")]
+transform = Transform3D(1.0000001, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 radius = 0.015
 material = SubResource("StandardMaterial3D_wuii1")
+script = ExtResource("4_dvbse")
+glory_hand = NodePath("../..")
 
-[node name="CSGSphere3D5" type="CSGSphere3D" parent="RemoteTransform3D" unique_id=2024915736]
-transform = Transform3D(2.9999993, 0, 0, -5.9604645e-08, 0.99999946, 0, 0, 0, 1, 0.32141718, 0.06015162, -0.087895766)
+[node name="Wiggle3D2" type="Node3D" parent="." unique_id=575385160]
+transform = Transform3D(2.9999993, 0, 0, -5.9604645e-08, 0.99999946, 0, 0, 0, 1, 0.3817006, 0.07143335, 0.0466659)
+script = ExtResource("2_wn1r4")
+position_amplitude = Vector3(0.01, 0, 0.01)
+rotation_amplitude = Vector3(2, 2, 2)
+scale_amplitude = Vector3(1, 0, 1)
+metadata/_custom_type_script = "uid://de2cpyif2dypp"
+
+[node name="CSGSphere3D3" type="CSGSphere3D" parent="Wiggle3D2" unique_id=1043472158 node_paths=PackedStringArray("glory_hand")]
+transform = Transform3D(1.0000001, 0, 0, 0, 1.0000001, 0, 0, 0, 1, 0, 0, 0)
 radius = 0.015
 material = SubResource("StandardMaterial3D_wuii1")
+script = ExtResource("4_dvbse")
+glory_hand = NodePath("../..")
+
+[node name="Wiggle3D3" type="Node3D" parent="." unique_id=2060724070]
+transform = Transform3D(2.999999, -1.4901161e-08, 0, -5.9604645e-08, 0.9999994, 0, 0, 0, 1, 0.32141715, 0.060151618, 0.08455156)
+script = ExtResource("2_wn1r4")
+position_amplitude = Vector3(0.01, 0, 0.01)
+rotation_amplitude = Vector3(2, 2, 2)
+scale_amplitude = Vector3(1, 0, 1)
+metadata/_custom_type_script = "uid://de2cpyif2dypp"
+
+[node name="CSGSphere3D4" type="CSGSphere3D" parent="Wiggle3D3" unique_id=332107354 node_paths=PackedStringArray("glory_hand")]
+transform = Transform3D(1.0000001, -3.7252903e-09, 0, 0, 1.0000001, 0, 0, 0, 0.99999994, 1.4901161e-08, 0, 0)
+radius = 0.015
+material = SubResource("StandardMaterial3D_wuii1")
+script = ExtResource("4_dvbse")
+glory_hand = NodePath("../..")
+
+[node name="Wiggle3D4" type="Node3D" parent="." unique_id=95131161]
+transform = Transform3D(2.9999988, -1.4901161e-08, 0, -5.9604645e-08, 0.99999934, 0, 0, 0, 1, 0.32141712, 0.060151614, -0.087895766)
+script = ExtResource("2_wn1r4")
+position_amplitude = Vector3(0.01, 0, 0.01)
+rotation_amplitude = Vector3(2, 2, 2)
+scale_amplitude = Vector3(1, 0, 1)
+metadata/_custom_type_script = "uid://de2cpyif2dypp"
+
+[node name="CSGSphere3D5" type="CSGSphere3D" parent="Wiggle3D4" unique_id=2024915736 node_paths=PackedStringArray("glory_hand")]
+transform = Transform3D(1.0000001, 3.7252903e-09, 0, 5.9604645e-08, 1.0000001, 0, 0, 0, 1, 7.450581e-09, 7.450581e-09, 0)
+radius = 0.015
+material = SubResource("StandardMaterial3D_wuii1")
+script = ExtResource("4_dvbse")
+glory_hand = NodePath("../..")

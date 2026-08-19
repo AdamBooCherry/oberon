@@ -17,6 +17,7 @@ emission = Color(0.63, 1, 0.95683336, 1)
 billboard_mode = 1
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_wuii1"]
+radius = 0.1
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_rmlog"]
 random_pitch = 1.122462
