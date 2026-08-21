@@ -1,0 +1,18 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://bu4ry1688iqmk"]
+
+[sub_resource type="Gradient" id="Gradient_7mvmj"]
+colors = PackedColorArray(0, 1, 0.9333334, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_7mvmj"]
+gradient = SubResource("Gradient_7mvmj")
+
+[resource]
+resource_name = "Green"
+transparency = 4
+albedo_color = Color(1, 1, 1, 0)
+metallic = 1.0
+roughness = 0.0
+emission = Color(0.55686283, 0.73333335, 0.4196079, 1)
+emission_energy_multiplier = 0.0
+rim_enabled = true
+rim_texture = SubResource("GradientTexture1D_7mvmj")

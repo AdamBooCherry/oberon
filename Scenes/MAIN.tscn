@@ -65,5 +65,6 @@ environment = SubResource("Environment_c5rrr")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="SubViewport/MAIN/World" unique_id=1200277973]
 transform = Transform3D(-0.86602545, -0.30074093, 0.39944327, 2.2351742e-08, 0.79888654, 0.6014818, -0.50000006, 0.5208986, -0.691856, 0, 0, 0)
+light_color = Color(0.95973366, 0.3550425, 0.7417873, 1)
 shadow_enabled = true
 sky_mode = 1

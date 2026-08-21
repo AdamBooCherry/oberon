@@ -24,9 +24,13 @@ polygons = [PackedInt32Array(1, 0, 2), PackedInt32Array(2, 0, 3), PackedInt32Arr
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1793315184]
 environment = SubResource("Environment_6fqrn")
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1935233321]
-transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+[node name="DirectionalLight3D2" type="DirectionalLight3D" parent="." unique_id=1950545624]
+transform = Transform3D(-0.86602545, -0.30074093, 0.39944327, 2.2351742e-08, 0.79888654, 0.6014818, -0.50000006, 0.5208986, -0.691856, 0, -0.4995, 0)
+light_color = Color(0.037030753, 1.9214698e-07, 0.019549802, 1)
+light_cull_mask = 4294967293
 shadow_enabled = true
+shadow_caster_mask = 4294967293
+sky_mode = 1
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="." unique_id=516402288]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.4995, 0)

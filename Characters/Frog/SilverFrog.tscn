@@ -1,13 +1,15 @@
 [gd_scene format=3 uid="uid://cdffe7bphgot8"]
 
 [ext_resource type="Script" uid="uid://6dxlg0dp6vho" path="res://Characters/Frog/frog.gd" id="1_btgrc"]
-[ext_resource type="ArrayMesh" uid="uid://6nynj6nlf6n4" path="res://Prototyping/Test Geometry/placeholder_frog_mesh.tres" id="2_b8rvn"]
+[ext_resource type="ArrayMesh" uid="uid://bhta5fvbarg3v" path="res://Characters/Frog/frog_mesh_visible.tres" id="2_7mvmj"]
 [ext_resource type="Script" uid="uid://1b5rafayk84b" path="res://Player/Dad/state_machine.gd" id="3_8qkgf"]
+[ext_resource type="AudioStream" uid="uid://dgntj11hweld4" path="res://Audio/350906__cabled_mess__jump_c_04.wav" id="3_b8qoe"]
 [ext_resource type="Script" uid="uid://41tenuevb8nk" path="res://Characters/Frog/frog_idle_state.gd" id="4_45p65"]
 [ext_resource type="Script" uid="uid://jshkgi3pchx8" path="res://Characters/Frog/frog_wander_state.gd" id="5_lj5qg"]
 [ext_resource type="Script" uid="uid://iqlxqlrch6fp" path="res://Characters/Frog/frog_hide_state.gd" id="6_koqil"]
 [ext_resource type="Script" uid="uid://837dr23o7h80" path="res://Characters/Frog/frog_run_from_player_state.gd" id="7_deubo"]
 [ext_resource type="Script" uid="uid://d4b7gg5td8vk3" path="res://Characters/Frog/frog_stunned_state.gd" id="8_7mvmj"]
+[ext_resource type="Script" uid="uid://byj5yrq2me2x5" path="res://Characters/Frog/frog_startled_state.gd" id="9_dmsjd"]
 
 [sub_resource type="Skin" id="Skin_w20oo"]
 resource_name = "Skin"
@@ -718,6 +720,11 @@ tracks/28/interp = 1
 tracks/28/loop_wrap = true
 tracks/28/keys = PackedFloat32Array(0, 1, -0.98106825, 0.12263898, 0.024664886, 0.14783931, 0.2, 1, -0.9812375, 0.122610554, 0.024805795, 0.14671186, 0.4, 1, -0.9814054, 0.12258197, 0.024946673, 0.14558421, 1.7, 1, -0.98125887, 0.12260693, 0.024823716, 0.14656843, 2.375, 1, -0.9811032, 0.122633144, 0.02469389, 0.14760728, 2.5, 1, -0.98106825, 0.12263898, 0.024664886, 0.14783931)
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_b8qoe"]
+random_pitch = 1.0594631
+streams_count = 1
+stream_0/stream = ExtResource("3_b8qoe")
+
 [sub_resource type="Animation" id="Animation_jo6rm"]
 resource_name = "Armature|Frog_Jump"
 length = 0.875
@@ -925,6 +932,21 @@ tracks/28/path = NodePath("Armature/Skeleton3D:BackLowLeg.R")
 tracks/28/interp = 1
 tracks/28/loop_wrap = true
 tracks/28/keys = PackedFloat32Array(0, 1, -0.98106825, 0.12263898, 0.024664886, 0.14783931, 0.041666668, 1, -0.9808662, 0.12267242, 0.024498018, 0.14917389, 0.083333336, 1, -0.98005027, 0.122802325, 0.023838328, 0.15444365, 0.125, 1, -0.97812426, 0.12307982, 0.022361454, 0.1662053, 0.16666667, 1, -0.9747929, 0.12348214, 0.020020941, 0.18474354, 0.20833333, 1, -0.9706797, 0.12387693, 0.017412167, 0.20526148, 0.25, 1, -0.9673078, 0.1241371, 0.0154484715, 0.22060585, 0.29166666, 1, -0.96603966, 0.124222815, 0.014743393, 0.2260945, 0.33333334, 1, -0.98484635, 0.12189484, 0.02811271, 0.12012074, 0.375, 1, -0.67502093, 0.111274466, -0.057154786, 0.7271163, 0.41666666, 1, -0.32637757, 0.07897347, -0.09701478, 0.9369253, 0.45833334, 1, -0.48758185, 0.09494735, -0.081447385, 0.864069, 0.5, 1, -0.78932744, 0.11940352, -0.0373025, 0.6010936, 0.5416667, 1, -0.9126841, 0.124906145, -0.0068652513, 0.38904896, 0.5833333, 1, -0.9197649, 0.12501226, -0.004540005, 0.3719998, 0.625, 1, -0.9254607, 0.1250679, -0.0025876751, 0.35759446, 0.6666667, 1, -0.9365987, 0.1250859, 0.0014803502, 0.32731348, 0.7083333, 1, -0.9633301, 0.124386705, 0.013289963, 0.23737405, 0.75, 1, -0.97406065, 0.12355972, 0.019536404, 0.18856594, 0.7916667, 1, -0.97909427, 0.122944824, 0.02309212, 0.16039255, 0.8333333, 1, -0.98078835, 0.122685164, 0.024434129, 0.14968468, 0.875, 1, -0.98106825, 0.12263898, 0.024664886, 0.14783931)
+tracks/29/type = "audio"
+tracks/29/imported = false
+tracks/29/enabled = true
+tracks/29/path = NodePath("../Audio/Hop")
+tracks/29/interp = 1
+tracks/29/loop_wrap = true
+tracks/29/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": SubResource("AudioStreamRandomizer_b8qoe")
+}],
+"times": PackedFloat32Array(0.23333333)
+}
+tracks/29/use_blend = true
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_dvq8v"]
 _data = {
@@ -940,12 +962,14 @@ radius = 0.41190192
 [sub_resource type="SphereShape3D" id="SphereShape3D_cojvj"]
 radius = 0.30162555
 
-[node name="Frog" type="CharacterBody3D" unique_id=2044770608 node_paths=PackedStringArray("player_detector", "animation_player", "navigation_agent_3d", "state_machine")]
+[node name="Frog" type="CharacterBody3D" unique_id=2044770608 node_paths=PackedStringArray("player_detector", "animation_player", "navigation_agent_3d", "state_machine", "frog_mesh")]
+slide_on_ceiling = false
 script = ExtResource("1_btgrc")
 player_detector = NodePath("PlayerDetector")
 animation_player = NodePath("AnimationPlayer")
 navigation_agent_3d = NodePath("NavigationAgent3D")
 state_machine = NodePath("StateMachine")
+frog_mesh = NodePath("Frog/Armature/Skeleton3D/Frog")
 metadata/_custom_type_script = "uid://6dxlg0dp6vho"
 
 [node name="Frog" type="Node3D" parent="." unique_id=1508475070]
@@ -1245,7 +1269,8 @@ bones/40/scale = Vector3(1, 1, 1)
 
 [node name="Frog" type="MeshInstance3D" parent="Frog/Armature/Skeleton3D" unique_id=407875882]
 layers = 2
-mesh = ExtResource("2_b8rvn")
+cast_shadow = 3
+mesh = ExtResource("2_7mvmj")
 skin = SubResource("Skin_w20oo")
 skeleton = NodePath("..")
 
@@ -1258,7 +1283,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2551477, 0)
 shape = SubResource("SphereShape3D_wuii1")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=952379979]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.42292273, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5498046, 0)
+visible = false
+light_color = Color(1, 0.01999998, 0.01999998, 1)
+light_cull_mask = 4293918722
+shadow_enabled = true
+shadow_caster_mask = 4293918722
 
 [node name="PlayerDetector" type="Area3D" parent="." unique_id=815250245]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.14172816, 0)
@@ -1294,11 +1324,20 @@ metadata/_custom_type_script = "uid://iqlxqlrch6fp"
 [node name="FrogRunFromPlayerState" type="Node" parent="StateMachine" unique_id=1175513296 node_paths=PackedStringArray("frog")]
 script = ExtResource("7_deubo")
 frog = NodePath("../..")
-flee_speed = 2.0
-safe_distance = 3.0
+flee_distance = 12.0
 metadata/_custom_type_script = "uid://837dr23o7h80"
 
 [node name="FrogStunnedState" type="Node" parent="StateMachine" unique_id=1741704063 node_paths=PackedStringArray("frog")]
 script = ExtResource("8_7mvmj")
 frog = NodePath("../..")
 metadata/_custom_type_script = "uid://d4b7gg5td8vk3"
+
+[node name="FrogStartledState" type="Node" parent="StateMachine" unique_id=1801287273 node_paths=PackedStringArray("frog")]
+script = ExtResource("9_dmsjd")
+frog = NodePath("../..")
+metadata/_custom_type_script = "uid://byj5yrq2me2x5"
+
+[node name="Audio" type="Node3D" parent="." unique_id=1708949086]
+
+[node name="Hop" type="AudioStreamPlayer3D" parent="Audio" unique_id=1807721004]
+volume_db = -10.0

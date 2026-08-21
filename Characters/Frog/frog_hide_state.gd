@@ -1,24 +1,25 @@
-extends State
 class_name FrogHideState
+extends State
 
 @export var frog: FrogMob
-@export var hide_duration: float = 3.0
+@export var hide_duration: float = 4.0
 
 var _timer: float = 0.0
 
 func enter() -> void:
-	print("[HideState] ENTERED. Hiding / Invisible.")
+	print("[HideState] ENTERED. Frog is hiding.")
 	_timer = 0.0
 	
 	if frog:
 		frog.velocity = Vector3.ZERO
-		# Make the frog mesh invisible (disable visibility)
-		#if frog.animation_player and frog.animation_player.has_animation("Armature|Frog_Hide"):
-			#frog.animation_player.play("Armature|Frog_Hide")
-			
-		# Hide the visual mesh instance(s)
-		for child in frog.find_children("*", "MeshInstance3D"):
-			child.visible = false
+		frog.set_hidden(true)
+
+	if frog.animation_player:
+		frog.animation_player.play("Armature|Frog_Idle")
+		
+		# Clear out navigation target so it doesn't try to keep moving or jitter
+		if frog.navigation_agent_3d:
+			frog.navigation_agent_3d.target_position = frog.global_position
 
 func update(delta: float) -> void:
 	if not frog or frog.is_stunned:
@@ -26,14 +27,10 @@ func update(delta: float) -> void:
 		
 	_timer += delta
 	if _timer >= hide_duration:
-		print("[HideState] Revealing! Switching to Idle.")
-		# Reveal mesh before changing state
-		for child in frog.find_children("*", "MeshInstance3D"):
-			child.visible = true
+		print("[HideState] Hide duration ended. Revealing and returning to Idle.")
+		frog.set_hidden(false)
 		parent_state_machine.change_state("FrogIdleState")
 
 func exit() -> void:
-	# Ensure mesh is visible when leaving state just in case
-	if frog:
-		for child in frog.find_children("*", "MeshInstance3D"):
-			child.visible = true
+	if frog and frog.is_hidden:
+		frog.set_hidden(false)

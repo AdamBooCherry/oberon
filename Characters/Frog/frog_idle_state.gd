@@ -2,7 +2,7 @@ class_name FrogIdleState
 extends State
 
 @export var frog: FrogMob
-@export var min_idle_time: float = 1.5
+@export var min_idle_time: float = 0.5
 @export var max_idle_time: float = 4.0
 
 var _timer: float = 0.0
@@ -12,7 +12,8 @@ func enter() -> void:
 	#print("[IdleState] ENTERED. Waiting for idle timer...")
 	
 	if frog and frog.animation_player:
-		frog.animation_player.play("Armature|Frog_Idle") # Or your idle animation name
+		frog.animation_player.play("Armature|Frog_Idle")
+		## right here doesn't seem to be registering correctly
 		
 	_timer = 0.0
 	_target_time = randf_range(min_idle_time, max_idle_time)
