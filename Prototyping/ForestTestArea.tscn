@@ -3,6 +3,8 @@
 [ext_resource type="Texture2D" uid="uid://rcmbuqxvak2w" path="res://Assets/Particle FX/star_06.png" id="1_x4qiq"]
 [ext_resource type="PackedScene" uid="uid://dv0te4be2v0p8" path="res://Scenes/cutscene_box.tscn" id="2_v0phy"]
 [ext_resource type="Script" uid="uid://dmwodoestuixu" path="res://Prototyping/editor_only_geo.gd" id="2_wj5n6"]
+[ext_resource type="Script" uid="uid://bkbqspmutvdh1" path="res://Scenes/fixed_camera.gd" id="4_ugu4n"]
+[ext_resource type="Script" uid="uid://drpmv38e02bjw" path="res://Scenes/camera_trigger_area.gd" id="5_sm0io"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kjvde"]
 transparency = 1
@@ -27,12 +29,42 @@ point_count = 4
 offsets = PackedFloat32Array(0, 0.359375, 0.5569532, 0.571875, 0.5877009, 0.7603075, 0.775, 0.7903564)
 colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1)
 
-[node name="ForestArea" type="Node3D" unique_id=2065995814]
+[sub_resource type="NavigationMesh" id="NavigationMesh_sm0io"]
+vertices = PackedVector3Array(-43.856, 0.25809956, -18.324272, -37.106, 0.25809956, -20.824272, -34.856, 0.25809956, -25.574272, -59.106, 0.25809956, -9.074272, -47.606, 0.25809956, -9.074272, -47.106, 0.25809956, -11.324272, -28.105999, 0.25809956, -28.074272, -28.105999, 0.25809956, -44.824272, -59.106, 0.25809956, -44.824272, -27.105999, 0.25809956, -28.074272, -21.105999, 0.25809956, -25.574272, -17.855999, 0.25809956, -18.324272, -4.605999, 0.25809956, -18.324272, -4.605999, 0.25809956, -44.824272, -19.105999, 0.75809956, -17.574272, -19.355999, 0.75809956, -19.324272, -21.605999, 0.75809956, -24.574272, -23.605999, 0.75809956, -11.074272, -21.355999, 0.75809956, -12.074272, -28.355999, 0.75809956, -27.074272, -34.356, 0.75809956, -24.574272, -35.606, 0.75809956, -20.824272, -36.356, 0.75809956, -20.074272, -24.105999, 0.75809956, -10.324272, -25.855999, 0.75809956, -3.8242722, -23.855999, 0.75809956, -8.824272, -46.606, 0.75809956, -9.574272, -43.356, 0.75809956, -1.0742722, -38.606, 0.75809956, 0.92572784, -43.356, 0.75809956, -17.324272, -20.105999, 0.25809956, 9.175728, -18.605999, 0.25809956, 9.425728, -17.605999, 0.25809956, 8.675728, -18.605999, 0.25809956, 5.675728, -20.605999, 0.25809956, -11.074272, -21.355999, 0.25809956, -2.5742722, -15.605999, 0.25809956, 9.425728, -4.605999, 0.25809956, 10.675728, -22.855999, 0.25809956, -10.074272, -22.855999, 0.25809956, -8.324272, -16.605999, 0.25809956, 8.675728, -24.605999, 0.25809956, -4.574272, -24.355999, 0.25809956, -3.8242722, -18.605999, 0.25809956, 4.175728, -15.355999, 0.25809956, 10.675728, -40.356, 0.25809956, 4.175728, -39.356, 0.25809956, 1.6757278, -44.356, 0.25809956, -0.32427216, -40.356, 0.25809956, 5.675728, -37.606, 0.25809956, 12.425728, -59.106, 0.25809956, 43.175728, -29.605999, 0.25809956, 43.175728, -29.605999, 0.25809956, 15.925728, -38.106, 0.75809956, 1.4257278, -25.105999, 0.75809956, -3.0742722, -19.605999, 0.75809956, 5.175728, -22.355999, 0.75809956, -2.0742722, -39.356, 0.75809956, 5.175728, -36.606, 0.75809956, 11.925728, -29.355999, 0.75809956, 14.925728, -22.355999, 0.75809956, 11.925728, -18.855999, 0.25809956, 11.175728, -21.855999, 0.25809956, 12.925728, -15.855999, 0.25809956, 11.925728, -4.605999, 0.25809956, 43.175728, -18.105999, 0.25809956, 12.175728, -17.855999, 15.5081, 10.175728, -17.605999, 15.5081, 11.175728, -16.355999, 15.5081, 10.675728, -16.605999, 15.5081, 9.925728, -17.355999, 0.25809956, 10.175728, -17.355999, 0.25809956, 10.925728, -16.855999, 0.25809956, 10.675728, -16.855999, 0.25809956, 10.175728)
+polygons = [PackedInt32Array(2, 1, 0), PackedInt32Array(5, 4, 3), PackedInt32Array(0, 5, 3), PackedInt32Array(7, 6, 2), PackedInt32Array(0, 3, 2), PackedInt32Array(2, 3, 8), PackedInt32Array(2, 8, 7), PackedInt32Array(9, 6, 7), PackedInt32Array(11, 10, 12), PackedInt32Array(12, 10, 13), PackedInt32Array(13, 10, 7), PackedInt32Array(10, 9, 7), PackedInt32Array(16, 15, 14), PackedInt32Array(14, 18, 17), PackedInt32Array(19, 21, 20), PackedInt32Array(21, 19, 22), PackedInt32Array(22, 19, 16), PackedInt32Array(22, 16, 14), PackedInt32Array(22, 14, 17), PackedInt32Array(17, 23, 22), PackedInt32Array(25, 24, 23), PackedInt32Array(28, 27, 26), PackedInt32Array(29, 22, 26), PackedInt32Array(26, 22, 28), PackedInt32Array(28, 22, 24), PackedInt32Array(24, 22, 23), PackedInt32Array(31, 30, 32), PackedInt32Array(32, 30, 33), PackedInt32Array(34, 11, 35), PackedInt32Array(35, 11, 12), PackedInt32Array(35, 12, 36), PackedInt32Array(36, 12, 37), PackedInt32Array(39, 38, 34), PackedInt32Array(40, 32, 33), PackedInt32Array(42, 41, 35), PackedInt32Array(35, 41, 39), PackedInt32Array(35, 39, 34), PackedInt32Array(40, 33, 36), PackedInt32Array(36, 33, 43), PackedInt32Array(37, 44, 36), PackedInt32Array(36, 43, 35), PackedInt32Array(47, 46, 45), PackedInt32Array(47, 45, 48), PackedInt32Array(48, 49, 47), PackedInt32Array(47, 49, 3), PackedInt32Array(3, 49, 50), PackedInt32Array(50, 49, 51), PackedInt32Array(4, 47, 3), PackedInt32Array(49, 52, 51), PackedInt32Array(28, 24, 53), PackedInt32Array(53, 24, 54), PackedInt32Array(55, 54, 56), PackedInt32Array(58, 57, 53), PackedInt32Array(60, 59, 55), PackedInt32Array(55, 59, 58), PackedInt32Array(55, 58, 54), PackedInt32Array(54, 58, 53), PackedInt32Array(31, 61, 30), PackedInt32Array(30, 61, 62), PackedInt32Array(62, 63, 52), PackedInt32Array(52, 63, 37), PackedInt32Array(52, 37, 51), PackedInt32Array(51, 37, 64), PackedInt32Array(62, 61, 65), PackedInt32Array(62, 65, 63), PackedInt32Array(37, 63, 44), PackedInt32Array(69, 68, 66), PackedInt32Array(66, 68, 67), PackedInt32Array(73, 72, 70), PackedInt32Array(70, 72, 71)]
 
-[node name="CSGBox3D2" type="CSGBox3D" parent="." unique_id=1541254729]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.628494, 0, 3.1358643)
-use_collision = true
-size = Vector3(70, 0.001, 157.199)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wuii1"]
+albedo_color = Color(0.34117648, 0.5058824, 1, 1)
+clearcoat_enabled = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ugu4n"]
+albedo_color = Color(0.23, 0.11653333, 0.045999996, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_djtux"]
+size = Vector3(5.5530176, 1, 9.249512)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3co0p"]
+size = Vector3(6, 1, 5.867196)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1g7w6"]
+size = Vector3(2.9763184, 1, 10.224199)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_wf8b6"]
+size = Vector3(5.3528748, 1, 2.7094812)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_g6gkq"]
+size = Vector3(11.197266, 1, 5.7263474)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_bv2yy"]
+size = Vector3(10.479492, 1, 4)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_khta5"]
+size = Vector3(6.0411377, 1, 9.066563)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_4kosd"]
+size = Vector3(7.775879, 1, 19.848145)
+
+[node name="ForestArea" type="Node3D" unique_id=2065995814]
 
 [node name="CPUParticles3D" type="CPUParticles3D" parent="." unique_id=664091001]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.372, 0)
@@ -68,69 +100,171 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.11821, 1.9566661, -1.03991
 size = Vector3(10.411133, 3.9441528, 22.331787)
 script = ExtResource("2_wj5n6")
 
-[node name="Zone one" type="Node3D" parent="." unique_id=1716999965]
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="." unique_id=1626289603]
+navigation_mesh = SubResource("NavigationMesh_sm0io")
 
-[node name="RoomAlphaPlaceholder" type="CSGBox3D" parent="Zone one" unique_id=222882951]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -51.365166, 1.956666, -1.0715714)
-size = Vector3(10.411133, 3.9441528, 22.331787)
+[node name="Environment" type="Node3D" parent="NavigationRegion3D" unique_id=1716999965]
 
-[node name="RoomAlphaPlaceholder3" type="CSGBox3D" parent="Zone one" unique_id=947672704]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31.858902, 1.956666, 18.478952)
-size = Vector3(15.705078, 3.9441528, 13.519897)
+[node name="Pond" type="CSGCombiner3D" parent="NavigationRegion3D/Environment" unique_id=1025052259]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -40.108112, 0.7777281, -17.833632)
+use_collision = true
+metadata/_edit_group_ = true
 
-[node name="RoomAlphaPlaceholder2" type="CSGBox3D" parent="Zone one" unique_id=832564532]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -34.250656, 1.956666, 6.745537)
-size = Vector3(7.7094727, 3.9441528, 21.213318)
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="NavigationRegion3D/Environment/Pond" unique_id=1788737490]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.29592133, -1.5196266, 12.147848)
+radius = 9.364746
+material = SubResource("StandardMaterial3D_wuii1")
 
-[node name="RoomGammaPlaceholder" type="CSGBox3D" parent="Zone one" unique_id=971621437]
-transform = Transform3D(-0.0012354553, -0.0008333005, 0.99999887, -0.00017157846, 0.99999964, 0.0008330877, -0.99999917, -0.00017054216, -0.0012355988, -49.13445, 1.9541707, 14.676678)
-size = Vector3(6.2418213, 3.9441528, 15.477997)
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="NavigationRegion3D/Environment/Pond" unique_id=1526808323]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.684578, -1.5196266, 4.8774834)
+radius = 11.836914
+material = SubResource("StandardMaterial3D_wuii1")
 
-[node name="RoomGammaPlaceholder2" type="CSGBox3D" parent="Zone one" unique_id=1347632895]
-transform = Transform3D(0.99999917, 0.0001705422, 0.0012355553, -0.00017157846, 0.99999964, 0.0008330877, -0.0012354117, -0.0008333006, 0.99999887, -26.83473, 1.9541707, -5.480233)
-size = Vector3(6.2418213, 3.9441528, 15.477997)
+[node name="CSGCylinder3D3" type="CSGCylinder3D" parent="NavigationRegion3D/Environment/Pond" unique_id=382181404]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.796793, -1.5196285, 10.64246)
+radius = 10.287598
+material = SubResource("StandardMaterial3D_wuii1")
 
-[node name="RoomGammaPlaceholder3" type="CSGBox3D" parent="Zone one" unique_id=742606177]
-transform = Transform3D(0.99999917, 0.0001705422, 0.0012355553, -0.00017157846, 0.99999964, 0.0008330877, -0.0012354117, -0.0008333006, 0.99999887, -34.09121, 1.9541707, -5.480233)
-size = Vector3(6.2418213, 3.9441528, 15.477997)
+[node name="Camp Floor" type="CSGBox3D" parent="NavigationRegion3D/Environment" unique_id=1881348348]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31.813, 0, 32.07922)
+use_collision = true
+size = Vector3(55.586, 0.001, 23.164562)
+material = SubResource("StandardMaterial3D_ugu4n")
 
-[node name="RoomGammaPlaceholder4" type="CSGBox3D" parent="Zone one" unique_id=48575660]
-transform = Transform3D(0.99999917, 0.0001705422, 0.0012355553, -0.00017157846, 0.99999964, 0.0008330877, -0.0012354117, -0.0008333006, 0.99999887, -41.50379, 1.9541707, -5.2872515)
-size = Vector3(6.2418213, 3.9441528, 15.477997)
+[node name="Camp Floor2" type="CSGBox3D" parent="NavigationRegion3D/Environment" unique_id=1895807272]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31.813, 0, 9.504696)
+use_collision = true
+size = Vector3(55.586, 0.001, 23.164562)
+material = SubResource("StandardMaterial3D_ugu4n")
 
-[node name="RoomBetaPlaceholder" type="CSGBox3D" parent="Zone one" unique_id=2108004641]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -40.108112, 1.956666, -17.969841)
-size = Vector3(8.108704, 3.9441528, 33.01245)
+[node name="Camp Floor3" type="CSGBox3D" parent="NavigationRegion3D/Environment" unique_id=1553733835]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31.813, 0, -11.523029)
+use_collision = true
+size = Vector3(55.586, 0.001, 23.164562)
+material = SubResource("StandardMaterial3D_ugu4n")
 
-[node name="Zone Two" type="Node3D" parent="." unique_id=260791181]
+[node name="Camp Floor4" type="CSGBox3D" parent="NavigationRegion3D/Environment" unique_id=2029489258]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31.813, 0, -33.74199)
+use_collision = true
+size = Vector3(55.586, 0.001, 23.164562)
+material = SubResource("StandardMaterial3D_ugu4n")
 
-[node name="RoomAlphaZone2PH" type="CSGBox3D" parent="Zone Two" unique_id=2143053605]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -45.594868, 1.956666, -35.260902)
-size = Vector3(24.12793, 3.9441528, 22.03894)
-
-[node name="RoomAlphaZone2PH2" type="CSGBox3D" parent="Zone Two" unique_id=1660665257]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -29.41822, 1.956666, 38.26593)
-size = Vector3(24.12793, 3.9441528, 22.03894)
-
-[node name="RoomAlphaZone2PH3" type="CSGBox3D" parent="Zone Two" unique_id=1636627449]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -5.9562907, 1.956666, 27.476372)
-size = Vector3(47.50171, 3.9441528, 22.03894)
-
-[node name="RoomAlphaZone2PH4" type="CSGBox3D" parent="Zone Two" unique_id=1643628443]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -8.837669, 1.956666, -22.843838)
-size = Vector3(50.392883, 3.9441528, 27.801697)
-
-[node name="RoomBetaZone2PH" type="CSGBox3D" parent="Zone Two" unique_id=1229905703]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -49.188576, 1.956666, 33.82641)
-size = Vector3(29.265625, 3.9441528, 15.705475)
-
-[node name="RoomBetaPlaceholder3" type="CSGBox3D" parent="." unique_id=74244826]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -26.045856, 1.956666, -60.621754)
-size = Vector3(23.940346, 3.9441528, 61.136963)
-
-[node name="RoomBetaPlaceholder4" type="CSGBox3D" parent="." unique_id=2109004258]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -26.045856, 1.956666, 64.56938)
-size = Vector3(23.940346, 3.9441528, 61.136963)
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="NavigationRegion3D/Environment" unique_id=1050178299]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.133615, 7.0791054, 10.509943)
+radius = 1.1313477
+height = 16.158203
 
 [node name="CutsceneBox" parent="." unique_id=1662951017 instance=ExtResource("2_v0phy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.926882, -14.063704, 0)
+
+[node name="Cameras" type="Node3D" parent="." unique_id=892847068]
+
+[node name="FixedCamera 01" type="Node3D" parent="Cameras" unique_id=645419357]
+transform = Transform3D(0.6655769, -0.16876185, 0.7269985, -0.018927759, 0.9699687, 0.24249236, -0.7460892, -0.17515779, 0.6423945, -52.725, 0, -3.103)
+
+[node name="Camera3D" type="Camera3D" parent="Cameras/FixedCamera 01" unique_id=1438998117 node_paths=PackedStringArray("trigger_area")]
+transform = Transform3D(0.75359386, -0.5805886, -0.30824268, 0.28217635, -0.13779771, 0.9494148, -0.59369427, -0.80245185, 0.05998484, -6.2543755, 14.559108, 3.8928604)
+script = ExtResource("4_ugu4n")
+trigger_area = NodePath("../CameraTriggerArea")
+metadata/_custom_type_script = "uid://bkbqspmutvdh1"
+
+[node name="CameraTriggerArea" type="Area3D" parent="Cameras/FixedCamera 01" unique_id=369543526]
+transform = Transform3D(0.66557705, -0.01892777, -0.7460893, -0.16876183, 0.9699688, -0.17515776, 0.72699845, 0.24249241, 0.6423944, 1.771, 0, 1.603)
+script = ExtResource("5_sm0io")
+metadata/_custom_type_script = "uid://drpmv38e02bjw"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Cameras/FixedCamera 01/CameraTriggerArea" unique_id=957887023]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.4671826, 0, 1.2868652)
+shape = SubResource("BoxShape3D_djtux")
+debug_color = Color(1, 1, 0, 1)
+
+[node name="FixedCamera 02" type="Node3D" parent="Cameras" unique_id=1228152935]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -42.05, 0, 7.266)
+
+[node name="Camera3D" type="Camera3D" parent="Cameras/FixedCamera 02" unique_id=189068820 node_paths=PackedStringArray("trigger_area")]
+transform = Transform3D(0.84930015, 0.30126858, 0.43350494, -0.039145593, 0.85485107, -0.517395, -0.5264569, 0.42245406, 0.7378184, -2.3557467, 0.8657983, 0.40051603)
+script = ExtResource("4_ugu4n")
+trigger_area = NodePath("../CameraTriggerArea")
+metadata/_custom_type_script = "uid://bkbqspmutvdh1"
+
+[node name="CameraTriggerArea" type="Area3D" parent="Cameras/FixedCamera 02" unique_id=589240927]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.2422922, -0.42336154, -3.809359)
+script = ExtResource("5_sm0io")
+metadata/_custom_type_script = "uid://drpmv38e02bjw"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Cameras/FixedCamera 02/CameraTriggerArea" unique_id=251116155]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.2456055, -0.0004414916, 0.31645498)
+shape = SubResource("BoxShape3D_3co0p")
+debug_color = Color(1, 1, 0, 1)
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="Cameras/FixedCamera 02/CameraTriggerArea" unique_id=2145983787]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.7574463, -1.4901161e-07, 2.5013223)
+shape = SubResource("BoxShape3D_1g7w6")
+debug_color = Color(1, 1, 0, 1)
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Cameras/FixedCamera 02/CameraTriggerArea" unique_id=1335398036]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5530305, -2.9802322e-08, 4.1237183)
+shape = SubResource("BoxShape3D_wf8b6")
+debug_color = Color(1, 1, 0, 1)
+
+[node name="FixedCamera 03" type="Node3D" parent="Cameras" unique_id=1349963622]
+transform = Transform3D(1, 0, -2.9802322e-08, -1.4901161e-08, 1.0000002, 0, -1.1920929e-07, 0, 1, -51.236717, -9.536743e-07, -21.56547)
+
+[node name="Camera3D" type="Camera3D" parent="Cameras/FixedCamera 03" unique_id=1329583880 node_paths=PackedStringArray("trigger_area")]
+transform = Transform3D(0.45402932, 0, -0.8909867, 0, 1, 0, 0.8909867, 0, 0.45402932, 0, 3.346508, 5.4850492)
+script = ExtResource("4_ugu4n")
+trigger_area = NodePath("../CameraTriggerArea")
+metadata/_custom_type_script = "uid://bkbqspmutvdh1"
+
+[node name="CameraTriggerArea" type="Area3D" parent="Cameras/FixedCamera 03" unique_id=524367022]
+script = ExtResource("5_sm0io")
+metadata/_custom_type_script = "uid://drpmv38e02bjw"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Cameras/FixedCamera 03/CameraTriggerArea" unique_id=1692584197]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3544922, 0, 0.77316)
+shape = SubResource("BoxShape3D_g6gkq")
+debug_color = Color(1, 1, 0, 1)
+
+[node name="FixedCamera 04" type="Node3D" parent="Cameras" unique_id=1514443920]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35.449, 0, -25.536)
+
+[node name="Camera3D" type="Camera3D" parent="Cameras/FixedCamera 04" unique_id=1181269816 node_paths=PackedStringArray("trigger_area")]
+transform = Transform3D(-0.9851077, -0.1262326, 0.11673921, -0.12980199, 0.99126214, -0.023465207, -0.11275703, -0.038268812, -0.9928853, 0.39011446, 1.682025, -3.9486706)
+script = ExtResource("4_ugu4n")
+trigger_area = NodePath("../CameraTriggerArea")
+metadata/_custom_type_script = "uid://bkbqspmutvdh1"
+
+[node name="CameraTriggerArea" type="Area3D" parent="Cameras/FixedCamera 04" unique_id=1775736315]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.2422922, -0.42336154, -3.809359)
+script = ExtResource("5_sm0io")
+metadata/_custom_type_script = "uid://drpmv38e02bjw"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Cameras/FixedCamera 04/CameraTriggerArea" unique_id=68298620]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.777009, -8.940697e-08, 3.9261522)
+shape = SubResource("BoxShape3D_bv2yy")
+debug_color = Color(1, 1, 0, 1)
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Cameras/FixedCamera 04/CameraTriggerArea" unique_id=487040472]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.341972, -2.0861626e-07, 5.207898)
+shape = SubResource("BoxShape3D_khta5")
+debug_color = Color(1, 1, 0, 1)
+
+[node name="FixedCamera 05" type="Node3D" parent="Cameras" unique_id=2036520070]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35.721584, 0, 20.94807)
+
+[node name="Camera3D" type="Camera3D" parent="Cameras/FixedCamera 05" unique_id=1583721938 node_paths=PackedStringArray("trigger_area")]
+transform = Transform3D(0.99999994, 0, 0, 0, 0.87919474, 0.47646254, 0, -0.4764626, 0.8791946, -5.2234545, 11.283112, 9.00882)
+current = true
+fov = 32.5
+script = ExtResource("4_ugu4n")
+trigger_area = NodePath("../CameraTriggerArea")
+metadata/_custom_type_script = "uid://bkbqspmutvdh1"
+
+[node name="CameraTriggerArea" type="Area3D" parent="Cameras/FixedCamera 05" unique_id=986810746]
+script = ExtResource("5_sm0io")
+metadata/_custom_type_script = "uid://drpmv38e02bjw"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Cameras/FixedCamera 05/CameraTriggerArea" unique_id=482038192]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.857666, 0, -2.6372075)
+shape = SubResource("BoxShape3D_4kosd")
+debug_color = Color(1, 1, 0, 1)

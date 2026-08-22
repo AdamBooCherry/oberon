@@ -2,7 +2,6 @@
 
 [ext_resource type="PackedScene" uid="uid://dtjgiqp4jij8g" path="res://Player/Dad/PlayerDad.tscn" id="1_axs6p"]
 [ext_resource type="PackedScene" uid="uid://cdffe7bphgot8" path="res://Characters/Frog/SilverFrog.tscn" id="2_5k3ys"]
-[ext_resource type="PackedScene" uid="uid://brvyfw32spq8" path="res://Characters/Frog/frog_collect.tscn" id="3_5k3ys"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_axs6p"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -53,6 +52,3 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.3283958, 0.42890072, 0.746
 [node name="Frog" parent="." unique_id=2044770608 instance=ExtResource("2_5k3ys")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8571235, -0.33460212, 0.44726896)
 detection_radius = 3.0
-
-[node name="FrogCollect" parent="." unique_id=580072353 instance=ExtResource("3_5k3ys")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.539044, 0)

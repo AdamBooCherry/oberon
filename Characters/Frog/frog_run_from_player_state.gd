@@ -10,7 +10,7 @@ var _flee_timer: float = 0.0
 var _has_reached_target: bool = false
 
 func enter() -> void:
-	print("[RunFromPlayerState] ENTERED. Fleeing from player with smart pathing!")
+	#print("[RunFromPlayerState] ENTERED. Fleeing from player with smart pathing!")
 	if not frog:
 		return
 		
@@ -89,7 +89,7 @@ func physics_update(delta: float) -> void:
 		frog.rotation.y = lerp_angle(frog.rotation.y, target_rotation, delta * 12.0)
 
 func _on_target_reached() -> void:
-	print("[RunFromPlayerState] Navigation target reached signal fired!")
+	#print("[RunFromPlayerState] Navigation target reached signal fired!")
 	_has_reached_target = true
 
 func exit() -> void:

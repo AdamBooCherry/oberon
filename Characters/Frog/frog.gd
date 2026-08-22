@@ -64,6 +64,7 @@ func set_hidden(hide: bool) -> void:
 		print("hide")
 	else:
 		frog_mesh.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_ON
+		SceneHelper.spawn_effect("uid://dqo2wy1r43ocf", self.global_position, get_parent())
 		print("show")
 
 func _on_area_entered(area: Area3D) -> void:
@@ -85,8 +86,8 @@ func _get_stunned() -> void:
 
 func get_picked_up() -> void:
 	is_picked_up = true
-	print("Frog collected!")
 	InventoryManager.has_frog = true
+	#print("Frog collected!")
 	
 	var spawn_pos = global_position
 	set_collision_layer_value(1, false)

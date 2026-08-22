@@ -5,7 +5,7 @@ signal change_to_debug_camera
 signal cutscene_started(cutscene_id: StringName)
 signal cutscene_ended(cutscene_id: StringName)
 
-var off_camera_timer: float = 5.0
+var off_camera_timer: float = 2.0
 var active_cutscene_camera: Camera3D = null
 var previous_camera: Camera3D = null
 
