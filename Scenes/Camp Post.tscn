@@ -21,6 +21,7 @@
 [ext_resource type="Resource" uid="uid://4bpku3cyxox1" path="res://addons/dialogic/Timelines/WhitehatByDoor.dtl" id="12_ohe8u"]
 [ext_resource type="Texture2D" uid="uid://cba6cigc72d7r" path="res://Assets/Particle FX/circle_03.png" id="19_ohe8u"]
 [ext_resource type="Texture2D" uid="uid://bhuyb2k4n10v4" path="res://Assets/Particle FX/fire_01.png" id="20_pk8lo"]
+[ext_resource type="PackedScene" uid="uid://clvkk4wo7elk2" path="res://Characters/Redcap/Redcap.tscn" id="21_jca4r"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0wmpe"]
 albedo_color = Color(0.23, 0.11653333, 0.045999996, 1)
@@ -4054,7 +4055,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.19, 0)
 curve = SubResource("Curve3D_8as8m")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="Mobs/Path3D" unique_id=27730672]
-transform = Transform3D(-0.998966, -0.00014656794, 0.045297686, 0, 0.99997663, 0.0032355937, -0.045298345, 0.0032322682, -0.99895144, -2.8899221, 0.042602755, 1.0935059)
+transform = Transform3D(-0.998966, -0.0001465679, 0.04529767, 0, 0.99997634, 0.0032355927, -0.045298345, 0.0032322672, -0.99895114, -2.8899221, 0.042602755, 1.0935059)
 use_model_front = true
 tilt_enabled = false
 script = SubResource("GDScript_wuii1")
@@ -4302,7 +4303,7 @@ path_follow_3d = NodePath("PathFollow3D")
 metadata/_custom_type_script = "uid://bvtfxcsh87kix"
 
 [node name="PathFollow3D" type="PathFollow3D" parent="Cameras/PathCamera 01" unique_id=1638274718]
-transform = Transform3D(-0.029283984, -0.005194345, -0.9994972, 0.049977183, 0.9986591, -0.0066542216, 0.99830323, -0.050147366, -0.028985886, -31.546108, 0.5577812, -0.80570316)
+transform = Transform3D(-0.029283984, -0.005194345, -0.9994969, 0.049977183, 0.9986591, -0.0066542197, 0.99830323, -0.050147366, -0.028985878, -31.546108, 0.5577812, -0.80570316)
 
 [node name="FixedCamera 03" type="Camera3D" parent="Cameras/PathCamera 01/PathFollow3D" unique_id=716717068 node_paths=PackedStringArray("trigger_area")]
 transform = Transform3D(-0.9943459, 3.7234443e-07, 0.1062636, -0.0324026, 0.95240223, -0.30320588, -0.10120441, -0.30493054, -0.9470043, 0, 0, -3)
@@ -4413,6 +4414,12 @@ texture = ExtResource("19_ohe8u")
 material_override = SubResource("StandardMaterial3D_1b76m")
 pixel_size = 2.0
 texture = SubResource("GradientTexture2D_tw0sk")
+
+[node name="Redcap" parent="Environment" unique_id=1948716909 instance=ExtResource("21_jca4r")]
+transform = Transform3D(0.88558537, 0, -0.4644767, 0, 1, 0, 0.4644767, 0, 0.88558537, -3.5664077, -0.012134314, 2.97661)
+
+[node name="Redcap2" parent="Environment" unique_id=1474796359 instance=ExtResource("21_jca4r")]
+transform = Transform3D(0.4207435, 0, -0.90717965, 0, 1, 0, 0.90717965, 0, 0.4207435, -31.516205, -0.052139282, -4.383384)
 
 [node name="CoinRoot" type="Node3D" parent="." unique_id=1345453457]
 

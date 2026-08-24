@@ -1,12 +1,17 @@
 [gd_scene format=4 uid="uid://bfnvtq81kd7bv"]
 
 [ext_resource type="Texture2D" uid="uid://ta31v1p1tg3s" path="res://Characters/Redcap/RedcapHookBeep(1)_Gradient Pallete.png" id="1_mrm30"]
+[ext_resource type="Material" uid="uid://dahsgl0gy2cdy" path="res://cool_outline.tres" id="2_lqqry"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5psnq"]
 resource_name = "GradientMaterial"
+next_pass = ExtResource("2_lqqry")
 cull_mode = 2
 albedo_texture = ExtResource("1_mrm30")
 roughness = 0.5
+stencil_mode = 1
+stencil_flags = 2
+stencil_outline_thickness = 0.02
 metadata/_gltf_primary_texture_coord = 0
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_60i8u"]
@@ -51,7 +56,7 @@ albedo_color = Color(0.99999994, 0.9621127, 0.95558137, 1)
 roughness = 0.5
 emission_enabled = true
 emission = Color(1, 0, 0, 1)
-emission_energy_multiplier = 7.42
+emission_energy_multiplier = 5.0
 metadata/_gltf_primary_texture_coord = 0
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_ossc1"]
@@ -91,6 +96,7 @@ shadow_mesh = SubResource("ArrayMesh_ossc1")
 [node name="Hook" type="Node3D" unique_id=215616046]
 
 [node name="RedcapHookBeep(1)" type="Node3D" parent="." unique_id=2041680744]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 
 [node name="RedcapSickle" type="MeshInstance3D" parent="RedcapHookBeep(1)" unique_id=1999580295]
 transform = Transform3D(1, 0, 0, 0, -1, 1.509958e-07, 0, -1.509958e-07, -1, 0.37011456, 0.026416361, -0.18509984)

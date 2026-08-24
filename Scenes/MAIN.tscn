@@ -164,7 +164,7 @@ world_transition = NodePath("WorldTransition")
 metadata/_custom_type_script = "uid://dkyo53x8ie3j5"
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="SubViewportContainer/SubViewport/MAIN/World" unique_id=331212326]
-environment = ExtResource("7_kjvde")
+environment = ExtResource("4_n02r8")
 
 [node name="SkyLight" type="DirectionalLight3D" parent="SubViewportContainer/SubViewport/MAIN/World" unique_id=1200277973]
 transform = Transform3D(-0.86602545, -0.30074093, 0.39944327, 2.2351742e-08, 0.79888654, 0.6014818, -0.50000006, 0.5208986, -0.691856, 0, 0, 0)
