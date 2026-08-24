@@ -10,6 +10,9 @@
 [ext_resource type="PackedScene" uid="uid://bfnvtq81kd7bv" path="res://Characters/Redcap/Hook.tscn" id="6_125yk"]
 [ext_resource type="Environment" uid="uid://taliiown2kj3" path="res://Scenes/default_environment.tres" id="7_kjvde"]
 [ext_resource type="AudioStream" uid="uid://cwhus76517dk2" path="res://Audio/Akira_getoutofmyheadaaaaaa.mp3" id="10_whe6r"]
+[ext_resource type="Script" uid="uid://gfl84qcnh65h" path="res://Scenes/ui.gd" id="11_csh6n"]
+[ext_resource type="Script" uid="uid://d4lj82wyqfv14" path="res://Scenes/rotation_component.gd" id="11_mhs8k"]
+[ext_resource type="ArrayMesh" uid="uid://bhta5fvbarg3v" path="res://Characters/Frog/frog_mesh_visible.tres" id="11_pe4ny"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_c5rrr"]
 shader = ExtResource("1_783md")
@@ -18,15 +21,115 @@ shader_parameter/dithering = true
 shader_parameter/colors = 24
 shader_parameter/dither_size = 2
 
-[node name="SubViewportContainer" type="SubViewportContainer" unique_id=932838787]
-material = SubResource("ShaderMaterial_c5rrr")
+[sub_resource type="ViewportTexture" id="ViewportTexture_mhs8k"]
+viewport_path = NodePath("SubViewportContainer/SubViewport/MAIN/UI/FrogTexture/FrogViewport")
+
+[sub_resource type="Skin" id="Skin_mhs8k"]
+resource_name = "Skin"
+bind_count = 28
+bind/0/name = &"root"
+bind/0/bone = -1
+bind/0/pose = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, -0.00011456717, 0.00048783445, 6.554487e-11)
+bind/1/name = &"Body"
+bind/1/bone = -1
+bind/1/pose = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, -0.00013705768, -0.0173411, 7.2578965e-05)
+bind/2/name = &"FrontLeg.L"
+bind/2/bone = -1
+bind/2/pose = Transform3D(3.2115515e-14, -1.1857981e-07, 1, 1, 2.7083456e-07, 7.335136e-14, -2.7083456e-07, 1, 1.1857981e-07, -0.010144496, -0.004454302, 0.005357044)
+bind/3/name = &"FrontUpLeg.L"
+bind/3/bone = -1
+bind/3/pose = Transform3D(0.8881334, -0.180697, 0.42257282, 0.45002428, 0.52850384, -0.7198347, -0.09325938, 0.82947713, 0.5506999, -0.011165386, 0.007138629, -0.0005223783)
+bind/4/name = &"FrontLowLeg.L"
+bind/4/bone = -1
+bind/4/pose = Transform3D(1.0000001, -4.5924006e-07, 9.356585e-07, 3.5103774e-08, -0.8904965, -0.45499024, 9.693435e-07, 0.4549903, -0.8904967, -0.010737363, 0.0011434297, 0.003474968)
+bind/5/name = &"Back"
+bind/5/bone = -1
+bind/5/pose = Transform3D(1.0000001, 8.978923e-07, 1.4068198e-06, 4.6566134e-14, -0.8429435, 0.5380023, 1.6689373e-06, -0.5380023, -0.8429435, -2.060489e-06, 0.007082221, 0.0096951015)
+bind/6/name = &"Shoulders"
+bind/6/bone = -1
+bind/6/pose = Transform3D(-0.9972467, -0.07374426, 0.0078120213, 0.073833354, -0.9775427, 0.19737904, -0.0069189738, 0.19741225, 0.98029625, -0.0005748815, -0.0063235713, -0.0093329325)
+bind/7/name = &"Neck"
+bind/7/bone = -1
+bind/7/pose = Transform3D(-1, 6.651847e-07, 4.1885482e-06, 3.6239618e-09, -0.9845526, 0.17508681, 4.251805e-06, 0.17508672, 0.98455334, 2.0033438e-06, -0.008471478, -0.009528161)
+bind/8/name = &"Head"
+bind/8/bone = -1
+bind/8/pose = Transform3D(-0.8656812, -0.0803222, 0.49411002, -0.001663092, -0.9865764, -0.16329089, 0.50059325, -0.14217953, 0.85392725, -0.0063797645, -0.007527104, -0.011061687)
+bind/9/name = &"Hips"
+bind/9/bone = -1
+bind/9/pose = Transform3D(-1.0000001, 2.3966336e-06, 9.38661e-06, 5.587936e-13, -0.9689164, 0.24738836, 9.68774e-06, 0.24738833, 0.96891654, 1.9622005e-06, 0.005257013, -0.008476188)
+bind/10/name = &"Torso"
+bind/10/bone = -1
+bind/10/pose = Transform3D(-0.99961, 0.027847968, -0.0020740472, -0.027155634, -0.9520665, 0.3046835, 0.006510185, 0.30462098, 0.95245147, -2.9842542e-05, -0.00084969006, -0.008440479)
+bind/11/name = &"BackHip.L"
+bind/11/bone = -1
+bind/11/pose = Transform3D(0.058407865, 1.1222069e-07, -0.99829286, 0.99829286, -1.8189895e-14, 0.058408022, 6.55457e-09, -1.0000001, -1.12029085e-07, 0.0045949174, -0.0032062165, 0.010186946)
+bind/12/name = &"BackLeg.L"
+bind/12/bone = -1
+bind/12/pose = Transform3D(0.20203507, -0.088465996, 0.9753747, 0.5924496, -0.78198844, -0.1936434, 0.7798625, 0.61698294, -0.10557732, -0.004932828, 0.0058416836, -0.009814216)
+bind/13/name = &"BackUpLeg.L"
+bind/13/bone = -1
+bind/13/pose = Transform3D(0.9913221, 0.12026253, -0.05308393, -0.12929113, 0.9649624, -0.22832362, 0.023765247, 0.23320548, 0.9721372, -0.01068716, -0.00088384555, -0.0040271683)
+bind/14/name = &"BackLowLeg.L"
+bind/14/bone = -1
+bind/14/pose = Transform3D(0.92812765, 0.37165365, 0.02126444, 0.37226108, -0.9264931, -0.05506927, -0.000764723, 0.059027825, -0.9982558, -0.013676811, 0.009626679, -0.00026424884)
+bind/15/name = &"FrontLeg.L.001"
+bind/15/bone = -1
+bind/15/pose = Transform3D(5.2733422e-14, 1.9470718e-07, 1, -1, 2.7083448e-07, -7.3351325e-14, -2.7083448e-07, -1, 1.9470718e-07, -0.010144494, -0.0043253717, -0.0053570466)
+bind/16/name = &"FrontUpLeg.R"
+bind/16/bone = -1
+bind/16/pose = Transform3D(0.88813335, 0.34905612, -0.29896322, -0.45002428, 0.5285038, -0.7198346, -0.09325954, 0.77384984, 0.62646556, 0.010698831, 0.0071966485, -0.0028182564)
+bind/17/name = &"FrontLowLeg.R"
+bind/17/bone = -1
+bind/17/pose = Transform3D(1, -1.365903e-07, 2.8370675e-07, 9.9469666e-08, -0.89049655, -0.4549903, 3.256818e-07, 0.4549902, -0.8904967, 0.010608425, 0.0011434309, 0.0034749825)
+bind/18/name = &"BackHip.R"
+bind/18/bone = -1
+bind/18/pose = Transform3D(0.058407836, 1.3453423e-07, 0.99829274, -0.99829274, -2.3283062e-14, 0.058407664, 7.857855e-09, -1, 1.3430457e-07, -0.0046024504, -0.0030775052, 0.010186945)
+bind/19/name = &"BackLeg.R"
+bind/19/bone = -1
+bind/19/pose = Transform3D(0.20203502, -0.37690973, 0.90394735, -0.5924495, -0.7819884, -0.19364357, 0.7798626, -0.49642044, -0.38128895, 0.00042683308, 0.0059180683, 0.010874267)
+bind/20/name = &"BackUpLeg.R"
+bind/20/bone = -1
+bind/20/pose = Transform3D(0.991322, -0.13129948, 0.006439127, 0.12929134, 0.9649624, -0.22832328, 0.023765653, 0.22717454, 0.9735642, 0.010740051, -0.0009005105, -0.0035134822)
+bind/21/name = &"BackLowLeg.R"
+bind/21/bone = -1
+bind/21/pose = Transform3D(0.92812645, -0.37155545, -0.02290996, -0.37226182, -0.9264926, -0.05506879, -0.0007680942, 0.05964137, -0.9982176, 0.013556672, 0.009674659, -0.00028673492)
+bind/22/name = &"PoleTarget.L"
+bind/22/bone = -1
+bind/22/pose = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, -0.011736882, -0.003321124, -0.040241256)
+bind/23/name = &"PoleTarget.R"
+bind/23/bone = -1
+bind/23/pose = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0.011438426, -0.003321124, -0.040241256)
+bind/24/name = &"FrontFoot.L"
+bind/24/bone = -1
+bind/24/pose = Transform3D(1, 0, -2.7736003e-06, 0, -1, 0, -2.7736003e-06, 0, -1, -0.010700503, -0.0084805675, -0.00045904878)
+bind/25/name = &"BackFoot.L"
+bind/25/bone = -1
+bind/25/pose = Transform3D(0.92790097, 0.37282678, -2.3154735e-06, 0.37282678, -0.92790097, 4.925142e-08, -2.1279698e-06, -8.389505e-07, -1.0000001, -0.013875804, -0.0010321134, -3.2817177e-05)
+bind/26/name = &"FrontFoot.R"
+bind/26/bone = -1
+bind/26/pose = Transform3D(1, 0, -2.7736003e-06, 0, -1, 0, -2.7736003e-06, 0, -1, 0.010571572, -0.0084805675, -0.0004591081)
+bind/27/name = &"BackFoot.R"
+bind/27/bone = -1
+bind/27/pose = Transform3D(0.9279009, -0.37282678, -3.2151747e-06, -0.37282678, -0.92790097, 5.5300724e-08, -2.9969594e-06, 1.2041659e-06, -1.0000001, 0.01375617, -0.0009840451, -3.2893375e-05)
+
+[node name="Control" type="Control" unique_id=1924878021]
+layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="SubViewport" type="SubViewport" parent="." unique_id=9219154]
+[node name="SubViewportContainer" type="SubViewportContainer" parent="." unique_id=932838787]
+material = SubResource("ShaderMaterial_c5rrr")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer" unique_id=9219154]
 handle_input_locally = false
 scaling_3d_mode = 5
 audio_listener_enable_2d = true
@@ -34,25 +137,25 @@ audio_listener_enable_3d = true
 size = Vector2i(640, 480)
 render_target_update_mode = 4
 
-[node name="MAIN" type="Node3D" parent="SubViewport" unique_id=2005868454]
+[node name="MAIN" type="Node3D" parent="SubViewportContainer/SubViewport" unique_id=2005868454]
 
-[node name="Player" parent="SubViewport/MAIN" unique_id=1848596107 instance=ExtResource("4_783md")]
+[node name="Player" parent="SubViewportContainer/SubViewport/MAIN" unique_id=1848596107 instance=ExtResource("4_783md")]
 transform = Transform3D(-0.25459456, 0, -0.9670479, 0, 1, 0, 0.9670479, 0, -0.25459456, -38.697823, 0.33270192, 1.0601468)
 
-[node name="Environment" type="Node3D" parent="SubViewport/MAIN" unique_id=129132500]
+[node name="Environment" type="Node3D" parent="SubViewportContainer/SubViewport/MAIN" unique_id=129132500]
 
-[node name="ForestArea" parent="SubViewport/MAIN/Environment" unique_id=1541254729 instance=ExtResource("3_mhs8k")]
+[node name="ForestArea" parent="SubViewportContainer/SubViewport/MAIN/Environment" unique_id=1541254729 instance=ExtResource("3_mhs8k")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 62.855, 0, -1)
 
-[node name="Frog" parent="SubViewport/MAIN/Environment/ForestArea" unique_id=2025365352 instance=ExtResource("4_5c1w6")]
+[node name="Frog" parent="SubViewportContainer/SubViewport/MAIN/Environment/ForestArea" unique_id=2025365352 instance=ExtResource("4_5c1w6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -48.19248, 0, 3.3004274)
 
-[node name="Camp Post" parent="SubViewport/MAIN/Environment" unique_id=1057817875 instance=ExtResource("3_c5rrr")]
+[node name="Camp Post" parent="SubViewportContainer/SubViewport/MAIN/Environment" unique_id=1057817875 instance=ExtResource("3_c5rrr")]
 
-[node name="Hook" parent="SubViewport/MAIN/Environment" unique_id=215616046 instance=ExtResource("6_125yk")]
+[node name="Hook" parent="SubViewportContainer/SubViewport/MAIN/Environment" unique_id=215616046 instance=ExtResource("6_125yk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -39.679333, -0.0377924, -0.61202025)
 
-[node name="World" type="Node3D" parent="SubViewport/MAIN" unique_id=681409880 node_paths=PackedStringArray("world_environment", "world_transition")]
+[node name="World" type="Node3D" parent="SubViewportContainer/SubViewport/MAIN" unique_id=681409880 node_paths=PackedStringArray("world_environment", "world_transition")]
 script = ExtResource("2_1tvcf")
 world_environment = NodePath("WorldEnvironment")
 default_environment = ExtResource("7_kjvde")
@@ -60,10 +163,10 @@ scary_environment = ExtResource("4_n02r8")
 world_transition = NodePath("WorldTransition")
 metadata/_custom_type_script = "uid://dkyo53x8ie3j5"
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="SubViewport/MAIN/World" unique_id=331212326]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="SubViewportContainer/SubViewport/MAIN/World" unique_id=331212326]
 environment = ExtResource("7_kjvde")
 
-[node name="SkyLight" type="DirectionalLight3D" parent="SubViewport/MAIN/World" unique_id=1200277973]
+[node name="SkyLight" type="DirectionalLight3D" parent="SubViewportContainer/SubViewport/MAIN/World" unique_id=1200277973]
 transform = Transform3D(-0.86602545, -0.30074093, 0.39944327, 2.2351742e-08, 0.79888654, 0.6014818, -0.50000006, 0.5208986, -0.691856, 0, 0, 0)
 light_color = Color(0.95973366, 0.3550425, 0.7417873, 1)
 light_cull_mask = 4294967293
@@ -72,27 +175,60 @@ shadow_caster_mask = 4294967293
 directional_shadow_mode = 0
 sky_mode = 1
 
-[node name="WorldTransition" type="AudioStreamPlayer" parent="SubViewport/MAIN/World" unique_id=1554702274]
+[node name="WorldTransition" type="AudioStreamPlayer" parent="SubViewportContainer/SubViewport/MAIN/World" unique_id=1554702274]
 stream = ExtResource("10_whe6r")
 
-[node name="ScaryAmbient" type="AudioStreamPlayer" parent="SubViewport/MAIN/World" unique_id=1699232608]
+[node name="ScaryAmbient" type="AudioStreamPlayer" parent="SubViewportContainer/SubViewport/MAIN/World" unique_id=1699232608]
 
-[node name="UI" type="CanvasLayer" parent="SubViewport/MAIN" unique_id=1239952882]
+[node name="UI" type="CanvasLayer" parent="SubViewportContainer/SubViewport/MAIN" unique_id=1239952882 node_paths=PackedStringArray("frog_texture")]
+script = ExtResource("11_csh6n")
+frog_texture = NodePath("FrogTexture")
 
-[node name="UI" type="Control" parent="SubViewport/MAIN/UI" unique_id=1778609380]
+[node name="FrogTexture" type="TextureRect" parent="SubViewportContainer/SubViewport/MAIN/UI" unique_id=389958597]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 398.0
+offset_top = 314.0
+offset_right = -22.0
+offset_bottom = 70.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("ViewportTexture_mhs8k")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="FrogViewport" type="SubViewport" parent="SubViewportContainer/SubViewport/MAIN/UI/FrogTexture" unique_id=956167485]
+own_world_3d = true
+transparent_bg = true
+handle_input_locally = false
+render_target_update_mode = 4
+
+[node name="Camera3D" type="Camera3D" parent="SubViewportContainer/SubViewport/MAIN/UI/FrogTexture/FrogViewport" unique_id=311741069]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.72336936, -0.4186117, 0.20229745)
+
+[node name="RotationComponent" type="Node3D" parent="SubViewportContainer/SubViewport/MAIN/UI/FrogTexture/FrogViewport/Camera3D" unique_id=1726394020]
+transform = Transform3D(2, -3.496911e-07, -1.5285484e-14, 0, -8.742278e-08, 2, -3.496911e-07, -2, -8.742278e-08, 0, -0.00999999, -0.108)
+script = ExtResource("11_mhs8k")
+
+[node name="Frog" type="MeshInstance3D" parent="SubViewportContainer/SubViewport/MAIN/UI/FrogTexture/FrogViewport/Camera3D/RotationComponent" unique_id=1856857411]
+layers = 2
+mesh = ExtResource("11_pe4ny")
+skin = SubResource("Skin_mhs8k")
+skeleton = NodePath("../../../../../UI")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="SubViewportContainer/SubViewport/MAIN/UI/FrogTexture/FrogViewport/Camera3D" unique_id=810843460]
+transform = Transform3D(1, 0, -3.3407487e-22, 0, 1, 0, 3.3407487e-22, 0, 1, -0.11318982, 0.0879904, -0.108)
+light_color = Color(0.30980393, 1, 1, 1)
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="SubViewportContainer/SubViewport/MAIN/UI/FrogTexture/FrogViewport/Camera3D" unique_id=81134177]
+transform = Transform3D(1, 0, -3.3407487e-22, 0, 1, 0, 3.3407487e-22, 0, 1, 0.07737023, -0.01998967, -0.108)
+light_color = Color(1, 0, 1, 1)
+
+[node name="UI" type="Control" parent="SubViewportContainer/SubViewport/MAIN/UI" unique_id=1778609380]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="MarginContainer" type="MarginContainer" parent="SubViewport/MAIN/UI/UI" unique_id=1807690394]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Frog" parent="SubViewport/MAIN/UI" unique_id=2044770608 instance=ExtResource("4_5c1w6")]
