@@ -19,6 +19,8 @@
 [ext_resource type="PackedScene" uid="uid://b4lro5g46q76v" path="res://Coin/coin.tscn" id="11_bxb4o"]
 [ext_resource type="Script" uid="uid://us7xil373pqc" path="res://Scenes/whitehat_by_door.gd" id="11_lqkgr"]
 [ext_resource type="Resource" uid="uid://4bpku3cyxox1" path="res://addons/dialogic/Timelines/WhitehatByDoor.dtl" id="12_ohe8u"]
+[ext_resource type="Texture2D" uid="uid://cba6cigc72d7r" path="res://Assets/Particle FX/circle_03.png" id="19_ohe8u"]
+[ext_resource type="Texture2D" uid="uid://bhuyb2k4n10v4" path="res://Assets/Particle FX/fire_01.png" id="20_pk8lo"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0wmpe"]
 albedo_color = Color(0.23, 0.11653333, 0.045999996, 1)
@@ -1405,6 +1407,32 @@ point_count = 2
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_pe4ny"]
 size = Vector3(26.56649, 1, 24.882813)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jca4r"]
+transparency = 1
+blend_mode = 1
+disable_fog = true
+albedo_texture = ExtResource("19_ohe8u")
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+emission_energy_multiplier = 0.41
+disable_receive_shadows = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1b76m"]
+transparency = 1
+blend_mode = 1
+disable_fog = true
+albedo_texture = ExtResource("20_pk8lo")
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+emission_energy_multiplier = 0.8
+
+[sub_resource type="Gradient" id="Gradient_pk8lo"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_tw0sk"]
+gradient = SubResource("Gradient_pk8lo")
+width = 870
+height = 757
 
 [node name="Camp Post" type="Node3D" unique_id=1057817875]
 
@@ -4026,7 +4054,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.19, 0)
 curve = SubResource("Curve3D_8as8m")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="Mobs/Path3D" unique_id=27730672]
-transform = Transform3D(-0.998966, -0.00014656807, 0.045297723, 0, 0.99997747, 0.0032355965, -0.045298345, 0.003232271, -0.99895227, -2.8899221, 0.042602755, 1.0935059)
+transform = Transform3D(-0.998966, -0.00014656805, 0.045297716, 0, 0.99997735, 0.003235596, -0.045298345, 0.0032322705, -0.99895215, -2.8899221, 0.042602755, 1.0935059)
 use_model_front = true
 tilt_enabled = false
 script = SubResource("GDScript_wuii1")
@@ -4274,7 +4302,7 @@ path_follow_3d = NodePath("PathFollow3D")
 metadata/_custom_type_script = "uid://bvtfxcsh87kix"
 
 [node name="PathFollow3D" type="PathFollow3D" parent="Cameras/PathCamera 01" unique_id=1638274718]
-transform = Transform3D(-0.029283984, -0.005194345, -0.999498, 0.049977183, 0.9986591, -0.006654227, 0.99830323, -0.050147366, -0.02898591, -31.546108, 0.5577812, -0.80570316)
+transform = Transform3D(-0.029283984, -0.005194345, -0.9994979, 0.049977183, 0.9986591, -0.0066542267, 0.99830323, -0.050147366, -0.028985908, -31.546108, 0.5577812, -0.80570316)
 
 [node name="FixedCamera 03" type="Camera3D" parent="Cameras/PathCamera 01/PathFollow3D" unique_id=716717068 node_paths=PackedStringArray("trigger_area")]
 transform = Transform3D(-0.9943459, 3.7234443e-07, 0.1062636, -0.0324026, 0.95240223, -0.30320588, -0.10120441, -0.30493054, -0.9470043, 0, 0, -3)
@@ -4374,6 +4402,17 @@ transform = Transform3D(0.87232083, 0, -0.48893398, 0, 1, 0, 0.48893398, 0, 0.87
 use_collision = true
 flip_faces = true
 size = Vector3(10.280151, 16.723698, 23.772827)
+
+[node name="Sprite3D" type="Sprite3D" parent="Environment" unique_id=1221172795]
+transform = Transform3D(-0.102076724, 0.29544947, 0.94988954, 0.03156774, 0.9553586, -0.29375812, -0.9942758, -1.44443835e-08, -0.10684656, -1346.4021, 925.14166, 373.47192)
+material_override = SubResource("StandardMaterial3D_jca4r")
+pixel_size = 2.0
+texture = ExtResource("19_ohe8u")
+
+[node name="Sprite3D2" type="Sprite3D" parent="Environment/Sprite3D" unique_id=478551215]
+material_override = SubResource("StandardMaterial3D_1b76m")
+pixel_size = 2.0
+texture = SubResource("GradientTexture2D_tw0sk")
 
 [node name="CoinRoot" type="Node3D" parent="." unique_id=1345453457]
 

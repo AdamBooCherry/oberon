@@ -27,6 +27,7 @@ CameraManager="*uid://hoki1ltgbq5o"
 Overlays="*uid://c8m8u4d3p64m4"
 InventoryManager="*uid://ct406r0iuwatw"
 Dialogic="*uid://ds2q0uclmolvu"
+GameManager="*uid://db7afw1tm3ba2"
 
 [dialogic]
 

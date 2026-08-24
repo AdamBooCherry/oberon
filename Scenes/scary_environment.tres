@@ -1,0 +1,38 @@
+[gd_resource type="Environment" format=3 uid="uid://ddfwg2im0ypls"]
+
+[sub_resource type="Gradient" id="Gradient_pk8lo"]
+offsets = PackedFloat32Array(0, 0.092857145, 0.18571429, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.18, 0, 0, 1, 0.2809524, 0.2809524, 0.2809524, 1, 1, 1, 1, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_125yk"]
+frequency = 0.0016
+fractal_type = 3
+fractal_lacunarity = 4.48
+fractal_weighted_strength = 0.7
+fractal_ping_pong_strength = 1.9
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_n02r8"]
+noise = SubResource("FastNoiseLite_125yk")
+color_ramp = SubResource("Gradient_pk8lo")
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_8as8m"]
+sky_top_color = Color(0, 0, 0, 1)
+sky_horizon_color = Color(1, 0.58431375, 0.23529412, 1)
+sky_curve = 0.0609191
+ground_bottom_color = Color(0.13399999, 0.18460003, 0.2, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_rqf0l"]
+sky_material = SubResource("ProceduralSkyMaterial_8as8m")
+
+[resource]
+background_mode = 2
+sky = SubResource("Sky_rqf0l")
+ambient_light_color = Color(0.19607843, 0, 0, 1)
+glow_enabled = true
+glow_intensity = 3.44
+fog_enabled = true
+fog_light_color = Color(0.74849504, 0.45343333, 0.48109818, 1)
+fog_sky_affect = 0.147
+adjustment_enabled = true
+adjustment_color_correction = SubResource("NoiseTexture2D_n02r8")

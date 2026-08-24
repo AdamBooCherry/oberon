@@ -1,10 +1,15 @@
 [gd_scene format=3 uid="uid://d2jm65ledp7y3"]
 
 [ext_resource type="Shader" uid="uid://dlm70dacaptbv" path="res://Shaders/psx.gdshader" id="1_783md"]
+[ext_resource type="Script" uid="uid://dkyo53x8ie3j5" path="res://Scenes/world.gd" id="2_1tvcf"]
 [ext_resource type="PackedScene" uid="uid://cw3kf747q80xn" path="res://Scenes/Camp Post.tscn" id="3_c5rrr"]
 [ext_resource type="PackedScene" uid="uid://cqcsv7x0vouop" path="res://Prototyping/ForestTestArea.tscn" id="3_mhs8k"]
 [ext_resource type="PackedScene" uid="uid://cdffe7bphgot8" path="res://Characters/Frog/SilverFrog.tscn" id="4_5c1w6"]
 [ext_resource type="PackedScene" uid="uid://dtjgiqp4jij8g" path="res://Player/Dad/PlayerDad.tscn" id="4_783md"]
+[ext_resource type="Environment" uid="uid://ddfwg2im0ypls" path="res://Scenes/scary_environment.tres" id="4_n02r8"]
+[ext_resource type="PackedScene" uid="uid://bfnvtq81kd7bv" path="res://Characters/Redcap/Hook.tscn" id="6_125yk"]
+[ext_resource type="Environment" uid="uid://taliiown2kj3" path="res://Scenes/default_environment.tres" id="7_kjvde"]
+[ext_resource type="AudioStream" uid="uid://cwhus76517dk2" path="res://Audio/Akira_getoutofmyheadaaaaaa.mp3" id="10_whe6r"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_c5rrr"]
 shader = ExtResource("1_783md")
@@ -12,24 +17,6 @@ shader_parameter/enabled = true
 shader_parameter/dithering = true
 shader_parameter/colors = 24
 shader_parameter/dither_size = 2
-
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_8as8m"]
-sky_top_color = Color(0, 0, 0, 1)
-sky_horizon_color = Color(1, 0.58431375, 0.23529412, 1)
-sky_curve = 0.0609191
-ground_bottom_color = Color(0.13399999, 0.18460003, 0.2, 1)
-ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
-
-[sub_resource type="Sky" id="Sky_rqf0l"]
-sky_material = SubResource("ProceduralSkyMaterial_8as8m")
-
-[sub_resource type="Environment" id="Environment_c5rrr"]
-background_mode = 2
-sky = SubResource("Sky_rqf0l")
-ambient_light_color = Color(0.19607843, 0, 0, 1)
-fog_enabled = true
-fog_sky_affect = 0.147
-adjustment_enabled = true
 
 [node name="SubViewportContainer" type="SubViewportContainer" unique_id=932838787]
 material = SubResource("ShaderMaterial_c5rrr")
@@ -62,12 +49,21 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -48.19248, 0, 3.3004274)
 
 [node name="Camp Post" parent="SubViewport/MAIN/Environment" unique_id=1057817875 instance=ExtResource("3_c5rrr")]
 
-[node name="World" type="Node3D" parent="SubViewport/MAIN" unique_id=460916509]
+[node name="Hook" parent="SubViewport/MAIN/Environment" unique_id=215616046 instance=ExtResource("6_125yk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -39.679333, -0.0377924, -0.61202025)
+
+[node name="World" type="Node3D" parent="SubViewport/MAIN" unique_id=681409880 node_paths=PackedStringArray("world_environment", "world_transition")]
+script = ExtResource("2_1tvcf")
+world_environment = NodePath("WorldEnvironment")
+default_environment = ExtResource("7_kjvde")
+scary_environment = ExtResource("4_n02r8")
+world_transition = NodePath("WorldTransition")
+metadata/_custom_type_script = "uid://dkyo53x8ie3j5"
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="SubViewport/MAIN/World" unique_id=331212326]
-environment = SubResource("Environment_c5rrr")
+environment = ExtResource("7_kjvde")
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="SubViewport/MAIN/World" unique_id=1200277973]
+[node name="SkyLight" type="DirectionalLight3D" parent="SubViewport/MAIN/World" unique_id=1200277973]
 transform = Transform3D(-0.86602545, -0.30074093, 0.39944327, 2.2351742e-08, 0.79888654, 0.6014818, -0.50000006, 0.5208986, -0.691856, 0, 0, 0)
 light_color = Color(0.95973366, 0.3550425, 0.7417873, 1)
 light_cull_mask = 4294967293
@@ -75,3 +71,8 @@ shadow_enabled = true
 shadow_caster_mask = 4294967293
 directional_shadow_mode = 0
 sky_mode = 1
+
+[node name="WorldTransition" type="AudioStreamPlayer" parent="SubViewport/MAIN/World" unique_id=1554702274]
+stream = ExtResource("10_whe6r")
+
+[node name="ScaryAmbient" type="AudioStreamPlayer" parent="SubViewport/MAIN/World" unique_id=1699232608]

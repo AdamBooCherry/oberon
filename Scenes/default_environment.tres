@@ -1,0 +1,6 @@
+[gd_resource type="Environment" format=3 uid="uid://taliiown2kj3"]
+
+[resource]
+glow_enabled = true
+fog_enabled = true
+adjustment_enabled = true

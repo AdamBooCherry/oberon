@@ -2,17 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bhuyb2k4n10v4"
-path.s3tc="res://.godot/imported/fire_01.png-3323f1f50ba62c47f261a09a64f9358a.s3tc.ctex"
+uid="uid://b0d8ctaglkt51"
+path.s3tc="res://.godot/imported/RedcapTexturedV1_Gradient Pallete.png-dd608757043f100c6a645b92adc9b6a4.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
+generator_parameters={
+"md5": "09ce4991aea43c9cbc1cd97fd8e45286"
+}
 
 [deps]
 
-source_file="res://Assets/Particle FX/fire_01.png"
-dest_files=["res://.godot/imported/fire_01.png-3323f1f50ba62c47f261a09a64f9358a.s3tc.ctex"]
+source_file="res://Characters/Redcap/RedcapTexturedV1_Gradient Pallete.png"
+dest_files=["res://.godot/imported/RedcapTexturedV1_Gradient Pallete.png-dd608757043f100c6a645b92adc9b6a4.s3tc.ctex"]
 
 [params]
 
