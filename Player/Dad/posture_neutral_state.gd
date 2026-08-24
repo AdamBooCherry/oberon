@@ -1,7 +1,10 @@
 class_name PostureNeutralState
 extends State
 
+@export var glory_hand: GloryHand
+
 func update(_delta: float) -> void:
+	glory_hand.switch_pose(0.0)
 	player.current_posture = 0.0
 	
 	# Don't allow entering lowered/raised states if the player is currently sprinting

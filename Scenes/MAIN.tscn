@@ -76,3 +76,23 @@ sky_mode = 1
 stream = ExtResource("10_whe6r")
 
 [node name="ScaryAmbient" type="AudioStreamPlayer" parent="SubViewport/MAIN/World" unique_id=1699232608]
+
+[node name="UI" type="CanvasLayer" parent="SubViewport/MAIN" unique_id=1239952882]
+
+[node name="UI" type="Control" parent="SubViewport/MAIN/UI" unique_id=1778609380]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="SubViewport/MAIN/UI/UI" unique_id=1807690394]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Frog" parent="SubViewport/MAIN/UI" unique_id=2044770608 instance=ExtResource("4_5c1w6")]

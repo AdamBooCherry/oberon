@@ -51,11 +51,11 @@ func _physics_process(delta: float) -> void:
 			if global_position.distance_to(player_node.global_position) <= detection_radius:
 				state_machine.change_state("FrogStartledState")
 
-func set_hidden(hide: bool) -> void:
-	if is_hidden == hide:
+func set_hidden(hidden: bool) -> void:
+	if is_hidden == hidden:
 		return
 		
-	is_hidden = hide
+	is_hidden = hidden
 	if not frog_mesh:
 		return
 		

@@ -1268,8 +1268,7 @@ bones/40/rotation = Quaternion(0, 0, 0, 1)
 bones/40/scale = Vector3(1, 1, 1)
 
 [node name="Frog" type="MeshInstance3D" parent="Frog/Armature/Skeleton3D" unique_id=407875882]
-layers = 3
-cast_shadow = 3
+layers = 2
 mesh = ExtResource("2_7mvmj")
 skin = SubResource("Skin_w20oo")
 skeleton = NodePath("..")
@@ -1341,5 +1340,5 @@ metadata/_custom_type_script = "uid://byj5yrq2me2x5"
 
 [node name="Hop" type="AudioStreamPlayer3D" parent="Audio" unique_id=1807721004]
 volume_db = -10.0
-unit_size = 5.0
+unit_size = 1.0
 max_polyphony = 2

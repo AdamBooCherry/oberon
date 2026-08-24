@@ -26,6 +26,8 @@ func enter() -> void:
 	if active_tween and active_tween.is_valid():
 		active_tween.kill()
 
+	glory_hand.switch_pose(-.95)
+
 	player.current_posture = 1.0
 	glory_hand.set_flame_color(gold_color)
 	

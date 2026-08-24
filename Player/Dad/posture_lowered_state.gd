@@ -12,6 +12,7 @@ func enter() -> void:
 	if not lower_light:
 		return
 		
+	glory_hand.switch_pose(.95)
 	var tween = create_tween()
 	tween.tween_property(lower_light, "light_energy", light_energy, tween_duration)
 

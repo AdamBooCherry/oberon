@@ -7,8 +7,21 @@ point_count = 16
 [sub_resource type="CurveTexture" id="CurveTexture_jixpw"]
 curve = SubResource("Curve_4d07p")
 
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_q8vd0"]
+sky_top_color = Color(1, 1, 1, 1)
+sky_horizon_color = Color(0.38266668, 0.4, 0.14000002, 1)
+sky_curve = 0.22735742
+
+[sub_resource type="Sky" id="Sky_d6pbc"]
+sky_material = SubResource("ProceduralSkyMaterial_q8vd0")
+
 [resource]
+background_mode = 1
+sky = SubResource("Sky_d6pbc")
 glow_enabled = true
 fog_enabled = true
+fog_mode = 1
+fog_light_color = Color(0.030800017, 0.74536, 0.77, 1)
+fog_density = 1.0
 adjustment_enabled = true
 adjustment_color_correction = SubResource("CurveTexture_jixpw")
