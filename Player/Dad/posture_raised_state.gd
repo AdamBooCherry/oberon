@@ -1,9 +1,6 @@
 class_name PostureRaisedState
 extends State
 
-@export var glory_hand: GloryHand
-@export var raise_light: OmniLight3D
-@export var coin_collector_shape: CollisionShape3D
 @export var raised_collector_radius: float = 5.0
 @export var default_collector_radius: float = 0.2
 
@@ -17,6 +14,16 @@ extends State
 @export_category("Light Sphere Scale")
 @export var min_sphere_scale: Vector3 = Vector3.ZERO
 @export var max_sphere_scale: Vector3 = Vector3.ONE
+
+@export_category("Torch Ring Scale")
+@export var min_ring_scale: Vector3 = Vector3.ZERO
+@export var max_ring_scale: Vector3 = Vector3.ONE
+
+@export_group("References")
+@export var glory_hand: GloryHand
+@export var raise_light: OmniLight3D
+@export var coin_collector_shape: CollisionShape3D
+@export var torch_ring: Sprite3D
 
 var current_radius: float = 0.2
 var active_tween: Tween # Keep track of the tween so we can kill it if interrupted
@@ -65,6 +72,10 @@ func update(delta: float) -> void:
 	if glory_hand and glory_hand.light_sphere:
 		glory_hand.light_sphere.scale = min_sphere_scale.lerp(max_sphere_scale, progress)
 
+	# Scale the torch_ring up along with the growth progress
+	if torch_ring:
+		torch_ring.scale = min_ring_scale.lerp(max_ring_scale, progress)
+
 func exit() -> void:
 	glory_hand.set_flame_color(glory_hand.default_flame_color)
 	
@@ -84,3 +95,6 @@ func exit() -> void:
 		
 	if glory_hand and glory_hand.light_sphere:
 		active_tween.tween_property(glory_hand.light_sphere, "scale", min_sphere_scale, shrink_duration)
+		
+	if torch_ring:
+		active_tween.tween_property(torch_ring, "scale", min_ring_scale, shrink_duration)

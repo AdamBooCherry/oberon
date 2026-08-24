@@ -178,6 +178,8 @@ locale/translations=PackedStringArray("res://addons/maaacks_game_template/base/t
 [layer_names]
 
 3d_render/layer_2="FROG"
+3d_render/layer_3="DAD"
+3d_render/layer_6="SHADOWHIDE"
 
 [maaacks_game_template]
 
