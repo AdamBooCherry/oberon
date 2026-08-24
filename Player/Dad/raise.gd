@@ -5,15 +5,15 @@ extends State
 @export var lower_color: Color = Color.CYAN
 @export var tween_duration: float = 0.25 # How long the fade takes
 @export var glory_hand: GloryHand
+@export var light_energy: float = 3.0
 
 func enter() -> void:
 	glory_hand.set_flame_color(lower_color)
 	if not lower_light:
 		return
 		
-	# Smoothly fade light energy up to 5.0
 	var tween = create_tween()
-	tween.tween_property(lower_light, "light_energy", 5.0, tween_duration)
+	tween.tween_property(lower_light, "light_energy", light_energy, tween_duration)
 
 func update(_delta: float) -> void:
 	player.current_posture = -1.0
