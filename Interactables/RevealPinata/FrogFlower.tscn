@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://dk2te8uyo3gf6"]
+
+[ext_resource type="Script" uid="uid://djkohpertoddg" path="res://Interactables/RevealPinata/frog_flower.gd" id="1_bt7qw"]
+[ext_resource type="Script" uid="uid://br47nbfjqdbr7" path="res://Interactables/reveal_detector.gd" id="3_bit3q"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_cojvj"]
+radius = 0.1
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wuii1"]
+albedo_color = Color(0.48333335, 1, 0, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bt7qw"]
+albedo_color = Color(4.795308, 4.182315, 0, 1)
+
+[node name="FrogFlower" type="Node3D" unique_id=1450711794 node_paths=PackedStringArray("reveal_detector", "marker_3d")]
+script = ExtResource("1_bt7qw")
+reveal_detector = NodePath("RevealDetector")
+marker_3d = NodePath("Marker3D")
+
+[node name="RevealDetector" type="Area3D" parent="." unique_id=512661672]
+script = ExtResource("3_bit3q")
+metadata/_custom_type_script = "uid://br47nbfjqdbr7"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RevealDetector" unique_id=1115540154]
+shape = SubResource("SphereShape3D_cojvj")
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="." unique_id=1709856018]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.38232422, 0)
+radius = 0.19384766
+height = 1.2353516
+material = SubResource("StandardMaterial3D_wuii1")
+
+[node name="Marker3D" type="Marker3D" parent="." unique_id=1720585055]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.22943914, 0)
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="Marker3D" unique_id=62403428]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, -0.01082468, 0, -0.5820645)
+radius = 0.69921875
+height = 0.29760742
+material = SubResource("StandardMaterial3D_bt7qw")

@@ -6,6 +6,7 @@ extends State
 @export var tween_duration: float = 0.25 # How long the fade takes
 @export var glory_hand: GloryHand
 @export var light_energy: float = 3.0
+@export var reveal_area: RevealArea
 
 func enter() -> void:
 	glory_hand.set_flame_color(lower_color)
@@ -15,6 +16,7 @@ func enter() -> void:
 	glory_hand.switch_pose(.95)
 	var tween = create_tween()
 	tween.tween_property(lower_light, "light_energy", light_energy, tween_duration)
+	reveal_area.monitorable = true
 
 func update(_delta: float) -> void:
 	player.current_posture = -1.0
@@ -33,3 +35,4 @@ func exit() -> void:
 	# Smoothly fade light energy back down to 0 when exiting
 	var tween = create_tween()
 	tween.tween_property(lower_light, "light_energy", 0.0, tween_duration)
+	reveal_area.monitorable = false

@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://b4lro5g46q76v"]
 
 [ext_resource type="Texture2D" uid="uid://c4315gjdfs4ye" path="res://Assets/Particle FX/circle_05.png" id="1_5u43v"]
-[ext_resource type="Script" uid="uid://cy6q6bvv2enjc" path="res://Coin/coin.gd" id="1_ewyp4"]
+[ext_resource type="Script" uid="uid://cy6q6bvv2enjc" path="res://Interactables/Coin/coin.gd" id="1_ewyp4"]
 [ext_resource type="AudioStream" uid="uid://cwmanln426syf" path="res://Audio/270410__littlerobotsoundfactory__pickup_gold_04.wav" id="3_0wmpe"]
 
 [sub_resource type="Curve" id="Curve_ewyp4"]

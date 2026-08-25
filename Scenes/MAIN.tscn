@@ -129,7 +129,7 @@ func _ready() -> void:
 	InventoryManager.currency_changed.connect(_on_currency_changed)
 	text = str(InventoryManager.current_currency)
 
-func _on_currency_changed(new_amount: int):
+func _on_currency_changed(_new_amount: int):
 	## tween a bounce for every update
 	text = str(InventoryManager.current_currency)
 "
