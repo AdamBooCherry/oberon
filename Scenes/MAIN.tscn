@@ -21,7 +21,7 @@ shader_parameter/dithering = true
 shader_parameter/colors = 24
 shader_parameter/dither_size = 2
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_mhs8k"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_73r58"]
 viewport_path = NodePath("SubViewportContainer/SubViewport/MAIN/UI/FrogTexture/FrogViewport")
 
 [sub_resource type="Skin" id="Skin_mhs8k"]
@@ -112,6 +112,28 @@ bind/27/name = &"BackFoot.R"
 bind/27/bone = -1
 bind/27/pose = Transform3D(0.9279009, -0.37282678, -3.2151747e-06, -0.37282678, -0.92790097, 5.5300724e-08, -2.9969594e-06, 1.2041659e-06, -1.0000001, 0.01375617, -0.0009840451, -3.2893375e-05)
 
+[sub_resource type="ViewportTexture" id="ViewportTexture_ufbfe"]
+viewport_path = NodePath("SubViewportContainer/SubViewport/MAIN/UI/CoinTexture/CoinTexture")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ufbfe"]
+metallic = 1.0
+roughness = 0.45
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_csh6n"]
+albedo_color = Color(0, 0.7999997, 1, 1)
+
+[sub_resource type="GDScript" id="GDScript_csh6n"]
+script/source = "extends Label
+
+func _ready() -> void:
+	InventoryManager.currency_changed.connect(_on_currency_changed)
+	text = str(InventoryManager.current_currency)
+
+func _on_currency_changed(new_amount: int):
+	## tween a bounce for every update
+	text = str(InventoryManager.current_currency)
+"
+
 [node name="Control" type="Control" unique_id=1924878021]
 layout_mode = 3
 anchors_preset = 15
@@ -164,7 +186,7 @@ world_transition = NodePath("WorldTransition")
 metadata/_custom_type_script = "uid://dkyo53x8ie3j5"
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="SubViewportContainer/SubViewport/MAIN/World" unique_id=331212326]
-environment = ExtResource("4_n02r8")
+environment = ExtResource("7_kjvde")
 
 [node name="SkyLight" type="DirectionalLight3D" parent="SubViewportContainer/SubViewport/MAIN/World" unique_id=1200277973]
 transform = Transform3D(-0.86602545, -0.30074093, 0.39944327, 2.2351742e-08, 0.79888654, 0.6014818, -0.50000006, 0.5208986, -0.691856, 0, 0, 0)
@@ -195,7 +217,7 @@ offset_right = 23.0
 offset_bottom = -271.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = SubResource("ViewportTexture_mhs8k")
+texture = SubResource("ViewportTexture_73r58")
 expand_mode = 1
 stretch_mode = 4
 
@@ -208,9 +230,10 @@ render_target_update_mode = 4
 [node name="Camera3D" type="Camera3D" parent="SubViewportContainer/SubViewport/MAIN/UI/FrogTexture/FrogViewport" unique_id=311741069]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.72336936, -0.4186117, 0.20229745)
 
-[node name="RotationComponent" type="Node3D" parent="SubViewportContainer/SubViewport/MAIN/UI/FrogTexture/FrogViewport/Camera3D" unique_id=1726394020]
+[node name="RotationComponent" type="Node3D" parent="SubViewportContainer/SubViewport/MAIN/UI/FrogTexture/FrogViewport/Camera3D" unique_id=2010420136]
 transform = Transform3D(2, -3.496911e-07, -1.5285484e-14, 0, -8.742278e-08, 2, -3.496911e-07, -2, -8.742278e-08, 0, -0.00999999, -0.108)
 script = ExtResource("11_mhs8k")
+metadata/_custom_type_script = "uid://d4lj82wyqfv14"
 
 [node name="Frog" type="MeshInstance3D" parent="SubViewportContainer/SubViewport/MAIN/UI/FrogTexture/FrogViewport/Camera3D/RotationComponent" unique_id=1856857411]
 layers = 2
@@ -226,7 +249,69 @@ light_color = Color(0.30980393, 1, 1, 1)
 transform = Transform3D(1, 0, -3.3407487e-22, 0, 1, 0, 3.3407487e-22, 0, 1, 0.07737023, -0.01998967, -0.108)
 light_color = Color(1, 0, 1, 1)
 
+[node name="CoinTexture" type="TextureRect" parent="SubViewportContainer/SubViewport/MAIN/UI" unique_id=558946743]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 6.0
+offset_top = 2.0
+offset_right = -554.0
+offset_bottom = -391.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("ViewportTexture_ufbfe")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="CoinTexture" type="SubViewport" parent="SubViewportContainer/SubViewport/MAIN/UI/CoinTexture" unique_id=2096358517]
+own_world_3d = true
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(60, 60)
+
+[node name="Camera3D" type="Camera3D" parent="SubViewportContainer/SubViewport/MAIN/UI/CoinTexture/CoinTexture" unique_id=796269943]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.72336936, -0.4186117, 0.20229745)
+
+[node name="RotationComponent" type="Node3D" parent="SubViewportContainer/SubViewport/MAIN/UI/CoinTexture/CoinTexture/Camera3D" unique_id=552900577]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0.029999971, 0.07604653, -0.62795997)
+script = ExtResource("11_mhs8k")
+metadata/_custom_type_script = "uid://d4lj82wyqfv14"
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="SubViewportContainer/SubViewport/MAIN/UI/CoinTexture/CoinTexture/Camera3D/RotationComponent" unique_id=720596295]
+transform = Transform3D(0.5, 0, 0, 0, 0.2910615, -0.40655038, 0, 0.40655038, 0.2910615, 0, 0, 0)
+radius = 0.3
+height = 0.05
+sides = 7
+smooth_faces = false
+material = SubResource("StandardMaterial3D_ufbfe")
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="SubViewportContainer/SubViewport/MAIN/UI/CoinTexture/CoinTexture/Camera3D/RotationComponent" unique_id=116181516]
+transform = Transform3D(0.5, 0, 0, 0, 0.2910615, -0.40655038, 0, 0.40655038, 0.2910615, 0, 0, 0)
+radius = 0.32
+height = 0.01
+sides = 7
+material = SubResource("StandardMaterial3D_csh6n")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="SubViewportContainer/SubViewport/MAIN/UI/CoinTexture/CoinTexture/Camera3D" unique_id=1229301823]
+transform = Transform3D(1, 0, 0, 0, 0.582123, -0.81310076, 0, 0.81310076, 0.582123, -0.184353, 0.7082643, -0.25924373)
+light_color = Color(0.30980393, 1, 1, 1)
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="SubViewportContainer/SubViewport/MAIN/UI/CoinTexture/CoinTexture/Camera3D" unique_id=1428686836]
+transform = Transform3D(1, 0, 0, 0, 0.582123, -0.81310076, 0, 0.81310076, 0.582123, -0.35294056, -0.31302387, -0.09736848)
+light_color = Color(1, 0.64819175, 0.9843734, 1)
+
+[node name="Label" type="Label" parent="SubViewportContainer/SubViewport/MAIN/UI/CoinTexture" unique_id=1377197401]
+layout_mode = 0
+offset_left = 84.0
+offset_top = 12.0
+offset_right = 209.0
+offset_bottom = 62.0
+theme_override_font_sizes/font_size = 26
+text = "Test"
+script = SubResource("GDScript_csh6n")
+
 [node name="UI" type="Control" parent="SubViewportContainer/SubViewport/MAIN/UI" unique_id=1778609380]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0

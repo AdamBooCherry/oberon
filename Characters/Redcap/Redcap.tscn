@@ -1,5 +1,6 @@
 [gd_scene format=4 uid="uid://clvkk4wo7elk2"]
 
+[ext_resource type="Script" uid="uid://x0itvoniya6n" path="res://Characters/Redcap/redcap.gd" id="1_8jc84"]
 [ext_resource type="Material" uid="uid://cnv0av1g8qqsk" path="res://redcap_material.tres" id="1_ystwd"]
 [ext_resource type="Material" uid="uid://dahsgl0gy2cdy" path="res://cool_outline.tres" id="2_v3isv"]
 [ext_resource type="Texture2D" uid="uid://ccp6a8yu6t3ky" path="res://Assets/Particle FX/light_03.png" id="2_wx3c1"]
@@ -556,34 +557,35 @@ _surfaces = [{
 blend_shape_mode = 0
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_wuii1"]
-top_radius = 0.6430664
-bottom_radius = 1.1430664
-height = 1.942627
+top_radius = 0.8
+bottom_radius = 1.2
+height = 1.8
 radial_segments = 10
 rings = 3
 cap_top = false
 cap_bottom = false
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_73r58"]
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_mjexb"]
 noise_type = 2
-frequency = 0.0484
+frequency = 0.0251
+fractal_octaves = 4
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_73r58"]
-noise = SubResource("FastNoiseLite_73r58")
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_6mnir"]
+noise = SubResource("FastNoiseLite_mjexb")
 seamless = true
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_uanm6"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_73r58"]
 render_priority = 0
 shader = ExtResource("8_uanm6")
-shader_parameter/blood_noise = SubResource("NoiseTexture2D_73r58")
-shader_parameter/speed = -0.5
-shader_parameter/stretch_y = 0.11
-shader_parameter/blood_top_color = Color(1.8247963, 0.24563466, 0.24563466, 1)
+shader_parameter/blood_noise = SubResource("NoiseTexture2D_6mnir")
+shader_parameter/speed = 0.83
+shader_parameter/stretch_y = -0.08
+shader_parameter/blood_top_color = Color(0.6, 0.05, 0.05, 1)
 shader_parameter/blood_bottom_color = Color(0.2, 0, 0, 1)
-shader_parameter/threshold = 0.68400003249
+shader_parameter/threshold = 0.5
 shader_parameter/smoothness = 0.05
-shader_parameter/fade_start = 0.170000008075
-shader_parameter/fade_end = 0.82000003895
+shader_parameter/fade_start = 0.0
+shader_parameter/fade_end = 1.0
 
 [sub_resource type="GDScript" id="GDScript_wuii1"]
 script/source = "### THIS HELPER SCRIPT SUCKS BUT THE OUTLINE RENDERS WRONG WITHOUT IT ###
@@ -595,7 +597,12 @@ func _ready() -> void:
 	cool_outline.shading_mode = BaseMaterial3D.SHADING_MODE_PER_PIXEL
 "
 
-[node name="Redcap" type="Node3D" unique_id=1948716909]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_wuii1"]
+radius = 0.49847412
+height = 2.1105652
+
+[node name="Redcap" type="CharacterBody3D" unique_id=1714707085]
+script = ExtResource("1_8jc84")
 
 [node name="RedcapTexturedV1" type="Node3D" parent="." unique_id=2056463847]
 
@@ -1093,9 +1100,9 @@ bone_name = "RedcapHat"
 bone_idx = 49
 
 [node name="Blood" type="SoftBody3D" parent="RedcapTexturedV1/metarig/Skeleton3D/CapAttachment" unique_id=1935235394]
-transform = Transform3D(5.3442295e-07, -1.1207662, 0, -1.1207662, -5.3442295e-07, 0, 0, 0, -1.1207662, 1.2096065, 0.45323533, -1.7484818e-07)
+transform = Transform3D(-4.3711395e-08, -0.9999999, 0, 0.9999999, -4.3711395e-08, 0, 0, 0, 0.8599999, 0.97, 0.40838665, 0)
 mesh = SubResource("CylinderMesh_wuii1")
-surface_material_override/0 = SubResource("ShaderMaterial_uanm6")
+surface_material_override/0 = SubResource("ShaderMaterial_73r58")
 collision_mask = 0
 simulation_precision = 3
 total_mass = 10.0
@@ -1138,3 +1145,7 @@ attachments/9/offset = Vector3(0, 0, 0)
 [node name="ForceMaterialUpdate" type="Node" parent="." unique_id=1526424913]
 script = SubResource("GDScript_wuii1")
 cool_outline = ExtResource("2_v3isv")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1330481180]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0583344, 0)
+shape = SubResource("CapsuleShape3D_wuii1")

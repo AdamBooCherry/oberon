@@ -70,6 +70,9 @@ size = Vector3(6.0411377, 1, 9.066563)
 [sub_resource type="BoxShape3D" id="BoxShape3D_4kosd"]
 size = Vector3(7.775879, 1, 17.601746)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_ugu4n"]
+size = Vector3(6.2685547, 1, 17.314476)
+
 [node name="ForestArea" type="Node3D" unique_id=2065995814]
 
 [node name="CPUParticles3D" type="CPUParticles3D" parent="." unique_id=664091001]
@@ -364,6 +367,6 @@ script = ExtResource("5_sm0io")
 metadata/_custom_type_script = "uid://drpmv38e02bjw"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Cameras/FixedCamera 07/CameraTriggerArea" unique_id=1102046482]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.857666, 0, -3.7604065)
-shape = SubResource("BoxShape3D_4kosd")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.4279175, 1.9597423, -3.6170006)
+shape = SubResource("BoxShape3D_ugu4n")
 debug_color = Color(1, 1, 0, 1)
