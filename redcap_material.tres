@@ -1,0 +1,27 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://cnv0av1g8qqsk"]
+
+[ext_resource type="Texture2D" uid="uid://b0d8ctaglkt51" path="res://Characters/Redcap/RedcapTexturedV1_Gradient Pallete.png" id="1_ip8vg"]
+[ext_resource type="Material" uid="uid://dahsgl0gy2cdy" path="res://cool_outline.tres" id="2_2xi4b"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_uanm6"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_v3isv"]
+noise = SubResource("FastNoiseLite_uanm6")
+seamless = true
+
+[resource]
+resource_local_to_scene = true
+resource_name = "GradientMaterial"
+render_priority = 1
+next_pass = ExtResource("2_2xi4b")
+cull_mode = 2
+albedo_texture = ExtResource("1_ip8vg")
+roughness = 0.5
+clearcoat = 0.5
+clearcoat_roughness = 0.7
+clearcoat_texture = SubResource("NoiseTexture2D_v3isv")
+stencil_mode = 1
+stencil_flags = 2
+stencil_reference = 2
+stencil_color = Color(1, 0, 0, 1)
+metadata/_gltf_primary_texture_coord = 0
