@@ -68,7 +68,7 @@ size = Vector3(10.479492, 1, 4)
 size = Vector3(6.0411377, 1, 9.066563)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_4kosd"]
-size = Vector3(7.775879, 1, 19.848145)
+size = Vector3(7.775879, 1, 17.601746)
 
 [node name="ForestArea" type="Node3D" unique_id=2065995814]
 
@@ -286,6 +286,24 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3544922, 0, 0.77316)
 shape = SubResource("BoxShape3D_g6gkq")
 debug_color = Color(1, 1, 0, 1)
 
+[node name="FixedCamera 06" type="Node3D" parent="Cameras" unique_id=2142081572]
+transform = Transform3D(1, 0, -2.9802322e-08, -1.4901161e-08, 1.0000002, 0, -1.1920929e-07, 0, 1, -18.78854, -9.536743e-07, -46.04201)
+
+[node name="Camera3D" type="Camera3D" parent="Cameras/FixedCamera 06" unique_id=1196543704 node_paths=PackedStringArray("trigger_area")]
+transform = Transform3D(0.9133507, -0.19044773, 0.3598892, 0.0040331096, 0.88805896, 0.45971143, -0.40715376, -0.41842642, 0.8118776, 2.6395912, 3.679917, 4.1959)
+script = ExtResource("4_ugu4n")
+trigger_area = NodePath("../CameraTriggerArea")
+metadata/_custom_type_script = "uid://bkbqspmutvdh1"
+
+[node name="CameraTriggerArea" type="Area3D" parent="Cameras/FixedCamera 06" unique_id=296780918]
+script = ExtResource("5_sm0io")
+metadata/_custom_type_script = "uid://drpmv38e02bjw"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Cameras/FixedCamera 06/CameraTriggerArea" unique_id=427694307]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3544922, 0, 0.77316)
+shape = SubResource("BoxShape3D_g6gkq")
+debug_color = Color(1, 1, 0, 1)
+
 [node name="FixedCamera 04" type="Node3D" parent="Cameras" unique_id=1514443920]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35.449, 0, -25.536)
 
@@ -306,7 +324,7 @@ shape = SubResource("BoxShape3D_bv2yy")
 debug_color = Color(1, 1, 0, 1)
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="Cameras/FixedCamera 04/CameraTriggerArea" unique_id=487040472]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.341972, -2.0861626e-07, 5.207898)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.3419724, -2.0861626e-07, 5.207899)
 shape = SubResource("BoxShape3D_khta5")
 debug_color = Color(1, 1, 0, 1)
 
@@ -327,5 +345,25 @@ metadata/_custom_type_script = "uid://drpmv38e02bjw"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Cameras/FixedCamera 05/CameraTriggerArea" unique_id=482038192]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.857666, 0, -2.6372075)
+shape = SubResource("BoxShape3D_4kosd")
+debug_color = Color(1, 1, 0, 1)
+
+[node name="FixedCamera 07" type="Node3D" parent="Cameras" unique_id=1642910911]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -44.97198, 0, 45.985596)
+
+[node name="Camera3D" type="Camera3D" parent="Cameras/FixedCamera 07" unique_id=971443939 node_paths=PackedStringArray("trigger_area")]
+transform = Transform3D(0.81303805, 0.15006205, -0.5625395, 0.00077201054, 0.96593416, 0.2587867, 0.58221, -0.21083775, 0.78522533, -5.6320686, 4.4609365, 11.93008)
+current = true
+fov = 34.637566
+script = ExtResource("4_ugu4n")
+trigger_area = NodePath("../CameraTriggerArea")
+metadata/_custom_type_script = "uid://bkbqspmutvdh1"
+
+[node name="CameraTriggerArea" type="Area3D" parent="Cameras/FixedCamera 07" unique_id=1616700755]
+script = ExtResource("5_sm0io")
+metadata/_custom_type_script = "uid://drpmv38e02bjw"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Cameras/FixedCamera 07/CameraTriggerArea" unique_id=1102046482]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.857666, 0, -3.7604065)
 shape = SubResource("BoxShape3D_4kosd")
 debug_color = Color(1, 1, 0, 1)

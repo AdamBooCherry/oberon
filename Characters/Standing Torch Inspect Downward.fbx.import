@@ -43,7 +43,7 @@ _subresources={
 "animations": {
 "mixamo_com": {
 "save_to_file/enabled": true,
-"save_to_file/fallback_path": "res://Player/Animations/Old/Handy/standing_torch_inspect_downward.anim",
+"save_to_file/fallback_path": "res://Player/Animations/standing_torch_inspect_downward.anim",
 "save_to_file/keep_custom_tracks": "",
 "save_to_file/path": "uid://dr3tpyurhid2p",
 "settings/loop_mode": 0,
