@@ -7,6 +7,7 @@
 [ext_resource type="Shader" uid="uid://cqndthnj8bo71" path="res://Characters/Redcap/drops.gdshader" id="3_wx3c1"]
 [ext_resource type="Script" uid="uid://de2cpyif2dypp" path="res://Player/Dad/3d_wiggle.gd" id="4_ystwd"]
 [ext_resource type="PackedScene" uid="uid://bfnvtq81kd7bv" path="res://Characters/Redcap/Hook.tscn" id="5_52qxm"]
+[ext_resource type="Shader" uid="uid://u3hqbulxxqpq" path="res://Characters/Redcap/blood_drip.gdshader" id="8_uanm6"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_iohra"]
 resource_name = "RedcapTexturedV1_Cylinder_005"
@@ -554,6 +555,36 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 
+[sub_resource type="CylinderMesh" id="CylinderMesh_wuii1"]
+top_radius = 0.6430664
+bottom_radius = 1.1430664
+height = 1.942627
+radial_segments = 10
+rings = 3
+cap_top = false
+cap_bottom = false
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_73r58"]
+noise_type = 2
+frequency = 0.0484
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_73r58"]
+noise = SubResource("FastNoiseLite_73r58")
+seamless = true
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_uanm6"]
+render_priority = 0
+shader = ExtResource("8_uanm6")
+shader_parameter/blood_noise = SubResource("NoiseTexture2D_73r58")
+shader_parameter/speed = -0.5
+shader_parameter/stretch_y = 0.11
+shader_parameter/blood_top_color = Color(1.8247963, 0.24563466, 0.24563466, 1)
+shader_parameter/blood_bottom_color = Color(0.2, 0, 0, 1)
+shader_parameter/threshold = 0.68400003249
+shader_parameter/smoothness = 0.05
+shader_parameter/fade_start = 0.170000008075
+shader_parameter/fade_end = 0.82000003895
+
 [sub_resource type="GDScript" id="GDScript_wuii1"]
 script/source = "### THIS HELPER SCRIPT SUCKS BUT THE OUTLINE RENDERS WRONG WITHOUT IT ###
 extends Node
@@ -1048,40 +1079,61 @@ mesh = SubResource("ArrayMesh_ak4ow")
 skin = SubResource("Skin_6mlg2")
 skeleton = NodePath("..")
 
-[node name="BoneAttachment3D" type="BoneAttachment3D" parent="RedcapTexturedV1/metarig/Skeleton3D" unique_id=1254891297]
+[node name="HandAttachmnet" type="BoneAttachment3D" parent="RedcapTexturedV1/metarig/Skeleton3D" unique_id=1254891297]
 transform = Transform3D(-0.6877815, -0.72552204, 0.023963809, 0.72588664, -0.6876825, 0.013449877, 0.0067214407, 0.026645651, 0.99962187, -1.158559, -0.8129401, -0.05835628)
 bone_name = "hand.R"
 bone_idx = 25
 
-[node name="Hook" parent="RedcapTexturedV1/metarig/Skeleton3D/BoneAttachment3D" unique_id=215616046 instance=ExtResource("5_52qxm")]
+[node name="Hook" parent="RedcapTexturedV1/metarig/Skeleton3D/HandAttachmnet" unique_id=215616046 instance=ExtResource("5_52qxm")]
 transform = Transform3D(-4.3711385e-08, 1, 4.371139e-08, 0, -4.371139e-08, 1, 1, 4.371139e-08, 0, 1.5849768e-08, 0.192151, 6.9849226e-10)
 
-[node name="SpringBoneSimulator3D" type="SpringBoneSimulator3D" parent="RedcapTexturedV1/metarig/Skeleton3D" unique_id=668196851]
-setting_count = 1
-settings/0/root_bone_name = "RedcapHatLeft"
-settings/0/root_bone = 51
-settings/0/end_bone_name = "RedcapHatLeft"
-settings/0/end_bone = 51
-settings/0/extend_end_bone = true
-settings/0/end_bone/direction = 6
-settings/0/end_bone/length = 0.0
-settings/0/center_from = 1
-settings/0/center_node = NodePath("")
-settings/0/individual_config = false
-settings/0/rotation_axis = 3
-settings/0/radius/value = 0.02
-settings/0/radius/damping_curve = null
-settings/0/stiffness/value = 1.0
-settings/0/stiffness/damping_curve = null
-settings/0/drag/value = 0.4
-settings/0/drag/damping_curve = null
-settings/0/gravity/value = 0.0
-settings/0/gravity/damping_curve = null
-settings/0/gravity/direction = Vector3(0, -1, 0)
-settings/0/joints/0/bone_name = "RedcapHatLeft"
-settings/0/joints/0/bone = 51
-settings/0/enable_all_child_collisions = true
-settings/0/exclude_collision_count = 0
+[node name="CapAttachment" type="BoneAttachment3D" parent="RedcapTexturedV1/metarig/Skeleton3D" unique_id=118249193]
+transform = Transform3D(0, 0, 1, -1, -4.7683716e-07, 0, 4.7683716e-07, -1, 0, 1.748482e-07, 0.78414464, 0.45323482)
+bone_name = "RedcapHat"
+bone_idx = 49
+
+[node name="Blood" type="SoftBody3D" parent="RedcapTexturedV1/metarig/Skeleton3D/CapAttachment" unique_id=1935235394]
+transform = Transform3D(5.3442295e-07, -1.1207662, 0, -1.1207662, -5.3442295e-07, 0, 0, 0, -1.1207662, 1.2096065, 0.45323533, -1.7484818e-07)
+mesh = SubResource("CylinderMesh_wuii1")
+surface_material_override/0 = SubResource("ShaderMaterial_uanm6")
+collision_mask = 0
+simulation_precision = 3
+total_mass = 10.0
+linear_stiffness = 0.2
+shrinking_factor = -0.27
+damping_coefficient = 0.67
+ray_pickable = false
+pinned_points = [2, 3, 4, 5, 6, 7, 8, 9, 1, 0]
+attachments/0/point_index = 2
+attachments/0/spatial_attachment_path = NodePath("")
+attachments/0/offset = Vector3(0, 0, 0)
+attachments/1/point_index = 3
+attachments/1/spatial_attachment_path = NodePath("")
+attachments/1/offset = Vector3(0, 0, 0)
+attachments/2/point_index = 4
+attachments/2/spatial_attachment_path = NodePath("")
+attachments/2/offset = Vector3(0, 0, 0)
+attachments/3/point_index = 5
+attachments/3/spatial_attachment_path = NodePath("")
+attachments/3/offset = Vector3(0, 0, 0)
+attachments/4/point_index = 6
+attachments/4/spatial_attachment_path = NodePath("")
+attachments/4/offset = Vector3(0, 0, 0)
+attachments/5/point_index = 7
+attachments/5/spatial_attachment_path = NodePath("")
+attachments/5/offset = Vector3(0, 0, 0)
+attachments/6/point_index = 8
+attachments/6/spatial_attachment_path = NodePath("")
+attachments/6/offset = Vector3(0, 0, 0)
+attachments/7/point_index = 9
+attachments/7/spatial_attachment_path = NodePath("")
+attachments/7/offset = Vector3(0, 0, 0)
+attachments/8/point_index = 1
+attachments/8/spatial_attachment_path = NodePath("")
+attachments/8/offset = Vector3(0, 0, 0)
+attachments/9/point_index = 0
+attachments/9/spatial_attachment_path = NodePath("")
+attachments/9/offset = Vector3(0, 0, 0)
 
 [node name="ForceMaterialUpdate" type="Node" parent="." unique_id=1526424913]
 script = SubResource("GDScript_wuii1")
