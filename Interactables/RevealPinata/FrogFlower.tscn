@@ -1,10 +1,13 @@
 [gd_scene format=3 uid="uid://dk2te8uyo3gf6"]
 
 [ext_resource type="Script" uid="uid://djkohpertoddg" path="res://Interactables/RevealPinata/frog_flower.gd" id="1_bt7qw"]
+[ext_resource type="PackedScene" uid="uid://b3am70hdq707n" path="res://Assets/Environment/FrogSunflower.glb" id="3_6ii33"]
 [ext_resource type="Script" uid="uid://br47nbfjqdbr7" path="res://Interactables/reveal_detector.gd" id="3_bit3q"]
+[ext_resource type="PackedScene" uid="uid://b3as5u4evhsvq" path="res://Assets/Environment/FrogSunflowerHead.glb" id="4_bit3q"]
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_cojvj"]
-radius = 0.1
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_6jhai"]
+height = 1.9526367
+radius = 0.20654297
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wuii1"]
 albedo_color = Color(0.48333335, 1, 0, 1)
@@ -22,10 +25,15 @@ script = ExtResource("3_bit3q")
 metadata/_custom_type_script = "uid://br47nbfjqdbr7"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RevealDetector" unique_id=1115540154]
-shape = SubResource("SphereShape3D_cojvj")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.02368164, 0)
+shape = SubResource("CylinderShape3D_6jhai")
+
+[node name="FrogSunflower" parent="RevealDetector/CollisionShape3D" unique_id=733688266 instance=ExtResource("3_6ii33")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -0.029055968, -0.33054906, 0.009151369)
 
 [node name="CSGCylinder3D" type="CSGCylinder3D" parent="." unique_id=1709856018]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.38232422, 0)
+visible = false
 radius = 0.19384766
 height = 1.2353516
 material = SubResource("StandardMaterial3D_wuii1")
@@ -35,6 +43,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.22943914, 0)
 
 [node name="CSGCylinder3D2" type="CSGCylinder3D" parent="Marker3D" unique_id=62403428]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, -0.01082468, 0, -0.5820645)
+visible = false
 radius = 0.69921875
 height = 0.29760742
 material = SubResource("StandardMaterial3D_bt7qw")
+
+[node name="FrogSunflowerHead" parent="Marker3D" unique_id=809787875 instance=ExtResource("4_bit3q")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -0.002, -1.203, -0.001)
