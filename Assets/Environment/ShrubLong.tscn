@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://4g8ei1r8iubw"]
+
+[ext_resource type="PackedScene" uid="uid://qbm1u2bydqji" path="res://Assets/Environment/Shrub_Long.glb" id="1_00gh2"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_wuii1"]
+size = Vector3(6.5128174, 1.0746002, 0.50097656)
+
+[node name="ShrubLong" type="Node3D" unique_id=290264012]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=1641170069]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=581780143]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.113220215, 0.53824615, 0)
+shape = SubResource("BoxShape3D_wuii1")
+
+[node name="Shrub_Long2" parent="." unique_id=1036991980 instance=ExtResource("1_00gh2")]
