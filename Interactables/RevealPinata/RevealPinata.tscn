@@ -3,14 +3,19 @@
 [ext_resource type="Script" uid="uid://c7haeu8bylrpf" path="res://Interactables/RevealPinata/reveal_pinata.gd" id="1_1cd3x"]
 [ext_resource type="PackedScene" uid="uid://b4lro5g46q76v" path="res://Interactables/Coin/coin.tscn" id="2_hu484"]
 [ext_resource type="Script" uid="uid://br47nbfjqdbr7" path="res://Interactables/reveal_detector.gd" id="2_ryhb4"]
+[ext_resource type="Script" uid="uid://cabbj236aqx3r" path="res://Interactables/loot_spawner.gd" id="4_hu484"]
+[ext_resource type="Script" uid="uid://c05gqa4rsrhtn" path="res://Interactables/RevealPinata/health_component.gd" id="5_l5phc"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_cojvj"]
 radius = 0.1
 
-[node name="RevealPinata" type="Node3D" unique_id=1450711794 node_paths=PackedStringArray("reveal_detector")]
+[node name="RevealPinata" type="Node3D" unique_id=547381027 node_paths=PackedStringArray("reveal_detector", "health_component", "loot_spawner", "visual_node")]
 script = ExtResource("1_1cd3x")
 reveal_detector = NodePath("RevealDetector")
-candy_scene = ExtResource("2_hu484")
+health_component = NodePath("HealthComponent")
+loot_spawner = NodePath("LootSpawner")
+visual_node = NodePath("CSGSphere3D")
+metadata/_custom_type_script = "uid://c7haeu8bylrpf"
 
 [node name="RevealDetector" type="Area3D" parent="." unique_id=512661672]
 script = ExtResource("2_ryhb4")
@@ -23,3 +28,12 @@ shape = SubResource("SphereShape3D_cojvj")
 layers = 2
 cast_shadow = 3
 radius = 0.2
+
+[node name="LootSpawner" type="Node3D" parent="." unique_id=2124941384]
+script = ExtResource("4_hu484")
+loot_scene = ExtResource("2_hu484")
+metadata/_custom_type_script = "uid://cabbj236aqx3r"
+
+[node name="HealthComponent" type="Node" parent="." unique_id=1521352687]
+script = ExtResource("5_l5phc")
+metadata/_custom_type_script = "uid://c05gqa4rsrhtn"

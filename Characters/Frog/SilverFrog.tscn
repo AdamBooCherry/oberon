@@ -10,6 +10,7 @@
 [ext_resource type="Script" uid="uid://837dr23o7h80" path="res://Characters/Frog/frog_run_from_player_state.gd" id="7_deubo"]
 [ext_resource type="Script" uid="uid://d4b7gg5td8vk3" path="res://Characters/Frog/frog_stunned_state.gd" id="8_7mvmj"]
 [ext_resource type="Script" uid="uid://byj5yrq2me2x5" path="res://Characters/Frog/frog_startled_state.gd" id="9_dmsjd"]
+[ext_resource type="PackedScene" uid="uid://bqbyd454l7mgo" path="res://Interactables/RevealPinata/RevealPinata.tscn" id="11_frgxb"]
 
 [sub_resource type="Skin" id="Skin_w20oo"]
 resource_name = "Skin"
@@ -962,7 +963,7 @@ radius = 0.41190192
 [sub_resource type="SphereShape3D" id="SphereShape3D_cojvj"]
 radius = 0.30162555
 
-[node name="Frog" type="CharacterBody3D" unique_id=2044770608 node_paths=PackedStringArray("player_detector", "animation_player", "navigation_agent_3d", "state_machine", "frog_mesh") groups=["FROG"]]
+[node name="Frog" type="CharacterBody3D" unique_id=2044770608 node_paths=PackedStringArray("player_detector", "animation_player", "navigation_agent_3d", "state_machine", "frog_mesh", "reveal_pinata") groups=["FROG"]]
 slide_on_ceiling = false
 script = ExtResource("1_btgrc")
 player_detector = NodePath("PlayerDetector")
@@ -970,6 +971,7 @@ animation_player = NodePath("AnimationPlayer")
 navigation_agent_3d = NodePath("NavigationAgent3D")
 state_machine = NodePath("StateMachine")
 frog_mesh = NodePath("Frog/Armature/Skeleton3D/Frog")
+reveal_pinata = NodePath("RevealPinata")
 metadata/_custom_type_script = "uid://6dxlg0dp6vho"
 
 [node name="Frog" type="Node3D" parent="." unique_id=1508475070]
@@ -1342,3 +1344,5 @@ metadata/_custom_type_script = "uid://byj5yrq2me2x5"
 volume_db = -10.0
 unit_size = 1.0
 max_polyphony = 2
+
+[node name="RevealPinata" parent="." unique_id=547381027 instance=ExtResource("11_frgxb")]

@@ -4,12 +4,21 @@
 [ext_resource type="PackedScene" uid="uid://b3am70hdq707n" path="res://Assets/Environment/FrogSunflower.glb" id="3_6ii33"]
 [ext_resource type="Script" uid="uid://br47nbfjqdbr7" path="res://Interactables/reveal_detector.gd" id="3_bit3q"]
 [ext_resource type="Texture2D" uid="uid://ddleejwpfyy5i" path="res://Assets/Environment/FrogSunflowerHead_Gradient Pallete.png" id="4_6ii33"]
+[ext_resource type="PackedScene" uid="uid://bqbyd454l7mgo" path="res://Interactables/RevealPinata/RevealPinata.tscn" id="5_bit3q"]
+
+[sub_resource type="Curve" id="Curve_6ii33"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), -0.9413114, 0.0, 0, 0]
+point_count = 2
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gtjbo"]
 resource_name = "Gradient Material"
 cull_mode = 2
 albedo_texture = ExtResource("4_6ii33")
+metallic = 1.0
 roughness = 0.5
+emission_enabled = true
+emission = Color(1, 0.90000004, 0, 1)
+emission_energy_multiplier = 0.3
 metadata/_gltf_primary_texture_coord = 0
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_tc0wb"]
@@ -46,24 +55,58 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_tc0wb")
 
+[sub_resource type="Gradient" id="Gradient_6ii33"]
+offsets = PackedFloat32Array(0.63901347, 1)
+colors = PackedColorArray(1, 0.68333334, 0, 0, 1, 0.68333334, 0, 0.05882353)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_02crh"]
+gradient = SubResource("Gradient_6ii33")
+fill_from = Vector2(0, 1)
+fill_to = Vector2(0, 0)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cojvj"]
+transparency = 1
+blend_mode = 1
+cull_mode = 2
+shading_mode = 0
+albedo_texture = SubResource("GradientTexture2D_02crh")
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_wuii1"]
+material = SubResource("StandardMaterial3D_cojvj")
+top_radius = 1.8
+bottom_radius = 2.819
+height = 13.017151
+cap_top = false
+cap_bottom = false
+
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_6jhai"]
 height = 0.9963379
 radius = 0.20654297
 
-[node name="FrogFlower" type="Node3D" unique_id=1450711794 node_paths=PackedStringArray("reveal_detector", "head_marker")]
+[node name="FrogFlower" type="Node3D" unique_id=738821802 node_paths=PackedStringArray("reveal_detector", "head_marker", "beam_transform")]
 script = ExtResource("1_bt7qw")
+grow_curve = SubResource("Curve_6ii33")
 reveal_detector = NodePath("RevealDetector")
 head_marker = NodePath("HeadMarker")
+beam_transform = NodePath("HeadMarker/SunflowerHead/BeamTransform")
+metadata/_custom_type_script = "uid://djkohpertoddg"
 
 [node name="FrogSunflower" parent="." unique_id=733688266 instance=ExtResource("3_6ii33")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0, 0)
 
 [node name="HeadMarker" type="Marker3D" parent="." unique_id=1720585055]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1823545, 0)
+transform = Transform3D(1, 0, 0, 0, 0.7071067, 0.7071067, 0, -0.7071067, 0.7071067, 0, 1.1823545, 0)
 
 [node name="SunflowerHead" type="MeshInstance3D" parent="HeadMarker" unique_id=1556236122]
 transform = Transform3D(-1.0927847e-08, 0, 0.25, 0, 0.25, 0, -0.25, 0, -1.0927847e-08, 0, -1.1863474, 0)
 mesh = SubResource("ArrayMesh_okaq5")
+
+[node name="BeamTransform" type="Node3D" parent="HeadMarker/SunflowerHead" unique_id=1948480791]
+transform = Transform3D(-4.371139e-08, -1, -1.5881868e-22, 1, -4.371139e-08, 1.7763568e-15, -1.7763568e-15, -8.1171654e-23, 1, 0.9157348, 5.6880717, -2.2204418e-16)
+
+[node name="SunflowerBeam" type="MeshInstance3D" parent="HeadMarker/SunflowerHead/BeamTransform" unique_id=2046302025]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 1.7763568e-15, -1.7763568e-15, 1, 2.3841858e-07, -6.3183546, 1.1223652e-14)
+mesh = SubResource("CylinderMesh_wuii1")
 
 [node name="RevealDetector" type="Area3D" parent="." unique_id=512661672]
 script = ExtResource("3_bit3q")
@@ -72,3 +115,5 @@ metadata/_custom_type_script = "uid://br47nbfjqdbr7"
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RevealDetector" unique_id=1115540154]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.50183105, 0)
 shape = SubResource("CylinderShape3D_6jhai")
+
+[node name="RevealPinata" parent="." unique_id=547381027 instance=ExtResource("5_bit3q")]

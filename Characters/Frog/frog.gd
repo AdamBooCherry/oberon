@@ -2,8 +2,9 @@ class_name FrogMob
 extends CharacterBody3D
 
 @export var move_speed: float = 1.5
-@export var run_speed: float = 5.0  # Added here
+@export var run_speed: float = 5.0 
 @export var detection_radius: float = 2.5
+@export var pinata_respawn_delay: float = 5.0
 
 @export_group("References")
 @export var player_detector: Area3D
@@ -11,6 +12,7 @@ extends CharacterBody3D
 @export var navigation_agent_3d: NavigationAgent3D
 @export var state_machine: StateMachine
 @export var frog_mesh: MeshInstance3D
+@export var reveal_pinata: RevealPinata
 
 #const FROG_COLLECT = preload("uid://brvyfw32spq8")
 
@@ -36,6 +38,9 @@ func _ready() -> void:
 	var players = get_tree().get_nodes_in_group("Player")
 	if players.size() > 0:
 		player_node = players[0]
+	
+	if reveal_pinata:
+		reveal_pinata.pinata_broken.connect(_on_pinata_broken)
 
 func _process(delta: float) -> void:
 	if state_machine:
@@ -87,7 +92,6 @@ func _get_stunned() -> void:
 func get_picked_up() -> void:
 	is_picked_up = true
 	InventoryManager.has_frog = true
-	#print("Frog collected!")
 	
 	var spawn_pos = global_position
 	set_collision_layer_value(1, false)
@@ -105,9 +109,12 @@ func get_picked_up() -> void:
 	
 	await tween.finished
 	
-	#var collect_effect = FROG_COLLECT.instantiate()
-	#get_parent().add_child(collect_effect)
-	#collect_effect.global_position = spawn_pos
 	SceneHelper.spawn_effect("uid://brvyfw32spq8", spawn_pos, get_parent())
 	
 	queue_free()
+
+func _on_pinata_broken() -> void:
+	await get_tree().create_timer(pinata_respawn_delay).timeout
+	
+	if is_instance_valid(reveal_pinata):
+		reveal_pinata.reset_pinata()
