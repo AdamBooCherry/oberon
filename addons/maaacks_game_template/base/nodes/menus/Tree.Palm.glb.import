@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://cfskw48a1n26v"
-path="res://.godot/imported/Tree.Oak.glb-416bcc2d51ad272bf8f4b82b8c42533c.scn"
+uid="uid://ltw434npsp2g"
+path="res://.godot/imported/Tree.Palm.glb-e59bd6dddd563fa88b30a5485600f6fc.scn"
 
 [deps]
 
-source_file="res://Assets/Environment/Tree.Oak.glb"
-dest_files=["res://.godot/imported/Tree.Oak.glb-416bcc2d51ad272bf8f4b82b8c42533c.scn"]
+source_file="res://addons/maaacks_game_template/base/nodes/menus/Tree.Palm.glb"
+dest_files=["res://.godot/imported/Tree.Palm.glb-e59bd6dddd563fa88b30a5485600f6fc.scn"]
 
 [params]
 

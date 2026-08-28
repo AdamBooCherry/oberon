@@ -7,7 +7,7 @@ extends State
 var _timer: float = 0.0
 
 func enter() -> void:
-	print("[HideState] ENTERED. Frog is hiding.")
+	#print("[HideState] ENTERED. Frog is hiding.")
 	_timer = 0.0
 	
 	GameManager.emit_change_to_default_environment()
@@ -29,7 +29,7 @@ func update(delta: float) -> void:
 		
 	_timer += delta
 	if _timer >= hide_duration:
-		print("[HideState] Hide duration ended. Revealing and returning to Idle.")
+		#print("[HideState] Hide duration ended. Revealing and returning to Idle.")
 		frog.set_hidden(false)
 		parent_state_machine.change_state("FrogIdleState")
 

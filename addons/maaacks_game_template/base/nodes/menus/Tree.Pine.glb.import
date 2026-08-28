@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://covctxwrohnlx"
-path="res://.godot/imported/Tree.Pine.glb-3458eb1c4cbb768787f37b352e581fa3.scn"
+path="res://.godot/imported/Tree.Pine.glb-c20bc289ee89fcce957ad6854c7e686a.scn"
 
 [deps]
 
-source_file="res://Assets/Environment/Tree.Pine.glb"
-dest_files=["res://.godot/imported/Tree.Pine.glb-3458eb1c4cbb768787f37b352e581fa3.scn"]
+source_file="res://addons/maaacks_game_template/base/nodes/menus/Tree.Pine.glb"
+dest_files=["res://.godot/imported/Tree.Pine.glb-c20bc289ee89fcce957ad6854c7e686a.scn"]
 
 [params]
 

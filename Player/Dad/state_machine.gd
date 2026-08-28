@@ -7,12 +7,11 @@ var current_state: State
 var current_sub_state: State
 var states: Dictionary = {}
 
-# Made the parameter generic (Node or Variant) so it works for both Player and FrogMob
 func init(actor_ref) -> void:
 	for child in get_children():
 		if child is State:
 			states[child.name.to_lower()] = child
-			child.player = actor_ref # If your State base class expects a 'player' variable
+			child.player = actor_ref
 			child.parent_state_machine = self
 			
 			for sub_child in child.get_children():

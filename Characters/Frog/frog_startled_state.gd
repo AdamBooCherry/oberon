@@ -4,7 +4,7 @@ extends State
 @export var frog: FrogMob
 
 func enter() -> void:
-	print("[StartledState] ENTERED. Frog is startled, revealed, and reacting!")
+	#print("[StartledState] ENTERED. Frog is startled, revealed, and reacting!")
 	if not frog:
 		return
 		
@@ -26,11 +26,11 @@ func enter() -> void:
 			
 	# 3. SAFETY CHECK: If the frog got stunned during its animation, abort fleeing!
 	if not frog or frog.is_stunned:
-		print("[StartledState] Aborted flee because frog was stunned.")
+		#print("[StartledState] Aborted flee because frog was stunned.")
 		return
 		
 	# 4. Otherwise, disappear back into shadows and flee
-	print("[StartledState] Reaction complete. Re-hiding and fleeing!")
+	#print("[StartledState] Reaction complete. Re-hiding and fleeing!")
 	frog.set_hidden(true)
 	
 	if parent_state_machine:

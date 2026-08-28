@@ -22,18 +22,18 @@ var is_hidden: bool = false
 var player_node: Node3D = null
 
 func _ready() -> void:
-	print("[FrogMob] Ready called on: ", self.name)
+	#print("[FrogMob] Ready called on: ", self.name)
 	set_hidden(true)
 	
 	if player_detector:
 		player_detector.area_entered.connect(_on_area_entered)
-	else:
-		print("[FrogMob] WARNING: player_detector is null!")
+	#else:
+		#print("[FrogMob] WARNING: player_detector is null!")
 		
 	if state_machine:
 		state_machine.init(self)
-	else:
-		print("[FrogMob] WARNING: state_machine reference is missing in Inspector!")
+	#else:
+		#print("[FrogMob] WARNING: state_machine reference is missing in Inspector!")
 		
 	var players = get_tree().get_nodes_in_group("Player")
 	if players.size() > 0:

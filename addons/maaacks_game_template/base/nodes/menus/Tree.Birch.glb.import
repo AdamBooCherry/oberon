@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://dh50dhby4i3pn"
-path="res://.godot/imported/Tree.Birch.glb-2448f5dd1243fae5e13dbae5d7b137ea.scn"
+path="res://.godot/imported/Tree.Birch.glb-e197101a987f38dc5c7f075451c7c068.scn"
 
 [deps]
 
-source_file="res://Assets/Environment/Tree.Birch.glb"
-dest_files=["res://.godot/imported/Tree.Birch.glb-2448f5dd1243fae5e13dbae5d7b137ea.scn"]
+source_file="res://addons/maaacks_game_template/base/nodes/menus/Tree.Birch.glb"
+dest_files=["res://.godot/imported/Tree.Birch.glb-e197101a987f38dc5c7f075451c7c068.scn"]
 
 [params]
 

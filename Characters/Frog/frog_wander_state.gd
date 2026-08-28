@@ -7,12 +7,6 @@ extends State
 var _path_initialized: bool = false
 
 func enter() -> void:
-	print("[WanderState] ENTERED. Frog: ", frog)
-	
-	if not frog:
-		print("[WanderState] ERROR: Frog reference is missing in the Inspector!")
-		return
-		
 	if frog and frog.animation_player:
 		frog.animation_player.play("Armature|Frog_Jump")
 		
@@ -34,7 +28,7 @@ func _pick_random_destination() -> void:
 	
 	frog.navigation_agent_3d.target_position = target_pos
 	_path_initialized = true
-	print("[WanderState] Picked new wander target: ", target_pos)
+	#print("[WanderState] Picked new wander target: ", target_pos)
 
 func physics_update(delta: float) -> void:
 	if not frog or not _path_initialized:
@@ -50,7 +44,7 @@ func physics_update(delta: float) -> void:
 		
 	# Check if we've arrived at the destination
 	if nav.is_navigation_finished():
-		print("[WanderState] Reached destination! Switching to Idle.")
+		#print("[WanderState] Reached destination! Switching to Idle.")
 		parent_state_machine.change_state("FrogIdleState")
 		return
 		

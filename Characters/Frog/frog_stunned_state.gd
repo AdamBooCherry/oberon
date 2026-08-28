@@ -8,7 +8,7 @@ var _timer: float = 0.0
 var _is_recovering: bool = false
 
 func enter() -> void:
-	print("[StunnedState] ENTERED. Frog is stunned and vulnerable.")
+	#print("[StunnedState] ENTERED. Frog is stunned and vulnerable.")
 	_timer = 0.0
 	_is_recovering = false
 	GameManager.emit_change_to_default_environment()
@@ -35,7 +35,7 @@ func update(delta: float) -> void:
 		_recover_and_escape()
 
 func _recover_and_escape() -> void:
-	print("[StunnedState] Stun expired. Recovering and fleeing back to cover!")
+	#print("[StunnedState] Stun expired. Recovering and fleeing back to cover!")
 	
 	if frog and frog.animation_player and frog.animation_player.has_animation("Armature|Frog_Death"):
 		frog.animation_player.play_backwards("Armature|Frog_Death")
