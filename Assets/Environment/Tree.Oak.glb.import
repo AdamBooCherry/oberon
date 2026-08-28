@@ -3,12 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://dyg8ppp14lvob"
-valid=false
+uid="uid://cfskw48a1n26v"
+path="res://.godot/imported/Tree.Oak.glb-416bcc2d51ad272bf8f4b82b8c42533c.scn"
 
 [deps]
 
-source_file="res://Assets/arms_low_poly_rigged/arms_low_poly.blend"
+source_file="res://Assets/Environment/Tree.Oak.glb"
+dest_files=["res://.godot/imported/Tree.Oak.glb-416bcc2d51ad272bf8f4b82b8c42533c.scn"]
 
 [params]
 
@@ -39,24 +40,6 @@ materials/extract=0
 materials/extract_format=0
 materials/extract_path=""
 _subresources={}
-blender/nodes/visible=0
-blender/nodes/active_collection_only=false
-blender/nodes/punctual_lights=true
-blender/nodes/cameras=true
-blender/nodes/custom_properties=true
-blender/nodes/modifiers=1
-blender/meshes/vertex_colors=1
-blender/meshes/uvs=true
-blender/meshes/normals=true
-blender/meshes/export_geometry_nodes_instances=false
-blender/meshes/gpu_instances=false
-blender/meshes/tangents=true
-blender/meshes/skins=2
-blender/meshes/export_bones_deforming_mesh_only=false
-blender/materials/unpack_enabled=true
-blender/materials/export_materials=1
-blender/animation/limit_playback=true
-blender/animation/always_sample=true
-blender/animation/group_tracks=true
 gltf/naming_version=2
+gltf/embedded_image_handling=1
 gltf/texture_map_mode=1
