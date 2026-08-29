@@ -51,4 +51,4 @@ func physics_update(delta: float) -> void:
 	else:
 		# Target position reached without finding player -> switch to SEARCHING loop
 		if parent_state_machine:
-			parent_state_machine.change_state("SEARCHING")
+			parent_state_machine.change_state("WANDERING")

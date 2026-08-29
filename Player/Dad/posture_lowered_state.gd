@@ -1,11 +1,13 @@
 class_name PostureLoweredState
 extends State
 
-@export var lower_light: SpotLight3D
 @export var lower_color: Color = Color.CYAN
-@export var tween_duration: float = 0.25 # How long the fade takes
-@export var glory_hand: GloryHand
 @export var light_energy: float = 3.0
+@export var tween_duration: float = 0.25 # How long the fade takes
+
+@export_group("References")
+@export var glory_hand: GloryHand
+@export var lower_light: SpotLight3D
 @export var reveal_area: RevealArea
 
 func enter() -> void:

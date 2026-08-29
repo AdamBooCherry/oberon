@@ -4,30 +4,24 @@ class_name DeathState
 @export var player_dad: Player
 
 func enter() -> void:
-	# Zero horizontal movement immediately on death
-	player_dad.velocity.x = 0.0
-	player_dad.velocity.z = 0.0
+	player_dad.velocity = Vector3.ZERO
 
-	if player_dad.animation_player:
-		# Connect signal to pause or lock state when finished
-		if not player_dad.animation_player.animation_finished.is_connected(_on_animation_finished):
-			player_dad.animation_player.animation_finished.connect(_on_animation_finished)
-		
-		player_dad.animation_player.play("Dad/dying")
-
-	# Disable hurtbox if present to prevent further damage signals
+	# Disable hurtbox immediately to cut incoming damage
 	if player_dad.hurtbox:
+		#print("STATE: DeathState -> Disabling hurtbox...")
 		player_dad.hurtbox.set_deferred("monitoring", false)
 		player_dad.hurtbox.set_deferred("monitorable", false)
 
-func physics_update(delta: float) -> void:
-	# Apply gravity so player lands on ground if dying mid-air
-	if not player_dad.is_on_floor():
-		player_dad.velocity.y -= player_dad.gravity * delta
-	else:
-		player_dad.velocity.x = 0.0
-		player_dad.velocity.z = 0.0
+	if player_dad.animation_player:
+		#print("STATE: DeathState -> Playing dying animation...")
+		player_dad.animation_player.play("Dad/dying")
+		await player_dad.animation_player.animation_finished
+		player_dad.animation_player.pause()
 
-func _on_animation_finished(anim_name: StringName) -> void:
-	player_dad.animation_player.pause()
 	GameManager.emit_begin_death_sequence()
+
+#func exit() -> void:
+	## Unpause animation player so future states can play animations smoothly
+	#print("STATE: DeathState -> exit()")
+	#if player_dad.animation_player:
+		#player_dad.animation_player.play()

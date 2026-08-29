@@ -2,6 +2,8 @@
 
 [ext_resource type="Shader" uid="uid://dlm70dacaptbv" path="res://Shaders/psx.gdshader" id="1_783md"]
 [ext_resource type="Script" uid="uid://dkyo53x8ie3j5" path="res://Scenes/world.gd" id="2_1tvcf"]
+[ext_resource type="Script" uid="uid://bk4c2nvs2ik8m" path="res://Scenes/main.gd" id="2_qbiqt"]
+[ext_resource type="Script" uid="uid://dn01c44vgc10n" path="res://Scenes/player_spawn.gd" id="2_u7fix"]
 [ext_resource type="PackedScene" uid="uid://cw3kf747q80xn" path="res://Scenes/Camp Post.tscn" id="3_c5rrr"]
 [ext_resource type="PackedScene" uid="uid://cqcsv7x0vouop" path="res://Prototyping/ForestTestArea.tscn" id="3_mhs8k"]
 [ext_resource type="PackedScene" uid="uid://cdffe7bphgot8" path="res://Characters/Frog/SilverFrog.tscn" id="4_5c1w6"]
@@ -159,10 +161,17 @@ audio_listener_enable_3d = true
 size = Vector2i(640, 480)
 render_target_update_mode = 4
 
-[node name="MAIN" type="Node3D" parent="SubViewportContainer/SubViewport" unique_id=2005868454]
+[node name="MAIN" type="Node3D" parent="SubViewportContainer/SubViewport" unique_id=2005868454 node_paths=PackedStringArray("player", "player_spawn")]
+script = ExtResource("2_qbiqt")
+player = NodePath("Player")
+player_spawn = NodePath("PlayerSpawn")
+
+[node name="PlayerSpawn" type="Marker3D" parent="SubViewportContainer/SubViewport/MAIN" unique_id=596365389]
+transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, -39.335846, 0.33270192, 1.0601468)
+script = ExtResource("2_u7fix")
 
 [node name="Player" parent="SubViewportContainer/SubViewport/MAIN" unique_id=1848596107 instance=ExtResource("4_783md")]
-transform = Transform3D(-0.25459456, 0, -0.9670479, 0, 1, 0, 0.9670479, 0, -0.25459456, -38.697823, 0.33270192, 1.0601468)
+transform = Transform3D(-0.25459456, 0, -0.9670479, 0, 1, 0, 0.9670479, 0, -0.25459456, -39.335846, 0.33270192, 1.0601468)
 
 [node name="Environment" type="Node3D" parent="SubViewportContainer/SubViewport/MAIN" unique_id=129132500]
 
