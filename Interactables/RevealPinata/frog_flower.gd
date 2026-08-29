@@ -1,4 +1,4 @@
-@icon("res://addons/at-icons/node3d/flower.svg")
+#@icon("res://addons/at-icons/node3d/flower.svg")
 extends Node3D
 class_name FrogFlower
 
