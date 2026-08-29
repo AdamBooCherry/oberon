@@ -17,7 +17,7 @@ class_name Player
 @export var raised_speed_multiplier: float = 0.6
 
 @export_group("References")
-@export var animation_player: AnimationPlayer
+#@export var animation_player: AnimationPlayer
 @export var movement_tree: AnimationTree
 @export var movement_state_machine: StateMachine
 @export var action_state_machine: StateMachine
@@ -98,11 +98,12 @@ func take_damage(amount: float) -> void:
 	if health_component:
 		health_component.take_damage(amount)
 
-func _on_health_changed(current: float, max_hp: float) -> void:
-	print("[Player] Health updated: ", current, "/", max_hp)
+func _on_health_changed(_current: float, _max_hp: float) -> void:
+	#print("[Player] Health updated: ", current, "/", max_hp)
+	pass
 
 func _on_health_depleted() -> void:
-	print("[Player] Health depleted! Triggering death logic... Stack trace: ", get_stack())
+	#print("[Player] Health depleted! Triggering death logic... Stack trace: ", get_stack())
 	
 	# Only emit if we haven't ALREADY triggered death
 	if movement_state_machine.current_state is DeathState:
@@ -111,8 +112,6 @@ func _on_health_depleted() -> void:
 
 	action_state_machine.change_state("ActionDisabledState")
 	movement_state_machine.change_state("DeathState")
-
-	#GameManager.begin_death_sequence.emit()
 
 # --- Animation Tree Controls ---
 
