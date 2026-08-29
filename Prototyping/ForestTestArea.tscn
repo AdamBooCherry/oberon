@@ -406,6 +406,7 @@ transform = Transform3D(0.773733, 0, 0.63351184, 0, 1, 0, -0.63351184, 0, 0.7737
 
 [node name="CutsceneBox" parent="." unique_id=1662951017 instance=ExtResource("2_v0phy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.926882, -14.063704, 0)
+cutscene_id = &"REDCAP_MURDER"
 
 [node name="Cameras" type="Node3D" parent="." unique_id=892847068]
 

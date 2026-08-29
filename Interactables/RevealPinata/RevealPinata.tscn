@@ -9,16 +9,16 @@
 [sub_resource type="SphereShape3D" id="SphereShape3D_cojvj"]
 radius = 0.1
 
-[node name="RevealPinata" type="Node3D" unique_id=547381027 node_paths=PackedStringArray("reveal_detector", "health_component", "loot_spawner", "visual_node")]
+[node name="RevealPinata" type="Node3D" unique_id=547381027 node_paths=PackedStringArray("reveal_detector", "loot_spawner", "visual_node")]
 script = ExtResource("1_1cd3x")
 reveal_detector = NodePath("RevealDetector")
-health_component = NodePath("HealthComponent")
 loot_spawner = NodePath("LootSpawner")
 visual_node = NodePath("CSGSphere3D")
 metadata/_custom_type_script = "uid://c7haeu8bylrpf"
 
-[node name="RevealDetector" type="Area3D" parent="." unique_id=512661672]
+[node name="RevealDetector" type="Area3D" parent="." unique_id=512661672 node_paths=PackedStringArray("health_component")]
 script = ExtResource("2_ryhb4")
+health_component = NodePath("../HealthComponent")
 metadata/_custom_type_script = "uid://br47nbfjqdbr7"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RevealDetector" unique_id=1115540154]

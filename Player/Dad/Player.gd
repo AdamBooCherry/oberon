@@ -21,6 +21,8 @@ class_name Player
 @export var movement_tree: AnimationTree
 @export var movement_state_machine: StateMachine
 @export var action_state_machine: StateMachine
+@export var hurtbox: Hurtbox
+@export var health_component: HealthComponent
 
 # Context state flags
 var has_torch: bool = true # Set by game logic
@@ -36,6 +38,14 @@ func _ready() -> void:
 		movement_state_machine.init(self)
 	if action_state_machine:
 		action_state_machine.init(self)
+
+	# Wire up HealthComponent & Hurtbox logic
+	if health_component:
+		health_component.health_depleted.connect(_on_health_depleted)
+		health_component.health_changed.connect(_on_health_changed)
+
+	if hurtbox and health_component:
+		hurtbox.health_component = health_component
 
 func _process(delta: float) -> void:
 	if movement_state_machine:
@@ -57,6 +67,26 @@ func _physics_process(delta: float) -> void:
 func handle_turn(delta: float) -> void:
 	var turn_input := Input.get_axis("turn_right", "turn_left")
 	rotate_y(turn_input * turn_speed * delta)
+
+# --- Damage & Health Integration ---
+
+func take_damage(amount: float) -> void:
+	if health_component:
+		health_component.take_damage(amount)
+
+func _on_health_changed(current: float, max_hp: float) -> void:
+	print("[Player] Health updated: ", current, "/", max_hp)
+
+func _on_health_depleted() -> void:
+	print("[Player] Health depleted! Triggering death logic...")
+	
+	# Interrupt action state machine so actions stop executing
+	if action_state_machine:
+		action_state_machine.change_state("PostureNeutralState") # or disable/pause it
+		
+	# Transition movement state machine to lock physics & input
+	if movement_state_machine:
+		movement_state_machine.change_state("DeathState")
 
 # --- Animation Tree Controls ---
 

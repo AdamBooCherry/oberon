@@ -2,7 +2,7 @@
 extends Node3D
 class_name FrogFlower
 
-@export var reveal_health: float = 10.0
+#@export var reveal_health: float = 10.0
 @export var rotation_speed: float = 0.2 # Higher = faster turn rate, Lower = slower/lazier tracking
 
 @export_group("Awakening Growth")
@@ -38,13 +38,15 @@ func find_frogs() -> void:
 	all_frogs = get_tree().get_nodes_in_group("FROG")
 
 func _process(delta: float) -> void:
-	# 1. Handle health depletion while sleeping
+	# 1. Handle health depletion while sleeping using the updated detector API
 	if not is_awake:
-		if reveal_detector.current_reveal_area != null:
-			var damage_rate = 5.0
-			reveal_health -= damage_rate * delta
+		if reveal_detector and reveal_detector.is_in_light():
+			# Multiplies damage rate by how many reveal sources hit the flower
+			var damage_rate = 5.0 * reveal_detector.active_reveal_areas.size()
+			reveal_detector.health_component.take_damage(damage_rate * delta)
+			#reveal_detector.health_component.current_health -= damage_rate * delta
 			
-			if reveal_health <= 0.0:
+			if reveal_detector.health_component.current_health <= 0.0:
 				_awaken_flower()
 		return
 	

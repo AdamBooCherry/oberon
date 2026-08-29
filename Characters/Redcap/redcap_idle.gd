@@ -12,16 +12,7 @@ func enter() -> void:
 	GameManager.emit_change_to_default_environment()
 
 	if redcap and redcap.animation_player:
-		var anim_name = "drunk_idle_01"
-		
-		# Option 1: Standard global library check
-		if redcap.animation_player.has_animation(anim_name):
-			redcap.animation_player.play(anim_name)
-		# Option 2: Godot slash-delimited library check
-		elif redcap.animation_player.has_animation("redcap_animations/" + anim_name):
-			redcap.animation_player.play("redcap_animations/" + anim_name)
-		else:
-			print("[Redcap Idle] Animation not found! Available animations: ", redcap.animation_player.get_animation_list())
+		redcap.animation_player.play("redcap_animations/drunk_idle_01")
 
 	_timer = 0.0
 	_target_time = randf_range(min_idle_time, max_idle_time)

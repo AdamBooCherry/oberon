@@ -4,11 +4,10 @@ class_name RevealPinata
 signal pinata_broken
 signal pinata_reset
 
-@export var damage_rate: float = 5.0
-
 @export_group("References")
 @export var reveal_detector: RevealDetector
-@export var health_component: HealthComponent
+
+#@export var health_component: HealthComponent
 @export var loot_spawner: LootSpawner
 @export var visual_node: Node3D # The mesh/visuals of the pinata itself
 
@@ -17,19 +16,14 @@ var is_broken: bool = false
 const BREAK_EFFECT = preload("uid://dqo2wy1r43ocf")
 
 func _ready() -> void:
-	if health_component:
-		health_component.health_depleted.connect(_break_pinata)
+	if reveal_detector.health_component:
+		reveal_detector.health_component.health_depleted.connect(_break_pinata)
+		#reveal_detector.health_component = health_component
 	else:
 		push_error("[RevealPinata] ERROR: HealthComponent reference is missing!")
-
-func _process(delta: float) -> void:
-	if is_broken:
-		return
-		
-	# If the reveal area is active, deal damage to our health component
-	if reveal_detector and reveal_detector.current_reveal_area != null:
-		if health_component:
-			health_component.take_damage(damage_rate * delta)
+#
+	## Inject health_component into reveal_detector so it auto-applies continuous damage
+	#if reveal_detector:
 
 func _break_pinata() -> void:
 	if is_broken:
@@ -48,24 +42,28 @@ func _break_pinata() -> void:
 	if loot_spawner:
 		loot_spawner.spawn_loot(death_position)
 
-	# Hide visuals and disable logic instead of deleting the node
+	# Hide visuals and disable collision/detection logic instead of deleting the node
 	if visual_node:
 		visual_node.hide()
 		
-	set_process(false)
+	if reveal_detector:
+		reveal_detector.monitoring = false
+		
 	pinata_broken.emit()
 
 func reset_pinata() -> void:
 	print("[RevealPinata] Resetting pinata...")
 	
 	# Reset health pool back to max
-	if health_component:
-		health_component.reset_health() # Assumes a reset function exists on your HealthComponent, or set current_health = max_health
+	if reveal_detector.health_component:
+		reveal_detector.health_component.reset_health()
 		
-	# Restore visuals and re-enable processing
+	# Restore visuals and re-enable detection
 	if visual_node:
 		visual_node.show()
 		
+	if reveal_detector:
+		reveal_detector.monitoring = true
+		
 	is_broken = false
-	set_process(true)
 	pinata_reset.emit()

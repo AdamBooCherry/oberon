@@ -1,6 +1,8 @@
 [gd_scene format=4 uid="uid://bfnvtq81kd7bv"]
 
+[ext_resource type="Script" uid="uid://nanhtnjwqfls" path="res://Characters/Redcap/melee_weapon.gd" id="1_lqqry"]
 [ext_resource type="Material" uid="uid://cnv0av1g8qqsk" path="res://redcap_material.tres" id="1_mrm30"]
+[ext_resource type="Script" uid="uid://dnd00ajyrsuru" path="res://Characters/Redcap/hitbox.gd" id="3_bvvxi"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_60i8u"]
 _surfaces = [{
@@ -81,7 +83,14 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_ossc1")
 
-[node name="Hook" type="Node3D" unique_id=215616046]
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_wuii1"]
+height = 0.18066406
+radius = 0.5629883
+
+[node name="Hook" type="Node3D" unique_id=999221893 node_paths=PackedStringArray("hitbox")]
+script = ExtResource("1_lqqry")
+hitbox = NodePath("")
+metadata/_custom_type_script = "uid://nanhtnjwqfls"
 
 [node name="RedcapHookBeep(1)" type="Node3D" parent="." unique_id=2041680744]
 transform = Transform3D(2, 0, 0, 0, 1.5, 0, 0, 0, 2, 0, 0, 0)
@@ -93,3 +102,12 @@ mesh = SubResource("ArrayMesh_a06hj")
 [node name="RedcapSickleBlade" type="MeshInstance3D" parent="RedcapHookBeep(1)" unique_id=1806471171]
 transform = Transform3D(1, 0, 0, 0, -1, 1.509958e-07, 0, -1.509958e-07, -1, 0.37011456, 0.026416361, -0.18509984)
 mesh = SubResource("ArrayMesh_wj84i")
+
+[node name="Hitbox" type="Area3D" parent="." unique_id=21125955]
+script = ExtResource("3_bvvxi")
+metadata/_custom_type_script = "uid://dnd00ajyrsuru"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hitbox" unique_id=575253159]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3297994, 0, -0.08691603)
+shape = SubResource("CylinderShape3D_wuii1")
+debug_color = Color(0.78, 0, 0.012999801, 1)
