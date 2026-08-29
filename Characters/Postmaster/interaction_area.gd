@@ -1,12 +1,14 @@
 extends Area3D
 class_name InteractionArea
 
-signal player_interaction_started
+# Pass the player node along with the signal
+signal player_interaction_started(player: Player)
 
 @export var interaction_icon: Sprite3D
 @export var fade_duration: float = 0.2
 
 var _player_is_in_area: bool = false
+var _current_player: Player = null
 var _current_tween: Tween
 
 func _ready() -> void:
@@ -18,18 +20,20 @@ func _ready() -> void:
 		interaction_icon.visible = false
 
 func _unhandled_input(event: InputEvent) -> void:
-	# Only allow interaction if the player is actually inside this specific area
+	# Only allow interaction if the player is inside and valid
 	if _player_is_in_area and event.is_action_pressed("interact"):
-		player_interaction_started.emit()
+		player_interaction_started.emit(_current_player)
 
 func _on_area_entered(area: Area3D) -> void:
 	if area is InteractionDetector:
+		_current_player = area.player
 		_player_is_in_area = true
 		_show_icon()
 
 func _on_area_exited(area: Area3D) -> void:
 	if area is InteractionDetector:
 		_player_is_in_area = false
+		_current_player = null
 		_hide_icon()
 
 func _show_icon() -> void:

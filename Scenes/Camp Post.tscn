@@ -1322,7 +1322,7 @@ extends Node3D
 func _ready() -> void:
 	interaction_area.player_interaction_started.connect(_on_interaction_started)
 
-func _on_interaction_started():
+func _on_interaction_started(player: Player):
 	Dialogic.start(timeline,\"STANDARD\")
 	oberon.animation_player.play(\"Salsa\", 1)
 	
@@ -1347,33 +1347,45 @@ func _ready() -> void:
 	interaction_area.player_interaction_started.connect(_on_interaction_started)
 	Dialogic.signal_event.connect(_on_dialogic_signal)
 
-func _on_interaction_started():
-	if has_been_interacted_with == false:
-		print(has_been_interacted_with)
+func _on_interaction_started(_player: Player) -> void:
+	if not has_been_interacted_with:
+		print(\"First interaction\")
 		Dialogic.start(post_office, 0)
 		has_been_interacted_with = true
-	
-	elif has_been_interacted_with == true:
-		print(has_been_interacted_with)
+	else:
+		print(\"Subsequent interaction\")
 		Dialogic.start(post_office, \"STANDARD\")
 
-func _on_dialogic_signal(argument: Variant):
+func _on_dialogic_signal(argument: Variant) -> void:
 	if argument is not String:
 		return
-	
+		
 	if argument == \"POSTMASTER_SHOOT\":
 		_shoot_player()
 	elif argument == \"WIN_GAME\":
 		_win_game()
 
-func _shoot_player():
-	get_tree().quit()
+func _shoot_player() -> void:
+	var player = get_tree().get_first_node_in_group(\"Player\") as Player
+	if player:
+		player._on_health_depleted()
+	else:
+		push_error(\"Postmaster: Could not find node in group 'Player' to shoot!\")
 
-func _win_game():
-	## play animation of postmaster mailing frog
-	## after a beat you get a \"YOU'RE WINNER!\"
-	## restart game
-	pass
+func _win_game() -> void:
+	# 1. Play postmaster mailing frog animation if available
+	#if postmaster and postmaster.has_node(\"AnimationPlayer\"):
+		#var anim_player = postmaster.get_node(\"AnimationPlayer\") as AnimationPlayer
+		#if anim_player and anim_player.has_animation(\"mail_frog\"):
+			#anim_player.play(\"mail_frog\")
+			#await anim_player.animation_finished
+
+	# 2. Short dramatic pause
+	await get_tree().create_timer(1.0).timeout
+
+	# 3. Trigger win sequence or restart round
+	GameManager.emit_begin_death_sequence() # Or call GameManager.win_game()
+	print(\" THIS IS WHAT WINNING LOOKS LIKE\")
 "
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_wuii1"]
@@ -4056,7 +4068,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.19, 0)
 curve = SubResource("Curve3D_8as8m")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="Mobs/Path3D" unique_id=27730672]
-transform = Transform3D(-0.998966, -0.0001465674, 0.045297515, 0, 0.9999729, 0.0032355816, -0.045298345, 0.003232256, -0.9989477, -2.8899221, 0.042602755, 1.0935059)
+transform = Transform3D(-0.998966, -0.00014656731, 0.04529749, 0, 0.9999723, 0.0032355797, -0.045298345, 0.0032322542, -0.9989471, -2.8899221, 0.042602755, 1.0935059)
 use_model_front = true
 tilt_enabled = false
 script = SubResource("GDScript_wuii1")
@@ -4156,6 +4168,7 @@ script = SubResource("GDScript_4hc50")
 interaction_area = NodePath("InteractionArea")
 postmaster = NodePath("Postmaster")
 post_office = ExtResource("7_1qq0c")
+metadata/_edit_group_ = true
 
 [node name="Postmaster" parent="Mobs/PostOffice" unique_id=405108321 instance=ExtResource("7_npf7y")]
 
@@ -4304,7 +4317,7 @@ path_follow_3d = NodePath("PathFollow3D")
 metadata/_custom_type_script = "uid://bvtfxcsh87kix"
 
 [node name="PathFollow3D" type="PathFollow3D" parent="Cameras/PathCamera 01" unique_id=1638274718]
-transform = Transform3D(-0.029283984, -0.005194345, -0.9994934, 0.049977183, 0.9986591, -0.006654197, 0.99830323, -0.050147366, -0.028985778, -31.546108, 0.5577812, -0.80570316)
+transform = Transform3D(-0.029283984, -0.005194345, -0.9994928, 0.049977183, 0.9986591, -0.0066541927, 0.99830323, -0.050147366, -0.028985761, -31.546108, 0.5577812, -0.80570316)
 
 [node name="FixedCamera 03" type="Camera3D" parent="Cameras/PathCamera 01/PathFollow3D" unique_id=716717068 node_paths=PackedStringArray("trigger_area")]
 transform = Transform3D(-0.9943459, 3.7234443e-07, 0.1062636, -0.0324026, 0.95240223, -0.30320588, -0.10120441, -0.30493054, -0.9470043, 0, 0, -3)
