@@ -15,6 +15,7 @@ resource_name = "GradientMaterial"
 render_priority = 1
 next_pass = ExtResource("2_2xi4b")
 cull_mode = 2
+albedo_color = Color(1, 0, 0, 1)
 albedo_texture = ExtResource("1_ip8vg")
 roughness = 0.5
 clearcoat = 0.5
