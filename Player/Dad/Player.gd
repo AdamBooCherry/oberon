@@ -47,12 +47,29 @@ func _ready() -> void:
 	#begin_day()
 
 func _process(delta: float) -> void:
+	# Block idle state machine updates during dialogue
+	if Dialogic.current_timeline != null:
+		return
+
 	if movement_state_machine:
 		movement_state_machine.update(delta)
 	if action_state_machine:
 		action_state_machine.update(delta)
 
 func _physics_process(delta: float) -> void:
+	# --- Centralized Dialogic Intercept ---
+	if Dialogic.current_timeline != null:
+		velocity.x = 0.0
+		velocity.z = 0.0
+		if not is_on_floor():
+			velocity.y -= gravity * delta
+		
+		# Keep player visually idling in their current posture
+		update_animation_blend(0.0, current_posture, delta)
+		move_and_slide()
+		return
+
+	# --- Normal Game Loop ---
 	if not is_on_floor():
 		velocity.y -= gravity * delta
 		

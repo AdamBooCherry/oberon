@@ -2,6 +2,14 @@ class_name WalkState
 extends State
 
 func physics_update(delta: float) -> void:
+	# 0. Check if Dialogic dialogue is active
+	if Dialogic.current_timeline != null:
+		player.velocity.x = 0.0
+		player.velocity.z = 0.0
+		player.update_animation_blend(0.0, player.current_posture, delta)
+		parent_state_machine.change_state("IdleState")
+		return
+
 	player.handle_turn(delta)
 	
 	var move_input := Input.get_axis("back", "forward")
