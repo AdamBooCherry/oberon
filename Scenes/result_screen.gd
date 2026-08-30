@@ -39,9 +39,9 @@ func update_score_display(_value: int) -> void:
 		if marker:
 			var should_be_visible = (i < player_score)
 			marker.visible = should_be_visible
-			print_debug("[ResultScreen] Player Marker [", i, "] -> Node: ", marker.name, " | Set Visible: ", should_be_visible)
-		else:
-			print_debug("[ResultScreen] ERROR: Player Marker at index ", i, " is NULL in Inspector!")
+			#print_debug("[ResultScreen] Player Marker [", i, "] -> Node: ", marker.name, " | Set Visible: ", should_be_visible)
+		#else:
+			#print_debug("[ResultScreen] ERROR: Player Marker at index ", i, " is NULL in Inspector!")
 
 	# Evaluate Oberon Score Markers
 	for i in range(oberon_score_markers.size()):
@@ -49,9 +49,9 @@ func update_score_display(_value: int) -> void:
 		if marker:
 			var should_be_visible = (i < oberon_score)
 			marker.visible = should_be_visible
-			print_debug("[ResultScreen] Oberon Marker [", i, "] -> Node: ", marker.name, " | Set Visible: ", should_be_visible)
-		else:
-			print_debug("[ResultScreen] ERROR: Oberon Marker at index ", i, " is NULL in Inspector!")
+			#print_debug("[ResultScreen] Oberon Marker [", i, "] -> Node: ", marker.name, " | Set Visible: ", should_be_visible)
+		#else:
+			#print_debug("[ResultScreen] ERROR: Oberon Marker at index ", i, " is NULL in Inspector!")
 
 func animate_in(message: String = "", display_duration: float = 5.0) -> void:
 	assign_message(message)
@@ -78,10 +78,10 @@ func animate_out() -> void:
 	if not panel_container:
 		visible = false
 		return
-
+	
 	var tween = create_tween().set_parallel(true).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_IN)
 	tween.tween_property(panel_container, "modulate:a", 0.0, fade_duration)
 	tween.tween_property(panel_container, "scale", Vector2(0.9, 0.9), fade_duration)
-
+	
 	await tween.finished
 	visible = false

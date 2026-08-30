@@ -10,19 +10,19 @@ func _ready() -> void:
 
 func _on_area_entered(area: Area3D) -> void:
 	# Ignore standard hitboxes to prevent self-hitting
-	if area is not Hitbox:
-		return
-		
-	# Check if the collided area (e.g., Hurtbox) or its root entity handles damage
-	if area.has_method("take_damage"):
-		area.take_damage(damage)
-		hit_registered.emit(area)
-	elif area.owner and area.owner.has_method("take_damage"):
-		area.owner.take_damage(damage)
-		hit_registered.emit(area.owner)
+	if area is Hurtbox:
+		hurt_target(area)
+
+func hurt_target(hurtbox: Hurtbox):
+	print("hurt target!")
+	hurtbox.take_damage(damage)
+	hit_registered.emit(hurtbox.owner)
+	pass
 
 func enable() -> void:
 	monitoring = true
+	monitorable = false
 
 func disable() -> void:
 	monitoring = false
+	monitorable = false

@@ -37,7 +37,7 @@ func _ready() -> void:
 
 	if health_component:
 		health_component.health_depleted.connect(_on_health_depleted)
-		health_component.health_changed.connect(_on_health_changed)
+		health_component.damage_taken.connect(_on_damage_taken)
 
 	if hurtbox and health_component:
 		hurtbox.health_component = health_component
@@ -114,12 +114,18 @@ func reset_player_stats() -> void:
 
 # --- Damage & Health Integration ---
 
-func take_damage(amount: float) -> void:
-	if health_component:
-		health_component.take_damage(amount)
+@export var knockback_force: float = 4.0
 
-func _on_health_changed(_current: float, _max_hp: float) -> void:
-	pass
+func _on_damage_taken(_current: float) -> void:
+	var knockback_dir = -global_transform.basis.z.normalized()
+	velocity.x = knockback_dir.x * knockback_force
+	velocity.z = knockback_dir.z * knockback_force
+	
+	## spawn hit particle here
+	
+	if health_component.current_health >= 0:
+		action_state_machine.change_state("HitState")
+	
 
 func _on_health_depleted() -> void:
 	if movement_state_machine and movement_state_machine.current_state is DeathState:

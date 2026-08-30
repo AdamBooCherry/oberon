@@ -12,8 +12,10 @@ func _ready() -> void:
 func turn_on_hitbox() -> void:
 	if hitbox:
 		hitbox.enable()
-
+		#print("Hitbox enabled!")
+		
 ## Called via AnimationPlayer Method Track when active swing frames end
 func turn_off_hitbox() -> void:
 	if hitbox:
 		hitbox.disable()
+		#print("Hitbox disabled!")

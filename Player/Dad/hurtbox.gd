@@ -6,17 +6,9 @@ signal damage_received(amount: float, attacker: Node3D)
 @export var health_component: HealthComponent
 @export var is_invulnerable: bool = false
 
-func _ready() -> void:
-	area_entered.connect(_on_area_entered)
-
-func _on_area_entered(area: Area3D) -> void:
-	if is_invulnerable:
-		return
-		
-	if area is Hitbox:
-		take_damage(area.damage, area.owner)
 
 func take_damage(amount: float, attacker: Node3D = null) -> void:
+	print("taking damage")
 	if is_invulnerable:
 		return
 

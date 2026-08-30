@@ -4,11 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://eyuse7gajuij"
-valid=false
+path="res://.godot/imported/redcap_v2.blend-2c12c6b5f4d400916a9cc16bfb9ba393.scn"
 
 [deps]
 
 source_file="res://Characters/Redcap/redcap_v2.blend"
+dest_files=["res://.godot/imported/redcap_v2.blend-2c12c6b5f4d400916a9cc16bfb9ba393.scn"]
 
 [params]
 

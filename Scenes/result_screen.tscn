@@ -4,8 +4,8 @@
 [ext_resource type="Script" uid="uid://cbkavs7a7ctnf" path="res://Scenes/result_screen.gd" id="1_t0wn3"]
 
 [sub_resource type="Gradient" id="Gradient_lo43q"]
-offsets = PackedFloat32Array(0, 0.18525897, 0.41035858, 0.56573707, 0.7768924, 1)
-colors = PackedColorArray(0.6007211, 0.50727195, 1.1042657, 0.53510433, 1.1638972, 0, 1.0483613, 1, 1.0580883, 0.09530565, 1.0588646, 1, 0.10023987, 0.95807254, 1.1539468, 1, 0, 1.048362, 1.1638972, 1, 0, 1.048362, 1.1638972, 0.039215688)
+offsets = PackedFloat32Array(0, 0.17729084, 0.41035858, 0.56573707, 0.7768924, 1)
+colors = PackedColorArray(0.6007211, 0.50727195, 1.1042657, 0.53510433, 1.1638972, 0, 1.0483613, 0.78431374, 1.0588666, 0.09809062, 1.0588666, 0.78431374, 0.099716365, 0.9607799, 1.1540799, 0.78431374, 0, 1.048362, 1.1638972, 0.78431374, 0, 1.048362, 1.1638972, 0.039215688)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_wuii1"]
 gradient = SubResource("Gradient_lo43q")

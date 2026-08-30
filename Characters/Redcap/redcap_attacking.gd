@@ -18,10 +18,6 @@ func enter() -> void:
 	# Freeze movement during attack windup/swing
 	redcap.velocity = Vector3.ZERO
 
-	# Ensure hook/hitbox is clean before starting
-	if redcap.hook:
-		redcap.hook.turn_off_hitbox()
-
 	# Play attack animation (AnimationPlayer track handles turning hook hitbox on/off)
 	if redcap.animation_player:
 		redcap.animation_player.play("redcap_animations/attack_combo_01")
@@ -45,8 +41,3 @@ func physics_update(delta: float) -> void:
 		if parent_state_machine:
 			# Fall back to SEARCHING if player escaped during attack, or ALERT/HUNTING to continue chase
 			parent_state_machine.change_state("HUNTING")
-
-func exit() -> void:
-	# Safety cleanup in case state is interrupted mid-swing (e.g., by stun)
-	if redcap and redcap.hook:
-		redcap.hook.turn_off_hitbox()

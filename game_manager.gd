@@ -17,12 +17,12 @@ var day_number: int = 1:
 		day_number = value
 		day_number_changed.emit(day_number)
 
-var player_score: int = 3:
+var player_score: int = 0:
 	set(value):
 		player_score = value
 		player_score_changed.emit(player_score)
 
-var oberon_score: int = 2:
+var oberon_score: int = 0:
 	set(value):
 		oberon_score = value
 		oberon_score_changed.emit(oberon_score)
