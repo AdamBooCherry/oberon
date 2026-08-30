@@ -22,6 +22,7 @@ var has_postage: bool = false:
 		if has_postage != value:
 			has_postage = value
 			item_state_changed.emit(&"postage", has_postage)
+			print("Postage changed: ", has_postage)
 
 
 # --- Currency Management ---

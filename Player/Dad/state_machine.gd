@@ -22,7 +22,7 @@ func init(actor_ref) -> void:
 	if initial_state:
 		initial_state.enter()
 		current_state = initial_state
-		print("[%s] Initialized with state: %s" % [name, initial_state.name])
+		#print("[%s] Initialized with state: %s" % [name, initial_state.name])
 
 func change_state(new_state_name: String) -> void:
 	var target_state = states.get(new_state_name.to_lower())

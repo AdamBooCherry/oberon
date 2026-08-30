@@ -1,0 +1,60 @@
+[gd_scene format=3 uid="uid://dkp4b2dv57aar"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wuii1"]
+emission_enabled = true
+emission = Color(1, 0.8833333, 0, 1)
+emission_energy_multiplier = 0.5
+clearcoat_enabled = true
+
+[node name="Mushroom" type="Node3D" unique_id=1448892061]
+
+[node name="Shroom 01" type="Node3D" parent="." unique_id=1371211641]
+
+[node name="Head" type="CSGSphere3D" parent="Shroom 01" unique_id=1614940270]
+transform = Transform3D(0.9999999, 0, 0, 0, 0.4244845, 0.21855083, 0, -0.10181758, 0.91115355, 0, 0.10929324, 0)
+radius = 0.14262593
+radial_segments = 6
+material = SubResource("StandardMaterial3D_wuii1")
+
+[node name="Stalk" type="CSGCylinder3D" parent="Shroom 01" unique_id=1944203838]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.035215817, 0)
+radius = 0.052734375
+height = 0.069216795
+sides = 3
+smooth_faces = false
+material = SubResource("StandardMaterial3D_wuii1")
+
+[node name="Shroom 02" type="Node3D" parent="." unique_id=371855438]
+transform = Transform3D(-0.8025449, 0, 0.5965918, 0, 1, 0, -0.5965918, 0, -0.8025449, 0.0010740757, 0, 0.22169822)
+
+[node name="Head" type="CSGSphere3D" parent="Shroom 02" unique_id=1363610792]
+transform = Transform3D(0.9992676, 0.016656555, 0.0027099252, -0.03806618, 0.4293069, 0.16589737, 0.0039114356, -0.07727908, 0.92219126, 0, 0.060110554, 0)
+radius = 0.09469455
+radial_segments = 6
+material = SubResource("StandardMaterial3D_wuii1")
+
+[node name="Stalk" type="CSGCylinder3D" parent="Shroom 02" unique_id=1253529641]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.035215817, 0)
+radius = 0.052734375
+height = 0.069216795
+sides = 3
+smooth_faces = false
+material = SubResource("StandardMaterial3D_wuii1")
+
+[node name="Shroom 03" type="Node3D" parent="." unique_id=1904095191]
+transform = Transform3D(-0.96459466, 0, -0.26373696, 0, 1, 0, 0.26373696, 0, -0.96459466, 0.1641452, 0, 0.1340364)
+visible = false
+
+[node name="Head" type="CSGSphere3D" parent="Shroom 03" unique_id=1810689506]
+transform = Transform3D(0.9992676, 0.016656555, 0.0027099252, -0.03806618, 0.4293069, 0.16589737, 0.0039114356, -0.07727908, 0.92219126, 0, 0.060110554, 0)
+radius = 0.09469455
+radial_segments = 6
+material = SubResource("StandardMaterial3D_wuii1")
+
+[node name="Stalk" type="CSGCylinder3D" parent="Shroom 03" unique_id=214483226]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.035215817, 0)
+radius = 0.052734375
+height = 0.069216795
+sides = 3
+smooth_faces = false
+material = SubResource("StandardMaterial3D_wuii1")

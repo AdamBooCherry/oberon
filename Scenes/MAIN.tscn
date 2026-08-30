@@ -8,7 +8,9 @@
 [ext_resource type="PackedScene" uid="uid://cqcsv7x0vouop" path="res://Prototyping/ForestTestArea.tscn" id="3_mhs8k"]
 [ext_resource type="PackedScene" uid="uid://cdffe7bphgot8" path="res://Characters/Frog/SilverFrog.tscn" id="4_5c1w6"]
 [ext_resource type="PackedScene" uid="uid://dtjgiqp4jij8g" path="res://Player/Dad/PlayerDad.tscn" id="4_783md"]
+[ext_resource type="Shader" uid="uid://u3hqbulxxqpq" path="res://Characters/Redcap/blood_drip.gdshader" id="4_jixpw"]
 [ext_resource type="Environment" uid="uid://ddfwg2im0ypls" path="res://Scenes/scary_environment.tres" id="4_n02r8"]
+[ext_resource type="PackedScene" uid="uid://dkp4b2dv57aar" path="res://Assets/Environment/Mushroom_01.tscn" id="5_4d07p"]
 [ext_resource type="PackedScene" uid="uid://bfnvtq81kd7bv" path="res://Characters/Redcap/Hook.tscn" id="6_125yk"]
 [ext_resource type="Environment" uid="uid://taliiown2kj3" path="res://Scenes/default_environment.tres" id="7_kjvde"]
 [ext_resource type="AudioStream" uid="uid://cwhus76517dk2" path="res://Audio/Akira_getoutofmyheadaaaaaa.mp3" id="10_whe6r"]
@@ -23,8 +25,81 @@ shader_parameter/dithering = true
 shader_parameter/colors = 24
 shader_parameter/dither_size = 2
 
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_lcr8a"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_02crh"]
+noise = SubResource("FastNoiseLite_lcr8a")
+seamless = true
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cojvj"]
+render_priority = 0
+shader = ExtResource("4_jixpw")
+shader_parameter/blood_noise = SubResource("NoiseTexture2D_02crh")
+shader_parameter/speed = -2.0
+shader_parameter/stretch_y = 0.88
+shader_parameter/blood_top_color = Color(2.2545774, 17.455406, 3.5213122, 1)
+shader_parameter/blood_bottom_color = Color(0, 0.84, 0.26599994, 1)
+shader_parameter/threshold = 0.534000025365
+shader_parameter/smoothness = 0.20000000298023
+shader_parameter/fade_start = 0.0
+shader_parameter/fade_end = 1.0
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_jixpw"]
+material = SubResource("ShaderMaterial_cojvj")
+top_radius = 1.0174805
+bottom_radius = 1.8174804
+height = 0.4879883
+cap_top = false
+cap_bottom = false
+
+[sub_resource type="Gradient" id="Gradient_4d07p"]
+offsets = PackedFloat32Array(0, 0.0996016, 0.4322709)
+colors = PackedColorArray(0, 0, 0, 0.039215688, 0, 1, 0.9166665, 0.5529412, 0, 0, 0, 0.039215688)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_cojvj"]
+gradient = SubResource("Gradient_4d07p")
+height = 1
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_ufbfe"]
+viewport_path = NodePath("SubViewportContainer/SubViewport/MAIN/UI/MarginContainer/HBoxContainer/VBoxContainer/CoinTexture2")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wuii1"]
+bg_color = Color(0.81, 0.54, 0, 0.3137255)
+skew = Vector2(-0.3, 0)
+border_width_left = 1
+border_width_right = 1
+
+[sub_resource type="GDScript" id="GDScript_csh6n"]
+script/source = "extends Label
+
+func _ready() -> void:
+	InventoryManager.currency_changed.connect(_on_currency_changed)
+	text = str(InventoryManager.current_currency)
+
+func _on_currency_changed(_new_amount: int):
+	## tween a bounce for every update
+	text = str(InventoryManager.current_currency)
+"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ufbfe"]
+metallic = 1.0
+roughness = 0.45
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_csh6n"]
+albedo_color = Color(0, 0.7999997, 1, 1)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_4d07p"]
+viewport_path = NodePath("SubViewportContainer/SubViewport/MAIN/UI/MarginContainer/HBoxContainer/StampTexture/StampTexture")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cojvj"]
+cull_mode = 2
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_wuii1"]
+material = SubResource("StandardMaterial3D_cojvj")
+size = Vector2(0.2, 0.2)
+
 [sub_resource type="ViewportTexture" id="ViewportTexture_73r58"]
-viewport_path = NodePath("SubViewportContainer/SubViewport/MAIN/UI/FrogTexture/FrogViewport")
+viewport_path = NodePath("SubViewportContainer/SubViewport/MAIN/UI/MarginContainer/HBoxContainer/FrogTexture/FrogViewport")
 
 [sub_resource type="Skin" id="Skin_mhs8k"]
 resource_name = "Skin"
@@ -114,27 +189,8 @@ bind/27/name = &"BackFoot.R"
 bind/27/bone = -1
 bind/27/pose = Transform3D(0.9279009, -0.37282678, -3.2151747e-06, -0.37282678, -0.92790097, 5.5300724e-08, -2.9969594e-06, 1.2041659e-06, -1.0000001, 0.01375617, -0.0009840451, -3.2893375e-05)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_ufbfe"]
-viewport_path = NodePath("SubViewportContainer/SubViewport/MAIN/UI/CoinTexture/CoinTexture")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ufbfe"]
-metallic = 1.0
-roughness = 0.45
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_csh6n"]
-albedo_color = Color(0, 0.7999997, 1, 1)
-
-[sub_resource type="GDScript" id="GDScript_csh6n"]
-script/source = "extends Label
-
-func _ready() -> void:
-	InventoryManager.currency_changed.connect(_on_currency_changed)
-	text = str(InventoryManager.current_currency)
-
-func _on_currency_changed(_new_amount: int):
-	## tween a bounce for every update
-	text = str(InventoryManager.current_currency)
-"
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cojvj"]
+bg_color = Color(0.6, 0.3, 0.3, 0.27058825)
 
 [node name="Control" type="Control" unique_id=1924878021]
 layout_mode = 3
@@ -169,6 +225,77 @@ player_spawn = NodePath("PlayerSpawn")
 [node name="PlayerSpawn" type="Marker3D" parent="SubViewportContainer/SubViewport/MAIN" unique_id=596365389]
 transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, -39.335846, 0.33270192, 1.0601468)
 script = ExtResource("2_u7fix")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="SubViewportContainer/SubViewport/MAIN/PlayerSpawn" unique_id=1553370736]
+transform = Transform3D(1, 0, 0, 0, 0.087681055, 0.9961486, 0, -0.9961486, 0.087681055, 0, 2.3351936, -6.0052986)
+light_color = Color(0.36695468, 0.0035460813, 0.8549664, 1)
+spot_range = 6.776
+spot_attenuation = -1.46
+spot_angle = 37.82
+
+[node name="FairyRing" type="Node3D" parent="SubViewportContainer/SubViewport/MAIN/PlayerSpawn" unique_id=1522180592]
+transform = Transform3D(0.99995834, 0, 0, 0, -1, -8.742218e-08, 0, 8.7418634e-08, -0.99995834, 0, 0.08554226, 1.1920929e-07)
+
+[node name="Fairy Ring" type="MeshInstance3D" parent="SubViewportContainer/SubViewport/MAIN/PlayerSpawn/FairyRing" unique_id=820371062]
+transform = Transform3D(1, 0, 0, 0, 1, -2.4868996e-12, 0, 2.4797941e-12, 1, 0, 0.2999512, 0)
+mesh = SubResource("CylinderMesh_jixpw")
+
+[node name="Mushroom 01" parent="SubViewportContainer/SubViewport/MAIN/PlayerSpawn/FairyRing" unique_id=1614940270 instance=ExtResource("5_4d07p")]
+transform = Transform3D(1.0000144, 0, 0, 0, -1, 8.7423466e-08, 0, -8.7423146e-08, -1.0000144, 0, 0.41298607, 0.9333537)
+
+[node name="Mushroom 02" parent="SubViewportContainer/SubViewport/MAIN/PlayerSpawn/FairyRing" unique_id=1448892061 instance=ExtResource("5_4d07p")]
+transform = Transform3D(1.0000144, 0, 0, 0, -1, 8.742346e-08, 0, -8.7423146e-08, -1.0000144, -0.26264572, 0.41298607, 1.0258884)
+
+[node name="Mushroom 03" parent="SubViewportContainer/SubViewport/MAIN/PlayerSpawn/FairyRing" unique_id=460474358 instance=ExtResource("5_4d07p")]
+transform = Transform3D(1.0000143, 0, 0, 0, -1, 8.742345e-08, 0, -8.7423146e-08, -1.0000143, -0.4311905, 0.41298607, 0.91838926)
+
+[node name="Mushroom 04" parent="SubViewportContainer/SubViewport/MAIN/PlayerSpawn/FairyRing" unique_id=1718021669 instance=ExtResource("5_4d07p")]
+transform = Transform3D(1.0000143, 0, 0, 0, -1, 8.742345e-08, 0, -8.7423146e-08, -1.0000143, -0.82089233, 0.4129861, 0.78046274)
+
+[node name="Mushroom 05" parent="SubViewportContainer/SubViewport/MAIN/PlayerSpawn/FairyRing" unique_id=981288019 instance=ExtResource("5_4d07p")]
+transform = Transform3D(1.0000142, 0, 0, 0, -1, 8.742344e-08, 0, -8.7423146e-08, -1.0000142, -0.81715775, 0.41298613, 0.49342787)
+
+[node name="Mushroom 06" parent="SubViewportContainer/SubViewport/MAIN/PlayerSpawn/FairyRing" unique_id=1528769794 instance=ExtResource("5_4d07p")]
+transform = Transform3D(1.0000142, 0, 0, 0, -1, 8.742343e-08, 0, -8.7423146e-08, -1.0000142, -1.0355988, 0.41298616, -0.027321935)
+
+[node name="Mushroom 07" parent="SubViewportContainer/SubViewport/MAIN/PlayerSpawn/FairyRing" unique_id=806597498 instance=ExtResource("5_4d07p")]
+transform = Transform3D(1.0000141, 0, 0, 0, -1, 8.742343e-08, 0, -8.7423146e-08, -1.0000141, -1.017643, 0.4129862, -0.18322647)
+
+[node name="Mushroom 08" parent="SubViewportContainer/SubViewport/MAIN/PlayerSpawn/FairyRing" unique_id=963918404 instance=ExtResource("5_4d07p")]
+transform = Transform3D(1.0000141, 0, 0, 0, -1, 8.742343e-08, 0, -8.7423146e-08, -1.0000141, -0.67123413, 0.41298622, -0.74851525)
+
+[node name="Mushroom 09" parent="SubViewportContainer/SubViewport/MAIN/PlayerSpawn/FairyRing" unique_id=88364743 instance=ExtResource("5_4d07p")]
+transform = Transform3D(1.000014, 0, 0, 0, -1, 8.7423416e-08, 0, -8.7423146e-08, -1.000014, -0.46908188, 0.41298622, -0.77525055)
+
+[node name="Mushroom 11" parent="SubViewportContainer/SubViewport/MAIN/PlayerSpawn/FairyRing" unique_id=1267558095 instance=ExtResource("5_4d07p")]
+transform = Transform3D(1.0000138, 0, 0, 0, -1, 8.742341e-08, 0, -8.7423146e-08, -1.0000138, 0.2776718, 0.41298628, -0.84332967)
+
+[node name="Mushroom 10" parent="SubViewportContainer/SubViewport/MAIN/PlayerSpawn/FairyRing" unique_id=784884303 instance=ExtResource("5_4d07p")]
+transform = Transform3D(1.000014, 0, 0, 0, -1, 8.742341e-08, 0, -8.7423146e-08, -1.000014, -0.1357956, 0.41298628, -0.8270874)
+
+[node name="Mushroom 12" parent="SubViewportContainer/SubViewport/MAIN/PlayerSpawn/FairyRing" unique_id=2094243320 instance=ExtResource("5_4d07p")]
+transform = Transform3D(1.0000138, 0, 0, 0, -1, 8.742341e-08, 0, -8.7423146e-08, -1.0000138, 0.6409111, 0.41298622, -0.6543875)
+
+[node name="Mushroom 13" parent="SubViewportContainer/SubViewport/MAIN/PlayerSpawn/FairyRing" unique_id=1375503148 instance=ExtResource("5_4d07p")]
+transform = Transform3D(1.0000137, 0, 0, 0, -1, 8.7423395e-08, 0, -8.7423146e-08, -1.0000137, 0.883667, 0.41298625, -0.48183942)
+
+[node name="Mushroom 15" parent="SubViewportContainer/SubViewport/MAIN/PlayerSpawn/FairyRing" unique_id=101065288 instance=ExtResource("5_4d07p")]
+transform = Transform3D(1.0000136, 0, 0, 0, -1, 8.742339e-08, 0, -8.7423146e-08, -1.0000136, 1.0103416, 0.41298613, 0.28966206)
+
+[node name="Mushroom 14" parent="SubViewportContainer/SubViewport/MAIN/PlayerSpawn/FairyRing" unique_id=297212336 instance=ExtResource("5_4d07p")]
+transform = Transform3D(1.0000137, 0, 0, 0, -1, 8.742339e-08, 0, -8.7423146e-08, -1.0000137, 1.0438652, 0.41298616, -0.006503701)
+
+[node name="Mushroom 16" parent="SubViewportContainer/SubViewport/MAIN/PlayerSpawn/FairyRing" unique_id=1373818522 instance=ExtResource("5_4d07p")]
+transform = Transform3D(1.0000135, 0, 0, 0, -1, 8.7423366e-08, 0, -8.7423146e-08, -1.0000135, 0.86232376, 0.4129861, 0.72005266)
+
+[node name="Mushroom 17" parent="SubViewportContainer/SubViewport/MAIN/PlayerSpawn/FairyRing" unique_id=822977082 instance=ExtResource("5_4d07p")]
+transform = Transform3D(1.0000134, 0, 0, 0, -1, 8.7423366e-08, 0, -8.7423146e-08, -1.0000134, 0.45505524, 0.41298607, 1.096917)
+
+[node name="Mushroom 18" parent="SubViewportContainer/SubViewport/MAIN/PlayerSpawn/FairyRing" unique_id=1098917253 instance=ExtResource("5_4d07p")]
+transform = Transform3D(1.0000132, 0, 0, 0, -1, 8.742335e-08, 0, -8.7423146e-08, -1.0000132, 0.61787415, 0.41298607, 0.96885055)
+
+[node name="Mushroom 19" parent="SubViewportContainer/SubViewport/MAIN/PlayerSpawn/FairyRing" unique_id=1936480276 instance=ExtResource("5_4d07p")]
+transform = Transform3D(1.0000132, 0, 0, 0, -1, 8.7423345e-08, 0, -8.7423146e-08, -1.0000132, 0.12441254, 0.41298607, 1.0492162)
 
 [node name="Player" parent="SubViewportContainer/SubViewport/MAIN" unique_id=1848596107 instance=ExtResource("4_783md")]
 transform = Transform3D(-0.25459456, 0, -0.9670479, 0, 1, 0, 0.9670479, 0, -0.25459456, -39.335846, 0.33270192, 1.0601468)
@@ -211,113 +338,196 @@ stream = ExtResource("10_whe6r")
 
 [node name="ScaryAmbient" type="AudioStreamPlayer" parent="SubViewportContainer/SubViewport/MAIN/World" unique_id=1699232608]
 
-[node name="UI" type="CanvasLayer" parent="SubViewportContainer/SubViewport/MAIN" unique_id=1053079449 node_paths=PackedStringArray("frog_texture")]
+[node name="UI" type="CanvasLayer" parent="SubViewportContainer/SubViewport/MAIN" unique_id=1053079449 node_paths=PackedStringArray("frog_texture", "stamp_texture")]
 script = ExtResource("11_csh6n")
-frog_texture = NodePath("FrogTexture")
+frog_texture = NodePath("MarginContainer/HBoxContainer/FrogTexture")
+stamp_texture = NodePath("MarginContainer/HBoxContainer/StampTexture")
 metadata/_custom_type_script = "uid://gfl84qcnh65h"
 
-[node name="FrogTexture" type="TextureRect" parent="SubViewportContainer/SubViewport/MAIN/UI" unique_id=389958597]
+[node name="MarginContainer2" type="MarginContainer" parent="SubViewportContainer/SubViewport/MAIN/UI" unique_id=566198042]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 437.0
-offset_top = -27.0
-offset_right = 23.0
-offset_bottom = -271.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = SubResource("ViewportTexture_73r58")
+theme_override_constants/margin_top = 56
+theme_override_constants/margin_bottom = 402
+
+[node name="TextureRect" type="TextureRect" parent="SubViewportContainer/SubViewport/MAIN/UI/MarginContainer2" unique_id=231272593]
+layout_mode = 2
+texture = SubResource("GradientTexture2D_cojvj")
 expand_mode = 1
-stretch_mode = 4
 
-[node name="FrogViewport" type="SubViewport" parent="SubViewportContainer/SubViewport/MAIN/UI/FrogTexture" unique_id=956167485]
-own_world_3d = true
-transparent_bg = true
-handle_input_locally = false
-render_target_update_mode = 4
-
-[node name="Camera3D" type="Camera3D" parent="SubViewportContainer/SubViewport/MAIN/UI/FrogTexture/FrogViewport" unique_id=311741069]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.72336936, -0.4186117, 0.20229745)
-
-[node name="RotationComponent" type="Node3D" parent="SubViewportContainer/SubViewport/MAIN/UI/FrogTexture/FrogViewport/Camera3D" unique_id=2010420136]
-transform = Transform3D(2, -3.496911e-07, -1.5285484e-14, 0, -8.742278e-08, 2, -3.496911e-07, -2, -8.742278e-08, 0, -0.00999999, -0.108)
-script = ExtResource("11_mhs8k")
-metadata/_custom_type_script = "uid://d4lj82wyqfv14"
-
-[node name="Frog" type="MeshInstance3D" parent="SubViewportContainer/SubViewport/MAIN/UI/FrogTexture/FrogViewport/Camera3D/RotationComponent" unique_id=1856857411]
-layers = 2
-mesh = ExtResource("11_pe4ny")
-skin = SubResource("Skin_mhs8k")
-skeleton = NodePath("../../../../../UI")
-
-[node name="OmniLight3D" type="OmniLight3D" parent="SubViewportContainer/SubViewport/MAIN/UI/FrogTexture/FrogViewport/Camera3D" unique_id=810843460]
-transform = Transform3D(1, 0, -3.3407487e-22, 0, 1, 0, 3.3407487e-22, 0, 1, -0.11318982, 0.0879904, -0.108)
-light_color = Color(0.30980393, 1, 1, 1)
-
-[node name="OmniLight3D2" type="OmniLight3D" parent="SubViewportContainer/SubViewport/MAIN/UI/FrogTexture/FrogViewport/Camera3D" unique_id=81134177]
-transform = Transform3D(1, 0, -3.3407487e-22, 0, 1, 0, 3.3407487e-22, 0, 1, 0.07737023, -0.01998967, -0.108)
-light_color = Color(1, 0, 1, 1)
-
-[node name="CoinTexture" type="TextureRect" parent="SubViewportContainer/SubViewport/MAIN/UI" unique_id=558946743]
+[node name="MarginContainer" type="MarginContainer" parent="SubViewportContainer/SubViewport/MAIN/UI" unique_id=1375235298]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 6.0
-offset_top = 2.0
-offset_right = -554.0
-offset_bottom = -391.0
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_top = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="SubViewportContainer/SubViewport/MAIN/UI/MarginContainer" unique_id=231499905]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="SubViewportContainer/SubViewport/MAIN/UI/MarginContainer/HBoxContainer" unique_id=522426271]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="CoinTexture" type="TextureRect" parent="SubViewportContainer/SubViewport/MAIN/UI/MarginContainer/HBoxContainer/VBoxContainer" unique_id=558946743]
+custom_minimum_size = Vector2(0, 150)
+layout_mode = 2
 texture = SubResource("ViewportTexture_ufbfe")
 expand_mode = 1
-stretch_mode = 4
+stretch_mode = 5
 
-[node name="CoinTexture" type="SubViewport" parent="SubViewportContainer/SubViewport/MAIN/UI/CoinTexture" unique_id=2096358517]
+[node name="Panel" type="Panel" parent="SubViewportContainer/SubViewport/MAIN/UI/MarginContainer/HBoxContainer/VBoxContainer/CoinTexture" unique_id=1727009995]
+custom_minimum_size = Vector2(109.82, 9.26)
+layout_mode = 0
+offset_top = 158.0
+offset_right = 157.0
+offset_bottom = 168.0
+grow_horizontal = 2
+grow_vertical = 2
+offset_transform_enabled = true
+offset_transform_position = Vector2(9.7, -98)
+theme_override_styles/panel = SubResource("StyleBoxFlat_wuii1")
+
+[node name="Label" type="Label" parent="SubViewportContainer/SubViewport/MAIN/UI/MarginContainer/HBoxContainer/VBoxContainer/CoinTexture" unique_id=1377197401]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 145.0
+offset_bottom = 145.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 2
+offset_transform_enabled = true
+offset_transform_position = Vector2(0, -99.42)
+theme_override_font_sizes/font_size = 26
+text = "Test"
+horizontal_alignment = 1
+script = SubResource("GDScript_csh6n")
+
+[node name="CoinTexture2" type="SubViewport" parent="SubViewportContainer/SubViewport/MAIN/UI/MarginContainer/HBoxContainer/VBoxContainer" unique_id=2096358517]
 own_world_3d = true
 transparent_bg = true
 handle_input_locally = false
-size = Vector2i(60, 60)
+size = Vector2i(128, 128)
 
-[node name="Camera3D" type="Camera3D" parent="SubViewportContainer/SubViewport/MAIN/UI/CoinTexture/CoinTexture" unique_id=796269943]
+[node name="Camera3D" type="Camera3D" parent="SubViewportContainer/SubViewport/MAIN/UI/MarginContainer/HBoxContainer/VBoxContainer/CoinTexture2" unique_id=796269943]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.72336936, -0.4186117, 0.20229745)
 
-[node name="RotationComponent" type="Node3D" parent="SubViewportContainer/SubViewport/MAIN/UI/CoinTexture/CoinTexture/Camera3D" unique_id=552900577]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0.029999971, 0.07604653, -0.62795997)
+[node name="RotationComponent" type="Node3D" parent="SubViewportContainer/SubViewport/MAIN/UI/MarginContainer/HBoxContainer/VBoxContainer/CoinTexture2/Camera3D" unique_id=552900577]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0.076, -0.6)
 script = ExtResource("11_mhs8k")
 metadata/_custom_type_script = "uid://d4lj82wyqfv14"
 
-[node name="CSGCylinder3D" type="CSGCylinder3D" parent="SubViewportContainer/SubViewport/MAIN/UI/CoinTexture/CoinTexture/Camera3D/RotationComponent" unique_id=720596295]
-transform = Transform3D(0.5, 0, 0, 0, 0.2910615, -0.40655038, 0, 0.40655038, 0.2910615, 0, 0, 0)
-radius = 0.3
-height = 0.05
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="SubViewportContainer/SubViewport/MAIN/UI/MarginContainer/HBoxContainer/VBoxContainer/CoinTexture2/Camera3D/RotationComponent" unique_id=720596295]
+transform = Transform3D(1, 0, 0, 0, 0.582123, -0.81310076, 0, 0.81310076, 0.582123, 0, 0, 0)
+radius = 0.075
+height = 0.01
 sides = 7
 smooth_faces = false
 material = SubResource("StandardMaterial3D_ufbfe")
 
-[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="SubViewportContainer/SubViewport/MAIN/UI/CoinTexture/CoinTexture/Camera3D/RotationComponent" unique_id=116181516]
-transform = Transform3D(0.5, 0, 0, 0, 0.2910615, -0.40655038, 0, 0.40655038, 0.2910615, 0, 0, 0)
-radius = 0.32
-height = 0.01
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="SubViewportContainer/SubViewport/MAIN/UI/MarginContainer/HBoxContainer/VBoxContainer/CoinTexture2/Camera3D/RotationComponent/CSGCylinder3D" unique_id=116181516]
+radius = 0.08
+height = 0.005
 sides = 7
 material = SubResource("StandardMaterial3D_csh6n")
 
-[node name="OmniLight3D" type="OmniLight3D" parent="SubViewportContainer/SubViewport/MAIN/UI/CoinTexture/CoinTexture/Camera3D" unique_id=1229301823]
+[node name="OmniLight3D" type="OmniLight3D" parent="SubViewportContainer/SubViewport/MAIN/UI/MarginContainer/HBoxContainer/VBoxContainer/CoinTexture2/Camera3D" unique_id=1229301823]
 transform = Transform3D(1, 0, 0, 0, 0.582123, -0.81310076, 0, 0.81310076, 0.582123, -0.184353, 0.7082643, -0.25924373)
 light_color = Color(0.30980393, 1, 1, 1)
 
-[node name="OmniLight3D2" type="OmniLight3D" parent="SubViewportContainer/SubViewport/MAIN/UI/CoinTexture/CoinTexture/Camera3D" unique_id=1428686836]
+[node name="OmniLight3D2" type="OmniLight3D" parent="SubViewportContainer/SubViewport/MAIN/UI/MarginContainer/HBoxContainer/VBoxContainer/CoinTexture2/Camera3D" unique_id=1428686836]
 transform = Transform3D(1, 0, 0, 0, 0.582123, -0.81310076, 0, 0.81310076, 0.582123, -0.35294056, -0.31302387, -0.09736848)
 light_color = Color(1, 0.64819175, 0.9843734, 1)
 
-[node name="Label" type="Label" parent="SubViewportContainer/SubViewport/MAIN/UI/CoinTexture" unique_id=1377197401]
-layout_mode = 0
-offset_left = 84.0
-offset_top = 12.0
-offset_right = 209.0
-offset_bottom = 62.0
-theme_override_font_sizes/font_size = 26
-text = "Test"
-script = SubResource("GDScript_csh6n")
+[node name="Spacer" type="Control" parent="SubViewportContainer/SubViewport/MAIN/UI/MarginContainer/HBoxContainer" unique_id=593907943]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="StampTexture" type="TextureRect" parent="SubViewportContainer/SubViewport/MAIN/UI/MarginContainer/HBoxContainer" unique_id=1086320396]
+custom_minimum_size = Vector2(0, 150)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+texture = SubResource("ViewportTexture_4d07p")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="StampTexture" type="SubViewport" parent="SubViewportContainer/SubViewport/MAIN/UI/MarginContainer/HBoxContainer/StampTexture" unique_id=671329408]
+own_world_3d = true
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(128, 128)
+
+[node name="Camera3D" type="Camera3D" parent="SubViewportContainer/SubViewport/MAIN/UI/MarginContainer/HBoxContainer/StampTexture/StampTexture" unique_id=2042505819]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.72336936, -0.4186117, 0.20229745)
+
+[node name="RotationComponent" type="Node3D" parent="SubViewportContainer/SubViewport/MAIN/UI/MarginContainer/HBoxContainer/StampTexture/StampTexture/Camera3D" unique_id=251669485]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0.029999971, 0.07604653, -0.62795997)
+script = ExtResource("11_mhs8k")
+metadata/_custom_type_script = "uid://d4lj82wyqfv14"
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="SubViewportContainer/SubViewport/MAIN/UI/MarginContainer/HBoxContainer/StampTexture/StampTexture/Camera3D/RotationComponent" unique_id=303522256]
+transform = Transform3D(1, 0, 0, 0, 0.582123, -0.81310076, 0, 0.81310076, 0.582123, 0, 0, 0)
+mesh = SubResource("PlaneMesh_wuii1")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="SubViewportContainer/SubViewport/MAIN/UI/MarginContainer/HBoxContainer/StampTexture/StampTexture/Camera3D/RotationComponent" unique_id=783765869]
+transform = Transform3D(1, 0, 0, 0, 0.582123, -0.81310076, 0, 0.81310076, 0.582123, 0, 0, 0)
+visible = false
+size = Vector3(0.1, 0.005, 0.1)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="SubViewportContainer/SubViewport/MAIN/UI/MarginContainer/HBoxContainer/StampTexture/StampTexture/Camera3D" unique_id=166099557]
+transform = Transform3D(1, 0, 0, 0, 0.582123, -0.81310076, 0, 0.81310076, 0.582123, -0.184353, 0.7082643, -0.25924373)
+light_color = Color(0.30980393, 1, 1, 1)
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="SubViewportContainer/SubViewport/MAIN/UI/MarginContainer/HBoxContainer/StampTexture/StampTexture/Camera3D" unique_id=1884655035]
+transform = Transform3D(1, 0, 0, 0, 0.582123, -0.81310076, 0, 0.81310076, 0.582123, -0.35294056, -0.31302387, -0.09736848)
+light_color = Color(1, 0.64819175, 0.9843734, 1)
+
+[node name="FrogTexture" type="TextureRect" parent="SubViewportContainer/SubViewport/MAIN/UI/MarginContainer/HBoxContainer" unique_id=389958597]
+custom_minimum_size = Vector2(0, 150)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+texture = SubResource("ViewportTexture_73r58")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="FrogViewport" type="SubViewport" parent="SubViewportContainer/SubViewport/MAIN/UI/MarginContainer/HBoxContainer/FrogTexture" unique_id=956167485]
+own_world_3d = true
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(128, 128)
+render_target_update_mode = 4
+
+[node name="Camera3D" type="Camera3D" parent="SubViewportContainer/SubViewport/MAIN/UI/MarginContainer/HBoxContainer/FrogTexture/FrogViewport" unique_id=311741069]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.72336936, -0.4186117, 0.20229745)
+
+[node name="RotationComponent" type="Node3D" parent="SubViewportContainer/SubViewport/MAIN/UI/MarginContainer/HBoxContainer/FrogTexture/FrogViewport/Camera3D" unique_id=2010420136]
+transform = Transform3D(2, -3.496911e-07, -1.5285484e-14, 0, -8.742278e-08, 2, -3.496911e-07, -2, -8.742278e-08, 0, -0.00999999, -0.108)
+script = ExtResource("11_mhs8k")
+metadata/_custom_type_script = "uid://d4lj82wyqfv14"
+
+[node name="Frog" type="MeshInstance3D" parent="SubViewportContainer/SubViewport/MAIN/UI/MarginContainer/HBoxContainer/FrogTexture/FrogViewport/Camera3D/RotationComponent" unique_id=1856857411]
+layers = 2
+mesh = ExtResource("11_pe4ny")
+skin = SubResource("Skin_mhs8k")
+skeleton = NodePath("../../../../../../../UI")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="SubViewportContainer/SubViewport/MAIN/UI/MarginContainer/HBoxContainer/FrogTexture/FrogViewport/Camera3D" unique_id=810843460]
+transform = Transform3D(1, 0, -3.3407487e-22, 0, 1, 0, 3.3407487e-22, 0, 1, -0.11318982, 0.0879904, -0.108)
+light_color = Color(0.30980393, 1, 1, 1)
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="SubViewportContainer/SubViewport/MAIN/UI/MarginContainer/HBoxContainer/FrogTexture/FrogViewport/Camera3D" unique_id=81134177]
+transform = Transform3D(1, 0, -3.3407487e-22, 0, 1, 0, 3.3407487e-22, 0, 1, 0.07737023, -0.01998967, -0.108)
+light_color = Color(1, 0, 1, 1)
 
 [node name="UI" type="Control" parent="SubViewportContainer/SubViewport/MAIN/UI" unique_id=1778609380]
 visible = false
@@ -328,3 +538,12 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 metadata/_edit_lock_ = true
+
+[node name="Panel" type="Panel" parent="SubViewportContainer/SubViewport/MAIN/UI" unique_id=860069928]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_cojvj")

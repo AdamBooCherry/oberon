@@ -33,7 +33,7 @@ func _ready() -> void:
 	# State machine initialization
 	if state_machine:
 		state_machine.init(self)
-		print("[Redcap] State machine initialized. Starting state: ", state_machine.current_state.name if state_machine.current_state else "NONE")
+		#print("[Redcap] State machine initialized. Starting state: ", state_machine.current_state.name if state_machine.current_state else "NONE")
 
 func _physics_process(delta: float) -> void:
 	# Continuously track live player position when inside detection zone
@@ -55,19 +55,19 @@ func take_damage(amount: float) -> void:
 		health_component.take_damage(amount)
 
 func take_stun() -> void:
-	print("[Redcap] Stun received!")
+	#print("[Redcap] Stun received!")
 	if state_machine:
 		state_machine.change_state("WANDERING")
 
 func _on_health_depleted() -> void:
-	print("[Redcap] Health depleted!")
+	#print("[Redcap] Health depleted!")
 	if state_machine:
 		state_machine.change_state("STUNNED")
 
 # --- Detection Signals ---
 
 func _on_player_detected(player: Player) -> void:
-	print("[Redcap] Player entered detector zone")
+	#print("[Redcap] Player entered detector zone")
 	tracked_player = player
 	last_known_player_position = player.global_position
 
@@ -75,7 +75,7 @@ func _on_player_detected(player: Player) -> void:
 		state_machine.change_state("ALERT")
 
 func _on_player_lost(player: Player) -> void:
-	print("[Redcap] Player exited detector zone")
+	#print("[Redcap] Player exited detector zone")
 	if player:
 		last_known_player_position = player.global_position
 	tracked_player = null

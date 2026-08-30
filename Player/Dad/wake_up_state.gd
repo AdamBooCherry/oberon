@@ -5,7 +5,7 @@ extends State
 @export var control_delay: float = 0.0
 
 func enter() -> void:
-	print("STATE: DadWakeupState -> enter()")
+	#print("STATE: DadWakeupState -> enter()")
 	player_dad.velocity = Vector3.ZERO
 	player_dad.disable_action_control()
 	
@@ -20,7 +20,7 @@ func enter() -> void:
 		await player_dad.get_tree().process_frame
 	
 	if control_delay > 0.0:
-		print("STATE: DadWakeupState -> Waiting control delay (", control_delay, "s)...")
+		#print("STATE: DadWakeupState -> Waiting control delay (", control_delay, "s)...")
 		await player_dad.get_tree().create_timer(control_delay).timeout
 		
 	if player_dad.hurtbox:
