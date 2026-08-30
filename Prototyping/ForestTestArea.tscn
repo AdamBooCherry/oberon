@@ -102,14 +102,23 @@ size = Vector3(2.9763184, 1, 10.224199)
 [sub_resource type="BoxShape3D" id="BoxShape3D_wf8b6"]
 size = Vector3(6.4577255, 1, 4.0124555)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_7qteu"]
+size = Vector3(10.91687, 1, 7.152832)
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_g6gkq"]
-size = Vector3(13, 1, 7.152832)
+size = Vector3(11.009766, 1, 7.152832)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_bv2yy"]
-size = Vector3(10.479492, 1, 4)
+size = Vector3(10.810059, 1, 6.487549)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_khta5"]
-size = Vector3(6.0411377, 1, 9.066563)
+[sub_resource type="BoxShape3D" id="BoxShape3D_abqjs"]
+size = Vector3(7.4262695, 1, 6.630005)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_aixyc"]
+size = Vector3(8.956055, 1, 6.2261963)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5ahyt"]
+size = Vector3(7.631836, 1, 6.487549)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_4kosd"]
 size = Vector3(7.775879, 1, 5.878277)
@@ -263,9 +272,9 @@ size = Vector3(11.294922, 10.897949, 1)
 material = SubResource("StandardMaterial3D_6jhai")
 
 [node name="ForestWall5" type="CSGBox3D" parent="NavigationRegion3D/Environment" unique_id=654990754]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -3.653711, 4.9489746, -23.186682)
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -3.653711, 4.9489746, -23.354132)
 use_collision = true
-size = Vector3(45.683716, 10.897949, 1)
+size = Vector3(46.018616, 10.897949, 1)
 material = SubResource("StandardMaterial3D_6jhai")
 
 [node name="ForestWall6" type="CSGBox3D" parent="NavigationRegion3D/Environment" unique_id=1527820367]
@@ -292,13 +301,13 @@ material = SubResource("StandardMaterial3D_6jhai")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -43.721977, -0.010643482, 7.273429)
 
 [node name="ShrubShort2" parent="NavigationRegion3D/Obstacles" unique_id=1624494209 instance=ExtResource("7_djtux")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -46.2479, -0.010643482, 4.6679835)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -45.786053, -0.010643482, 4.6679835)
 
 [node name="ShrubShort3" parent="NavigationRegion3D/Obstacles" unique_id=1847703405 instance=ExtResource("7_djtux")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -47.807915, -0.0106425285, 2.8312716)
 
 [node name="ShrubLong" parent="NavigationRegion3D/Obstacles" unique_id=539375861 instance=ExtResource("4_bv2yy")]
-transform = Transform3D(0.8098595, 0, 0.5866239, 0, 1, 0, -0.5866239, 0, 0.8098595, -43.673763, 0.000500679, -20.476936)
+transform = Transform3D(0.9798034, 0, -0.19996351, 0, 1, 0, 0.19996351, 0, 0.9798034, -37.660393, 0.00049972534, -25.41614)
 
 [node name="ShrubLong2" parent="NavigationRegion3D/Obstacles" unique_id=1800611913 instance=ExtResource("4_bv2yy")]
 transform = Transform3D(-0.47905594, 0, 0.8777844, 0, 1, 0, -0.8777844, 0, -0.47905594, -57.935093, 0.000500679, 16.752954)
@@ -326,6 +335,48 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -42, 0, 27)
 
 [node name="BirchTree3" parent="NavigationRegion3D/Obstacles" unique_id=1030178047 instance=ExtResource("13_g6gkq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23, 0, 20)
+
+[node name="ShrubLong8" parent="NavigationRegion3D/Obstacles" unique_id=453969264 instance=ExtResource("4_bv2yy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -44.05573, 0.00049972534, -26.311249)
+
+[node name="ShrubLong9" parent="NavigationRegion3D/Obstacles" unique_id=915553857 instance=ExtResource("4_bv2yy")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -47.031277, 0.00049972534, -29.78205)
+
+[node name="ShrubShort4" parent="NavigationRegion3D/Obstacles" unique_id=694060820 instance=ExtResource("7_djtux")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -40.604034, 0.00049972534, -34.56393)
+
+[node name="ShrubLong11" parent="NavigationRegion3D/Obstacles" unique_id=859915937 instance=ExtResource("4_bv2yy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.821774, 0.00049972534, -38.06276)
+
+[node name="ShrubLong12" parent="NavigationRegion3D/Obstacles" unique_id=1064461927 instance=ExtResource("4_bv2yy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.773031, 0.00049877167, -37.966404)
+
+[node name="ShrubLong10" parent="NavigationRegion3D/Obstacles" unique_id=180753790 instance=ExtResource("4_bv2yy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -43.801212, 0.00049972534, -33.32045)
+
+[node name="ShrubShort6" parent="NavigationRegion3D/Obstacles" unique_id=1868274268 instance=ExtResource("7_djtux")]
+transform = Transform3D(0.25881916, 0, 0.9659258, 0, 1, 0, -0.9659258, 0, 0.25881916, -28.48917, 0.00049972534, -35.97899)
+
+[node name="ShrubShort7" parent="NavigationRegion3D/Obstacles" unique_id=935424782 instance=ExtResource("7_djtux")]
+transform = Transform3D(0.25881907, 0, -0.9659258, 0, 1, 0, 0.9659258, 0, 0.25881907, -28.601204, 0.00049972534, -34.24607)
+
+[node name="ShrubShort8" parent="NavigationRegion3D/Obstacles" unique_id=927601818 instance=ExtResource("7_djtux")]
+transform = Transform3D(0.49999997, 0, -0.86602545, 0, 1, 0, 0.86602545, 0, 0.49999997, -27.925, 0.00049972534, -32.61069)
+
+[node name="ShrubLong13" parent="NavigationRegion3D/Obstacles" unique_id=777216877 instance=ExtResource("4_bv2yy")]
+transform = Transform3D(0.49999997, 0, -0.8660254, 0, 1, 0, 0.8660254, 0, 0.49999997, -25.905046, 0.000500679, -28.986475)
+
+[node name="ShrubLong14" parent="NavigationRegion3D/Obstacles" unique_id=1007576708 instance=ExtResource("4_bv2yy")]
+transform = Transform3D(0.48608696, 0, -0.8739104, 0, 1, 0, 0.8739104, 0, 0.48608696, -9.828474, 0.0005016327, -35.12753)
+
+[node name="ShrubLong15" parent="NavigationRegion3D/Obstacles" unique_id=1123131503 instance=ExtResource("4_bv2yy")]
+transform = Transform3D(0.13209149, 0, -0.9912375, 0, 1, 0, 0.9912375, 0, 0.13209149, -7.878071, 0.0005016327, -29.1282)
+
+[node name="ShrubLong16" parent="NavigationRegion3D/Obstacles" unique_id=492248803 instance=ExtResource("4_bv2yy")]
+transform = Transform3D(0.61001337, 0, -0.7923911, 0, 1, 0, 0.7923911, 0, 0.61001337, -5.738972, 0.0005016327, -23.411985)
+
+[node name="ShrubShort5" parent="NavigationRegion3D/Obstacles" unique_id=237094091 instance=ExtResource("7_djtux")]
+transform = Transform3D(0.70710677, 0, 0.7071068, 0, 1, 0, -0.7071068, 0, 0.70710677, -27.694351, 0.00049972534, -37.3822)
 
 [node name="Props" type="Node3D" parent="NavigationRegion3D" unique_id=978369346]
 
@@ -411,7 +462,7 @@ cutscene_id = &"REDCAP_MURDER"
 [node name="Cameras" type="Node3D" parent="." unique_id=892847068]
 
 [node name="FixedCamera 01" type="Node3D" parent="Cameras" unique_id=645419357]
-transform = Transform3D(0.6655769, -0.16876185, 0.7269985, -0.018927759, 0.9699687, 0.24249236, -0.7460892, -0.17515779, 0.6423945, -52.725, 0, -3.103)
+transform = Transform3D(0.6655769, -0.16876185, 0.7269985, -0.018927759, 0.9699687, 0.24249236, -0.7460892, -0.17515779, 0.6423945, -52.725, 0.21214104, -3.103)
 
 [node name="Camera3D" type="Camera3D" parent="Cameras/FixedCamera 01" unique_id=1438998117 node_paths=PackedStringArray("trigger_area")]
 transform = Transform3D(0.75359386, -0.5805886, -0.30824268, 0.28217635, -0.13779771, 0.9494148, -0.59369427, -0.80245185, 0.05998484, -6.2543755, 14.559108, 3.8928604)
@@ -430,7 +481,7 @@ shape = SubResource("BoxShape3D_djtux")
 debug_color = Color(1, 1, 0, 1)
 
 [node name="FixedCamera 02" type="Node3D" parent="Cameras" unique_id=1228152935]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -42.05, 0, 7.266)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -42.05, 0.21214104, 7.266)
 
 [node name="Camera3D" type="Camera3D" parent="Cameras/FixedCamera 02" unique_id=189068820 node_paths=PackedStringArray("trigger_area")]
 transform = Transform3D(0.65778464, 0.021445215, -0.7529007, 0.019070687, 0.9988, 0.045110703, 0.7529646, -0.044031464, 0.6565863, -4.747452, 1.9694072, 3.282981)
@@ -460,7 +511,7 @@ shape = SubResource("BoxShape3D_wf8b6")
 debug_color = Color(1, 1, 0, 1)
 
 [node name="FixedCamera 03" type="Node3D" parent="Cameras" unique_id=1349963622]
-transform = Transform3D(1, 0, -2.9802322e-08, -1.4901161e-08, 1.0000002, 0, -1.1920929e-07, 0, 1, -51.236717, -9.536743e-07, -21.56547)
+transform = Transform3D(1, 0, -2.9802322e-08, -1.4901161e-08, 1.0000002, 0, -1.1920929e-07, 0, 1, -51.236717, 0.21214008, -21.56547)
 
 [node name="Camera3D" type="Camera3D" parent="Cameras/FixedCamera 03" unique_id=1329583880 node_paths=PackedStringArray("trigger_area")]
 transform = Transform3D(0.9112992, 0.08263752, -0.40336674, 7.45058e-09, 0.97965235, 0.20070083, 0.41174483, -0.18289854, 0.8927566, 0, 2.8310504, 5.4850483)
@@ -473,30 +524,66 @@ script = ExtResource("5_sm0io")
 metadata/_custom_type_script = "uid://drpmv38e02bjw"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Cameras/FixedCamera 03/CameraTriggerArea" unique_id=1692584197]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3544922, 0, 0.77316)
-shape = SubResource("BoxShape3D_g6gkq")
+transform = Transform3D(1, 0, 0, -5.2939547e-23, 1, 0, 0, 0, 1, -0.40093994, -4.4703484e-08, 0.77316093)
+shape = SubResource("BoxShape3D_7qteu")
 debug_color = Color(1, 1, 0, 1)
 
-[node name="FixedCamera 03" type="Node3D" parent="Cameras/FixedCamera 03" unique_id=342775948]
-transform = Transform3D(1, 0, -2.9802322e-08, -1.4901161e-08, 1.0000002, 0, -1.1920929e-07, 0, 1, 48.75999, 5.3639246e-07, 23.919888)
+[node name="FixedCamera 14" type="Node3D" parent="Cameras" unique_id=342775948]
+transform = Transform3D(1, 0, -5.9604645e-08, -2.9802326e-08, 1.0000005, 4.440892e-16, -2.3841858e-07, 0, 1, -2.4767265, 0.21213989, 2.354412)
 
-[node name="Camera3D" type="Camera3D" parent="Cameras/FixedCamera 03/FixedCamera 03" unique_id=319162705 node_paths=PackedStringArray("trigger_area")]
+[node name="Camera3D" type="Camera3D" parent="Cameras/FixedCamera 14" unique_id=319162705 node_paths=PackedStringArray("trigger_area")]
 transform = Transform3D(-0.31854343, -0.2773927, 0.90641236, -4.5385093e-08, 0.9562233, 0.29263654, -0.94790846, 0.09321741, -0.3045985, 4.40735, 3.3465073, -1.0383077)
 script = ExtResource("4_ugu4n")
 trigger_area = NodePath("../CameraTriggerArea")
 metadata/_custom_type_script = "uid://bkbqspmutvdh1"
 
-[node name="CameraTriggerArea" type="Area3D" parent="Cameras/FixedCamera 03/FixedCamera 03" unique_id=1638271630]
+[node name="CameraTriggerArea" type="Area3D" parent="Cameras/FixedCamera 14" unique_id=1638271630]
 script = ExtResource("5_sm0io")
 metadata/_custom_type_script = "uid://drpmv38e02bjw"
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Cameras/FixedCamera 03/FixedCamera 03/CameraTriggerArea" unique_id=2007017945]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Cameras/FixedCamera 14/CameraTriggerArea" unique_id=2007017945]
+transform = Transform3D(1, 0, 0, -3.1763725e-22, 1, 0, 0, 0, 1, -1.6879885, 0, 0.8573868)
+shape = SubResource("BoxShape3D_g6gkq")
+debug_color = Color(1, 1, 0, 1)
+
+[node name="FixedCamera 13" type="Node3D" parent="Cameras" unique_id=347137815]
+transform = Transform3D(1, 0, -2.9802322e-08, -1.4901161e-08, 1.0000002, 0, -1.1920929e-07, 0, 1, -39.191948, 0.21214008, -29.968115)
+
+[node name="Camera3D" type="Camera3D" parent="Cameras/FixedCamera 13" unique_id=1957270776 node_paths=PackedStringArray("trigger_area")]
+transform = Transform3D(-0.8611564, -0.15403858, 0.48443973, -7.450581e-09, 0.95298314, 0.30302262, -0.5083403, 0.26094985, -0.8206676, 1.93816, 4.664358, -4.773695)
+script = ExtResource("4_ugu4n")
+trigger_area = NodePath("../CameraTriggerArea")
+metadata/_custom_type_script = "uid://bkbqspmutvdh1"
+
+[node name="CameraTriggerArea" type="Area3D" parent="Cameras/FixedCamera 13" unique_id=538917678]
+script = ExtResource("5_sm0io")
+metadata/_custom_type_script = "uid://drpmv38e02bjw"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Cameras/FixedCamera 13/CameraTriggerArea" unique_id=1455045436]
+transform = Transform3D(1, 0, 0, -5.2939547e-23, 1, 0, 0, 0, 1, -1.3496094, -2.9802322e-08, 0.7731533)
+shape = SubResource("BoxShape3D_g6gkq")
+debug_color = Color(1, 1, 0, 1)
+
+[node name="FixedCamera 03" type="Node3D" parent="Cameras/FixedCamera 13" unique_id=1819119583]
+transform = Transform3D(1, 0, -2.9802322e-08, -1.4901161e-08, 1.0000002, 0, -1.1920929e-07, 0, 1, 48.75999, 5.3639246e-07, 23.919888)
+
+[node name="Camera3D" type="Camera3D" parent="Cameras/FixedCamera 13/FixedCamera 03" unique_id=1649696966 node_paths=PackedStringArray("trigger_area")]
+transform = Transform3D(-0.31854343, -0.2773927, 0.90641236, -4.5385093e-08, 0.9562233, 0.29263654, -0.94790846, 0.09321741, -0.3045985, 4.40735, 3.3465073, -1.0383077)
+script = ExtResource("4_ugu4n")
+trigger_area = NodePath("../CameraTriggerArea")
+metadata/_custom_type_script = "uid://bkbqspmutvdh1"
+
+[node name="CameraTriggerArea" type="Area3D" parent="Cameras/FixedCamera 13/FixedCamera 03" unique_id=17941089]
+script = ExtResource("5_sm0io")
+metadata/_custom_type_script = "uid://drpmv38e02bjw"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Cameras/FixedCamera 13/FixedCamera 03/CameraTriggerArea" unique_id=108797971]
 transform = Transform3D(1, 0, 0, -3.1763725e-22, 1, 0, 0, 0, 1, -1.6879885, 0, 0.8573868)
 shape = SubResource("BoxShape3D_g6gkq")
 debug_color = Color(1, 1, 0, 1)
 
 [node name="FixedCamera 06" type="Node3D" parent="Cameras" unique_id=2142081572]
-transform = Transform3D(1, 0, -2.9802322e-08, -1.4901161e-08, 1.0000002, 0, -1.1920929e-07, 0, 1, -18.78854, -9.536743e-07, -46.04201)
+transform = Transform3D(1, 0, -2.9802322e-08, -1.4901161e-08, 1.0000002, 0, -1.1920929e-07, 0, 1, -18.78854, 0.21214008, -46.04201)
 
 [node name="Camera3D" type="Camera3D" parent="Cameras/FixedCamera 06" unique_id=1196543704 node_paths=PackedStringArray("trigger_area")]
 transform = Transform3D(0.9133507, -0.19044773, 0.3598892, 0.0040331096, 0.88805896, 0.45971143, -0.40715376, -0.41842642, 0.8118776, 2.6395912, 3.679917, 4.1959)
@@ -514,10 +601,10 @@ shape = SubResource("BoxShape3D_g6gkq")
 debug_color = Color(1, 1, 0, 1)
 
 [node name="FixedCamera 04" type="Node3D" parent="Cameras" unique_id=1514443920]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35.449, 0, -25.536)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35.449, 0.21214104, -25.536)
 
 [node name="Camera3D" type="Camera3D" parent="Cameras/FixedCamera 04" unique_id=1181269816 node_paths=PackedStringArray("trigger_area")]
-transform = Transform3D(-0.9851077, -0.1262326, 0.11673921, -0.12980199, 0.99126214, -0.023465207, -0.11275703, -0.038268812, -0.9928853, 0.39011446, 1.682025, -3.9486706)
+transform = Transform3D(-0.88410836, -0.004140739, 0.46726364, 0.013773821, 0.99929535, 0.034916844, -0.46707892, 0.037306283, -0.8834283, -1.2031975, 1.4546092, -3.8282566)
 script = ExtResource("4_ugu4n")
 trigger_area = NodePath("../CameraTriggerArea")
 metadata/_custom_type_script = "uid://bkbqspmutvdh1"
@@ -528,17 +615,90 @@ script = ExtResource("5_sm0io")
 metadata/_custom_type_script = "uid://drpmv38e02bjw"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Cameras/FixedCamera 04/CameraTriggerArea" unique_id=68298620]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.777009, -8.940697e-08, 3.9261522)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.26944, 0.03502384, 7.12232)
 shape = SubResource("BoxShape3D_bv2yy")
 debug_color = Color(1, 1, 0, 1)
 
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="Cameras/FixedCamera 04/CameraTriggerArea" unique_id=487040472]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.3419724, -2.0861626e-07, 5.207899)
-shape = SubResource("BoxShape3D_khta5")
+[node name="FixedCamera 15" type="Node3D" parent="Cameras" unique_id=770563296]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -42.346966, 0.21214104, -40.86187)
+
+[node name="Camera3D" type="Camera3D" parent="Cameras/FixedCamera 15" unique_id=1801901847 node_paths=PackedStringArray("trigger_area")]
+transform = Transform3D(-0.8841083, -0.21607648, 0.41432282, 0.013773829, 0.8742297, 0.48531723, -0.46707892, 0.43477982, -0.7699375, 1.2773476, 3.6168525, -0.2385025)
+script = ExtResource("4_ugu4n")
+trigger_area = NodePath("../CameraTriggerArea")
+metadata/_custom_type_script = "uid://bkbqspmutvdh1"
+
+[node name="CameraTriggerArea" type="Area3D" parent="Cameras/FixedCamera 15" unique_id=157081471]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.2422922, -0.42336154, -3.809359)
+script = ExtResource("5_sm0io")
+metadata/_custom_type_script = "uid://drpmv38e02bjw"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Cameras/FixedCamera 15/CameraTriggerArea" unique_id=1839393330]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.5134465, -6.577545, -8.940697e-08, 4.8308983)
+shape = SubResource("BoxShape3D_abqjs")
+debug_color = Color(1, 1, 0, 1)
+
+[node name="FixedCamera 17" type="Node3D" parent="Cameras" unique_id=1690261978]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -54.974007, 0.21214104, -34.22763)
+
+[node name="Camera3D" type="Camera3D" parent="Cameras/FixedCamera 17" unique_id=717905026 node_paths=PackedStringArray("trigger_area")]
+transform = Transform3D(-0.77442694, -0.2588027, 0.5773077, 0.013773851, 0.90539044, 0.4243566, -0.63251346, 0.33658496, -0.697594, 0.3434372, 3.6168523, -3.7001076)
+fov = 67.5
+script = ExtResource("4_ugu4n")
+trigger_area = NodePath("../CameraTriggerArea")
+metadata/_custom_type_script = "uid://bkbqspmutvdh1"
+
+[node name="CameraTriggerArea" type="Area3D" parent="Cameras/FixedCamera 17" unique_id=2079303353]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5177078, -0.15424931, -3.8093758)
+script = ExtResource("5_sm0io")
+metadata/_custom_type_script = "uid://drpmv38e02bjw"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Cameras/FixedCamera 17/CameraTriggerArea" unique_id=205665088]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.5134465, -3.032467, -8.940697e-08, 4.740898)
+shape = SubResource("BoxShape3D_aixyc")
+debug_color = Color(1, 1, 0, 1)
+
+[node name="FixedCamera 18" type="Node3D" parent="Cameras" unique_id=1385225406]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -58.271286, 0.21214008, -39.06056)
+
+[node name="Camera3D" type="Camera3D" parent="Cameras/FixedCamera 18" unique_id=621190824 node_paths=PackedStringArray("trigger_area")]
+transform = Transform3D(-0.77442694, -0.2588027, 0.5773077, 0.013773851, 0.90539044, 0.4243566, -0.63251346, 0.33658496, -0.697594, 0.3434372, 3.6168523, -3.4634361)
+fov = 67.5
+script = ExtResource("4_ugu4n")
+trigger_area = NodePath("../CameraTriggerArea")
+metadata/_custom_type_script = "uid://bkbqspmutvdh1"
+
+[node name="CameraTriggerArea" type="Area3D" parent="Cameras/FixedCamera 18" unique_id=1147918125]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5177078, -0.15424931, -3.8093758)
+script = ExtResource("5_sm0io")
+metadata/_custom_type_script = "uid://drpmv38e02bjw"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Cameras/FixedCamera 18/CameraTriggerArea" unique_id=1939567743]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.5134465, -2.6276817, -8.940697e-08, 4.740898)
+shape = SubResource("BoxShape3D_aixyc")
+debug_color = Color(1, 1, 0, 1)
+
+[node name="FixedCamera 16" type="Node3D" parent="Cameras" unique_id=939888216]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -39.525307, 0.21214104, -39.666515)
+
+[node name="Camera3D" type="Camera3D" parent="Cameras/FixedCamera 16" unique_id=2080452759 node_paths=PackedStringArray("trigger_area")]
+transform = Transform3D(-0.6254616, -0.37115106, 0.6863269, 0.013773827, 0.8742297, 0.48531717, -0.78013337, 0.31300062, -0.5416849, 1.4739075, 3.6168523, -0.25609207)
+script = ExtResource("4_ugu4n")
+trigger_area = NodePath("../CameraTriggerArea")
+metadata/_custom_type_script = "uid://bkbqspmutvdh1"
+
+[node name="CameraTriggerArea" type="Area3D" parent="Cameras/FixedCamera 16" unique_id=1503707009]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.2422922, -0.42336154, -3.809359)
+script = ExtResource("5_sm0io")
+metadata/_custom_type_script = "uid://drpmv38e02bjw"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Cameras/FixedCamera 16/CameraTriggerArea" unique_id=1255299674]
+transform = Transform3D(1.5134465, 0, 0, 0, 1, 0, 0, 0, 1, -4.386921, -8.940697e-08, 7.122322)
+shape = SubResource("BoxShape3D_5ahyt")
 debug_color = Color(1, 1, 0, 1)
 
 [node name="FixedCamera 05" type="Node3D" parent="Cameras" unique_id=2036520070]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35.721584, 0, 20.94807)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35.721584, 0.21214104, 20.94807)
 
 [node name="Camera3D" type="Camera3D" parent="Cameras/FixedCamera 05" unique_id=1583721938 node_paths=PackedStringArray("trigger_area")]
 transform = Transform3D(0.9049822, 0.24305251, -0.34918866, 0, 0.8207524, 0.5712841, 0.4254495, -0.5170019, 0.74276626, -5.0529823, 10.336593, 5.659258)
@@ -558,7 +718,7 @@ shape = SubResource("BoxShape3D_4kosd")
 debug_color = Color(1, 1, 0, 1)
 
 [node name="FixedCamera 07" type="Node3D" parent="Cameras" unique_id=1642910911]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -44.97198, 0, 45.985596)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -44.97198, 0.21214104, 45.985596)
 
 [node name="Camera3D" type="Camera3D" parent="Cameras/FixedCamera 07" unique_id=971443939 node_paths=PackedStringArray("trigger_area")]
 transform = Transform3D(0.81303805, 0.15006205, -0.5625395, 0.00077201054, 0.96593416, 0.2587867, 0.58221, -0.21083775, 0.78522533, -5.6320686, 4.4609365, 11.93008)
@@ -573,15 +733,15 @@ script = ExtResource("5_sm0io")
 metadata/_custom_type_script = "uid://drpmv38e02bjw"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Cameras/FixedCamera 07/CameraTriggerArea" unique_id=1102046482]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.4279175, 1.9597423, -3.6170006)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.4279175, -0.3852694, -3.6170006)
 shape = SubResource("BoxShape3D_ugu4n")
 debug_color = Color(1, 1, 0, 1)
 
 [node name="FixedCamera 08" type="Node3D" parent="Cameras" unique_id=437116263]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -48.85045, 0, 2.6680155)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -48.85045, 0.21214104, 2.6680155)
 
 [node name="Camera3D" type="Camera3D" parent="Cameras/FixedCamera 08" unique_id=1917401796 node_paths=PackedStringArray("trigger_area")]
-transform = Transform3D(0.86077154, -0.009991879, 0.50889343, 0.019070745, 0.9997384, -0.0126279695, -0.5086341, 0.020574775, 0.86073697, 2.947979, 2.1628888, 3.497357)
+transform = Transform3D(0.86077154, -0.09636952, 0.4997853, 0.019070752, 0.98732954, 0.15753347, -0.50863415, -0.12606904, 0.851703, 2.6082573, 2.1628888, 3.9039588)
 fov = 86.20744
 script = ExtResource("4_ugu4n")
 trigger_area = NodePath("../CameraTriggerArea")
@@ -603,7 +763,7 @@ shape = SubResource("BoxShape3D_6gwb2")
 debug_color = Color(1, 1, 0, 1)
 
 [node name="FixedCamera 10" type="Node3D" parent="Cameras" unique_id=851007766]
-transform = Transform3D(0.5558486, 0, -0.8312836, 0, 1, 0, 0.8312836, 0, 0.5558486, -47.223114, -1.9073486e-06, 23.889332)
+transform = Transform3D(0.5558486, 0, -0.8312836, 0, 1, 0, 0.8312836, 0, 0.5558486, -47.223114, 0.21213913, 23.889332)
 
 [node name="Camera3D" type="Camera3D" parent="Cameras/FixedCamera 10" unique_id=650263891 node_paths=PackedStringArray("trigger_area")]
 transform = Transform3D(0.92308366, -0.009991879, 0.38446936, 0.017133009, 0.9997384, -0.015153184, -0.38421738, 0.020574775, 0.92301345, 1.2417101, 2.0830314, 6.5490427)
@@ -623,7 +783,7 @@ shape = SubResource("BoxShape3D_vmasj")
 debug_color = Color(1, 1, 0, 1)
 
 [node name="FixedCamera 11" type="Node3D" parent="Cameras" unique_id=301729371]
-transform = Transform3D(0.9999913, 0, -0.004175298, 0, 1, 0, 0.004175298, 0, 0.9999913, -22.918365, -1.9073486e-06, 34.112137)
+transform = Transform3D(0.9999913, 0, -0.004175298, 0, 1, 0, 0.004175298, 0, 0.9999913, -22.918365, 0.21213913, 34.112137)
 
 [node name="Camera3D" type="Camera3D" parent="Cameras/FixedCamera 11" unique_id=170256656 node_paths=PackedStringArray("trigger_area")]
 transform = Transform3D(0.92308366, -0.009991879, 0.38446936, 0.017133009, 0.9997384, -0.015153184, -0.38421738, 0.020574775, 0.92301345, 1.2417101, 2.0830314, 6.5490427)
@@ -643,7 +803,7 @@ shape = SubResource("BoxShape3D_kwf5j")
 debug_color = Color(1, 1, 0, 1)
 
 [node name="FixedCamera 12" type="Node3D" parent="Cameras" unique_id=2016608307]
-transform = Transform3D(0.64119154, 0, 0.7673809, 0, 1, 0, -0.7673809, 0, 0.64119154, -12.2915535, -1.9073486e-06, 15.834514)
+transform = Transform3D(0.64119154, 0, 0.7673809, 0, 1, 0, -0.7673809, 0, 0.64119154, -12.2915535, 0.21213913, 15.834514)
 
 [node name="Camera3D" type="Camera3D" parent="Cameras/FixedCamera 12" unique_id=1587176597 node_paths=PackedStringArray("trigger_area")]
 transform = Transform3D(0.92308366, -0.009991879, 0.38446936, 0.017133009, 0.9997384, -0.015153184, -0.38421738, 0.020574775, 0.92301345, 1.2417101, 2.0830314, 6.5490427)
@@ -663,7 +823,7 @@ shape = SubResource("BoxShape3D_0eioo")
 debug_color = Color(1, 1, 0, 1)
 
 [node name="FixedCamera 09" type="Node3D" parent="Cameras" unique_id=1000620181]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.1544, 0, -6.160323)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.1544, 0.21214104, -6.160323)
 
 [node name="Camera3D" type="Camera3D" parent="Cameras/FixedCamera 09" unique_id=439438924 node_paths=PackedStringArray("trigger_area")]
 transform = Transform3D(-4.371139e-08, 0.9716425, -0.23645534, 0, 0.23645534, 0.9716425, 1, 4.247184e-08, -1.0335789e-08, 0.6017585, 17.956417, 3.088921)

@@ -11,7 +11,6 @@
 [ext_resource type="Shader" uid="uid://u3hqbulxxqpq" path="res://Characters/Redcap/blood_drip.gdshader" id="4_jixpw"]
 [ext_resource type="Environment" uid="uid://ddfwg2im0ypls" path="res://Scenes/scary_environment.tres" id="4_n02r8"]
 [ext_resource type="PackedScene" uid="uid://dkp4b2dv57aar" path="res://Assets/Environment/Mushroom_01.tscn" id="5_4d07p"]
-[ext_resource type="PackedScene" uid="uid://bfnvtq81kd7bv" path="res://Characters/Redcap/Hook.tscn" id="6_125yk"]
 [ext_resource type="Environment" uid="uid://taliiown2kj3" path="res://Scenes/default_environment.tres" id="7_kjvde"]
 [ext_resource type="AudioStream" uid="uid://cwhus76517dk2" path="res://Audio/Akira_getoutofmyheadaaaaaa.mp3" id="10_whe6r"]
 [ext_resource type="Script" uid="uid://gfl84qcnh65h" path="res://Scenes/ui.gd" id="11_csh6n"]
@@ -326,9 +325,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 62.855, 0, -1)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -48.19248, 0, 3.3004274)
 
 [node name="Camp Post" parent="SubViewportContainer/SubViewport/MAIN/Environment" unique_id=1057817875 instance=ExtResource("3_c5rrr")]
-
-[node name="Hook" parent="SubViewportContainer/SubViewport/MAIN/Environment" unique_id=215616046 instance=ExtResource("6_125yk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -39.679333, -0.0377924, -0.61202025)
 
 [node name="World" type="Node3D" parent="SubViewportContainer/SubViewport/MAIN" unique_id=681409880 node_paths=PackedStringArray("world_environment", "world_transition")]
 script = ExtResource("2_1tvcf")
