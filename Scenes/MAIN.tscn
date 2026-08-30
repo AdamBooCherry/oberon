@@ -17,6 +17,8 @@
 [ext_resource type="Script" uid="uid://gfl84qcnh65h" path="res://Scenes/ui.gd" id="11_csh6n"]
 [ext_resource type="Script" uid="uid://d4lj82wyqfv14" path="res://Scenes/rotation_component.gd" id="11_mhs8k"]
 [ext_resource type="ArrayMesh" uid="uid://bhta5fvbarg3v" path="res://Characters/Frog/frog_mesh_visible.tres" id="11_pe4ny"]
+[ext_resource type="Script" uid="uid://dq6rl0w3afnyk" path="res://Scenes/ui_manager.gd" id="15_bo7a1"]
+[ext_resource type="PackedScene" uid="uid://cnr8n11m5ak5u" path="res://Scenes/result_screen.tscn" id="18_lo43q"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_c5rrr"]
 shader = ExtResource("1_783md")
@@ -61,7 +63,7 @@ gradient = SubResource("Gradient_4d07p")
 height = 1
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_ufbfe"]
-viewport_path = NodePath("SubViewportContainer/SubViewport/MAIN/UI/MarginContainer/HBoxContainer/VBoxContainer/CoinTexture2")
+viewport_path = NodePath("SubViewportContainer/SubViewport/MAIN/UIManager/UI/MarginContainer/HBoxContainer/VBoxContainer/CoinTexture2")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wuii1"]
 bg_color = Color(0.81, 0.54, 0, 0.3137255)
@@ -103,7 +105,7 @@ func update_text(value: int):
 "
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_4d07p"]
-viewport_path = NodePath("SubViewportContainer/SubViewport/MAIN/UI/MarginContainer/HBoxContainer/StampTexture/StampTexture")
+viewport_path = NodePath("SubViewportContainer/SubViewport/MAIN/UIManager/UI/MarginContainer/HBoxContainer/StampTexture/StampTexture")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cojvj"]
 cull_mode = 2
@@ -113,7 +115,7 @@ material = SubResource("StandardMaterial3D_cojvj")
 size = Vector2(0.2, 0.2)
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_73r58"]
-viewport_path = NodePath("SubViewportContainer/SubViewport/MAIN/UI/MarginContainer/HBoxContainer/FrogTexture/FrogViewport")
+viewport_path = NodePath("SubViewportContainer/SubViewport/MAIN/UIManager/UI/MarginContainer/HBoxContainer/FrogTexture/FrogViewport")
 
 [sub_resource type="Skin" id="Skin_mhs8k"]
 resource_name = "Skin"
@@ -353,13 +355,18 @@ stream = ExtResource("10_whe6r")
 
 [node name="ScaryAmbient" type="AudioStreamPlayer" parent="SubViewportContainer/SubViewport/MAIN/World" unique_id=1699232608]
 
-[node name="UI" type="CanvasLayer" parent="SubViewportContainer/SubViewport/MAIN" unique_id=1053079449 node_paths=PackedStringArray("frog_texture", "stamp_texture")]
+[node name="UIManager" type="Node" parent="SubViewportContainer/SubViewport/MAIN" unique_id=2041038172 node_paths=PackedStringArray("result_screen")]
+script = ExtResource("15_bo7a1")
+result_screen = NodePath("ResultScreen")
+metadata/_custom_type_script = "uid://dq6rl0w3afnyk"
+
+[node name="UI" type="CanvasLayer" parent="SubViewportContainer/SubViewport/MAIN/UIManager" unique_id=1053079449 node_paths=PackedStringArray("frog_texture", "stamp_texture")]
 script = ExtResource("11_csh6n")
 frog_texture = NodePath("MarginContainer/HBoxContainer/FrogTexture")
 stamp_texture = NodePath("MarginContainer/HBoxContainer/StampTexture")
 metadata/_custom_type_script = "uid://gfl84qcnh65h"
 
-[node name="MarginContainer2" type="MarginContainer" parent="SubViewportContainer/SubViewport/MAIN/UI" unique_id=566198042]
+[node name="MarginContainer2" type="MarginContainer" parent="SubViewportContainer/SubViewport/MAIN/UIManager/UI" unique_id=566198042]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -368,12 +375,12 @@ grow_vertical = 2
 theme_override_constants/margin_top = 56
 theme_override_constants/margin_bottom = 402
 
-[node name="TextureRect" type="TextureRect" parent="SubViewportContainer/SubViewport/MAIN/UI/MarginContainer2" unique_id=231272593]
+[node name="TextureRect" type="TextureRect" parent="SubViewportContainer/SubViewport/MAIN/UIManager/UI/MarginContainer2" unique_id=231272593]
 layout_mode = 2
 texture = SubResource("GradientTexture2D_cojvj")
 expand_mode = 1
 
-[node name="MarginContainer" type="MarginContainer" parent="SubViewportContainer/SubViewport/MAIN/UI" unique_id=1375235298]
+[node name="MarginContainer" type="MarginContainer" parent="SubViewportContainer/SubViewport/MAIN/UIManager/UI" unique_id=1375235298]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -383,21 +390,21 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_constants/margin_top = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="SubViewportContainer/SubViewport/MAIN/UI/MarginContainer" unique_id=231499905]
+[node name="HBoxContainer" type="HBoxContainer" parent="SubViewportContainer/SubViewport/MAIN/UIManager/UI/MarginContainer" unique_id=231499905]
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="SubViewportContainer/SubViewport/MAIN/UI/MarginContainer/HBoxContainer" unique_id=522426271]
+[node name="VBoxContainer" type="VBoxContainer" parent="SubViewportContainer/SubViewport/MAIN/UIManager/UI/MarginContainer/HBoxContainer" unique_id=522426271]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="CoinTexture" type="TextureRect" parent="SubViewportContainer/SubViewport/MAIN/UI/MarginContainer/HBoxContainer/VBoxContainer" unique_id=558946743]
+[node name="CoinTexture" type="TextureRect" parent="SubViewportContainer/SubViewport/MAIN/UIManager/UI/MarginContainer/HBoxContainer/VBoxContainer" unique_id=558946743]
 custom_minimum_size = Vector2(0, 150)
 layout_mode = 2
 texture = SubResource("ViewportTexture_ufbfe")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="Panel" type="Panel" parent="SubViewportContainer/SubViewport/MAIN/UI/MarginContainer/HBoxContainer/VBoxContainer/CoinTexture" unique_id=1727009995]
+[node name="Panel" type="Panel" parent="SubViewportContainer/SubViewport/MAIN/UIManager/UI/MarginContainer/HBoxContainer/VBoxContainer/CoinTexture" unique_id=1727009995]
 custom_minimum_size = Vector2(109.82, 9.26)
 layout_mode = 0
 offset_top = 158.0
@@ -409,7 +416,7 @@ offset_transform_enabled = true
 offset_transform_position = Vector2(9.7, -98)
 theme_override_styles/panel = SubResource("StyleBoxFlat_wuii1")
 
-[node name="Label" type="Label" parent="SubViewportContainer/SubViewport/MAIN/UI/MarginContainer/HBoxContainer/VBoxContainer/CoinTexture" unique_id=1377197401]
+[node name="Label" type="Label" parent="SubViewportContainer/SubViewport/MAIN/UIManager/UI/MarginContainer/HBoxContainer/VBoxContainer/CoinTexture" unique_id=1377197401]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -426,21 +433,21 @@ text = "Test"
 horizontal_alignment = 1
 script = SubResource("GDScript_csh6n")
 
-[node name="CoinTexture2" type="SubViewport" parent="SubViewportContainer/SubViewport/MAIN/UI/MarginContainer/HBoxContainer/VBoxContainer" unique_id=2096358517]
+[node name="CoinTexture2" type="SubViewport" parent="SubViewportContainer/SubViewport/MAIN/UIManager/UI/MarginContainer/HBoxContainer/VBoxContainer" unique_id=2096358517]
 own_world_3d = true
 transparent_bg = true
 handle_input_locally = false
 size = Vector2i(128, 128)
 
-[node name="Camera3D" type="Camera3D" parent="SubViewportContainer/SubViewport/MAIN/UI/MarginContainer/HBoxContainer/VBoxContainer/CoinTexture2" unique_id=796269943]
+[node name="Camera3D" type="Camera3D" parent="SubViewportContainer/SubViewport/MAIN/UIManager/UI/MarginContainer/HBoxContainer/VBoxContainer/CoinTexture2" unique_id=796269943]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.72336936, -0.4186117, 0.20229745)
 
-[node name="RotationComponent" type="Node3D" parent="SubViewportContainer/SubViewport/MAIN/UI/MarginContainer/HBoxContainer/VBoxContainer/CoinTexture2/Camera3D" unique_id=552900577]
+[node name="RotationComponent" type="Node3D" parent="SubViewportContainer/SubViewport/MAIN/UIManager/UI/MarginContainer/HBoxContainer/VBoxContainer/CoinTexture2/Camera3D" unique_id=552900577]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0.076, -0.6)
 script = ExtResource("11_mhs8k")
 metadata/_custom_type_script = "uid://d4lj82wyqfv14"
 
-[node name="CSGCylinder3D" type="CSGCylinder3D" parent="SubViewportContainer/SubViewport/MAIN/UI/MarginContainer/HBoxContainer/VBoxContainer/CoinTexture2/Camera3D/RotationComponent" unique_id=720596295]
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="SubViewportContainer/SubViewport/MAIN/UIManager/UI/MarginContainer/HBoxContainer/VBoxContainer/CoinTexture2/Camera3D/RotationComponent" unique_id=720596295]
 transform = Transform3D(1, 0, 0, 0, 0.582123, -0.81310076, 0, 0.81310076, 0.582123, 0, 0, 0)
 radius = 0.075
 height = 0.01
@@ -448,28 +455,28 @@ sides = 7
 smooth_faces = false
 material = SubResource("StandardMaterial3D_ufbfe")
 
-[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="SubViewportContainer/SubViewport/MAIN/UI/MarginContainer/HBoxContainer/VBoxContainer/CoinTexture2/Camera3D/RotationComponent/CSGCylinder3D" unique_id=116181516]
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="SubViewportContainer/SubViewport/MAIN/UIManager/UI/MarginContainer/HBoxContainer/VBoxContainer/CoinTexture2/Camera3D/RotationComponent/CSGCylinder3D" unique_id=116181516]
 radius = 0.08
 height = 0.005
 sides = 7
 material = SubResource("StandardMaterial3D_csh6n")
 
-[node name="OmniLight3D" type="OmniLight3D" parent="SubViewportContainer/SubViewport/MAIN/UI/MarginContainer/HBoxContainer/VBoxContainer/CoinTexture2/Camera3D" unique_id=1229301823]
+[node name="OmniLight3D" type="OmniLight3D" parent="SubViewportContainer/SubViewport/MAIN/UIManager/UI/MarginContainer/HBoxContainer/VBoxContainer/CoinTexture2/Camera3D" unique_id=1229301823]
 transform = Transform3D(1, 0, 0, 0, 0.582123, -0.81310076, 0, 0.81310076, 0.582123, -0.184353, 0.7082643, -0.25924373)
 light_color = Color(0.30980393, 1, 1, 1)
 
-[node name="OmniLight3D2" type="OmniLight3D" parent="SubViewportContainer/SubViewport/MAIN/UI/MarginContainer/HBoxContainer/VBoxContainer/CoinTexture2/Camera3D" unique_id=1428686836]
+[node name="OmniLight3D2" type="OmniLight3D" parent="SubViewportContainer/SubViewport/MAIN/UIManager/UI/MarginContainer/HBoxContainer/VBoxContainer/CoinTexture2/Camera3D" unique_id=1428686836]
 transform = Transform3D(1, 0, 0, 0, 0.582123, -0.81310076, 0, 0.81310076, 0.582123, -0.35294056, -0.31302387, -0.09736848)
 light_color = Color(1, 0.64819175, 0.9843734, 1)
 
-[node name="Spacer" type="Label" parent="SubViewportContainer/SubViewport/MAIN/UI/MarginContainer/HBoxContainer" unique_id=518012566]
+[node name="Spacer" type="Label" parent="SubViewportContainer/SubViewport/MAIN/UIManager/UI/MarginContainer/HBoxContainer" unique_id=518012566]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 0
 text = "Night 1"
 script = SubResource("GDScript_4d07p")
 
-[node name="StampTexture" type="TextureRect" parent="SubViewportContainer/SubViewport/MAIN/UI/MarginContainer/HBoxContainer" unique_id=1086320396]
+[node name="StampTexture" type="TextureRect" parent="SubViewportContainer/SubViewport/MAIN/UIManager/UI/MarginContainer/HBoxContainer" unique_id=1086320396]
 custom_minimum_size = Vector2(0, 150)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -478,38 +485,38 @@ texture = SubResource("ViewportTexture_4d07p")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="StampTexture" type="SubViewport" parent="SubViewportContainer/SubViewport/MAIN/UI/MarginContainer/HBoxContainer/StampTexture" unique_id=671329408]
+[node name="StampTexture" type="SubViewport" parent="SubViewportContainer/SubViewport/MAIN/UIManager/UI/MarginContainer/HBoxContainer/StampTexture" unique_id=671329408]
 own_world_3d = true
 transparent_bg = true
 handle_input_locally = false
 size = Vector2i(128, 128)
 
-[node name="Camera3D" type="Camera3D" parent="SubViewportContainer/SubViewport/MAIN/UI/MarginContainer/HBoxContainer/StampTexture/StampTexture" unique_id=2042505819]
+[node name="Camera3D" type="Camera3D" parent="SubViewportContainer/SubViewport/MAIN/UIManager/UI/MarginContainer/HBoxContainer/StampTexture/StampTexture" unique_id=2042505819]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.72336936, -0.4186117, 0.20229745)
 
-[node name="RotationComponent" type="Node3D" parent="SubViewportContainer/SubViewport/MAIN/UI/MarginContainer/HBoxContainer/StampTexture/StampTexture/Camera3D" unique_id=251669485]
+[node name="RotationComponent" type="Node3D" parent="SubViewportContainer/SubViewport/MAIN/UIManager/UI/MarginContainer/HBoxContainer/StampTexture/StampTexture/Camera3D" unique_id=251669485]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0.029999971, 0.07604653, -0.62795997)
 script = ExtResource("11_mhs8k")
 metadata/_custom_type_script = "uid://d4lj82wyqfv14"
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="SubViewportContainer/SubViewport/MAIN/UI/MarginContainer/HBoxContainer/StampTexture/StampTexture/Camera3D/RotationComponent" unique_id=303522256]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="SubViewportContainer/SubViewport/MAIN/UIManager/UI/MarginContainer/HBoxContainer/StampTexture/StampTexture/Camera3D/RotationComponent" unique_id=303522256]
 transform = Transform3D(1, 0, 0, 0, 0.582123, -0.81310076, 0, 0.81310076, 0.582123, 0, 0, 0)
 mesh = SubResource("PlaneMesh_wuii1")
 
-[node name="CSGBox3D" type="CSGBox3D" parent="SubViewportContainer/SubViewport/MAIN/UI/MarginContainer/HBoxContainer/StampTexture/StampTexture/Camera3D/RotationComponent" unique_id=783765869]
+[node name="CSGBox3D" type="CSGBox3D" parent="SubViewportContainer/SubViewport/MAIN/UIManager/UI/MarginContainer/HBoxContainer/StampTexture/StampTexture/Camera3D/RotationComponent" unique_id=783765869]
 transform = Transform3D(1, 0, 0, 0, 0.582123, -0.81310076, 0, 0.81310076, 0.582123, 0, 0, 0)
 visible = false
 size = Vector3(0.1, 0.005, 0.1)
 
-[node name="OmniLight3D" type="OmniLight3D" parent="SubViewportContainer/SubViewport/MAIN/UI/MarginContainer/HBoxContainer/StampTexture/StampTexture/Camera3D" unique_id=166099557]
+[node name="OmniLight3D" type="OmniLight3D" parent="SubViewportContainer/SubViewport/MAIN/UIManager/UI/MarginContainer/HBoxContainer/StampTexture/StampTexture/Camera3D" unique_id=166099557]
 transform = Transform3D(1, 0, 0, 0, 0.582123, -0.81310076, 0, 0.81310076, 0.582123, -0.184353, 0.7082643, -0.25924373)
 light_color = Color(0.30980393, 1, 1, 1)
 
-[node name="OmniLight3D2" type="OmniLight3D" parent="SubViewportContainer/SubViewport/MAIN/UI/MarginContainer/HBoxContainer/StampTexture/StampTexture/Camera3D" unique_id=1884655035]
+[node name="OmniLight3D2" type="OmniLight3D" parent="SubViewportContainer/SubViewport/MAIN/UIManager/UI/MarginContainer/HBoxContainer/StampTexture/StampTexture/Camera3D" unique_id=1884655035]
 transform = Transform3D(1, 0, 0, 0, 0.582123, -0.81310076, 0, 0.81310076, 0.582123, -0.35294056, -0.31302387, -0.09736848)
 light_color = Color(1, 0.64819175, 0.9843734, 1)
 
-[node name="FrogTexture" type="TextureRect" parent="SubViewportContainer/SubViewport/MAIN/UI/MarginContainer/HBoxContainer" unique_id=389958597]
+[node name="FrogTexture" type="TextureRect" parent="SubViewportContainer/SubViewport/MAIN/UIManager/UI/MarginContainer/HBoxContainer" unique_id=389958597]
 custom_minimum_size = Vector2(0, 150)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -518,36 +525,36 @@ texture = SubResource("ViewportTexture_73r58")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="FrogViewport" type="SubViewport" parent="SubViewportContainer/SubViewport/MAIN/UI/MarginContainer/HBoxContainer/FrogTexture" unique_id=956167485]
+[node name="FrogViewport" type="SubViewport" parent="SubViewportContainer/SubViewport/MAIN/UIManager/UI/MarginContainer/HBoxContainer/FrogTexture" unique_id=956167485]
 own_world_3d = true
 transparent_bg = true
 handle_input_locally = false
 size = Vector2i(128, 128)
 render_target_update_mode = 4
 
-[node name="Camera3D" type="Camera3D" parent="SubViewportContainer/SubViewport/MAIN/UI/MarginContainer/HBoxContainer/FrogTexture/FrogViewport" unique_id=311741069]
+[node name="Camera3D" type="Camera3D" parent="SubViewportContainer/SubViewport/MAIN/UIManager/UI/MarginContainer/HBoxContainer/FrogTexture/FrogViewport" unique_id=311741069]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.72336936, -0.4186117, 0.20229745)
 
-[node name="RotationComponent" type="Node3D" parent="SubViewportContainer/SubViewport/MAIN/UI/MarginContainer/HBoxContainer/FrogTexture/FrogViewport/Camera3D" unique_id=2010420136]
+[node name="RotationComponent" type="Node3D" parent="SubViewportContainer/SubViewport/MAIN/UIManager/UI/MarginContainer/HBoxContainer/FrogTexture/FrogViewport/Camera3D" unique_id=2010420136]
 transform = Transform3D(2, -3.496911e-07, -1.5285484e-14, 0, -8.742278e-08, 2, -3.496911e-07, -2, -8.742278e-08, 0, -0.00999999, -0.108)
 script = ExtResource("11_mhs8k")
 metadata/_custom_type_script = "uid://d4lj82wyqfv14"
 
-[node name="Frog" type="MeshInstance3D" parent="SubViewportContainer/SubViewport/MAIN/UI/MarginContainer/HBoxContainer/FrogTexture/FrogViewport/Camera3D/RotationComponent" unique_id=1856857411]
+[node name="Frog" type="MeshInstance3D" parent="SubViewportContainer/SubViewport/MAIN/UIManager/UI/MarginContainer/HBoxContainer/FrogTexture/FrogViewport/Camera3D/RotationComponent" unique_id=1856857411]
 layers = 2
 mesh = ExtResource("11_pe4ny")
 skin = SubResource("Skin_mhs8k")
 skeleton = NodePath("../../../../../../../UI")
 
-[node name="OmniLight3D" type="OmniLight3D" parent="SubViewportContainer/SubViewport/MAIN/UI/MarginContainer/HBoxContainer/FrogTexture/FrogViewport/Camera3D" unique_id=810843460]
+[node name="OmniLight3D" type="OmniLight3D" parent="SubViewportContainer/SubViewport/MAIN/UIManager/UI/MarginContainer/HBoxContainer/FrogTexture/FrogViewport/Camera3D" unique_id=810843460]
 transform = Transform3D(1, 0, -3.3407487e-22, 0, 1, 0, 3.3407487e-22, 0, 1, -0.11318982, 0.0879904, -0.108)
 light_color = Color(0.30980393, 1, 1, 1)
 
-[node name="OmniLight3D2" type="OmniLight3D" parent="SubViewportContainer/SubViewport/MAIN/UI/MarginContainer/HBoxContainer/FrogTexture/FrogViewport/Camera3D" unique_id=81134177]
+[node name="OmniLight3D2" type="OmniLight3D" parent="SubViewportContainer/SubViewport/MAIN/UIManager/UI/MarginContainer/HBoxContainer/FrogTexture/FrogViewport/Camera3D" unique_id=81134177]
 transform = Transform3D(1, 0, -3.3407487e-22, 0, 1, 0, 3.3407487e-22, 0, 1, 0.07737023, -0.01998967, -0.108)
 light_color = Color(1, 0, 1, 1)
 
-[node name="UI" type="Control" parent="SubViewportContainer/SubViewport/MAIN/UI" unique_id=1778609380]
+[node name="UI" type="Control" parent="SubViewportContainer/SubViewport/MAIN/UIManager/UI" unique_id=1778609380]
 visible = false
 layout_mode = 3
 anchors_preset = 15
@@ -557,7 +564,7 @@ grow_horizontal = 2
 grow_vertical = 2
 metadata/_edit_lock_ = true
 
-[node name="Panel" type="Panel" parent="SubViewportContainer/SubViewport/MAIN/UI" unique_id=860069928]
+[node name="Panel" type="Panel" parent="SubViewportContainer/SubViewport/MAIN/UIManager/UI" unique_id=860069928]
 visible = false
 anchors_preset = 15
 anchor_right = 1.0
@@ -565,3 +572,5 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_cojvj")
+
+[node name="ResultScreen" parent="SubViewportContainer/SubViewport/MAIN/UIManager" unique_id=1149892462 instance=ExtResource("18_lo43q")]
