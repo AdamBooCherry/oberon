@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://0lj370rn3bi4"]
 
-[ext_resource type="PackedScene" uid="uid://c8b2bnvk58bf5" path="res://Assets/Environment/Tree.Birch.glb" id="1_624ag"]
+[ext_resource type="PackedScene" uid="uid://c8b2bnvk58bf5" path="res://Assets/Environment/Sources/Tree.Birch.glb" id="1_624ag"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_wuii1"]
 height = 2.2869873

@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cah7wnb70amy2"]
 
-[ext_resource type="PackedScene" uid="uid://bt4g80472xdv4" path="res://Assets/Environment/Shrub_Short.glb" id="1_xdjig"]
+[ext_resource type="PackedScene" uid="uid://bt4g80472xdv4" path="res://Assets/Environment/Sources/Shrub_Short.glb" id="1_xdjig"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_wuii1"]
 size = Vector3(1.3388672, 1.0746002, 0.50097656)

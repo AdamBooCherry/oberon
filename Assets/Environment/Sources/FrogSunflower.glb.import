@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://b3as5u4evhsvq"
-path="res://.godot/imported/FrogSunflowerHead.glb-ffd3e76bed8138ea3366e209e8a6dbf6.scn"
+uid="uid://b3am70hdq707n"
+path="res://.godot/imported/FrogSunflower.glb-7f2294f6802d6ceb5d60c828469f6294.scn"
 
 [deps]
 
-source_file="res://Assets/Environment/FrogSunflowerHead.glb"
-dest_files=["res://.godot/imported/FrogSunflowerHead.glb-ffd3e76bed8138ea3366e209e8a6dbf6.scn"]
+source_file="res://Assets/Environment/Sources/FrogSunflower.glb"
+dest_files=["res://.godot/imported/FrogSunflower.glb-7f2294f6802d6ceb5d60c828469f6294.scn"]
 
 [params]
 

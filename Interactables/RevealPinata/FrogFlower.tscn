@@ -1,7 +1,7 @@
 [gd_scene format=4 uid="uid://dk2te8uyo3gf6"]
 
 [ext_resource type="Script" uid="uid://djkohpertoddg" path="res://Interactables/RevealPinata/frog_flower.gd" id="1_bt7qw"]
-[ext_resource type="PackedScene" uid="uid://b3am70hdq707n" path="res://Assets/Environment/FrogSunflower.glb" id="3_6ii33"]
+[ext_resource type="PackedScene" uid="uid://b3am70hdq707n" path="res://Assets/Environment/Sources/FrogSunflower.glb" id="3_6ii33"]
 [ext_resource type="Script" uid="uid://br47nbfjqdbr7" path="res://Interactables/reveal_detector.gd" id="3_bit3q"]
 [ext_resource type="Texture2D" uid="uid://ddleejwpfyy5i" path="res://Assets/Environment/FrogSunflowerHead_Gradient Pallete.png" id="4_6ii33"]
 [ext_resource type="PackedScene" uid="uid://bqbyd454l7mgo" path="res://Interactables/RevealPinata/RevealPinata.tscn" id="5_bit3q"]

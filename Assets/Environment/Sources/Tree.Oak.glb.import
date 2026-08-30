@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://bt4g80472xdv4"
-path="res://.godot/imported/Shrub_Short.glb-45ea0984f6cc541871659ed777e06843.scn"
+uid="uid://da5jd7pkqgps4"
+path="res://.godot/imported/Tree.Oak.glb-3bf5c663cb54ba1d27f39eb6057c7155.scn"
 
 [deps]
 
-source_file="res://Assets/Environment/Shrub_Short.glb"
-dest_files=["res://.godot/imported/Shrub_Short.glb-45ea0984f6cc541871659ed777e06843.scn"]
+source_file="res://Assets/Environment/Sources/Tree.Oak.glb"
+dest_files=["res://.godot/imported/Tree.Oak.glb-3bf5c663cb54ba1d27f39eb6057c7155.scn"]
 
 [params]
 

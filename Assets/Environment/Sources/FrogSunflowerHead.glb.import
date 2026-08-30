@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://e8q2rvgushle"
-path="res://.godot/imported/Tree.Pine.glb-3458eb1c4cbb768787f37b352e581fa3.scn"
+uid="uid://b3as5u4evhsvq"
+path="res://.godot/imported/FrogSunflowerHead.glb-20666bfe4ceaaab86e09b0a031663389.scn"
 
 [deps]
 
-source_file="res://Assets/Environment/Tree.Pine.glb"
-dest_files=["res://.godot/imported/Tree.Pine.glb-3458eb1c4cbb768787f37b352e581fa3.scn"]
+source_file="res://Assets/Environment/Sources/FrogSunflowerHead.glb"
+dest_files=["res://.godot/imported/FrogSunflowerHead.glb-20666bfe4ceaaab86e09b0a031663389.scn"]
 
 [params]
 

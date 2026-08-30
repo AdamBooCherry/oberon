@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://1ggvl3g4mkss"]
 
-[ext_resource type="PackedScene" uid="uid://da5jd7pkqgps4" path="res://Assets/Environment/Tree.Oak.glb" id="1_m0xy7"]
+[ext_resource type="PackedScene" uid="uid://da5jd7pkqgps4" path="res://Assets/Environment/Sources/Tree.Oak.glb" id="1_m0xy7"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_wuii1"]
 height = 2.2869873
