@@ -7,7 +7,7 @@ extends Node3D
 func _ready() -> void:
 	interaction_area.player_interaction_started.connect(_on_interaction_started)
 
-func _on_interaction_started(player: Player):
+func _on_interaction_started(_player: Player):
 	Dialogic.start(dialogue_root, "STANDARD")
 	
 	pass

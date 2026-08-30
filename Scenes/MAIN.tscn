@@ -88,6 +88,20 @@ roughness = 0.45
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_csh6n"]
 albedo_color = Color(0, 0.7999997, 1, 1)
 
+[sub_resource type="GDScript" id="GDScript_4d07p"]
+script/source = "extends Label
+
+func _ready() -> void:
+	GameManager.day_number_changed.connect(_on_day_number_changed)
+	update_text(GameManager.day_number)
+
+func _on_day_number_changed(value: int):
+	update_text(value)
+
+func update_text(value: int):
+	self.text = \"Night \" + str(value)
+"
+
 [sub_resource type="ViewportTexture" id="ViewportTexture_4d07p"]
 viewport_path = NodePath("SubViewportContainer/SubViewport/MAIN/UI/MarginContainer/HBoxContainer/StampTexture/StampTexture")
 
@@ -217,10 +231,11 @@ audio_listener_enable_3d = true
 size = Vector2i(640, 480)
 render_target_update_mode = 4
 
-[node name="MAIN" type="Node3D" parent="SubViewportContainer/SubViewport" unique_id=2005868454 node_paths=PackedStringArray("player", "player_spawn")]
+[node name="MAIN" type="Node3D" parent="SubViewportContainer/SubViewport" unique_id=364521562 node_paths=PackedStringArray("player", "player_spawn")]
 script = ExtResource("2_qbiqt")
 player = NodePath("Player")
 player_spawn = NodePath("PlayerSpawn")
+metadata/_custom_type_script = "uid://bk4c2nvs2ik8m"
 
 [node name="PlayerSpawn" type="Marker3D" parent="SubViewportContainer/SubViewport/MAIN" unique_id=596365389]
 transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, -39.335846, 0.33270192, 1.0601468)
@@ -447,9 +462,12 @@ light_color = Color(0.30980393, 1, 1, 1)
 transform = Transform3D(1, 0, 0, 0, 0.582123, -0.81310076, 0, 0.81310076, 0.582123, -0.35294056, -0.31302387, -0.09736848)
 light_color = Color(1, 0.64819175, 0.9843734, 1)
 
-[node name="Spacer" type="Control" parent="SubViewportContainer/SubViewport/MAIN/UI/MarginContainer/HBoxContainer" unique_id=593907943]
+[node name="Spacer" type="Label" parent="SubViewportContainer/SubViewport/MAIN/UI/MarginContainer/HBoxContainer" unique_id=518012566]
 layout_mode = 2
 size_flags_horizontal = 3
+size_flags_vertical = 0
+text = "Night 1"
+script = SubResource("GDScript_4d07p")
 
 [node name="StampTexture" type="TextureRect" parent="SubViewportContainer/SubViewport/MAIN/UI/MarginContainer/HBoxContainer" unique_id=1086320396]
 custom_minimum_size = Vector2(0, 150)

@@ -12,13 +12,14 @@ extends State
 
 func enter() -> void:
 	glory_hand.set_flame_color(lower_color)
-	if not lower_light:
-		return
-		
-	glory_hand.switch_pose(.95)
-	var tween = create_tween()
-	tween.tween_property(lower_light, "light_energy", light_energy, tween_duration)
-	reveal_area.monitorable = true
+	glory_hand.switch_pose(0.95)
+
+	if lower_light:
+		var tween = create_tween()
+		tween.tween_property(lower_light, "light_energy", light_energy, tween_duration)
+
+	if reveal_area:
+		reveal_area.set_deferred("monitorable", true)
 
 func update(_delta: float) -> void:
 	player.current_posture = -1.0
@@ -31,10 +32,10 @@ func update(_delta: float) -> void:
 
 func exit() -> void:
 	glory_hand.set_flame_color(glory_hand.default_flame_color)
-	if not lower_light:
-		return
-		
-	# Smoothly fade light energy back down to 0 when exiting
-	var tween = create_tween()
-	tween.tween_property(lower_light, "light_energy", 0.0, tween_duration)
-	reveal_area.monitorable = false
+
+	if lower_light:
+		var tween = create_tween()
+		tween.tween_property(lower_light, "light_energy", 0.0, tween_duration)
+
+	if reveal_area:
+		reveal_area.set_deferred("monitorable", false)

@@ -17,7 +17,6 @@ class_name Player
 @export var raised_speed_multiplier: float = 0.6
 
 @export_group("References")
-#@export var animation_player: AnimationPlayer
 @export var movement_tree: AnimationTree
 @export var movement_state_machine: StateMachine
 @export var action_state_machine: StateMachine
@@ -42,9 +41,6 @@ func _ready() -> void:
 
 	if hurtbox and health_component:
 		hurtbox.health_component = health_component
-
-	# Trigger initial day sequence when the scene boots
-	#begin_day()
 
 func _process(delta: float) -> void:
 	# Block idle state machine updates during dialogue
@@ -94,14 +90,21 @@ func enable_action_control() -> void:
 	if action_state_machine:
 		action_state_machine.change_state("PostureNeutralState")
 
-# --- Day & Respawn Life Cycle ---
+# --- Day & Lifecycle Management ---
 
 func begin_day() -> void:
-	print("PLAYER: begin_day() called.")
 	reset_player_stats()
+	disable_action_control()
+	if movement_state_machine:
+		movement_state_machine.change_state("WakeupState")
+
+func begin_victory() -> void:
+	if movement_state_machine and movement_state_machine.current_state is VictoryState:
+		return
 
 	disable_action_control()
-	movement_state_machine.change_state("WakeupState")
+	if movement_state_machine:
+		movement_state_machine.change_state("VictoryState")
 
 func reset_player_stats() -> void:
 	velocity = Vector3.ZERO
@@ -116,19 +119,15 @@ func take_damage(amount: float) -> void:
 		health_component.take_damage(amount)
 
 func _on_health_changed(_current: float, _max_hp: float) -> void:
-	#print("[Player] Health updated: ", current, "/", max_hp)
 	pass
 
 func _on_health_depleted() -> void:
-	#print("[Player] Health depleted! Triggering death logic... Stack trace: ", get_stack())
-	
-	# Only emit if we haven't ALREADY triggered death
-	if movement_state_machine.current_state is DeathState:
-		#print("[Player] Ignored duplicate death trigger (already dying).")
+	if movement_state_machine and movement_state_machine.current_state is DeathState:
 		return
 
-	action_state_machine.change_state("ActionDisabledState")
-	movement_state_machine.change_state("DeathState")
+	disable_action_control()
+	if movement_state_machine:
+		movement_state_machine.change_state("DeathState")
 
 # --- Animation Tree Controls ---
 
