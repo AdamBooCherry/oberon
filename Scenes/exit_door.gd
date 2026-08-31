@@ -1,16 +1,14 @@
 extends Node3D
 
-@export var door_mesh: CSGBox3D
 @export var interaction_area: InteractionArea
 @export var game: DialogicTimeline
 @export var exit_door: AnimationPlayer
-
 
 func _ready() -> void:
 	interaction_area.player_interaction_started.connect(_on_player_interact)
 	Dialogic.signal_event.connect(_on_dialogic_event)
 
-func _on_player_interact():
+func _on_player_interact(_value):
 	Dialogic.start(game,"OPEN_DOOR_START_GAME")
 
 func _on_dialogic_event(argument: Variant):

@@ -1,5 +1,5 @@
 label OPEN_DOOR_START_GAME
-Take the Hand of Glory and start the game?
+Open the door and start the game?
 - Lets go
 	[signal arg="START_GAME"]
 - Not yet

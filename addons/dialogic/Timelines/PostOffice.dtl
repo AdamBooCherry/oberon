@@ -9,7 +9,6 @@ Postmaster: Welcome! I'm Postmaster General around these here parts.
 
 [end_timeline]
 
-
 label STANDARD
 if {game_has_started} == false:
 	Postmaster: Welcome back sir! Enjoy the game!
@@ -19,11 +18,11 @@ elif {game_has_started} == true:
 	- Nothing right now.
 		[end_timeline]
 	- I'd like to buy a stamp please
-		Postmaster: Of course! That will be 150 gold please.
-		- I'm sorry, I don't have enough money. | [if {InventoryManager.current_currency} <= 150.0] [else="hide"]
+		Postmaster: Of course! That will be {Postmaster.cost_of_postage} gold please. 
+		- I'm sorry, I don't have enough money. | [if {InventoryManager.current_currency} <= {Postmaster.cost_of_postage}] [else="hide"]
 			jump SHOOT
-		- Here you go! (pay 150 gold) | [if {InventoryManager.current_currency} >= 150.0] [else="hide"]
-			do InventoryManager.decrease_currency(150.0)
+		- Here you go! (pay {Postmaster.cost_of_postage} gold) | [if {InventoryManager.current_currency} >= {Postmaster.cost_of_postage}] [else="hide"]
+			do InventoryManager.decrease_currency({Postmaster.cost_of_postage})
 			set {InventoryManager.has_postage} = true
 			jump STANDARD
 		- Actually, lets go back real quick.
@@ -46,6 +45,10 @@ elif {game_has_started} == true:
 
 
 label SHOOT
-Postmaster: WHAT THE FUCK DID YOU SAY TO ME YOU LITTLE BITCH
-Postmaster: I'm shooting you with a gun! I'm killing you!
+if {Postmaster.has_shot_player} == false:
+	Postmaster: WHAT THE FUCK DID YOU SAY TO ME YOU LITTLE BITCH
+	Postmaster: I'm shooting you with a gun! I'm killing you!
+else:
+	Postmaster: Another one? You got it!
+	
 [signal arg="POSTMASTER_SHOOT"]
