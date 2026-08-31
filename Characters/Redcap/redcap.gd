@@ -1,6 +1,8 @@
 extends CharacterBody3D
 class_name Redcap
 
+@export var disable_idiot: bool = false
+
 @export_category("AI Settings")
 @export var move_speed: float = 3.5
 @export var chase_speed: float = 6.0
@@ -36,6 +38,9 @@ func _ready() -> void:
 		#print("[Redcap] State machine initialized. Starting state: ", state_machine.current_state.name if state_machine.current_state else "NONE")
 
 func _physics_process(delta: float) -> void:
+	if disable_idiot:
+		return
+		
 	# Continuously track live player position when inside detection zone
 	if is_instance_valid(tracked_player):
 		last_known_player_position = tracked_player.global_position
