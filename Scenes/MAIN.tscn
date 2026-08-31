@@ -6,7 +6,6 @@
 [ext_resource type="Script" uid="uid://dn01c44vgc10n" path="res://Scenes/player_spawn.gd" id="2_u7fix"]
 [ext_resource type="PackedScene" uid="uid://cw3kf747q80xn" path="res://Scenes/Camp Post.tscn" id="3_c5rrr"]
 [ext_resource type="PackedScene" uid="uid://cqcsv7x0vouop" path="res://Prototyping/ForestTestArea.tscn" id="3_mhs8k"]
-[ext_resource type="PackedScene" uid="uid://cdffe7bphgot8" path="res://Characters/Frog/SilverFrog.tscn" id="4_5c1w6"]
 [ext_resource type="PackedScene" uid="uid://dtjgiqp4jij8g" path="res://Player/Dad/PlayerDad.tscn" id="4_783md"]
 [ext_resource type="Shader" uid="uid://u3hqbulxxqpq" path="res://Characters/Redcap/blood_drip.gdshader" id="4_jixpw"]
 [ext_resource type="Environment" uid="uid://ddfwg2im0ypls" path="res://Scenes/scary_environment.tres" id="4_n02r8"]
@@ -320,9 +319,6 @@ transform = Transform3D(-0.25459456, 0, -0.9670479, 0, 1, 0, 0.9670479, 0, -0.25
 
 [node name="ForestArea" parent="SubViewportContainer/SubViewport/MAIN/Environment" unique_id=1541254729 instance=ExtResource("3_mhs8k")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 62.855, 0, -1)
-
-[node name="Frog" parent="SubViewportContainer/SubViewport/MAIN/Environment/ForestArea" unique_id=2025365352 instance=ExtResource("4_5c1w6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -48.19248, 0, 3.3004274)
 
 [node name="Camp Post" parent="SubViewportContainer/SubViewport/MAIN/Environment" unique_id=1057817875 instance=ExtResource("3_c5rrr")]
 

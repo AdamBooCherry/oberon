@@ -20,7 +20,7 @@
 [ext_resource type="Script" uid="uid://c6y1b7v2oiq81" path="res://Characters/Postmaster/interaction_area.gd" id="8_1qq0c"]
 [ext_resource type="PackedScene" uid="uid://c4m3x1xtpkt8p" path="res://Characters/Whitehat/Whitehat.tscn" id="8_bxb4o"]
 [ext_resource type="Texture2D" uid="uid://dgk1yrqjq8mcu" path="res://Assets/Particle FX/window_04.png" id="9_4yug1"]
-[ext_resource type="PackedScene" uid="uid://b4lro5g46q76v" path="res://Interactables/Coin/coin.tscn" id="11_bxb4o"]
+[ext_resource type="PackedScene" uid="uid://b4lro5g46q76v" path="res://Interactables/Coin/Coin.tscn" id="11_bxb4o"]
 [ext_resource type="Script" uid="uid://us7xil373pqc" path="res://Scenes/whitehat_by_door.gd" id="11_lqkgr"]
 [ext_resource type="Resource" uid="uid://4bpku3cyxox1" path="res://addons/dialogic/Timelines/WhitehatByDoor.dtl" id="12_ohe8u"]
 [ext_resource type="Texture2D" uid="uid://cba6cigc72d7r" path="res://Assets/Particle FX/circle_03.png" id="19_ohe8u"]
@@ -1395,11 +1395,9 @@ func _ready() -> void:
 
 func _on_interaction_started(_player: Player) -> void:
 	if not has_been_interacted_with:
-		print(\"First interaction\")
 		Dialogic.start(post_office, 0)
 		has_been_interacted_with = true
 	else:
-		print(\"Subsequent interaction\")
 		Dialogic.start(post_office, \"STANDARD\")
 
 func _on_dialogic_signal(argument: Variant) -> void:
@@ -1414,9 +1412,9 @@ func _on_dialogic_signal(argument: Variant) -> void:
 func _shoot_player() -> void:
 	var player = get_tree().get_first_node_in_group(\"Player\") as Player
 	if player:
-		player.take_damage(9999)
-	else:
-		push_error(\"Postmaster: Could not find node in group 'Player' to shoot!\")
+		player.health_component.take_damage(9999)
+	#else:
+		#push_error(\"Postmaster: Could not find node in group 'Player' to shoot!\")
 
 func _win_game() -> void:
 	var player = get_tree().get_first_node_in_group(\"Player\") as Player
@@ -1424,7 +1422,6 @@ func _win_game() -> void:
 		player.begin_victory()
 
 	await get_tree().create_timer(2.0).timeout
-	#GameManager.player_score += 1
 "
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_wuii1"]
@@ -4218,7 +4215,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.19, 0)
 curve = SubResource("Curve3D_8as8m")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="Mobs/Path3D" unique_id=27730672]
-transform = Transform3D(-0.998966, -0.0001465672, 0.045297455, 0, 0.99997157, 0.0032355774, -0.045298345, 0.0032322519, -0.99894637, -2.8899221, 0.042602755, 1.0935059)
+transform = Transform3D(-0.998966, -0.00014656711, 0.04529743, 0, 0.999971, 0.0032355755, -0.045298345, 0.00323225, -0.9989458, -2.8899221, 0.042602755, 1.0935059)
 use_model_front = true
 tilt_enabled = false
 script = SubResource("GDScript_wuii1")
@@ -4467,7 +4464,7 @@ path_follow_3d = NodePath("PathFollow3D")
 metadata/_custom_type_script = "uid://bvtfxcsh87kix"
 
 [node name="PathFollow3D" type="PathFollow3D" parent="Cameras/PathCamera 01" unique_id=1638274718]
-transform = Transform3D(-0.029283984, -0.005194345, -0.9994921, 0.049977183, 0.9986591, -0.006654188, 0.99830323, -0.050147366, -0.02898574, -31.546108, 0.5577812, -0.80570316)
+transform = Transform3D(-0.029283984, -0.005194345, -0.9994915, 0.049977183, 0.9986591, -0.006654184, 0.99830323, -0.050147366, -0.028985722, -31.546108, 0.5577812, -0.80570316)
 
 [node name="FixedCamera 03" type="Camera3D" parent="Cameras/PathCamera 01/PathFollow3D" unique_id=716717068 node_paths=PackedStringArray("trigger_area")]
 transform = Transform3D(-0.9943459, 3.7234443e-07, 0.1062636, -0.0324026, 0.95240223, -0.30320588, -0.10120441, -0.30493054, -0.9470043, 0, 0, -3)

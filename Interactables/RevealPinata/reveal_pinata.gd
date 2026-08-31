@@ -16,6 +16,8 @@ var is_broken: bool = false
 const BREAK_EFFECT = preload("uid://dqo2wy1r43ocf")
 
 func _ready() -> void:
+	GameManager.day_number_changed.connect(_on_day_number_changed)
+	
 	if reveal_detector.health_component:
 		reveal_detector.health_component.health_depleted.connect(_break_pinata)
 		#reveal_detector.health_component = health_component
@@ -67,3 +69,6 @@ func reset_pinata() -> void:
 		
 	is_broken = false
 	pinata_reset.emit()
+
+func _on_day_number_changed(_value):
+	reset_pinata()

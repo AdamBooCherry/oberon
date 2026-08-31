@@ -28,6 +28,9 @@ extends State
 var current_radius: float = 0.2
 var active_tween: Tween # Keep track of the tween so we can kill it if interrupted
 
+func _ready() -> void:
+	exit()
+
 func enter() -> void:
 	# 1. If an exit tween was still running, kill it instantly so it can't snap things back
 	if active_tween and active_tween.is_valid():

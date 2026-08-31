@@ -10,6 +10,9 @@ extends State
 @export var lower_light: SpotLight3D
 @export var reveal_area: RevealArea
 
+func _ready() -> void:
+	exit()
+
 func enter() -> void:
 	glory_hand.set_flame_color(lower_color)
 	glory_hand.switch_pose(0.95)

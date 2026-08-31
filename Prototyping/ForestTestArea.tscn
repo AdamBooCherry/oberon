@@ -18,6 +18,9 @@
 [ext_resource type="PackedScene" uid="uid://clvkk4wo7elk2" path="res://Characters/Redcap/Redcap.tscn" id="12_khta5"]
 [ext_resource type="PackedScene" uid="uid://0lj370rn3bi4" path="res://Assets/Environment/TreeBirch.tscn" id="13_g6gkq"]
 [ext_resource type="PackedScene" uid="uid://1ggvl3g4mkss" path="res://Assets/Environment/TreeOak.tscn" id="16_m35dx"]
+[ext_resource type="PackedScene" uid="uid://clrlx87x8ai24" path="res://Interactables/Coin/WorldCoin.tscn" id="19_0eioo"]
+[ext_resource type="Script" uid="uid://dxnp34v4bqlba" path="res://Interactables/frog_spawner.gd" id="19_abqjs"]
+[ext_resource type="Script" uid="uid://dtfwkgx185edn" path="res://Interactables/frog_spawn_marker.gd" id="20_aixyc"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kjvde"]
 transparency = 1
@@ -1385,3 +1388,45 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -50.726883, 0, 0)
 
 [node name="ShrubLong" parent="." unique_id=544202979 instance=ExtResource("4_bv2yy")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -50.96955, 0.00049972534, -4.361001)
+
+[node name="FrogSpawner" type="Node3D" parent="." unique_id=1999860044 node_paths=PackedStringArray("spawn_markers")]
+script = ExtResource("19_abqjs")
+spawn_markers = [NodePath("FrogSpawnMarker"), NodePath("FrogSpawnMarker2"), NodePath("FrogSpawnMarker3"), NodePath("FrogSpawnMarker4")]
+metadata/_custom_type_script = "uid://dxnp34v4bqlba"
+
+[node name="FrogSpawnMarker" type="Marker3D" parent="FrogSpawner" unique_id=1000169349]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.39249, 0, -1.3577261)
+script = ExtResource("20_aixyc")
+metadata/_custom_type_script = "uid://dtfwkgx185edn"
+
+[node name="FrogSpawnMarker2" type="Marker3D" parent="FrogSpawner" unique_id=915980356]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -33.792374, 0, -33.913742)
+script = ExtResource("20_aixyc")
+metadata/_custom_type_script = "uid://dtfwkgx185edn"
+
+[node name="FrogSpawnMarker3" type="Marker3D" parent="FrogSpawner" unique_id=557521818]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -47.919872, 0, -0.8995209)
+script = ExtResource("20_aixyc")
+metadata/_custom_type_script = "uid://dtfwkgx185edn"
+
+[node name="FrogSpawnMarker4" type="Marker3D" parent="FrogSpawner" unique_id=1215985194]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.076363, 0, 33.239098)
+script = ExtResource("20_aixyc")
+metadata/_custom_type_script = "uid://dtfwkgx185edn"
+
+[node name="Props" type="Node3D" parent="." unique_id=678404391]
+
+[node name="WorldCoin" parent="Props" unique_id=810728584 instance=ExtResource("19_0eioo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.27427, 0.25649878, 12.411345)
+
+[node name="WorldCoin2" parent="Props" unique_id=979195066 instance=ExtResource("19_0eioo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.699038, 0.25649974, 13.285073)
+
+[node name="WorldCoin3" parent="Props" unique_id=626475577 instance=ExtResource("19_0eioo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.449121, 0.25649974, 13.873386)
+
+[node name="WorldCoin4" parent="Props" unique_id=247131316 instance=ExtResource("19_0eioo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.241892, 0.25649974, 14.344911)
+
+[node name="WorldCoin5" parent="Props" unique_id=2035023679 instance=ExtResource("19_0eioo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.19837, 0.25649974, 14.734439)

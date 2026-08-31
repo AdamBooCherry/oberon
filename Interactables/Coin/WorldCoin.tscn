@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://clrlx87x8ai24"]
+
+[ext_resource type="PackedScene" uid="uid://b4lro5g46q76v" path="res://Interactables/Coin/Coin.tscn" id="1_ikyos"]
+[ext_resource type="Script" uid="uid://cxnm6jfc7bsr3" path="res://Interactables/Coin/world_coin.gd" id="1_j05hl"]
+
+[node name="WorldCoin" type="Marker3D" unique_id=810728584]
+script = ExtResource("1_j05hl")
+metadata/_custom_type_script = "uid://cxnm6jfc7bsr3"
+
+[node name="Coin" parent="." unique_id=1570438271 instance=ExtResource("1_ikyos")]
