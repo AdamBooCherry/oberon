@@ -6,6 +6,7 @@ extends Node3D
 
 func _ready() -> void:
 	interaction_area.player_interaction_started.connect(_on_player_interact)
+	GameManager.day_number_changed.connect(_reset_door)
 	Dialogic.signal_event.connect(_on_dialogic_event)
 
 func _on_player_interact(_value):
@@ -23,9 +24,7 @@ func _open_door_start_game():
 	interaction_area.monitorable = false
 	exit_door.play("open")
 	exit_door.play("DoorAction")
-	## disable prompt
-	## play animation
-	## take hand of glory
-	## RE Door animation
-	## game start logic
-	pass
+
+func _reset_door(_value):
+	exit_door.play_backwards("open")
+	exit_door.play_backwards("DoorAction")

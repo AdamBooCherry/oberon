@@ -52,9 +52,7 @@ func _on_begin_victory_sequence() -> void:
 	_check_game_over()
 
 func _start_round() -> void:
-	if InventoryManager:
-		InventoryManager.has_postage = false
-		InventoryManager.has_frog = false
+	InventoryManager.reset_inventory()
 	
 	if player and player_spawn:
 		player.velocity = Vector3.ZERO

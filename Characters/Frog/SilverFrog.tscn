@@ -1298,7 +1298,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.14172816, 0)
 shape = SubResource("SphereShape3D_cojvj")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=339277891]
-debug_enabled = true
 
 [node name="StateMachine" type="Node" parent="." unique_id=1209647083 node_paths=PackedStringArray("initial_state")]
 script = ExtResource("3_8qkgf")
