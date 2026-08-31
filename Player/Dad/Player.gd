@@ -121,6 +121,8 @@ func _on_damage_taken(_current: float) -> void:
 	velocity.x = knockback_dir.x * knockback_force
 	velocity.z = knockback_dir.z * knockback_force
 	
+	var spawn_pos = self.global_position + Vector3(0, 1.0, 0)
+	SceneHelper.spawn_effect("uid://y4xpheys777f", spawn_pos, self.get_parent(), knockback_dir)
 	## spawn hit particle here
 	
 	if health_component.current_health >= 0:

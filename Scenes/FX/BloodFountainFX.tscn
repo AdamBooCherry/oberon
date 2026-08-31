@@ -1,0 +1,45 @@
+[gd_scene format=3 uid="uid://bvlfr6gd7jmqn"]
+
+[ext_resource type="Script" uid="uid://bhoc8x3vuc654" path="res://Scenes/FX/particle_fx.gd" id="1_glch0"]
+[ext_resource type="Texture2D" uid="uid://bhuyb2k4n10v4" path="res://Assets/Particle FX/fire_01.png" id="2_qekru"]
+[ext_resource type="AudioStream" uid="uid://bx6daabaullmr" path="res://Audio/519438__lilmati__frosty-exhale-ice-cold-exhale-icy-exhale.wav" id="3_egf02"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mhw5n"]
+transparency = 1
+albedo_color = Color(0.43, 0, 0, 1)
+albedo_texture = ExtResource("2_qekru")
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_p4xs6"]
+material = SubResource("StandardMaterial3D_mhw5n")
+size = Vector2(0.3, 0.3)
+
+[sub_resource type="Curve" id="Curve_wuii1"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.74270076, 0.7915832), -0.7654103, -0.7654103, 0, 0, Vector2(1, 0), -4.9418855, 0.0, 0, 0]
+point_count = 3
+
+[node name="BloodSprayFx" type="Node3D" unique_id=1943684304 node_paths=PackedStringArray("cpu_particles_3d", "audio_stream_player_3d")]
+script = ExtResource("1_glch0")
+cpu_particles_3d = NodePath("CPUParticles3D")
+audio_stream_player_3d = NodePath("AudioStreamPlayer3D")
+
+[node name="CPUParticles3D" type="CPUParticles3D" parent="." unique_id=1543797385]
+emitting = false
+amount = 120
+lifetime = 3.0
+one_shot = true
+explosiveness = 0.1
+mesh = SubResource("QuadMesh_p4xs6")
+direction = Vector3(0, 0, 1)
+spread = 25.0
+gravity = Vector3(0, -12, 0)
+initial_velocity_min = 4.0
+initial_velocity_max = 8.0
+scale_amount_curve = SubResource("Curve_wuii1")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." unique_id=1428108007]
+stream = ExtResource("3_egf02")
