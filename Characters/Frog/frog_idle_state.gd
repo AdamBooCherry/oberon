@@ -10,7 +10,7 @@ var _target_time: float = 2.0
 
 func enter() -> void:
 	#print("[IdleState] ENTERED. Waiting for idle timer...")
-	GameManager.emit_change_to_default_environment()
+	#GameManager.emit_change_to_default_environment()
 
 	if frog and frog.animation_player:
 		frog.animation_player.play("Armature|Frog_Idle")

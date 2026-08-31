@@ -53,6 +53,7 @@ func _on_begin_victory_sequence() -> void:
 
 func _start_round() -> void:
 	InventoryManager.reset_inventory()
+	GameManager.change_to_default_environment
 	
 	if player and player_spawn:
 		player.velocity = Vector3.ZERO

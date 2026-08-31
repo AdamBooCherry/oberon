@@ -1,2 +1,3 @@
 label STANDARD
+Oberon: The current score is {GameManager.player_score} to {GameManager.oberon_score}
 Oberon: Trot along now. You shouldn't keep me waiting!

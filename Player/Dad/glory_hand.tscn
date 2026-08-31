@@ -1503,7 +1503,7 @@ libraries/ = SubResource("AnimationLibrary_28xsq")
 [node name="Light" type="OmniLight3D" parent="." unique_id=979646811 node_paths=PackedStringArray("glory_hand")]
 transform = Transform3D(0.18395136, -0.98293537, 0, 0.98293537, 0.18395136, 0, 0, 0, 1, 0, 0, 0)
 light_color = Color(1, 0, 1, 1)
-omni_range = 1.0
+omni_range = 1.6
 script = ExtResource("2_fouho")
 glory_hand = NodePath("..")
 metadata/extras = {

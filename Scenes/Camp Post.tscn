@@ -20,6 +20,7 @@
 [ext_resource type="Script" uid="uid://c6y1b7v2oiq81" path="res://Characters/Postmaster/interaction_area.gd" id="8_1qq0c"]
 [ext_resource type="PackedScene" uid="uid://c4m3x1xtpkt8p" path="res://Characters/Whitehat/Whitehat.tscn" id="8_bxb4o"]
 [ext_resource type="Texture2D" uid="uid://dgk1yrqjq8mcu" path="res://Assets/Particle FX/window_04.png" id="9_4yug1"]
+[ext_resource type="Texture2D" uid="uid://3op5igx1w2f1" path="res://Assets/hang in there.jpg" id="9_386q2"]
 [ext_resource type="Script" uid="uid://us7xil373pqc" path="res://Scenes/whitehat_by_door.gd" id="11_lqkgr"]
 [ext_resource type="Resource" uid="uid://4bpku3cyxox1" path="res://addons/dialogic/Timelines/WhitehatByDoor.dtl" id="12_ohe8u"]
 [ext_resource type="Texture2D" uid="uid://cba6cigc72d7r" path="res://Assets/Particle FX/circle_03.png" id="19_ohe8u"]
@@ -1493,6 +1494,7 @@ height = 757
 
 [node name="AreaLight3D" type="AreaLight3D" parent="Lights" unique_id=2054156289]
 transform = Transform3D(1, 0, 0, 0, 0.02616921, 0.9996576, 0, -0.9996576, 0.02616921, -1.3466817, 2.8227823, -8.519932)
+light_energy = 2.0
 light_cull_mask = 4294967293
 area_size = Vector2(4.534748, 1.5955162)
 
@@ -4145,9 +4147,9 @@ use_collision = true
 size = Vector3(1, 1.0004272, 3.8635254)
 
 [node name="CSGBox3D8" type="CSGBox3D" parent="Post Office/CSGs" unique_id=1978233115]
-transform = Transform3D(-0.04117533, 0, 0.99915195, 0, 1, 0, -0.99915195, 0, -0.04117533, -4.6228123, 1.0801755, -8.077539)
+transform = Transform3D(-0.04117533, 0, 0.99915195, 0, 1, 0, -0.99915195, 0, -0.04117533, -4.6228123, 1.1889783, -8.077539)
 use_collision = true
-size = Vector3(1, 2.285492, 3.8635254)
+size = Vector3(1, 2.5030975, 3.8635254)
 material = SubResource("StandardMaterial3D_pe4ny")
 
 [node name="CSGBox3D9" type="CSGBox3D" parent="Post Office/CSGs" unique_id=700079498]
@@ -4199,6 +4201,21 @@ use_collision = true
 size = Vector3(13.365311, 0.001, 22.047058)
 metadata/_edit_lock_ = true
 
+[node name="Interactives" type="Node3D" parent="Post Office" unique_id=1012824423]
+
+[node name="Node3D" type="Node3D" parent="Post Office/Interactives" unique_id=1362519569]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.8524194, 1.2447675, -7.532013)
+
+[node name="Sprite3D" type="Sprite3D" parent="Post Office/Interactives/Node3D" unique_id=1761179983]
+transform = Transform3D(0.76, 0, 0, 0, 0.76, 0, 0, 0, 0.76, 0, 0, 0)
+pixel_size = 0.001
+texture = ExtResource("9_386q2")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Post Office/Interactives/Node3D" unique_id=312179971]
+transform = Transform3D(1, 0, 0, 0, 0.4153298, 0.9096709, 0, -0.9096709, 0.4153298, 0, 1.7146696, 0.79206276)
+spot_range = 3.3398206
+spot_angle = 27.537468
+
 [node name="CPUParticles3D" type="CPUParticles3D" parent="." unique_id=1610763478]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.424511, 4.3718452, 0)
 amount = 100
@@ -4224,7 +4241,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.19, 0)
 curve = SubResource("Curve3D_8as8m")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="Mobs/Path3D" unique_id=27730672]
-transform = Transform3D(-0.998966, -0.00014656676, 0.045297317, 0, 0.9999685, 0.0032355676, -0.045298345, 0.003232242, -0.9989433, -2.8899221, 0.042602755, 1.0935059)
+transform = Transform3D(-0.998966, -0.00014656672, 0.045297302, 0, 0.99996823, 0.0032355667, -0.045298345, 0.0032322411, -0.99894303, -2.8899221, 0.042602755, 1.0935059)
 use_model_front = true
 tilt_enabled = false
 script = SubResource("GDScript_wuii1")

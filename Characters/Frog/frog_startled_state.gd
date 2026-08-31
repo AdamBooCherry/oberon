@@ -13,7 +13,7 @@ func enter() -> void:
 	# 1. Flash visible when startled by the player
 	frog.set_hidden(false)
 	
-	GameManager.emit_change_to_scary_environment()
+	#GameManager.emit_change_to_scary_environment()
 	
 	# 2. Play the startled/attack animation and wait for it to complete
 	if frog.animation_player:
