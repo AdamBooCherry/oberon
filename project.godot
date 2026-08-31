@@ -53,7 +53,7 @@ layout/style_list=["res://addons/dialogic/oberon_style.tres"]
 layout/default_style="res://addons/dialogic/oberon_style.tres"
 variables={
 "Postmaster": {
-"cost_of_postage": 50,
+"cost_of_postage": 100,
 "has_been_interacted_with": false,
 "has_shot_player": false
 },

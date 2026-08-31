@@ -7,6 +7,8 @@ var current_state: State
 var current_sub_state: State
 var states: Dictionary = {}
 
+signal state_changed(state: State)
+
 func init(actor_ref) -> void:
 	for child in get_children():
 		if child is State:
@@ -35,6 +37,7 @@ func change_state(new_state_name: String) -> void:
 		
 	current_state = target_state
 	current_state.enter()
+	state_changed.emit(current_state)
 
 func update(delta: float) -> void:
 	if current_state:

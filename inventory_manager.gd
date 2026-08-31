@@ -6,7 +6,7 @@ signal currency_changed(new_amount: int)
 signal item_state_changed(item_name: StringName, owned: bool)
 
 # --- Inventory State ---
-var current_currency: int = 200:
+var current_currency: int = 0:
 	set(value):
 		current_currency = max(0, value) # Prevents negative currency
 		currency_changed.emit(current_currency)

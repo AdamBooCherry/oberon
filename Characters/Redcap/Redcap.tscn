@@ -824,7 +824,7 @@ height = 11.821411
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_25gn7"]
 radius = 3.3134766
-height = 7.989746
+height = 8.192627
 
 [sub_resource type="Animation" id="Animation_edfpo"]
 resource_name = "default"
@@ -983,8 +983,26 @@ _data = {
 [sub_resource type="SphereShape3D" id="SphereShape3D_wx6k6"]
 radius = 0.2
 
+[sub_resource type="GDScript" id="GDScript_25gn7"]
+script/source = "extends Label3D
+
+@export var redcap_state_machine: StateMachine
+
+func _ready() -> void:
+	redcap_state_machine.state_changed.connect(_on_state_changed)
+	update_text()
+
+func _on_state_changed(_value):
+	update_text()
+
+func update_text():
+	text = str(redcap_state_machine.current_state)
+"
+
 [node name="Redcap" type="CharacterBody3D" unique_id=1924125630 node_paths=PackedStringArray("state_machine", "animation_player", "player_detector", "navigation_agent_3d", "hook", "reveal_detector", "health_component")]
 script = ExtResource("1_8jc84")
+move_speed = 2.0
+chase_speed = 4.0
 state_machine = NodePath("RedcapStateMachine")
 animation_player = NodePath("AnimationPlayer")
 player_detector = NodePath("PlayerDetector")
@@ -1532,6 +1550,7 @@ metadata/_custom_type_script = "uid://crpncdwicfcoh"
 [node name="HUNTING" type="Node" parent="RedcapStateMachine" unique_id=1570275390 node_paths=PackedStringArray("redcap")]
 script = ExtResource("11_w4pon")
 redcap = NodePath("../..")
+rotation_speed = 1.0
 metadata/_custom_type_script = "uid://crpncdwicfcoh"
 
 [node name="ATTACKING" type="Node" parent="RedcapStateMachine" unique_id=936826246 node_paths=PackedStringArray("redcap")]
@@ -1558,7 +1577,7 @@ transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 1
 shape = SubResource("CapsuleShape3D_386q2")
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="PlayerDetector" unique_id=1200524420]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 1.022339, -3.1411133)
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 1.022339, -3.0396729)
 shape = SubResource("CapsuleShape3D_25gn7")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=203880463]
@@ -1578,3 +1597,11 @@ shape = SubResource("SphereShape3D_wx6k6")
 [node name="HealthComponent" type="Node" parent="." unique_id=914346864]
 script = ExtResource("17_wx6k6")
 metadata/_custom_type_script = "uid://c05gqa4rsrhtn"
+
+[node name="Label3D" type="Label3D" parent="." unique_id=778248061 node_paths=PackedStringArray("redcap_state_machine")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.7185144, 0)
+pixel_size = 0.01
+billboard = 1
+text = "STATE"
+script = SubResource("GDScript_25gn7")
+redcap_state_machine = NodePath("../RedcapStateMachine")
