@@ -1,4 +1,4 @@
-extends Marker3D
+extends Node3D
 
 @export var player_detector: PlayerDetector
 @export var mesh_root: Node3D

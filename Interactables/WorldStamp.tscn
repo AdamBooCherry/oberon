@@ -20,7 +20,7 @@ shader_parameter/size = 1.12999999709424
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_wuii1"]
 
-[node name="WorldStamp" type="Marker3D" unique_id=305669244 node_paths=PackedStringArray("player_detector", "mesh_root", "collect", "nuh_uh")]
+[node name="WorldStamp" type="Node3D" unique_id=928324098 node_paths=PackedStringArray("player_detector", "mesh_root", "collect", "nuh_uh")]
 script = ExtResource("1_0qjhe")
 player_detector = NodePath("PlayerDetector")
 mesh_root = NodePath("MeshRoot")
