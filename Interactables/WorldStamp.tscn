@@ -1,0 +1,65 @@
+[gd_scene format=3 uid="uid://dm8a51xw35vu"]
+
+[ext_resource type="Script" uid="uid://dkyojnlbg8fbu" path="res://Interactables/world_stamp.gd" id="1_0qjhe"]
+[ext_resource type="Script" uid="uid://d4lj82wyqfv14" path="res://Scenes/rotation_component.gd" id="1_kruta"]
+[ext_resource type="Script" uid="uid://cksjvhe5puqs5" path="res://Characters/Redcap/player_detector.gd" id="2_bj37b"]
+[ext_resource type="Shader" uid="uid://36odonrv7jx8" path="res://Shaders/highlighter.gdshader" id="3_dnmlt"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cojvj"]
+cull_mode = 2
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_bj37b"]
+material = SubResource("StandardMaterial3D_cojvj")
+size = Vector2(0.2, 0.2)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wuii1"]
+render_priority = 0
+shader = ExtResource("3_dnmlt")
+shader_parameter/color = Color(0.34777275, 2.5203042, 2.0495892, 1)
+shader_parameter/size = 1.12999999709424
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_wuii1"]
+
+[node name="WorldStamp" type="Marker3D" unique_id=305669244 node_paths=PackedStringArray("player_detector", "mesh_root", "collect", "nuh_uh")]
+script = ExtResource("1_0qjhe")
+player_detector = NodePath("PlayerDetector")
+mesh_root = NodePath("MeshRoot")
+collect = NodePath("collect")
+nuh_uh = NodePath("nuh_uh")
+
+[node name="MeshRoot" type="Node3D" parent="." unique_id=335788079]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.41334522, 0)
+
+[node name="RotationComponent" type="Node3D" parent="MeshRoot" unique_id=123767560]
+script = ExtResource("1_kruta")
+metadata/_custom_type_script = "uid://d4lj82wyqfv14"
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MeshRoot/RotationComponent" unique_id=1729115887]
+transform = Transform3D(2.5, 0, 0, 0, 1.4553075, -2.0327518, 0, 2.0327518, 1.4553075, 0, 0, 0)
+visible = false
+mesh = SubResource("PlaneMesh_bj37b")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="MeshRoot/RotationComponent" unique_id=1154730488]
+transform = Transform3D(0.97702235, 7.450581e-09, 0.21313685, 0.17330171, 0.582123, -0.7944177, -0.12407185, 0.81310076, 0.5687472, 0, 0, 0)
+size = Vector3(0.5, 0.015, 0.5)
+material = SubResource("StandardMaterial3D_cojvj")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="MeshRoot/RotationComponent" unique_id=2132097255]
+transform = Transform3D(0.97702235, 7.450581e-09, 0.21313685, 0.17330171, 0.582123, -0.7944177, -0.12407185, 0.81310076, 0.5687472, 0, 0, 0)
+size = Vector3(0.5, 0.01, 0.5)
+material = SubResource("ShaderMaterial_wuii1")
+
+[node name="PlayerDetector" type="Area3D" parent="." unique_id=1310995653]
+script = ExtResource("2_bj37b")
+metadata/_custom_type_script = "uid://cksjvhe5puqs5"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerDetector" unique_id=349812558]
+shape = SubResource("SphereShape3D_wuii1")
+
+[node name="collect" type="AudioStreamPlayer3D" parent="." unique_id=1802097724]
+
+[node name="nuh_uh" type="AudioStreamPlayer3D" parent="." unique_id=1106334195]
+
+[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=847210717]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.23497719, 0)
+light_color = Color(0.9833336, 0, 1, 1)

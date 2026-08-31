@@ -16,6 +16,7 @@
 [ext_resource type="Script" uid="uid://d4lj82wyqfv14" path="res://Scenes/rotation_component.gd" id="11_mhs8k"]
 [ext_resource type="ArrayMesh" uid="uid://bhta5fvbarg3v" path="res://Characters/Frog/frog_mesh_visible.tres" id="11_pe4ny"]
 [ext_resource type="Script" uid="uid://dq6rl0w3afnyk" path="res://Scenes/ui_manager.gd" id="15_bo7a1"]
+[ext_resource type="Texture2D" uid="uid://5405clckxwu4" path="res://icon.svg" id="16_lo43q"]
 [ext_resource type="PackedScene" uid="uid://cnr8n11m5ak5u" path="res://Scenes/result_screen.tscn" id="18_lo43q"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_c5rrr"]
@@ -105,11 +106,16 @@ func update_text(value: int):
 [sub_resource type="ViewportTexture" id="ViewportTexture_4d07p"]
 viewport_path = NodePath("SubViewportContainer/SubViewport/MAIN/UIManager/UI/MarginContainer/HBoxContainer/StampTexture/StampTexture")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cojvj"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4d07p"]
 cull_mode = 2
+albedo_texture = ExtResource("16_lo43q")
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_wuii1"]
-material = SubResource("StandardMaterial3D_cojvj")
+material = SubResource("StandardMaterial3D_4d07p")
+size = Vector2(0.2, 0.2)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_bo7a1"]
+material = SubResource("StandardMaterial3D_4d07p")
 size = Vector2(0.2, 0.2)
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_73r58"]
@@ -494,6 +500,14 @@ metadata/_custom_type_script = "uid://d4lj82wyqfv14"
 [node name="MeshInstance3D" type="MeshInstance3D" parent="SubViewportContainer/SubViewport/MAIN/UIManager/UI/MarginContainer/HBoxContainer/StampTexture/StampTexture/Camera3D/RotationComponent" unique_id=303522256]
 transform = Transform3D(1, 0, 0, 0, 0.582123, -0.81310076, 0, 0.81310076, 0.582123, 0, 0, 0)
 mesh = SubResource("PlaneMesh_wuii1")
+
+[node name="Label3D" type="Label3D" parent="SubViewportContainer/SubViewport/MAIN/UIManager/UI/MarginContainer/HBoxContainer/StampTexture/StampTexture/Camera3D/RotationComponent/MeshInstance3D" unique_id=1484837001]
+transform = Transform3D(0.3, 0, 0, 0, -1.3113417e-08, 0.3, 0, -0.3, -1.3113417e-08, 0, 0.001, 0)
+text = "STAMP"
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="SubViewportContainer/SubViewport/MAIN/UIManager/UI/MarginContainer/HBoxContainer/StampTexture/StampTexture/Camera3D/RotationComponent/MeshInstance3D" unique_id=48989435]
+visible = false
+mesh = SubResource("PlaneMesh_bo7a1")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="SubViewportContainer/SubViewport/MAIN/UIManager/UI/MarginContainer/HBoxContainer/StampTexture/StampTexture/Camera3D/RotationComponent" unique_id=783765869]
 transform = Transform3D(1, 0, 0, 0, 0.582123, -0.81310076, 0, 0.81310076, 0.582123, 0, 0, 0)
