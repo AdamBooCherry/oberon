@@ -1,0 +1,27 @@
+[gd_resource type="Environment" format=3 uid="uid://dk3e4hn8wccq6"]
+
+[sub_resource type="Curve" id="Curve_4d07p"]
+_data = [Vector2(0, 0), 0.0, 0.7732741, 0, 1, Vector2(0.1350211, 0.104408324), 0.0, 0.0, 0, 0, Vector2(0.18354432, 0.15545237), 0.0, 0.0, 0, 0, Vector2(0.26160342, 0.19257534), -0.14555742, -0.14555742, 0, 0, Vector2(0.3586498, 0.29002315), 0.0, 0.0, 0, 0, Vector2(0.42616034, 0.3225057), 0.0, 0.0, 0, 0, Vector2(0.51898736, 0.4222737), 0.0, 0.0, 0, 0, Vector2(0.5780591, 0.44083518), 0.2275381, 0.2275381, 0, 0, Vector2(0.63080174, 0.55220413), 0.0, 0.0, 0, 0, Vector2(0.69409287, 0.59396744), 0.0, 0.0, 0, 0, Vector2(0.7616034, 0.663573), 0.0, 0.0, 0, 0, Vector2(0.82067513, 0.56380504), 0.94979984, 0.94979984, 0, 0, Vector2(0.90717304, 0.83758694), 0.0, 0.0, 0, 0, Vector2(0.93037975, 0.64501154), 0.0, 0.0, 0, 0, Vector2(0.9620254, 0.9234338), 0.0, 0.0, 0, 0, Vector2(1, 1), 2.0162485, 0.0, 1, 0]
+point_count = 16
+
+[sub_resource type="CurveTexture" id="CurveTexture_jixpw"]
+curve = SubResource("Curve_4d07p")
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_q8vd0"]
+sky_top_color = Color(1, 1, 1, 1)
+sky_horizon_color = Color(0.38266668, 0.4, 0.14000002, 1)
+sky_curve = 0.22735742
+
+[sub_resource type="Sky" id="Sky_d6pbc"]
+sky_material = SubResource("ProceduralSkyMaterial_q8vd0")
+
+[resource]
+background_mode = 1
+sky = SubResource("Sky_d6pbc")
+glow_enabled = true
+fog_enabled = true
+fog_mode = 1
+fog_light_color = Color(0.030800017, 0.74536, 0.77, 1)
+fog_density = 1.0
+adjustment_enabled = true
+adjustment_color_correction = SubResource("CurveTexture_jixpw")

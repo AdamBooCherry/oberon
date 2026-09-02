@@ -93,6 +93,7 @@ func enable_action_control() -> void:
 # --- Day & Lifecycle Management ---
 
 func begin_day() -> void:
+	EnvironmentManager.change_state(EnvironmentManager.EnvironmentState.SAFE)
 	reset_player_stats()
 	disable_action_control()
 	if movement_state_machine:
@@ -134,8 +135,8 @@ func _on_health_depleted() -> void:
 		return
 
 	disable_action_control()
-	if movement_state_machine:
-		movement_state_machine.change_state("DeathState")
+	movement_state_machine.change_state("DeathState")
+	EnvironmentManager.change_state(EnvironmentManager.EnvironmentState.DEATH)
 
 # --- Animation Tree Controls ---
 

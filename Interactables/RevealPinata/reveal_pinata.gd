@@ -20,19 +20,11 @@ func _ready() -> void:
 	
 	if reveal_detector.health_component:
 		reveal_detector.health_component.health_depleted.connect(_break_pinata)
-		#reveal_detector.health_component = health_component
-	else:
-		push_error("[RevealPinata] ERROR: HealthComponent reference is missing!")
-#
-	## Inject health_component into reveal_detector so it auto-applies continuous damage
-	#if reveal_detector:
 
 func _break_pinata() -> void:
 	if is_broken:
 		return
 	is_broken = true
-	
-	print("[RevealPinata] Pinata broken at position: ", global_position)
 	
 	var death_position = global_position
 	var world_root = get_tree().current_scene
@@ -54,7 +46,7 @@ func _break_pinata() -> void:
 	pinata_broken.emit()
 
 func reset_pinata() -> void:
-	print("[RevealPinata] Resetting pinata...")
+	#print("[RevealPinata] Resetting pinata...")
 	
 	# Reset health pool back to max
 	if reveal_detector.health_component:

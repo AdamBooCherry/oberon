@@ -33,4 +33,4 @@ func enter() -> void:
 	await anim_timer.timeout
 	
 	print("animation finished")
-	GameManager.emit_begin_victory_sequence()
+	GameManager.emit_begin_round_win()

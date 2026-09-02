@@ -37,4 +37,4 @@ func enter() -> void:
 	death_timer.start(animation_player.get_animation(animation_name).length / player_dad.movement_tree.get("parameters/TimeScale/scale"))
 	await death_timer.timeout
 
-	GameManager.emit_begin_death_sequence()
+	GameManager.emit_begin_round_lose()

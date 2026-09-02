@@ -1,10 +1,8 @@
 ### GAME MANAGER ###
 extends Node
 
-signal change_to_default_environment
-signal change_to_scary_environment
-signal begin_death_sequence
-signal begin_victory_sequence
+signal begin_round_lose
+signal begin_round_win
 signal return_to_start
 signal round_reset_started
 signal round_reset_finished
@@ -27,17 +25,11 @@ var oberon_score: int = 0:
 		oberon_score = value
 		oberon_score_changed.emit(oberon_score)
 
-func emit_change_to_default_environment():
-	change_to_default_environment.emit()
+func emit_begin_round_lose():
+	begin_round_lose.emit()
 
-func emit_change_to_scary_environment():
-	change_to_scary_environment.emit()
-
-func emit_begin_death_sequence():
-	begin_death_sequence.emit()
-
-func emit_begin_victory_sequence():
-	begin_victory_sequence.emit()
+func emit_begin_round_win():
+	begin_round_win.emit()
 
 func emit_return_to_start():
 	return_to_start.emit()

@@ -1,24 +1,52 @@
 [gd_scene format=3 uid="uid://cnr8n11m5ak5u"]
 
-[ext_resource type="Texture2D" uid="uid://cnnsfhphfqbkp" path="res://Assets/Particle FX/circle_02.png" id="1_qtxv5"]
 [ext_resource type="Script" uid="uid://cbkavs7a7ctnf" path="res://Scenes/result_screen.gd" id="1_t0wn3"]
 
 [sub_resource type="Gradient" id="Gradient_lo43q"]
-offsets = PackedFloat32Array(0, 0.17729084, 0.41035858, 0.56573707, 0.7768924, 1)
+offsets = PackedFloat32Array(0, 0.25896415, 0.36653388, 0.6354582, 0.79880476, 1)
 colors = PackedColorArray(0.6007211, 0.50727195, 1.1042657, 0.53510433, 1.1638972, 0, 1.0483613, 0.78431374, 1.0588666, 0.09809062, 1.0588666, 0.78431374, 0.099716365, 0.9607799, 1.1540799, 0.78431374, 0, 1.048362, 1.1638972, 0.78431374, 0, 1.048362, 1.1638972, 0.039215688)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_wuii1"]
 gradient = SubResource("Gradient_lo43q")
 
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_lo43q"]
-blend_mode = 1
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wuii1"]
+draw_center = false
+border_width_top = 2
+border_width_bottom = 2
+border_color = Color(0.68766725, 0.88401085, 1.1551381e-06, 1)
+anti_aliasing = false
 
-[node name="ResultScreen" type="CanvasLayer" unique_id=1894920253 node_paths=PackedStringArray("panel_container", "message_label", "player_score_markers", "oberon_score_markers")]
+[sub_resource type="GDScript" id="GDScript_t0wn3"]
+script/source = "extends Label
+
+func _ready() -> void:
+	GameManager.oberon_score_changed.connect(_oberon_point)
+	GameManager.player_score_changed.connect(_dad_point)
+
+func _oberon_point(_value):
+	text = \"Round Lost!\"
+
+func _dad_point(_value):
+	text = \"Round Won!\"
+"
+
+[sub_resource type="GDScript" id="GDScript_qtxv5"]
+script/source = "extends Label
+
+func _ready() -> void:
+	GameManager.oberon_score_changed.connect(_on_score_changed)
+	GameManager.player_score_changed.connect(_on_score_changed)
+
+func _on_score_changed(_value):
+	text = str(GameManager.player_score) + \" - \" + str(GameManager.oberon_score)
+	pass
+"
+
+[node name="ResultScreen" type="CanvasLayer" unique_id=1894920253 node_paths=PackedStringArray("panel_container", "message_label", "result_label")]
 script = ExtResource("1_t0wn3")
 panel_container = NodePath("MarginContainer/TextureRect")
 message_label = NodePath("MarginContainer/TextureRect/MarginContainer/VBoxContainer/MessageLabel")
-player_score_markers = [NodePath("MarginContainer/TextureRect/MarginContainer/VBoxContainer/HBoxContainer/DadContainer/HBoxContainer/TextureRect"), NodePath("MarginContainer/TextureRect/MarginContainer/VBoxContainer/HBoxContainer/DadContainer/HBoxContainer/TextureRect2"), NodePath("MarginContainer/TextureRect/MarginContainer/VBoxContainer/HBoxContainer/DadContainer/HBoxContainer/TextureRect3")]
-oberon_score_markers = [NodePath("MarginContainer/TextureRect/MarginContainer/VBoxContainer/HBoxContainer/OberonContainer/HBoxContainer/TextureRect"), NodePath("MarginContainer/TextureRect/MarginContainer/VBoxContainer/HBoxContainer/OberonContainer/HBoxContainer/TextureRect2"), NodePath("MarginContainer/TextureRect/MarginContainer/VBoxContainer/HBoxContainer/OberonContainer/HBoxContainer/TextureRect3")]
+result_label = NodePath("MarginContainer/TextureRect/MarginContainer/VBoxContainer/ResultLabel")
 metadata/_custom_type_script = "uid://cbkavs7a7ctnf"
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=362917233]
@@ -34,6 +62,20 @@ theme_override_constants/margin_bottom = 150
 layout_mode = 2
 texture = SubResource("GradientTexture2D_wuii1")
 
+[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/TextureRect" unique_id=485391664]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="Panel" type="Panel" parent="MarginContainer/TextureRect/MarginContainer2" unique_id=437774906]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_wuii1")
+
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer/TextureRect" unique_id=834290562]
 layout_mode = 0
 offset_right = 640.0
@@ -44,112 +86,45 @@ theme_override_constants/margin_bottom = 33
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/TextureRect/MarginContainer" unique_id=706948217]
 layout_mode = 2
 
-[node name="MessageLabel" type="Label" parent="MarginContainer/TextureRect/MarginContainer/VBoxContainer" unique_id=1645221920]
+[node name="ResultLabel" type="Label" parent="MarginContainer/TextureRect/MarginContainer/VBoxContainer" unique_id=2103252843]
 layout_mode = 2
-text = "WINNER!"
+text = "ROUND WON"
 horizontal_alignment = 1
 vertical_alignment = 1
+script = SubResource("GDScript_t0wn3")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/TextureRect/MarginContainer/VBoxContainer" unique_id=539917534]
 layout_mode = 2
-size_flags_vertical = 3
 
-[node name="DadContainer" type="VBoxContainer" parent="MarginContainer/TextureRect/MarginContainer/VBoxContainer/HBoxContainer" unique_id=441417139]
+[node name="Dad" type="Label" parent="MarginContainer/TextureRect/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1785533827]
 layout_mode = 2
-size_flags_horizontal = 6
-size_flags_vertical = 0
-
-[node name="Dad" type="Label" parent="MarginContainer/TextureRect/MarginContainer/VBoxContainer/HBoxContainer/DadContainer" unique_id=1785533827]
-layout_mode = 2
-size_flags_vertical = 0
+size_flags_horizontal = 10
+size_flags_vertical = 1
 text = "DAD"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/TextureRect/MarginContainer/VBoxContainer/HBoxContainer/DadContainer" unique_id=148840532]
+[node name="ScoreLabel" type="Label" parent="MarginContainer/TextureRect/MarginContainer/VBoxContainer/HBoxContainer" unique_id=361049852]
+custom_minimum_size = Vector2(112.14, 0)
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 2
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 43
+text = "0-0"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = SubResource("GDScript_qtxv5")
 
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/TextureRect/MarginContainer/VBoxContainer/HBoxContainer/DadContainer/HBoxContainer" unique_id=1304379491]
-material = SubResource("CanvasItemMaterial_lo43q")
-custom_minimum_size = Vector2(0, 38.08)
+[node name="Oberon" type="Label" parent="MarginContainer/TextureRect/MarginContainer/VBoxContainer/HBoxContainer" unique_id=46279675]
 layout_mode = 2
-size_flags_horizontal = 3
-texture = ExtResource("1_qtxv5")
-expand_mode = 3
-stretch_mode = 5
-metadata/_edit_group_ = true
-
-[node name="TextureRect2" type="TextureRect" parent="MarginContainer/TextureRect/MarginContainer/VBoxContainer/HBoxContainer/DadContainer/HBoxContainer" unique_id=105081511]
-material = SubResource("CanvasItemMaterial_lo43q")
-custom_minimum_size = Vector2(0, 38.08)
-layout_mode = 2
-size_flags_horizontal = 3
-texture = ExtResource("1_qtxv5")
-expand_mode = 3
-stretch_mode = 5
-metadata/_edit_group_ = true
-
-[node name="TextureRect3" type="TextureRect" parent="MarginContainer/TextureRect/MarginContainer/VBoxContainer/HBoxContainer/DadContainer/HBoxContainer" unique_id=1290945916]
-material = SubResource("CanvasItemMaterial_lo43q")
-custom_minimum_size = Vector2(0, 38.08)
-layout_mode = 2
-size_flags_horizontal = 3
-texture = ExtResource("1_qtxv5")
-expand_mode = 3
-stretch_mode = 5
-metadata/_edit_group_ = true
-
-[node name="OberonContainer" type="VBoxContainer" parent="MarginContainer/TextureRect/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1007249927]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 0
-
-[node name="Oberon" type="Label" parent="MarginContainer/TextureRect/MarginContainer/VBoxContainer/HBoxContainer/OberonContainer" unique_id=46279675]
-layout_mode = 2
-size_flags_vertical = 0
+size_flags_horizontal = 2
+size_flags_vertical = 1
 text = "OBERON"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/TextureRect/MarginContainer/VBoxContainer/HBoxContainer/OberonContainer" unique_id=140101091]
+[node name="MessageLabel" type="Label" parent="MarginContainer/TextureRect/MarginContainer/VBoxContainer" unique_id=1645221920]
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 0
-
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/TextureRect/MarginContainer/VBoxContainer/HBoxContainer/OberonContainer/HBoxContainer" unique_id=906425530]
-material = SubResource("CanvasItemMaterial_lo43q")
-custom_minimum_size = Vector2(0, 38.08)
-layout_mode = 2
-size_flags_horizontal = 3
-texture = ExtResource("1_qtxv5")
-expand_mode = 3
-stretch_mode = 5
-metadata/_edit_group_ = true
-
-[node name="TextureRect2" type="TextureRect" parent="MarginContainer/TextureRect/MarginContainer/VBoxContainer/HBoxContainer/OberonContainer/HBoxContainer" unique_id=1503239127]
-material = SubResource("CanvasItemMaterial_lo43q")
-custom_minimum_size = Vector2(0, 38.08)
-layout_mode = 2
-size_flags_horizontal = 3
-texture = ExtResource("1_qtxv5")
-expand_mode = 3
-stretch_mode = 5
-metadata/_edit_group_ = true
-
-[node name="TextureRect3" type="TextureRect" parent="MarginContainer/TextureRect/MarginContainer/VBoxContainer/HBoxContainer/OberonContainer/HBoxContainer" unique_id=1606518512]
-material = SubResource("CanvasItemMaterial_lo43q")
-custom_minimum_size = Vector2(0, 38.08)
-layout_mode = 2
-size_flags_horizontal = 3
-texture = ExtResource("1_qtxv5")
-expand_mode = 3
-stretch_mode = 5
-metadata/_edit_group_ = true
-
-[node name="Label2" type="Label" parent="MarginContainer/TextureRect/MarginContainer/VBoxContainer" unique_id=2103252843]
-layout_mode = 2
-text = "THANK YOU FOR PLAYING!"
+theme_override_font_sizes/font_size = 37
+text = "Well done!"
 horizontal_alignment = 1
 vertical_alignment = 1

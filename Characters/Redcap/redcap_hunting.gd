@@ -6,7 +6,6 @@ extends State
 @export var rotation_speed: float = 10.0
 
 func enter() -> void:
-	GameManager.emit_change_to_scary_environment()
 
 	if not redcap:
 		return

@@ -11,8 +11,6 @@ func enter() -> void:
 	#print("[StunnedState] ENTERED. Frog is stunned and vulnerable.")
 	_timer = 0.0
 	_is_recovering = false
-	GameManager.emit_change_to_default_environment()
-
 	
 	if frog:
 		frog.velocity = Vector3.ZERO

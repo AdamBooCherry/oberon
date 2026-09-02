@@ -9,23 +9,14 @@ class_name Main
 func _ready() -> void:
 	if GameManager:
 		GameManager.return_to_start.connect(_on_return_to_start)
-		GameManager.begin_death_sequence.connect(_on_begin_death_sequence)
-		GameManager.begin_victory_sequence.connect(_on_begin_victory_sequence)
+		GameManager.begin_round_lose.connect(_on_begin_round_lose)
+		GameManager.begin_round_win.connect(_on_begin_round_win)
 	_start_round()
-
-func _exit_tree() -> void:
-	if GameManager:
-		if GameManager.return_to_start.is_connected(_on_return_to_start):
-			GameManager.return_to_start.disconnect(_on_return_to_start)
-		if GameManager.begin_death_sequence.is_connected(_on_begin_death_sequence):
-			GameManager.begin_death_sequence.disconnect(_on_begin_death_sequence)
-		if GameManager.begin_victory_sequence.is_connected(_on_begin_victory_sequence):
-			GameManager.begin_victory_sequence.disconnect(_on_begin_victory_sequence)
 
 func _on_return_to_start() -> void:
 	_start_round()
 
-func _on_begin_death_sequence() -> void:
+func _on_begin_round_lose() -> void:
 	GameManager.oberon_score += 1
 	GameManager.emit_round_reset_started()
 	
@@ -39,7 +30,7 @@ func _on_begin_death_sequence() -> void:
 	GameManager.emit_round_reset_finished()
 	_check_game_over()
 
-func _on_begin_victory_sequence() -> void:
+func _on_begin_round_win() -> void:
 	GameManager.player_score += 1
 	GameManager.emit_round_reset_started()
 	
@@ -53,7 +44,7 @@ func _on_begin_victory_sequence() -> void:
 
 func _start_round() -> void:
 	InventoryManager.reset_inventory()
-	GameManager.change_to_default_environment
+	EnvironmentManager.change_state(EnvironmentManager.EnvironmentState.SAFE)
 	
 	if player and player_spawn:
 		player.velocity = Vector3.ZERO

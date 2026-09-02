@@ -9,13 +9,9 @@ var _stun_timer: float = 0.0
 
 
 func enter() -> void:
-	print("Enter hit state")
 	_stun_timer = stun_duration
 	player_dad.velocity = Vector3.ZERO
 	player_dad.hurtbox.is_invulnerable = true
-	## Disable hurtbox immediately
-	#if player_dad.hurtbox:
-		#player_dad.hurtbox.
 
 	# 1. Ensure AnimationTree is active
 	player_dad.movement_tree.active = true
@@ -35,4 +31,3 @@ func physics_update(delta: float) -> void:
 
 func exit() -> void:
 	player_dad.hurtbox.is_invulnerable = false
-	print("exiting HitState!")

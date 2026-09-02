@@ -9,9 +9,6 @@ var _timer: float = 0.0
 var _target_time: float = 2.0
 
 func enter() -> void:
-	#print("[IdleState] ENTERED. Waiting for idle timer...")
-	#GameManager.emit_change_to_default_environment()
-
 	if frog and frog.animation_player:
 		frog.animation_player.play("Armature|Frog_Idle")
 		## right here doesn't seem to be registering correctly

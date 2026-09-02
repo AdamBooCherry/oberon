@@ -1,0 +1,42 @@
+[gd_resource type="Environment" format=3 uid="uid://fam86hds4ypo"]
+
+[sub_resource type="Curve" id="Curve_w61kr"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.16860463, 0), 0.0, 0.0, 0, 0, Vector2(0.20542635, 0.9659574), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Curve" id="Curve_pff27"]
+_data = [Vector2(0.112403095, 0), 0.0, 0.0, 0, 0, Vector2(0.251938, 0.50638294), -0.6219998, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_nnveg"]
+_data = [Vector2(0.35852712, 0), 0.0, 0.0, 0, 0, Vector2(0.37209302, 0.98297864), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveXYZTexture" id="CurveXYZTexture_oc0re"]
+curve_x = SubResource("Curve_w61kr")
+curve_y = SubResource("Curve_pff27")
+curve_z = SubResource("Curve_nnveg")
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_8as8m"]
+sky_top_color = Color(0, 0, 0, 1)
+sky_horizon_color = Color(1, 0.58431375, 0.23529412, 1)
+sky_curve = 0.0609191
+ground_bottom_color = Color(0.13399999, 0.18460003, 0.2, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_rqf0l"]
+sky_material = SubResource("ProceduralSkyMaterial_8as8m")
+
+[resource]
+background_mode = 2
+sky = SubResource("Sky_rqf0l")
+ambient_light_color = Color(0.19607843, 0, 0, 1)
+glow_enabled = true
+glow_intensity = 1.0
+fog_enabled = true
+fog_light_color = Color(0.1448752, 0.08584634, 0.0858958, 1)
+fog_light_energy = 0.32
+fog_sun_scatter = 0.85
+fog_density = 0.1056
+adjustment_enabled = true
+adjustment_color_correction = SubResource("CurveXYZTexture_oc0re")

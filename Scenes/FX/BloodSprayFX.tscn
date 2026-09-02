@@ -5,8 +5,10 @@
 [ext_resource type="Texture2D" uid="uid://bhuyb2k4n10v4" path="res://Assets/Particle FX/fire_01.png" id="2_r533i"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mhw5n"]
-transparency = 1
-albedo_color = Color(0.43, 0, 0, 1)
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+albedo_color = Color(8.655305, 0, 0, 1)
 albedo_texture = ExtResource("2_r533i")
 billboard_mode = 3
 billboard_keep_scale = true

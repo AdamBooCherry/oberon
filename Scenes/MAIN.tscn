@@ -8,13 +8,15 @@
 [ext_resource type="PackedScene" uid="uid://cqcsv7x0vouop" path="res://Prototyping/ForestTestArea.tscn" id="3_mhs8k"]
 [ext_resource type="PackedScene" uid="uid://dtjgiqp4jij8g" path="res://Player/Dad/PlayerDad.tscn" id="4_783md"]
 [ext_resource type="Shader" uid="uid://u3hqbulxxqpq" path="res://Characters/Redcap/blood_drip.gdshader" id="4_jixpw"]
-[ext_resource type="Environment" uid="uid://ddfwg2im0ypls" path="res://Scenes/scary_environment.tres" id="4_n02r8"]
+[ext_resource type="Environment" uid="uid://ddfwg2im0ypls" path="res://Scenes/Environments/CHASE.tres" id="4_n02r8"]
 [ext_resource type="PackedScene" uid="uid://dkp4b2dv57aar" path="res://Assets/Environment/Mushroom_01.tscn" id="5_4d07p"]
-[ext_resource type="Environment" uid="uid://taliiown2kj3" path="res://Scenes/default_environment.tres" id="7_kjvde"]
+[ext_resource type="Environment" uid="uid://taliiown2kj3" path="res://Scenes/Environments/SAFE.tres" id="7_kjvde"]
 [ext_resource type="AudioStream" uid="uid://cwhus76517dk2" path="res://Audio/Akira_getoutofmyheadaaaaaa.mp3" id="10_whe6r"]
+[ext_resource type="Environment" uid="uid://dk3e4hn8wccq6" path="res://Scenes/Environments/INVESTIGATING.tres" id="11_bo7a1"]
 [ext_resource type="Script" uid="uid://gfl84qcnh65h" path="res://Scenes/ui.gd" id="11_csh6n"]
 [ext_resource type="Script" uid="uid://d4lj82wyqfv14" path="res://Scenes/rotation_component.gd" id="11_mhs8k"]
 [ext_resource type="ArrayMesh" uid="uid://bhta5fvbarg3v" path="res://Characters/Frog/frog_mesh_visible.tres" id="11_pe4ny"]
+[ext_resource type="Environment" uid="uid://fam86hds4ypo" path="res://Scenes/Environments/DEATH.tres" id="13_tkjyg"]
 [ext_resource type="Script" uid="uid://dq6rl0w3afnyk" path="res://Scenes/ui_manager.gd" id="15_bo7a1"]
 [ext_resource type="Texture2D" uid="uid://5405clckxwu4" path="res://icon.svg" id="16_lo43q"]
 [ext_resource type="PackedScene" uid="uid://cnr8n11m5ak5u" path="res://Scenes/result_screen.tscn" id="18_lo43q"]
@@ -331,13 +333,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 62.855, 0, -1)
 [node name="World" type="Node3D" parent="SubViewportContainer/SubViewport/MAIN" unique_id=681409880 node_paths=PackedStringArray("world_environment", "world_transition")]
 script = ExtResource("2_1tvcf")
 world_environment = NodePath("WorldEnvironment")
-default_environment = ExtResource("7_kjvde")
-scary_environment = ExtResource("4_n02r8")
 world_transition = NodePath("WorldTransition")
+safe_environment = ExtResource("7_kjvde")
+investigating_environment = ExtResource("11_bo7a1")
+chase_environment = ExtResource("4_n02r8")
+death_environment = ExtResource("13_tkjyg")
 metadata/_custom_type_script = "uid://dkyo53x8ie3j5"
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="SubViewportContainer/SubViewport/MAIN/World" unique_id=331212326]
-environment = ExtResource("7_kjvde")
+environment = ExtResource("13_tkjyg")
 
 [node name="SkyLight" type="DirectionalLight3D" parent="SubViewportContainer/SubViewport/MAIN/World" unique_id=1200277973]
 transform = Transform3D(-0.86602545, -0.30074093, 0.39944327, 2.2351742e-08, 0.79888654, 0.6014818, -0.50000006, 0.5208986, -0.691856, 0, 0, 0)

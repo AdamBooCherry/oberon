@@ -1310,6 +1310,7 @@ _data = {
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mpywm"]
 transparency = 1
 blend_mode = 1
+depth_draw_mode = 1
 shading_mode = 0
 vertex_color_use_as_albedo = true
 albedo_texture = ExtResource("1_mpywm")
@@ -1464,17 +1465,26 @@ size = Vector3(26.56649, 1, 24.882813)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jca4r"]
 transparency = 1
-blend_mode = 1
+disable_ambient_light = true
 disable_fog = true
+disable_specular_occlusion = true
+vertex_color_use_as_albedo = true
+albedo_color = Color(1.478941, 1.478941, 1.478941, 1)
 albedo_texture = ExtResource("19_ohe8u")
+albedo_texture_force_srgb = true
+albedo_texture_msdf = true
 emission_enabled = true
 emission = Color(1, 1, 1, 1)
 emission_energy_multiplier = 0.41
+rim_enabled = true
+rim = 0.16
+backlight = Color(1, 1, 1, 1)
 disable_receive_shadows = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1b76m"]
 transparency = 1
 blend_mode = 1
+depth_draw_mode = 1
 disable_fog = true
 albedo_texture = ExtResource("20_pk8lo")
 emission_enabled = true
@@ -4241,7 +4251,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.19, 0)
 curve = SubResource("Curve3D_8as8m")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="Mobs/Path3D" unique_id=27730672]
-transform = Transform3D(-0.998966, -0.00014656672, 0.045297302, 0, 0.99996823, 0.0032355667, -0.045298345, 0.0032322411, -0.99894303, -2.8899221, 0.042602755, 1.0935059)
+transform = Transform3D(-0.998966, -0.00014656666, 0.045297284, 0, 0.9999678, 0.0032355653, -0.045298345, 0.0032322397, -0.9989426, -2.8899221, 0.042602755, 1.0935059)
 use_model_front = true
 tilt_enabled = false
 script = SubResource("GDScript_wuii1")
@@ -4592,10 +4602,14 @@ size = Vector3(10.280151, 16.723698, 23.772827)
 [node name="Sprite3D" type="Sprite3D" parent="Environment" unique_id=1221172795]
 transform = Transform3D(-0.102076724, 0.29544947, 0.94988954, 0.03156774, 0.9553586, -0.29375812, -0.9942758, -1.44443835e-08, -0.10684656, -1346.4021, 925.14166, 373.47192)
 material_override = SubResource("StandardMaterial3D_jca4r")
+gi_mode = 2
 pixel_size = 2.0
+double_sided = false
+texture_filter = 0
 texture = ExtResource("19_ohe8u")
 
 [node name="Sprite3D2" type="Sprite3D" parent="Environment/Sprite3D" unique_id=478551215]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.9802322e-08, 1.4454947)
 material_override = SubResource("StandardMaterial3D_1b76m")
 pixel_size = 2.0
 texture = SubResource("GradientTexture2D_tw0sk")
@@ -4604,4 +4618,4 @@ texture = SubResource("GradientTexture2D_tw0sk")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -36.94911, 0.09279391, 4.5258803)
 
 [node name="FrogFlower" parent="." unique_id=1651507190 instance=ExtResource("24_tw0sk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34.104298, 0.032844424, -0.39027405)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.876938, 0.032844424, 0.24080086)

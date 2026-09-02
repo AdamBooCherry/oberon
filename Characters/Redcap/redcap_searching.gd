@@ -11,6 +11,8 @@ var _timer: float = 0.0
 var _has_reached_destination: bool = false
 
 func enter() -> void:
+	EnvironmentManager.change_state(EnvironmentManager.EnvironmentState.INVESTIGATING)
+	
 	_timer = 0.0
 	_has_reached_destination = false
 

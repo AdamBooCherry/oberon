@@ -10,8 +10,6 @@ func enter() -> void:
 	#print("[HideState] ENTERED. Frog is hiding.")
 	_timer = 0.0
 	
-	GameManager.emit_change_to_default_environment()
-	
 	if frog:
 		frog.velocity = Vector3.ZERO
 		frog.set_hidden(true)

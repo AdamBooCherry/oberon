@@ -8,6 +8,8 @@ extends State
 var _timer: float = 0.0
 
 func enter() -> void:
+	EnvironmentManager.change_state(EnvironmentManager.EnvironmentState.CHASE)
+
 	_timer = 0.0
 
 	if not redcap:

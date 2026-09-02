@@ -1,0 +1,6 @@
+[gd_resource type="Theme" format=3 uid="uid://0is5b4xdefc8"]
+
+[ext_resource type="FontFile" uid="uid://b3rxhyvrot46w" path="res://Styles/Academy Engraved LET Fonts.ttf" id="1_yrq2x"]
+
+[resource]
+default_font = ExtResource("1_yrq2x")
