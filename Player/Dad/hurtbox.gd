@@ -8,7 +8,7 @@ signal damage_received(amount: float, attacker: Node3D)
 
 
 func take_damage(amount: float, attacker: Node3D = null) -> void:
-	print("taking damage")
+	#print("taking damage")
 	if is_invulnerable:
 		return
 

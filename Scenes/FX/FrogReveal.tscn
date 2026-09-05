@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cd84uw7jueq2i" path="res://Characters/Frog/frog_collect.gd" id="1_eth23"]
 [ext_resource type="Texture2D" uid="uid://1w4nji2hw16e" path="res://Assets/Particle FX/symbol_02.png" id="2_eth23"]
-[ext_resource type="AudioStream" uid="uid://bx6daabaullmr" path="res://Audio/519438__lilmati__frosty-exhale-ice-cold-exhale-icy-exhale.wav" id="3_eth23"]
+[ext_resource type="AudioStream" uid="uid://bx6daabaullmr" path="res://Audio/SFX/519438__lilmati__frosty-exhale-ice-cold-exhale-icy-exhale.wav" id="3_eth23"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cojvj"]
 transparency = 1

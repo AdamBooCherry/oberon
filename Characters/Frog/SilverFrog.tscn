@@ -3,14 +3,16 @@
 [ext_resource type="Script" uid="uid://6dxlg0dp6vho" path="res://Characters/Frog/frog.gd" id="1_btgrc"]
 [ext_resource type="ArrayMesh" uid="uid://bhta5fvbarg3v" path="res://Characters/Frog/frog_mesh_visible.tres" id="2_7mvmj"]
 [ext_resource type="Script" uid="uid://1b5rafayk84b" path="res://Player/Dad/state_machine.gd" id="3_8qkgf"]
-[ext_resource type="AudioStream" uid="uid://dgntj11hweld4" path="res://Audio/350906__cabled_mess__jump_c_04.wav" id="3_b8qoe"]
+[ext_resource type="AudioStream" uid="uid://dgntj11hweld4" path="res://Audio/SFX/350906__cabled_mess__jump_c_04.wav" id="3_b8qoe"]
 [ext_resource type="Script" uid="uid://41tenuevb8nk" path="res://Characters/Frog/frog_idle_state.gd" id="4_45p65"]
 [ext_resource type="Script" uid="uid://jshkgi3pchx8" path="res://Characters/Frog/frog_wander_state.gd" id="5_lj5qg"]
 [ext_resource type="Script" uid="uid://iqlxqlrch6fp" path="res://Characters/Frog/frog_hide_state.gd" id="6_koqil"]
 [ext_resource type="Script" uid="uid://837dr23o7h80" path="res://Characters/Frog/frog_run_from_player_state.gd" id="7_deubo"]
-[ext_resource type="Script" uid="uid://d4b7gg5td8vk3" path="res://Characters/Frog/frog_stunned_state.gd" id="8_7mvmj"]
 [ext_resource type="Script" uid="uid://byj5yrq2me2x5" path="res://Characters/Frog/frog_startled_state.gd" id="9_dmsjd"]
+[ext_resource type="Script" uid="uid://d4b7gg5td8vk3" path="res://Characters/Frog/frog_stunned_state.gd" id="10_y3ytm"]
 [ext_resource type="PackedScene" uid="uid://bqbyd454l7mgo" path="res://Interactables/RevealPinata/RevealPinata.tscn" id="11_frgxb"]
+[ext_resource type="Script" uid="uid://qixsxc6k8d6k" path="res://Interactables/Coin/attractable_area.gd" id="12_1651t"]
+[ext_resource type="Script" uid="uid://b8p1ngbsprahy" path="res://Interactables/Coin/homing_component.gd" id="12_y3ytm"]
 
 [sub_resource type="Skin" id="Skin_w20oo"]
 resource_name = "Skin"
@@ -963,15 +965,22 @@ radius = 0.41190192
 [sub_resource type="SphereShape3D" id="SphereShape3D_cojvj"]
 radius = 0.30162555
 
-[node name="Frog" type="CharacterBody3D" unique_id=2044770608 node_paths=PackedStringArray("player_detector", "animation_player", "navigation_agent_3d", "state_machine", "frog_mesh", "reveal_pinata") groups=["FROG"]]
+[sub_resource type="SphereShape3D" id="SphereShape3D_0ew1o"]
+radius = 0.1
+
+[sub_resource type="Curve" id="Curve_1651t"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[node name="Frog" type="CharacterBody3D" unique_id=2044770608 node_paths=PackedStringArray("animation_player", "navigation_agent_3d", "state_machine", "frog_mesh", "reveal_pinata", "attractable_area") groups=["FROG"]]
 slide_on_ceiling = false
 script = ExtResource("1_btgrc")
-player_detector = NodePath("PlayerDetector")
 animation_player = NodePath("AnimationPlayer")
 navigation_agent_3d = NodePath("NavigationAgent3D")
 state_machine = NodePath("StateMachine")
 frog_mesh = NodePath("Frog/Armature/Skeleton3D/Frog")
 reveal_pinata = NodePath("RevealPinata")
+attractable_area = NodePath("AttractableArea")
 metadata/_custom_type_script = "uid://6dxlg0dp6vho"
 
 [node name="Frog" type="Node3D" parent="." unique_id=1508475070]
@@ -1327,15 +1336,16 @@ frog = NodePath("../..")
 flee_distance = 12.0
 metadata/_custom_type_script = "uid://837dr23o7h80"
 
-[node name="FrogStunnedState" type="Node" parent="StateMachine" unique_id=1741704063 node_paths=PackedStringArray("frog")]
-script = ExtResource("8_7mvmj")
-frog = NodePath("../..")
-metadata/_custom_type_script = "uid://d4b7gg5td8vk3"
-
 [node name="FrogStartledState" type="Node" parent="StateMachine" unique_id=1801287273 node_paths=PackedStringArray("frog")]
 script = ExtResource("9_dmsjd")
 frog = NodePath("../..")
 metadata/_custom_type_script = "uid://byj5yrq2me2x5"
+
+[node name="FrogStunnedState" type="Node" parent="StateMachine" unique_id=1431925488 node_paths=PackedStringArray("frog", "state_machine")]
+script = ExtResource("10_y3ytm")
+frog = NodePath("../..")
+state_machine = NodePath("..")
+metadata/_custom_type_script = "uid://d4b7gg5td8vk3"
 
 [node name="Audio" type="Node3D" parent="." unique_id=1708949086]
 
@@ -1345,3 +1355,17 @@ unit_size = 1.0
 max_polyphony = 2
 
 [node name="RevealPinata" parent="." unique_id=547381027 instance=ExtResource("11_frgxb")]
+max_health = 30.0
+
+[node name="AttractableArea" type="Area3D" parent="." unique_id=560279979 node_paths=PackedStringArray("homing_component")]
+script = ExtResource("12_1651t")
+homing_component = NodePath("../HomingComponent")
+metadata/_custom_type_script = "uid://qixsxc6k8d6k"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="AttractableArea" unique_id=1768989191]
+shape = SubResource("SphereShape3D_0ew1o")
+
+[node name="HomingComponent" type="Node" parent="." unique_id=325601306]
+script = ExtResource("12_y3ytm")
+speed_curve = SubResource("Curve_1651t")
+metadata/_custom_type_script = "uid://b8p1ngbsprahy"

@@ -37,7 +37,7 @@ const TRANSITION_RULES: Dictionary = {
 ## Attempt to transition to a new environment state. Returns true if valid.
 func change_state(new_state: EnvironmentState) -> bool:
 	if current_state == new_state:
-		print("[EnvironmentManager] State is already: %s" % EnvironmentState.keys()[current_state])
+		#print("[EnvironmentManager] State is already: %s" % EnvironmentState.keys()[current_state])
 		return false
 		
 	# Check if transition is permitted by rules
@@ -45,10 +45,10 @@ func change_state(new_state: EnvironmentState) -> bool:
 		var old_state = current_state
 		current_state = new_state
 		
-		print("[EnvironmentManager] State changed: %s -> %s" % [
-			EnvironmentState.keys()[old_state],
-			EnvironmentState.keys()[current_state]
-		])
+		#print("[EnvironmentManager] State changed: %s -> %s" % [
+			#EnvironmentState.keys()[old_state],
+			#EnvironmentState.keys()[current_state]
+		#])
 		
 		environment_changed.emit(current_state, old_state)
 		return true

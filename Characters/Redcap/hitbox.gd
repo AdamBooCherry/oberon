@@ -14,7 +14,7 @@ func _on_area_entered(area: Area3D) -> void:
 		hurt_target(area)
 
 func hurt_target(hurtbox: Hurtbox):
-	print("hurt target!")
+	#print("hurt target!")
 	hurtbox.take_damage(damage)
 	hit_registered.emit(hurtbox.owner)
 	pass

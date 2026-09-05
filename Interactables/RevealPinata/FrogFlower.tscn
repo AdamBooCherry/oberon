@@ -84,10 +84,10 @@ cap_bottom = false
 height = 0.9963379
 radius = 0.20654297
 
-[node name="FrogFlower" type="Node3D" unique_id=738821802 node_paths=PackedStringArray("reveal_detector", "head_marker", "beam_transform")]
+[node name="FrogFlower" type="Node3D" unique_id=738821802 node_paths=PackedStringArray("reveal_pinata", "head_marker", "beam_transform")]
 script = ExtResource("1_bt7qw")
 grow_curve = SubResource("Curve_6ii33")
-reveal_detector = NodePath("RevealDetector")
+reveal_pinata = NodePath("RevealPinata")
 head_marker = NodePath("HeadMarker")
 beam_transform = NodePath("HeadMarker/SunflowerHead/BeamTransform")
 metadata/_custom_type_script = "uid://djkohpertoddg"
@@ -123,3 +123,4 @@ script = ExtResource("6_5rafc")
 metadata/_custom_type_script = "uid://c05gqa4rsrhtn"
 
 [node name="RevealPinata" parent="." unique_id=547381027 instance=ExtResource("5_bit3q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2347513, 0)

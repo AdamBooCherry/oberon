@@ -1806,7 +1806,6 @@ debug_color = Color(1, 1, 0, 1)
 
 [node name="Redcap" parent="Actors" unique_id=1924125630 instance=ExtResource("12_khta5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -48.18674, 0.19763362, 0)
-disable_idiot = true
 
 [node name="FrogSpawner" type="Node3D" parent="." unique_id=1999860044 node_paths=PackedStringArray("spawn_markers")]
 script = ExtResource("19_abqjs")

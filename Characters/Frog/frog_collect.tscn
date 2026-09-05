@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://b411p8e61fb0w" path="res://Assets/Particle FX/magic_05.png" id="1_syc2g"]
 [ext_resource type="Script" uid="uid://cd84uw7jueq2i" path="res://Characters/Frog/frog_collect.gd" id="1_vyg8d"]
-[ext_resource type="AudioStream" uid="uid://d2j8xm2ydd14x" path="res://Audio/592346__axilirate__collect-crystal.wav" id="3_ufuo0"]
+[ext_resource type="AudioStream" uid="uid://d2j8xm2ydd14x" path="res://Audio/SFX/592346__axilirate__collect-crystal.wav" id="3_ufuo0"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cojvj"]
 transparency = 1

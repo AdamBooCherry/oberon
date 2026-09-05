@@ -13,7 +13,7 @@ func spawn_loot(origin_position: Vector3) -> void:
 	var max_c = int(loot_range.y)
 	var spawn_count = randi_range(min_c, max_c)
 	
-	print("[LootSpawner] Spawning ", spawn_count, " items...")
+	#print("[LootSpawner] Spawning ", spawn_count, " items...")
 	var world_root = get_tree().current_scene
 	
 	for i in range(spawn_count):

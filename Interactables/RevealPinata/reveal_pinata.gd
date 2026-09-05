@@ -4,63 +4,47 @@ class_name RevealPinata
 signal pinata_broken
 signal pinata_reset
 
-@export_group("References")
-@export var reveal_detector: RevealDetector
+@export var max_health: float = 10.0:
+	set(val):
+		max_health = val
+		if reveal_target:
+			reveal_target.set_max_health(val)
 
-#@export var health_component: HealthComponent
+@export_group("References")
+@export var reveal_target: RevealTarget
 @export var loot_spawner: LootSpawner
-@export var visual_node: Node3D # The mesh/visuals of the pinata itself
+@export var visual_node: Node3D
 
 var is_broken: bool = false
 
-const BREAK_EFFECT = preload("uid://dqo2wy1r43ocf")
+const BREAK_EFFECT_UID = "uid://dqo2wy1r43ocf"
 
 func _ready() -> void:
-	GameManager.day_number_changed.connect(_on_day_number_changed)
-	
-	if reveal_detector.health_component:
-		reveal_detector.health_component.health_depleted.connect(_break_pinata)
+	GameManager.day_number_changed.connect(reset_pinata)
 
-func _break_pinata() -> void:
+	if reveal_target:
+		reveal_target.set_max_health(max_health)
+		reveal_target.target_depleted.connect(_on_target_depleted)
+
+func _on_target_depleted() -> void:
 	if is_broken:
 		return
 	is_broken = true
-	
-	var death_position = global_position
-	var world_root = get_tree().current_scene
-	
-	# Play break visual effect in world space
-	SceneHelper.spawn_effect("uid://dqo2wy1r43ocf", death_position, world_root)
-	
-	# Tell our generic loot component to spawn items in world space
-	if loot_spawner:
-		loot_spawner.spawn_loot(death_position)
 
-	# Hide visuals and disable collision/detection logic instead of deleting the node
-	if visual_node:
-		visual_node.hide()
-		
-	if reveal_detector:
-		reveal_detector.monitoring = false
-		
+	# Hide visuals and let target disable its own detection
+	if visual_node: visual_node.hide()
+	if reveal_target: reveal_target.disable_detection()
+
+	# World effect & loot
+	SceneHelper.spawn_effect(BREAK_EFFECT_UID, global_position, get_tree().current_scene)
+	if loot_spawner: loot_spawner.spawn_loot(global_position)
+
 	pinata_broken.emit()
 
-func reset_pinata() -> void:
-	#print("[RevealPinata] Resetting pinata...")
-	
-	# Reset health pool back to max
-	if reveal_detector.health_component:
-		reveal_detector.health_component.reset_health()
-		
-	# Restore visuals and re-enable detection
-	if visual_node:
-		visual_node.show()
-		
-	if reveal_detector:
-		reveal_detector.monitoring = true
-		
+func reset_pinata(_arg = null) -> void:
 	is_broken = false
-	pinata_reset.emit()
 
-func _on_day_number_changed(_value):
-	reset_pinata()
+	if visual_node: visual_node.show()
+	if reveal_target: reveal_target.reset_target()
+
+	pinata_reset.emit()

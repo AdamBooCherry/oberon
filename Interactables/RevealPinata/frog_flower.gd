@@ -9,7 +9,7 @@ class_name FrogFlower
 @export var grow_curve: Curve
 
 @export_group("References")
-@export var reveal_detector: RevealDetector
+@export var reveal_pinata: RevealPinata
 @export var head_marker: Marker3D
 @export var beam_transform: Node3D
 
@@ -23,48 +23,52 @@ const BREAK_EFFECT = preload("uid://dqo2wy1r43ocf")
 func _ready() -> void:
 	if GameManager.has_signal("day_number_changed"):
 		GameManager.day_number_changed.connect(_on_day_number_changed)
-	
-	reset_flower()
+
+	if reveal_pinata:
+		reveal_pinata.pinata_broken.connect(_awaken_flower)
+
+	_sleep_flower()
 
 func find_frogs() -> void:
 	all_frogs = get_tree().get_nodes_in_group("FROG")
 
 func _process(delta: float) -> void:
-	# 1. Handle health depletion while sleeping
 	if not is_awake:
-		if reveal_detector and reveal_detector.is_in_light():
-			var damage_rate = 5.0 * reveal_detector.active_reveal_areas.size()
-			reveal_detector.health_component.take_damage(damage_rate * delta)
-			
-			if reveal_detector.health_component.current_health <= 0.0:
-				_awaken_flower()
 		return
-	
-	# 2. Once awake, track nearest frog
+
 	_update_closest_frog()
-	
-	if _closest_frog and is_instance_valid(_closest_frog):
-		var current_transform = head_marker.global_transform
-		var target_transform = current_transform.looking_at(_closest_frog.global_position, Vector3.UP)
-		
-		var current_quat = current_transform.basis.get_rotation_quaternion()
-		var target_quat = target_transform.basis.get_rotation_quaternion()
-		
-		var smoothed_quat = current_quat.slerp(target_quat, rotation_speed * delta)
-		head_marker.global_transform = Transform3D(Basis(smoothed_quat), current_transform.origin)
+
+	# If no valid targets remain, fall back asleep
+	if not _closest_frog or not is_instance_valid(_closest_frog):
+		_sleep_flower()
+		return
+
+	var current_transform = head_marker.global_transform
+	var target_transform = current_transform.looking_at(_closest_frog.global_position, Vector3.UP)
+
+	var current_quat = current_transform.basis.get_rotation_quaternion()
+	var target_quat = target_transform.basis.get_rotation_quaternion()
+
+	var smoothed_quat = current_quat.slerp(target_quat, rotation_speed * delta)
+	head_marker.global_transform = Transform3D(Basis(smoothed_quat), current_transform.origin)
 
 func _awaken_flower() -> void:
 	if is_awake:
 		return
+
+	# Don't awaken if there are no targets in the world
+	find_frogs()
+	if all_frogs.is_empty():
+		return
+
 	is_awake = true
-	
 	SceneHelper.spawn_effect("uid://dqo2wy1r43ocf", self.global_position, get_parent())
-	
+
 	if _grow_tween and _grow_tween.is_running():
 		_grow_tween.kill()
 
 	_grow_tween = create_tween()
-	
+
 	if head_marker:
 		_grow_tween.tween_method(
 			func(val: float):
@@ -74,11 +78,11 @@ func _awaken_flower() -> void:
 			1.0,
 			grow_duration
 		)
-		
+
 	if beam_transform:
 		var orig_scale = beam_transform.scale
 		var target_y = orig_scale.y if orig_scale.y > 0.01 else 1.0
-		
+
 		_grow_tween.parallel().tween_method(
 			func(val: float):
 				var factor = grow_curve.sample(val) if grow_curve else val
@@ -89,50 +93,51 @@ func _awaken_flower() -> void:
 			grow_duration
 		)
 
+func _sleep_flower() -> void:
+	is_awake = false
+	_closest_frog = null
+
+	if _grow_tween and _grow_tween.is_running():
+		_grow_tween.kill()
+
+	# Reset Pinata lifecycle state so it can be broken again
+	if reveal_pinata:
+		reveal_pinata.reset_pinata()
+
+	# Shrink visuals smoothly back to sleeping state
+	_grow_tween = create_tween()
+
+	if head_marker:
+		_grow_tween.tween_property(head_marker, "scale", sleeping_scale, 0.5)\
+			.set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_IN_OUT)
+
+	if beam_transform:
+		var current_scale = beam_transform.scale
+		_grow_tween.parallel().tween_property(beam_transform, "scale", Vector3(current_scale.x, 0.01, current_scale.z), 0.5)\
+			.set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_IN_OUT)
+
+	find_frogs()
+
 func _update_closest_frog() -> void:
 	if all_frogs.is_empty():
 		find_frogs()
 		if all_frogs.is_empty():
+			_closest_frog = null
 			return
-			
+
 	var closest_dist: float = INF
 	var nearest: FrogMob = null
-	
+
 	for frog in all_frogs:
 		if not is_instance_valid(frog) or not (frog is FrogMob):
 			continue
-			
+
 		var dist = global_position.distance_to(frog.global_position)
 		if dist < closest_dist:
 			closest_dist = dist
 			nearest = frog
-			
+
 	_closest_frog = nearest
 
 func _on_day_number_changed(_value: int) -> void:
-	reset_flower()
-
-func reset_flower() -> void:
-	is_awake = false
-	_closest_frog = null
-	
-	# Stop active growth animation if currently running
-	if _grow_tween and _grow_tween.is_running():
-		_grow_tween.kill()
-
-	# Reset Health component if attached to detector
-	if reveal_detector and reveal_detector.health_component:
-		if reveal_detector.health_component.has_method("reset_health"):
-			reveal_detector.health_component.reset_health()
-		elif "max_health" in reveal_detector.health_component:
-			reveal_detector.health_component.current_health = reveal_detector.health_component.max_health
-
-	# Reset visuals back to sleeping state
-	if head_marker:
-		head_marker.scale = sleeping_scale
-
-	if beam_transform:
-		beam_transform.scale = Vector3(beam_transform.scale.x, 0.01, beam_transform.scale.z)
-		
-	# Refresh room targets for the new day
-	find_frogs()
+	_sleep_flower()

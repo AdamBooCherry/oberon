@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://y4xpheys777f"]
 
 [ext_resource type="Script" uid="uid://bhoc8x3vuc654" path="res://Scenes/FX/particle_fx.gd" id="1_esyv8"]
-[ext_resource type="AudioStream" uid="uid://bx6daabaullmr" path="res://Audio/519438__lilmati__frosty-exhale-ice-cold-exhale-icy-exhale.wav" id="2_m774e"]
+[ext_resource type="AudioStream" uid="uid://bx6daabaullmr" path="res://Audio/SFX/519438__lilmati__frosty-exhale-ice-cold-exhale-icy-exhale.wav" id="2_m774e"]
 [ext_resource type="Texture2D" uid="uid://bhuyb2k4n10v4" path="res://Assets/Particle FX/fire_01.png" id="2_r533i"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mhw5n"]

@@ -10,8 +10,9 @@
 [ext_resource type="Shader" uid="uid://u3hqbulxxqpq" path="res://Characters/Redcap/blood_drip.gdshader" id="4_jixpw"]
 [ext_resource type="Environment" uid="uid://ddfwg2im0ypls" path="res://Scenes/Environments/CHASE.tres" id="4_n02r8"]
 [ext_resource type="PackedScene" uid="uid://dkp4b2dv57aar" path="res://Assets/Environment/Mushroom_01.tscn" id="5_4d07p"]
+[ext_resource type="PackedScene" uid="uid://cdffe7bphgot8" path="res://Characters/Frog/SilverFrog.tscn" id="7_i1mw2"]
 [ext_resource type="Environment" uid="uid://taliiown2kj3" path="res://Scenes/Environments/SAFE.tres" id="7_kjvde"]
-[ext_resource type="AudioStream" uid="uid://cwhus76517dk2" path="res://Audio/Akira_getoutofmyheadaaaaaa.mp3" id="10_whe6r"]
+[ext_resource type="AudioStream" uid="uid://cwhus76517dk2" path="res://Audio/SFX/Akira_getoutofmyheadaaaaaa.mp3" id="10_whe6r"]
 [ext_resource type="Environment" uid="uid://dk3e4hn8wccq6" path="res://Scenes/Environments/INVESTIGATING.tres" id="11_bo7a1"]
 [ext_resource type="Script" uid="uid://gfl84qcnh65h" path="res://Scenes/ui.gd" id="11_csh6n"]
 [ext_resource type="Script" uid="uid://d4lj82wyqfv14" path="res://Scenes/rotation_component.gd" id="11_mhs8k"]
@@ -321,6 +322,9 @@ transform = Transform3D(1.0000132, 0, 0, 0, -1, 8.742335e-08, 0, -8.7423146e-08,
 transform = Transform3D(1.0000132, 0, 0, 0, -1, 8.7423345e-08, 0, -8.7423146e-08, -1.0000132, 0.12441254, 0.41298607, 1.0492162)
 
 [node name="Player" parent="SubViewportContainer/SubViewport/MAIN" unique_id=1848596107 instance=ExtResource("4_783md")]
+transform = Transform3D(-0.25459456, 0, -0.9670479, 0, 1, 0, 0.9670479, 0, -0.25459456, -39.335846, 0.33270192, 1.0601468)
+
+[node name="Frog" parent="SubViewportContainer/SubViewport/MAIN" unique_id=2044770608 instance=ExtResource("7_i1mw2")]
 transform = Transform3D(-0.25459456, 0, -0.9670479, 0, 1, 0, 0.9670479, 0, -0.25459456, -39.335846, 0.33270192, 1.0601468)
 
 [node name="Environment" type="Node3D" parent="SubViewportContainer/SubViewport/MAIN" unique_id=129132500]
