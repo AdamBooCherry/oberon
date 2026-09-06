@@ -94,6 +94,7 @@ volume_db = 10.0
 pitch_scale = 0.6
 
 [node name="PopFlash" type="Sprite3D" parent="." unique_id=1522594598]
+transform = Transform3D(0.01, 0, 0, 0, 0.01, 0, 0, 0, 0.01, 0, 0, 0)
 material_override = SubResource("StandardMaterial3D_wuii1")
 texture = ExtResource("4_ax2oj")
 

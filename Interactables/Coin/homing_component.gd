@@ -30,7 +30,7 @@ func stop_homing() -> void:
 	if not _is_homing:
 		return
 		
-	print("[HomingComponent] Homing stopped on: ", _actor.name if _actor else "null")
+	#print("[HomingComponent] Homing stopped on: ", _actor.name if _actor else "null")
 	_is_homing = false
 	_target_node = null
 	_current_speed = 0.0
@@ -50,7 +50,7 @@ func start_homing(target: Node3D) -> void:
 	_current_speed = min_speed
 	_start_distance = _actor.global_position.distance_to(_target_node.global_position)
 
-	print("[HomingComponent] Started homing ", _actor.name, " -> ", _target_node.name, " (Dist: ", _start_distance, ")")
+	#print("[HomingComponent] Started homing ", _actor.name, " -> ", _target_node.name, " (Dist: ", _start_distance, ")")
 
 func _fly_towards_target(delta: float) -> void:
 	var target_pos: Vector3 = _target_node.global_position
@@ -58,7 +58,7 @@ func _fly_towards_target(delta: float) -> void:
 
 	# 1. Check if we arrived within pickup threshold
 	if current_distance <= min_pickup_distance:
-		print("[HomingComponent] Arrived! Reached distance: ", current_distance, " <= ", min_pickup_distance)
+		#print("[HomingComponent] Arrived! Reached distance: ", current_distance, " <= ", min_pickup_distance)
 		_is_homing = false
 		var final_target := _target_node
 		_target_node = null

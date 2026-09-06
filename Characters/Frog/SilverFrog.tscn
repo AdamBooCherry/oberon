@@ -4,6 +4,7 @@
 [ext_resource type="ArrayMesh" uid="uid://bhta5fvbarg3v" path="res://Characters/Frog/frog_mesh_visible.tres" id="2_7mvmj"]
 [ext_resource type="Script" uid="uid://1b5rafayk84b" path="res://Player/Dad/state_machine.gd" id="3_8qkgf"]
 [ext_resource type="AudioStream" uid="uid://dgntj11hweld4" path="res://Audio/SFX/350906__cabled_mess__jump_c_04.wav" id="3_b8qoe"]
+[ext_resource type="Texture2D" uid="uid://c4315gjdfs4ye" path="res://Assets/Particle FX/circle_05.png" id="4_0ew1o"]
 [ext_resource type="Script" uid="uid://41tenuevb8nk" path="res://Characters/Frog/frog_idle_state.gd" id="4_45p65"]
 [ext_resource type="Script" uid="uid://jshkgi3pchx8" path="res://Characters/Frog/frog_wander_state.gd" id="5_lj5qg"]
 [ext_resource type="Script" uid="uid://iqlxqlrch6fp" path="res://Characters/Frog/frog_hide_state.gd" id="6_koqil"]
@@ -13,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://bqbyd454l7mgo" path="res://Interactables/RevealPinata/RevealPinata.tscn" id="11_frgxb"]
 [ext_resource type="Script" uid="uid://qixsxc6k8d6k" path="res://Interactables/Coin/attractable_area.gd" id="12_1651t"]
 [ext_resource type="Script" uid="uid://b8p1ngbsprahy" path="res://Interactables/Coin/homing_component.gd" id="12_y3ytm"]
+[ext_resource type="Texture2D" uid="uid://cmpdj3n3oasfj" path="res://Assets/Particle FX/light_01.png" id="15_2dvow"]
 
 [sub_resource type="Skin" id="Skin_w20oo"]
 resource_name = "Skin"
@@ -959,6 +961,14 @@ _data = {
 &"Armature|Frog_Jump": SubResource("Animation_jo6rm")
 }
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2dvow"]
+transparency = 1
+blend_mode = 1
+albedo_texture = ExtResource("4_0ew1o")
+emission_enabled = true
+emission = Color(0.63, 1, 0.95683336, 1)
+billboard_mode = 1
+
 [sub_resource type="SphereShape3D" id="SphereShape3D_wuii1"]
 radius = 0.41190192
 
@@ -969,8 +979,17 @@ radius = 0.30162555
 radius = 0.1
 
 [sub_resource type="Curve" id="Curve_1651t"]
-_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+_data = [Vector2(0, 0.049808502), 0.0, 0.09588131, 0, 0, Vector2(1, 1), 2.1103997, 0.0, 0, 0]
 point_count = 2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tuv16"]
+transparency = 1
+blend_mode = 1
+shading_mode = 0
+albedo_color = Color(1.353256, 1.353256, 1.353256, 1)
+albedo_texture = ExtResource("15_2dvow")
+billboard_mode = 1
+billboard_keep_scale = true
 
 [node name="Frog" type="CharacterBody3D" unique_id=2044770608 node_paths=PackedStringArray("animation_player", "navigation_agent_3d", "state_machine", "frog_mesh", "reveal_pinata", "attractable_area") groups=["FROG"]]
 slide_on_ceiling = false
@@ -1288,6 +1307,11 @@ skeleton = NodePath("..")
 root_node = NodePath("../Frog")
 libraries/ = SubResource("AnimationLibrary_dvq8v")
 
+[node name="Sprite3D" type="Sprite3D" parent="AnimationPlayer" unique_id=2125453972]
+material_override = SubResource("StandardMaterial3D_2dvow")
+pixel_size = 0.001
+texture = ExtResource("4_0ew1o")
+
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1272235481]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2551477, 0)
 shape = SubResource("SphereShape3D_wuii1")
@@ -1341,10 +1365,12 @@ script = ExtResource("9_dmsjd")
 frog = NodePath("../..")
 metadata/_custom_type_script = "uid://byj5yrq2me2x5"
 
-[node name="FrogStunnedState" type="Node" parent="StateMachine" unique_id=1431925488 node_paths=PackedStringArray("frog", "state_machine")]
+[node name="FrogStunnedState" type="Node" parent="StateMachine" unique_id=1431925488 node_paths=PackedStringArray("frog", "state_machine", "glow_sprite", "homing_component")]
 script = ExtResource("10_y3ytm")
 frog = NodePath("../..")
 state_machine = NodePath("..")
+glow_sprite = NodePath("../../StunnedGlow")
+homing_component = NodePath("../../HomingComponent")
 metadata/_custom_type_script = "uid://d4b7gg5td8vk3"
 
 [node name="Audio" type="Node3D" parent="." unique_id=1708949086]
@@ -1367,5 +1393,13 @@ shape = SubResource("SphereShape3D_0ew1o")
 
 [node name="HomingComponent" type="Node" parent="." unique_id=325601306]
 script = ExtResource("12_y3ytm")
+min_speed = 0.01
+max_speed = 2.0
 speed_curve = SubResource("Curve_1651t")
 metadata/_custom_type_script = "uid://b8p1ngbsprahy"
+
+[node name="StunnedGlow" type="Sprite3D" parent="." unique_id=1876737574]
+transform = Transform3D(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_tuv16")
+pixel_size = 0.002
+texture = ExtResource("15_2dvow")
