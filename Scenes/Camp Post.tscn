@@ -4251,7 +4251,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.19, 0)
 curve = SubResource("Curve3D_8as8m")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="Mobs/Path3D" unique_id=27730672]
-transform = Transform3D(-0.998966, -0.00014656666, 0.045297284, 0, 0.9999678, 0.0032355653, -0.045298345, 0.0032322397, -0.9989426, -2.8899221, 0.042602755, 1.0935059)
+transform = Transform3D(-0.998966, -0.00014656658, 0.045297265, 0, 0.9999674, 0.0032355639, -0.045298345, 0.0032322383, -0.9989422, -2.8899221, 0.042602755, 1.0935059)
 use_model_front = true
 tilt_enabled = false
 script = SubResource("GDScript_wuii1")

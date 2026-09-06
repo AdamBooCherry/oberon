@@ -6,6 +6,7 @@ signal begin_round_win
 signal return_to_start
 signal round_reset_started
 signal round_reset_finished
+signal start_round
 signal player_score_changed(score: int)
 signal oberon_score_changed(score: int)
 signal day_number_changed(value: int)
@@ -39,3 +40,6 @@ func emit_round_reset_started():
 
 func emit_round_reset_finished():
 	round_reset_finished.emit()
+
+func emit_start_round():
+	start_round.emit()

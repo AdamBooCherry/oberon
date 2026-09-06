@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://bbj2ngepa8u0u"]
+
+[ext_resource type="Script" uid="uid://dgp8ycfwqxgkt" path="res://Autoloads/music_manager.gd" id="1_gvs8x"]
+
+[node name="MusicManager" type="Node" unique_id=1611906811 node_paths=PackedStringArray("_music_player_a", "_music_player_b", "_ambience_player_a", "_ambience_player_b")]
+script = ExtResource("1_gvs8x")
+_music_player_a = NodePath("MusicPlayerA")
+_music_player_b = NodePath("MusicPlayerB")
+_ambience_player_a = NodePath("AmbiencePlayerA")
+_ambience_player_b = NodePath("AmbiencePlayerB")
+
+[node name="MusicPlayerA" type="AudioStreamPlayer" parent="." unique_id=489731316]
+bus = &"Music"
+
+[node name="MusicPlayerB" type="AudioStreamPlayer" parent="." unique_id=1453728433]
+bus = &"Music"
+
+[node name="AmbiencePlayerA" type="AudioStreamPlayer" parent="." unique_id=791485369]
+volume_db = -25.0
+bus = &"Ambient"
+
+[node name="AmbiencePlayerB" type="AudioStreamPlayer" parent="." unique_id=1153419299]
+volume_db = -25.0
+bus = &"Ambient"

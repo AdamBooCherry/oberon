@@ -22,6 +22,7 @@ func _on_dialogic_event(argument: Variant):
 func _open_door_start_game():
 	interaction_area.monitoring = false
 	interaction_area.monitorable = false
+	GameManager.emit_start_round()
 	exit_door.play("open")
 	exit_door.play("DoorAction")
 

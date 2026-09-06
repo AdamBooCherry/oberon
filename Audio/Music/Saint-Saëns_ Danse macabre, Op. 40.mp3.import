@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dt80tc0fe41on"
+path="res://.godot/imported/Saint-Saëns_ Danse macabre, Op. 40.mp3-7947f5b06fbc46810ecd8e5eba08cbee.mp3str"
+
+[deps]
+
+source_file="res://Audio/Music/Saint-Saëns_ Danse macabre, Op. 40.mp3"
+dest_files=["res://.godot/imported/Saint-Saëns_ Danse macabre, Op. 40.mp3-7947f5b06fbc46810ecd8e5eba08cbee.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

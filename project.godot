@@ -29,6 +29,7 @@ InventoryManager="*uid://ct406r0iuwatw"
 Dialogic="*uid://ds2q0uclmolvu"
 GameManager="*uid://db7afw1tm3ba2"
 EnvironmentManager="*uid://cqy7t2vam675i"
+MusicManager="*uid://bbj2ngepa8u0u"
 
 [dialogic]
 

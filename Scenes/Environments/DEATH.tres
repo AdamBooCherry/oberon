@@ -9,7 +9,7 @@ _data = [Vector2(0.112403095, 0), 0.0, 0.0, 0, 0, Vector2(0.251938, 0.50638294),
 point_count = 2
 
 [sub_resource type="Curve" id="Curve_nnveg"]
-_data = [Vector2(0.35852712, 0), 0.0, 0.0, 0, 0, Vector2(0.37209302, 0.98297864), 0.0, 0.0, 0, 0]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
 point_count = 2
 
 [sub_resource type="CurveXYZTexture" id="CurveXYZTexture_oc0re"]
