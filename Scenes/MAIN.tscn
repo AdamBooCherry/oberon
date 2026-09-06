@@ -4,14 +4,15 @@
 [ext_resource type="Script" uid="uid://dkyo53x8ie3j5" path="res://Scenes/world.gd" id="2_1tvcf"]
 [ext_resource type="Script" uid="uid://bk4c2nvs2ik8m" path="res://Scenes/main.gd" id="2_qbiqt"]
 [ext_resource type="Script" uid="uid://dn01c44vgc10n" path="res://Scenes/player_spawn.gd" id="2_u7fix"]
+[ext_resource type="AudioStream" uid="uid://dur80xoglchhb" path="res://Audio/Ambient/Post-Dream.ogg" id="3_5tk2h"]
 [ext_resource type="PackedScene" uid="uid://cw3kf747q80xn" path="res://Scenes/Camp Post.tscn" id="3_c5rrr"]
 [ext_resource type="AudioStream" uid="uid://dt80tc0fe41on" path="res://Audio/Music/Saint-Saëns_ Danse macabre, Op. 40.mp3" id="3_em2bb"]
 [ext_resource type="PackedScene" uid="uid://cqcsv7x0vouop" path="res://Prototyping/ForestTestArea.tscn" id="3_mhs8k"]
 [ext_resource type="PackedScene" uid="uid://dtjgiqp4jij8g" path="res://Player/Dad/PlayerDad.tscn" id="4_783md"]
-[ext_resource type="AudioStream" uid="uid://7ctxmnbdivll" path="res://Audio/Ambient/five.ogg" id="4_em2bb"]
 [ext_resource type="Shader" uid="uid://u3hqbulxxqpq" path="res://Characters/Redcap/blood_drip.gdshader" id="4_jixpw"]
 [ext_resource type="Environment" uid="uid://ddfwg2im0ypls" path="res://Scenes/Environments/CHASE.tres" id="4_n02r8"]
 [ext_resource type="PackedScene" uid="uid://dkp4b2dv57aar" path="res://Assets/Environment/Mushroom_01.tscn" id="5_4d07p"]
+[ext_resource type="AudioStream" uid="uid://7ctxmnbdivll" path="res://Audio/Ambient/five.ogg" id="5_fo0ua"]
 [ext_resource type="AudioStream" uid="uid://cfkrhebqqnoag" path="res://Audio/Music/Final Fantasy VII - Victory Fanfare [HD].mp3" id="5_hd7nf"]
 [ext_resource type="AudioStream" uid="uid://b30ueqwnrih5e" path="res://Audio/Music/FAIL.mp3" id="6_fo0ua"]
 [ext_resource type="PackedScene" uid="uid://cdffe7bphgot8" path="res://Characters/Frog/SilverFrog.tscn" id="7_i1mw2"]
@@ -248,8 +249,9 @@ render_target_update_mode = 4
 script = ExtResource("2_qbiqt")
 player = NodePath("Player")
 player_spawn = NodePath("PlayerSpawn")
+camp_music = ExtResource("3_5tk2h")
 gameplay_music = ExtResource("3_em2bb")
-gameplay_ambience = ExtResource("4_em2bb")
+gameplay_ambience = ExtResource("5_fo0ua")
 win_sting = ExtResource("5_hd7nf")
 lose_sting = ExtResource("6_fo0ua")
 metadata/_custom_type_script = "uid://bk4c2nvs2ik8m"

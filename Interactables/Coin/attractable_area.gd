@@ -28,7 +28,7 @@ func stop_attraction(attractor: AttractionArea) -> void:
 		if homing_component:
 			homing_component.stop_homing()
 
-func _on_homing_arrived(target: Node3D) -> void:
+func _on_homing_arrived(_target: Node3D) -> void:
 	# Disable collisions immediately to prevent double collection
 	set_deferred("monitoring", false)
 	set_deferred("monitorable", false)

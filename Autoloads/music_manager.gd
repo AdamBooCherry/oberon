@@ -102,7 +102,7 @@ func _crossfade(incoming: AudioStreamPlayer, outgoing: AudioStreamPlayer, durati
 		.set_ease(Tween.EASE_OUT)
 		
 	# Print active volume midway/end to verify step execution
-	tween.tween_method(func(v: float): pass, 0.0, 1.0, duration).finished.connect(
+	tween.tween_method(func(_v: float): pass, 0.0, 1.0, duration).finished.connect(
 		func(): print_debug("[MusicManager] Finished crossfade to ", incoming.name, " | Final volume_db: ", incoming.volume_db)
 	)
 

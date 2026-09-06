@@ -8,6 +8,7 @@ class_name Main
 @export var player_spawn: PlayerSpawn
 
 @export_group("Audio Streams")
+@export var camp_music: AudioStream
 @export var gameplay_music: AudioStream
 @export var gameplay_ambience: AudioStream
 @export var win_sting: AudioStream
@@ -58,6 +59,9 @@ func _reset_round() -> void:
 	
 	if gameplay_ambience:
 		MusicManager.play_ambience(gameplay_ambience, 1.0)
+	
+	if camp_music:
+		MusicManager.play_music(camp_music, 1.5)
 	
 	if player and player_spawn:
 		player.velocity = Vector3.ZERO
