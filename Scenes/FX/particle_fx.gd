@@ -1,3 +1,4 @@
+## particle_fx.gd ##
 extends Node3D
 
 @export var cpu_particles_3d: CPUParticles3D

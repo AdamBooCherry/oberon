@@ -20,19 +20,15 @@ func _ready() -> void:
 	_active_ambience_player = _ambience_player_a
 	
 	# Cache initial volume settings from the inspector
-	print_debug("[MusicManager] --- Caching Player Target Volumes ---")
-	_cache_player_volume(_music_player_a, "MusicPlayerA")
-	_cache_player_volume(_music_player_b, "MusicPlayerB")
-	_cache_player_volume(_ambience_player_a, "AmbiencePlayerA")
-	_cache_player_volume(_ambience_player_b, "AmbiencePlayerB")
+	_cache_player_volume(_music_player_a)
+	_cache_player_volume(_music_player_b)
+	_cache_player_volume(_ambience_player_a)
+	_cache_player_volume(_ambience_player_b)
 
 
-func _cache_player_volume(player: AudioStreamPlayer, player_name: String) -> void:
+func _cache_player_volume(player: AudioStreamPlayer) -> void:
 	if player:
 		_target_volumes[player] = player.volume_db
-		print_debug("[MusicManager] Cached ", player_name, " target volume_db: ", player.volume_db)
-	else:
-		print_debug("[MusicManager] WARNING: ", player_name, " reference is NULL in inspector!")
 
 
 # ==============================================================================
@@ -78,12 +74,7 @@ func stop_ambience(fade_duration: float = 1.0) -> void:
 # ==============================================================================
 
 func _crossfade(incoming: AudioStreamPlayer, outgoing: AudioStreamPlayer, duration: float) -> void:
-	if not incoming in _target_volumes:
-		print_debug("[MusicManager] WARNING: Incoming player ", incoming.name, " missing from _target_volumes dictionary!")
-
-	# Retrieve cached volume limit for the incoming player
 	var target_db: float = _target_volumes.get(incoming, 0.0)
-	print_debug("[MusicManager] Crossfading to ", incoming.name, " | Duration: ", duration, "s | Target DB: ", target_db)
 
 	if duration <= 0.0:
 		outgoing.stop()
@@ -100,11 +91,6 @@ func _crossfade(incoming: AudioStreamPlayer, outgoing: AudioStreamPlayer, durati
 	tween.tween_property(incoming, "volume_db", target_db, duration)\
 		.set_trans(Tween.TRANS_CUBIC)\
 		.set_ease(Tween.EASE_OUT)
-		
-	# Print active volume midway/end to verify step execution
-	tween.tween_method(func(_v: float): pass, 0.0, 1.0, duration).finished.connect(
-		func(): print_debug("[MusicManager] Finished crossfade to ", incoming.name, " | Final volume_db: ", incoming.volume_db)
-	)
 
 	# Fade out outgoing track
 	if outgoing.playing:

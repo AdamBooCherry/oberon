@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://cqcsv7x0vouop"]
 
 [ext_resource type="Texture2D" uid="uid://rcmbuqxvak2w" path="res://Assets/Particle FX/star_06.png" id="1_x4qiq"]
-[ext_resource type="PackedScene" uid="uid://dv0te4be2v0p8" path="res://Scenes/cutscene_box.tscn" id="2_v0phy"]
 [ext_resource type="Script" uid="uid://dmwodoestuixu" path="res://Prototyping/editor_only_geo.gd" id="2_wj5n6"]
 [ext_resource type="Shader" uid="uid://vwi2ee0sq564" path="res://Prototyping/water.gdshader" id="3_vmasj"]
 [ext_resource type="PackedScene" uid="uid://4g8ei1r8iubw" path="res://Assets/Environment/ShrubLong.tscn" id="4_bv2yy"]
@@ -24,10 +23,10 @@
 [ext_resource type="Script" uid="uid://dtfwkgx185edn" path="res://Interactables/frog_spawn_marker.gd" id="20_aixyc"]
 [ext_resource type="Script" uid="uid://s72tgyq356by" path="res://Interactables/random_spawner.gd" id="22_7qteu"]
 [ext_resource type="Script" uid="uid://b7nhpeh5a3tlv" path="res://Interactables/spawn_marker.gd" id="23_qcb75"]
+[ext_resource type="PackedScene" uid="uid://babauvu87qjcx" path="res://Characters/WilloWisp/WilloWisp.tscn" id="24_qcb75"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kjvde"]
 transparency = 1
-blend_mode = 1
 shading_mode = 0
 vertex_color_use_as_albedo = true
 albedo_texture = ExtResource("1_x4qiq")
@@ -267,7 +266,7 @@ size = Vector3(8.1405945, 1, 5.11306)
 
 [node name="CPUParticles3D" type="CPUParticles3D" parent="." unique_id=664091001]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.372, 0)
-amount = 100
+amount = 500
 lifetime = 10.0
 mesh = SubResource("QuadMesh_v0phy")
 emission_shape = 3
@@ -872,10 +871,6 @@ transform = Transform3D(-0.50000006, 0, -0.8660254, 0, 1, 0, 0.8660254, 0, -0.50
 
 [node name="FrogFlower6" parent="NavigationRegion3D/Props" unique_id=1539468686 instance=ExtResource("6_sm0io")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.068584, -0.0031621456, 1.9978428)
-
-[node name="CutsceneBox" parent="." unique_id=1662951017 instance=ExtResource("2_v0phy")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.926882, -22.6311, 0)
-cutscene_id = &"REDCAP_MURDER"
 
 [node name="RandomSpawner" type="Node3D" parent="." unique_id=377757407]
 script = ExtResource("22_7qteu")
@@ -1803,6 +1798,15 @@ shape = SubResource("BoxShape3D_puqjf")
 debug_color = Color(1, 1, 0, 1)
 
 [node name="Actors" type="Node3D" parent="." unique_id=1092505863]
+
+[node name="Wisp" parent="Actors" unique_id=2055472616 instance=ExtResource("24_qcb75")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -39.904636, 0.44840813, 21.16035)
+
+[node name="Wisp2" parent="Actors" unique_id=979131998 instance=ExtResource("24_qcb75")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38.89256, 0.4484086, 23.640854)
+
+[node name="Wisp3" parent="Actors" unique_id=711872650 instance=ExtResource("24_qcb75")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -36.832108, 0.4484086, 21.258636)
 
 [node name="Redcap" parent="Actors" unique_id=1924125630 instance=ExtResource("12_khta5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -48.18674, 0.19763362, 0)

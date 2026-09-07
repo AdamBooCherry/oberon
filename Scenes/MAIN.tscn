@@ -26,6 +26,7 @@
 [ext_resource type="Script" uid="uid://dq6rl0w3afnyk" path="res://Scenes/ui_manager.gd" id="15_bo7a1"]
 [ext_resource type="Texture2D" uid="uid://5405clckxwu4" path="res://icon.svg" id="16_lo43q"]
 [ext_resource type="PackedScene" uid="uid://cnr8n11m5ak5u" path="res://Scenes/result_screen.tscn" id="18_lo43q"]
+[ext_resource type="PackedScene" uid="uid://dv0te4be2v0p8" path="res://Scenes/cutscene_box.tscn" id="27_fo0ua"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_c5rrr"]
 shader = ExtResource("1_783md")
@@ -355,7 +356,7 @@ death_environment = ExtResource("13_tkjyg")
 metadata/_custom_type_script = "uid://dkyo53x8ie3j5"
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="SubViewportContainer/SubViewport/MAIN/World" unique_id=331212326]
-environment = ExtResource("13_tkjyg")
+environment = ExtResource("7_kjvde")
 
 [node name="SkyLight" type="DirectionalLight3D" parent="SubViewportContainer/SubViewport/MAIN/World" unique_id=1200277973]
 transform = Transform3D(-0.86602545, -0.30074093, 0.39944327, 2.2351742e-08, 0.79888654, 0.6014818, -0.50000006, 0.5208986, -0.691856, 0, 0, 0)
@@ -598,3 +599,7 @@ grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_cojvj")
 
 [node name="ResultScreen" parent="SubViewportContainer/SubViewport/MAIN/UIManager" unique_id=1149892462 instance=ExtResource("18_lo43q")]
+
+[node name="DeathCutsceneBox" parent="SubViewportContainer/SubViewport/MAIN" unique_id=1662951017 instance=ExtResource("27_fo0ua")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.926882, -22.6311, 0)
+cutscene_id = &"REDCAP_MURDER"

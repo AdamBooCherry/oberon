@@ -9,7 +9,7 @@ var _timer: float = 0.0
 var _target_time: float = 2.0
 
 func enter() -> void:
-	print("[RedcapIdle] ENTER state.")
+	#print("[RedcapIdle] ENTER state.")
 	EnvironmentManager.change_state(EnvironmentManager.EnvironmentState.SAFE)
 
 	if redcap and redcap.animation_player:

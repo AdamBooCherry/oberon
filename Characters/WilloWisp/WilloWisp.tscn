@@ -1,0 +1,127 @@
+[gd_scene format=3 uid="uid://babauvu87qjcx"]
+
+[ext_resource type="Script" uid="uid://c3rmp62pxa0cs" path="res://Characters/WilloWisp/willo_wisp.gd" id="1_idx82"]
+[ext_resource type="Script" uid="uid://de2cpyif2dypp" path="res://Player/Dad/3d_wiggle.gd" id="2_d2oce"]
+[ext_resource type="Script" uid="uid://cksjvhe5puqs5" path="res://Characters/Redcap/player_detector.gd" id="2_j6omg"]
+[ext_resource type="AudioStream" uid="uid://chkhm23cvdysu" path="res://Audio/Ambient/eleven.ogg" id="4_283s7"]
+[ext_resource type="Texture2D" uid="uid://c4315gjdfs4ye" path="res://Assets/Particle FX/circle_05.png" id="4_btsdn"]
+[ext_resource type="AudioStream" uid="uid://cemc4dca4d376" path="res://Audio/SFX/panic_loop.wav" id="4_j6pde"]
+[ext_resource type="Script" uid="uid://djx2annea77ak" path="res://Characters/WilloWisp/wisp_idle.gd" id="5_8jjbl"]
+[ext_resource type="Script" uid="uid://1b5rafayk84b" path="res://Player/Dad/state_machine.gd" id="5_g166i"]
+[ext_resource type="Script" uid="uid://bej0k71ynrhti" path="res://Characters/WilloWisp/wisp_wander.gd" id="6_d2oce"]
+[ext_resource type="Script" uid="uid://xrrtici5d4wo" path="res://Characters/WilloWisp/wisp_panic.gd" id="7_lw22i"]
+[ext_resource type="Script" uid="uid://qixsxc6k8d6k" path="res://Interactables/Coin/attractable_area.gd" id="13_bg6rg"]
+[ext_resource type="Script" uid="uid://b8p1ngbsprahy" path="res://Interactables/Coin/homing_component.gd" id="14_7sh0o"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_8jjbl"]
+load_path = "res://.godot/imported/circle_05.png-ee8db1dd6564f786ccdd80be866f576d.s3tc.ctex"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_d2oce"]
+transparency = 1
+blend_mode = 1
+albedo_texture = SubResource("CompressedTexture2D_8jjbl")
+emission_enabled = true
+emission = Color(1, 0, 0, 1)
+billboard_mode = 1
+billboard_keep_scale = true
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_wuii1"]
+radius = 0.41190192
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_cojvj"]
+radius = 0.30162555
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_0ew1o"]
+radius = 0.1
+
+[sub_resource type="Curve" id="Curve_1651t"]
+_data = [Vector2(0, 0.049808502), 0.0, 0.09588131, 0, 0, Vector2(1, 1), 2.1103997, 0.0, 0, 0]
+point_count = 2
+
+[node name="Wisp" type="CharacterBody3D" unique_id=2055472616 node_paths=PackedStringArray("mesh", "omni_light_3d", "navigation_agent_3d", "player_detector", "attractable_area", "state_machine")]
+slide_on_ceiling = false
+script = ExtResource("1_idx82")
+float_height = 2.0
+collected_damage = 8.0
+mesh = NodePath("Mesh")
+omni_light_3d = NodePath("OmniLight3D")
+navigation_agent_3d = NodePath("NavigationAgent3D")
+player_detector = NodePath("PlayerDetector")
+attractable_area = NodePath("AttractableArea")
+state_machine = NodePath("StateMachine")
+
+[node name="Mesh" type="Node3D" parent="." unique_id=928526906]
+script = ExtResource("2_d2oce")
+position_amplitude = Vector3(0.1, 0.1, 0.1)
+metadata/_custom_type_script = "uid://de2cpyif2dypp"
+
+[node name="WispSprite" type="Sprite3D" parent="Mesh" unique_id=2125453972]
+transform = Transform3D(2.61, 0, 0, 0, 2.61, 0, 0, 0, 2.61, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_d2oce")
+pixel_size = 0.001
+texture = ExtResource("4_btsdn")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1272235481]
+shape = SubResource("SphereShape3D_wuii1")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=952379979]
+light_color = Color(1, 0.7, 0, 1)
+light_energy = 0.2
+light_cull_mask = 4293918721
+shadow_caster_mask = 4293918722
+
+[node name="PlayerDetector" type="Area3D" parent="." unique_id=58584608]
+script = ExtResource("2_j6omg")
+metadata/_custom_type_script = "uid://cksjvhe5puqs5"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerDetector" unique_id=2119579961]
+shape = SubResource("SphereShape3D_cojvj")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=339277891]
+
+[node name="StateMachine" type="Node" parent="." unique_id=1209647083 node_paths=PackedStringArray("initial_state")]
+script = ExtResource("5_g166i")
+initial_state = NodePath("WispIdle")
+metadata/_custom_type_script = "uid://1b5rafayk84b"
+
+[node name="WispIdle" type="Node" parent="StateMachine" unique_id=1561871177 node_paths=PackedStringArray("wisp")]
+script = ExtResource("5_8jjbl")
+wisp = NodePath("../..")
+metadata/_custom_type_script = "uid://crpncdwicfcoh"
+
+[node name="WispWander" type="Node" parent="StateMachine" unique_id=510392516 node_paths=PackedStringArray("wisp")]
+script = ExtResource("6_d2oce")
+wisp = NodePath("../..")
+metadata/_custom_type_script = "uid://crpncdwicfcoh"
+
+[node name="WispPanic" type="Node" parent="StateMachine" unique_id=1244609308 node_paths=PackedStringArray("wisp")]
+script = ExtResource("7_lw22i")
+wisp = NodePath("../..")
+metadata/_custom_type_script = "uid://crpncdwicfcoh"
+
+[node name="Audio" type="Node3D" parent="." unique_id=1708949086]
+
+[node name="Ambient" type="AudioStreamPlayer3D" parent="Audio" unique_id=1807721004]
+stream = ExtResource("4_283s7")
+volume_db = -10.0
+unit_size = 1.0
+autoplay = true
+max_polyphony = 2
+
+[node name="Panic" type="AudioStreamPlayer3D" parent="Audio" unique_id=1097018072]
+stream = ExtResource("4_j6pde")
+
+[node name="AttractableArea" type="Area3D" parent="." unique_id=560279979 node_paths=PackedStringArray("homing_component")]
+script = ExtResource("13_bg6rg")
+homing_component = NodePath("../HomingComponent")
+metadata/_custom_type_script = "uid://qixsxc6k8d6k"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="AttractableArea" unique_id=1768989191]
+shape = SubResource("SphereShape3D_0ew1o")
+
+[node name="HomingComponent" type="Node" parent="." unique_id=325601306]
+script = ExtResource("14_7sh0o")
+min_speed = 0.01
+max_speed = 2.0
+speed_curve = SubResource("Curve_1651t")
+metadata/_custom_type_script = "uid://b8p1ngbsprahy"

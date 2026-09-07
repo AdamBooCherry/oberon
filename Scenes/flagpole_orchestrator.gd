@@ -17,8 +17,8 @@ func _ready() -> void:
 
 
 func _on_score_changed(score: int) -> void:
-	var target_name:String = ScoreTarget.keys()[target]
-	print("%s score changed to %d" % [target_name, score])
+	#var _target_name:String = ScoreTarget.keys()[target]
+	#print("%s score changed to %d" % [target_name, score])
 
 	for i in range(flagpoles.size()):
 		if flagpoles[i]:

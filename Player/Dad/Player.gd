@@ -30,10 +30,10 @@ var current_blend_pos: Vector2 = Vector2.ZERO
 func _ready() -> void:
 	if movement_tree:
 		movement_tree.active = true
-	if movement_state_machine:
-		movement_state_machine.init(self)
-	if action_state_machine:
-		action_state_machine.init(self)
+	#if movement_state_machine:
+		#movement_state_machine.init(self)
+	#if action_state_machine:
+		#action_state_machine.init(self)
 
 	if health_component:
 		health_component.health_depleted.connect(_on_health_depleted)

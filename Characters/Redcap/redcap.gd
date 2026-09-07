@@ -33,8 +33,8 @@ func _ready() -> void:
 		reveal_detector.health_component = health_component
 
 	# State machine initialization
-	if state_machine:
-		state_machine.init(self)
+	#if state_machine:
+		#state_machine.init(self)
 		#print("[Redcap] State machine initialized. Starting state: ", state_machine.current_state.name if state_machine.current_state else "NONE")
 
 func _physics_process(delta: float) -> void:

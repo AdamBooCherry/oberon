@@ -1,6 +1,8 @@
 extends Area3D
 class_name AttractableArea
 
+signal attraction_started(attractor: AttractionArea)
+signal attraction_stopped(attractor: AttractionArea)
 signal collected(collector: AttractionArea)
 
 @export var homing_component: HomingComponent
@@ -21,14 +23,19 @@ func start_attraction(attractor: AttractionArea) -> void:
 
 	if homing_component:
 		homing_component.start_homing(attractor)
+		
+	attraction_started.emit(attractor)
 
 func stop_attraction(attractor: AttractionArea) -> void:
 	# Check if we are currently being attracted by this attractor
 	if current_attractor == attractor:
 		is_collected = false
 		current_attractor = null
+		
 		if homing_component:
 			homing_component.stop_homing()
+			
+		attraction_stopped.emit(attractor)
 
 func _on_homing_arrived(_target: Node3D) -> void:
 	set_deferred("monitoring", false)

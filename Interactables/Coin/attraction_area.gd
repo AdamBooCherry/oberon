@@ -1,6 +1,7 @@
 extends Area3D
 class_name AttractionArea
 
+@export var player: Player
 @export var pickup_sound: AudioStreamPlayer
 
 func _ready() -> void:

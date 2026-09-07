@@ -1252,16 +1252,12 @@ gradient = SubResource("Gradient_dvbse")
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cojvj"]
 transparency = 1
 blend_mode = 1
-cull_mode = 1
-depth_draw_mode = 1
 albedo_color = Color(1, 1, 1, 0.039215688)
 albedo_texture = SubResource("GradientTexture1D_dvbse")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_khxsl"]
 transparency = 1
 blend_mode = 1
-cull_mode = 1
-depth_draw_mode = 1
 albedo_color = Color(1, 1, 1, 0.15686275)
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_pgxqj"]

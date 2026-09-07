@@ -1,11 +1,11 @@
 [gd_resource type="Environment" format=3 uid="uid://fam86hds4ypo"]
 
 [sub_resource type="Curve" id="Curve_w61kr"]
-_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.16860463, 0), 0.0, 0.0, 0, 0, Vector2(0.20542635, 0.9659574), 0.0, 0.0, 0, 0]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.16860463, 0), 0.0, 0.0, 0, 0, Vector2(0.2635659, 1), 0.0, 0.0, 0, 0]
 point_count = 3
 
 [sub_resource type="Curve" id="Curve_pff27"]
-_data = [Vector2(0.112403095, 0), 0.0, 0.0, 0, 0, Vector2(0.251938, 0.50638294), -0.6219998, 0.0, 0, 0]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
 point_count = 2
 
 [sub_resource type="Curve" id="Curve_nnveg"]
@@ -32,11 +32,12 @@ background_mode = 2
 sky = SubResource("Sky_rqf0l")
 ambient_light_color = Color(0.19607843, 0, 0, 1)
 glow_enabled = true
-glow_intensity = 1.0
+glow_intensity = 5.0
+glow_bloom = 0.05
 fog_enabled = true
 fog_light_color = Color(0.1448752, 0.08584634, 0.0858958, 1)
 fog_light_energy = 0.32
 fog_sun_scatter = 0.85
-fog_density = 0.1056
+fog_density = 0.1379
 adjustment_enabled = true
 adjustment_color_correction = SubResource("CurveXYZTexture_oc0re")

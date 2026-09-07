@@ -23,9 +23,6 @@ var player_node: Node3D = null
 func _ready() -> void:
 	set_hidden(true)
 	
-	if state_machine:
-		state_machine.init(self)
-		
 	var players = get_tree().get_nodes_in_group("Player")
 	if players.size() > 0:
 		player_node = players[0]

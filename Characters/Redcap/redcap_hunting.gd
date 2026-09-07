@@ -11,10 +11,10 @@ func enter() -> void:
 		return
 
 	if redcap.animation_player:
-		if redcap.animation_player.has_animation("drunk_run"):
-			redcap.animation_player.play("drunk_run")
-		elif redcap.animation_player.has_animation("redcap_animations/drunk_run"):
-			redcap.animation_player.play("redcap_animations/drunk_run")
+		if redcap.animation_player.has_animation("drunk_walk"):
+			redcap.animation_player.play("drunk_walk")
+		elif redcap.animation_player.has_animation("redcap_animations/drunk_walk"):
+			redcap.animation_player.play("redcap_animations/drunk_walk")
 
 func physics_update(delta: float) -> void:
 	if not redcap or not redcap.navigation_agent_3d:
