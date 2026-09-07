@@ -23,13 +23,14 @@ func start_attraction(attractor: AttractionArea) -> void:
 		homing_component.start_homing(attractor)
 
 func stop_attraction(attractor: AttractionArea) -> void:
-	if current_attractor == attractor and not is_collected:
+	# Check if we are currently being attracted by this attractor
+	if current_attractor == attractor:
+		is_collected = false
 		current_attractor = null
 		if homing_component:
 			homing_component.stop_homing()
 
 func _on_homing_arrived(_target: Node3D) -> void:
-	# Disable collisions immediately to prevent double collection
 	set_deferred("monitoring", false)
 	set_deferred("monitorable", false)
 
@@ -38,7 +39,6 @@ func _on_homing_arrived(_target: Node3D) -> void:
 
 	collected.emit(current_attractor)
 	
-	# Clean up parent actor (Coin, SilverFrog, etc.)
 	var parent := get_parent()
 	if is_instance_valid(parent) and parent != get_tree().root:
 		parent.queue_free()
