@@ -7,7 +7,6 @@ class_name UIManager
 func _ready() -> void:
 	GameManager.begin_round_win.connect(_on_begin_round_win)
 	GameManager.begin_round_lose.connect(_on_begin_round_lose)
-	#result_screen.animate_in("Starting test!!", display_time)
 
 func _on_begin_round_win():
 	result_screen.animate_in("Nicely done!!", display_time)

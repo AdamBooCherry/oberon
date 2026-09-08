@@ -1,4 +1,3 @@
-## particle_fx.gd ##
 extends Node3D
 
 @export var cpu_particles_3d: CPUParticles3D
@@ -13,30 +12,23 @@ func _play_effect() -> void:
 		
 	if audio_stream_player_3d:
 		audio_stream_player_3d.play()
-		
-	# Track when both are done
-	var particle_finished = false
-	var audio_finished = false
-	
-	# Listen for audio completion
-	if audio_stream_player_3d:
-		audio_stream_player_3d.finished.connect(func():
-			audio_finished = true
-			_check_cleanup(particle_finished, audio_finished)
-		)
-	else:
-		audio_finished = true # If no audio, mark as done immediately
 
-	# Listen for particles completion using a timer matching lifetime
+	# Run both completion checks concurrently
+	await _wait_for_completion()
+	queue_free()
+
+func _wait_for_completion() -> void:
+	# Create async tasks for both particles and audio
+	var tasks: Array[Signal] = []
+
 	if cpu_particles_3d:
-		var lifetime = cpu_particles_3d.lifetime + cpu_particles_3d.explosiveness * cpu_particles_3d.lifetime
-		get_tree().create_timer(lifetime).timeout.connect(func():
-			particle_finished = true
-			_check_cleanup(particle_finished, audio_finished)
-		)
-	else:
-		particle_finished = true
+		var lifetime: float = cpu_particles_3d.lifetime + (cpu_particles_3d.explosiveness * cpu_particles_3d.lifetime)
+		var particle_timer := get_tree().create_timer(lifetime)
+		tasks.append(particle_timer.timeout)
 
-func _check_cleanup(particles_done: bool, audio_done: bool) -> void:
-	if particles_done and audio_done:
-		queue_free()
+	if audio_stream_player_3d and audio_stream_player_3d.stream:
+		tasks.append(audio_stream_player_3d.finished)
+
+	# Await each active completion signal in parallel
+	for task_signal in tasks:
+		await task_signal

@@ -30,6 +30,8 @@ Dialogic="*uid://ds2q0uclmolvu"
 GameManager="*uid://db7afw1tm3ba2"
 EnvironmentManager="*uid://cqy7t2vam675i"
 MusicManager="*uid://bbj2ngepa8u0u"
+CutsceneManager="*uid://v3tiobmdlyk4"
+GameStateManager="*uid://djkhyl0qqywyp"
 
 [dialogic]
 
@@ -55,7 +57,6 @@ layout/style_list=["res://addons/dialogic/oberon_style.tres"]
 layout/default_style="res://addons/dialogic/oberon_style.tres"
 variables={
 "Postmaster": {
-"cost_of_postage": 100,
 "has_been_interacted_with": false,
 "has_shot_player": false
 },

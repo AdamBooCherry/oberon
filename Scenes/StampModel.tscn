@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://bly1gwkufrr7w"]
+
+[ext_resource type="Texture2D" uid="uid://5405clckxwu4" path="res://icon.svg" id="1_fq2ts"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4d07p"]
+cull_mode = 2
+albedo_texture = ExtResource("1_fq2ts")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_wuii1"]
+material = SubResource("StandardMaterial3D_4d07p")
+size = Vector2(0.2, 0.2)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_bo7a1"]
+material = SubResource("StandardMaterial3D_4d07p")
+size = Vector2(0.2, 0.2)
+
+[node name="StampModel" type="Node3D" unique_id=691174274]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1659983014]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
+mesh = SubResource("PlaneMesh_wuii1")
+
+[node name="Label3D" type="Label3D" parent="MeshInstance3D" unique_id=443972601]
+transform = Transform3D(0.3, 0, 0, 0, -1.3113417e-08, 0.3, 0, -0.3, -1.3113417e-08, 0, 0.001, 0)
+text = "STAMP"
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="MeshInstance3D" unique_id=1163105627]
+visible = false
+mesh = SubResource("PlaneMesh_bo7a1")

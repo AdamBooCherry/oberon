@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://cqcsv7x0vouop"]
 
+[ext_resource type="Script" uid="uid://ct1mtv5r4q4ie" path="res://Scenes/area_root.gd" id="1_amk0g"]
 [ext_resource type="Texture2D" uid="uid://rcmbuqxvak2w" path="res://Assets/Particle FX/star_06.png" id="1_x4qiq"]
 [ext_resource type="Script" uid="uid://dmwodoestuixu" path="res://Prototyping/editor_only_geo.gd" id="2_wj5n6"]
 [ext_resource type="Shader" uid="uid://vwi2ee0sq564" path="res://Prototyping/water.gdshader" id="3_vmasj"]
@@ -262,7 +263,9 @@ size = Vector3(7.9958344, 1, 3.5388641)
 [sub_resource type="BoxShape3D" id="BoxShape3D_puqjf"]
 size = Vector3(8.1405945, 1, 5.11306)
 
-[node name="ForestArea" type="Node3D" unique_id=2065995814]
+[node name="ForestArea" type="Node3D" unique_id=220472594]
+script = ExtResource("1_amk0g")
+metadata/_custom_type_script = "uid://ct1mtv5r4q4ie"
 
 [node name="CPUParticles3D" type="CPUParticles3D" parent="." unique_id=664091001]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.372, 0)
@@ -1308,7 +1311,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35.721584, 0.21214104, 20.94
 
 [node name="Camera3D" type="Camera3D" parent="Cameras/FixedCamera 05" unique_id=1583721938 node_paths=PackedStringArray("trigger_area")]
 transform = Transform3D(0.9049822, 0.24305251, -0.34918866, 0, 0.8207524, 0.5712841, 0.4254495, -0.5170019, 0.74276626, -5.0529823, 10.336593, 5.659258)
-current = true
 fov = 37.06022
 script = ExtResource("4_ugu4n")
 trigger_area = NodePath("../CameraTriggerArea")
@@ -1328,7 +1330,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.659321, 0.21214104, -33.8
 
 [node name="Camera3D" type="Camera3D" parent="Cameras/FixedCamera 07" unique_id=971443939 node_paths=PackedStringArray("trigger_area")]
 transform = Transform3D(0.62647885, 0.30608886, -0.7168221, 0.0007720032, 0.91942066, 0.39327484, 0.7794381, -0.24693176, 0.5757613, -2.4392796, 2.7641284, 8.305426)
-current = true
 fov = 62.512123
 script = ExtResource("4_ugu4n")
 trigger_area = NodePath("../CameraTriggerArea")

@@ -1,0 +1,173 @@
+[gd_scene format=3 uid="uid://fjy0bhrtvoal"]
+
+[ext_resource type="Script" uid="uid://573tegfjxvye" path="res://Assets/Animations/intro_quote.gd" id="1_lybh5"]
+[ext_resource type="Theme" uid="uid://0is5b4xdefc8" path="res://Styles/main_oberon.tres" id="1_oh15r"]
+[ext_resource type="Script" uid="uid://dsfio408n422w" path="res://Cutscenes/cutscene_resource.gd" id="2_3tom1"]
+
+[sub_resource type="Resource" id="Resource_lybh5"]
+script = ExtResource("2_3tom1")
+animation_name = &"intro_quote"
+metadata/_custom_type_script = "uid://dsfio408n422w"
+
+[sub_resource type="Animation" id="Animation_oh15r"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Panel/MarginContainer/RichTextLabel:visible_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Panel:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Panel/MarginContainer/RichTextLabel:offset_transform_position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_3tom1"]
+resource_name = "intro_animate_out"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Panel/MarginContainer/RichTextLabel:visible_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(-2),
+"update": 0,
+"values": [1.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Panel:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 5),
+"transitions": PackedFloat32Array(-2, -2),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Panel/MarginContainer/RichTextLabel:offset_transform_position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 5),
+"transitions": PackedFloat32Array(-2, -2),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -118.58)]
+}
+
+[sub_resource type="Animation" id="Animation_lybh5"]
+resource_name = "intro_quote"
+length = 15.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Panel/MarginContainer/RichTextLabel:visible_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 4.4333334, 5.266667, 8.166667, 8.933333, 9.566668, 10.7, 11.2, 13.266665, 14.133332),
+"transitions": PackedFloat32Array(1, 1, 1, 1, -2, -2, -2, -2, -2, -2),
+"update": 0,
+"values": [0.0, 0.5121674, 0.5121674, 0.831, 0.831, 0.8946429, 0.8946429, 0.93, 0.93, 1.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Panel:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3tom1"]
+_data = {
+&"RESET": SubResource("Animation_oh15r"),
+&"intro_animate_out": SubResource("Animation_3tom1"),
+&"intro_quote": SubResource("Animation_lybh5")
+}
+
+[node name="IntroQuote" type="CanvasLayer" unique_id=261733868 node_paths=PackedStringArray("animation_player")]
+script = ExtResource("1_lybh5")
+resource = SubResource("Resource_lybh5")
+animation_player = NodePath("AnimationPlayer")
+
+[node name="Panel" type="Panel" parent="." unique_id=1493120139]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel" unique_id=186270317]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 40
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Panel/MarginContainer" unique_id=805118877]
+layout_mode = 2
+offset_transform_enabled = true
+theme = ExtResource("1_oh15r")
+theme_override_font_sizes/normal_font_size = 21
+bbcode_enabled = true
+text = "Elves are wonderful. They provoke wonder.
+Elves are marvellous. They cause marvels.
+Elves are fantastic. They create fantasies.
+Elves are glamorous. They project glamour.
+Elves are enchanting. They weave enchantment.
+Elves are terrific. They beget terror.
+
+The thing about words is that meanings can twist just like a snake, and if you want to find snakes look for them behind words that have changed their meaning.
+
+No one ever said elves are [color=red]nice[/color].
+Elves are [color=red]bad[/color].
+
+― Terry Pratchett, Lords and Ladies "
+scroll_active = false
+autowrap_mode = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1267115330]
+libraries/ = SubResource("AnimationLibrary_3tom1")

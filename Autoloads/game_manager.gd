@@ -20,11 +20,17 @@ var player_score: int = 0:
 	set(value):
 		player_score = value
 		player_score_changed.emit(player_score)
+		_adjust_cost_of_postage()
 
 var oberon_score: int = 0:
 	set(value):
 		oberon_score = value
 		oberon_score_changed.emit(oberon_score)
+
+var cost_of_postage: int = 50
+
+func _adjust_cost_of_postage():
+	cost_of_postage *= (player_score + 1)
 
 func emit_begin_round_lose():
 	begin_round_lose.emit()

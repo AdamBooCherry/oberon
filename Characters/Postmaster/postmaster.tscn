@@ -400,8 +400,9 @@ _data = {
 radius = 0.73339844
 height = 1.7837524
 
-[node name="Postmaster" type="CharacterBody3D" unique_id=405108321]
+[node name="Postmaster" type="CharacterBody3D" unique_id=85375024]
 script = ExtResource("1_7jqge")
+metadata/_custom_type_script = "uid://bhcv6x6wyo57d"
 
 [node name="Skeleton3D" type="Skeleton3D" parent="." unique_id=419905233]
 transform = Transform3D(1.4, 0, 0, 0, 0.9, 0, 0, 0, 1.4, 0, 0, 0)

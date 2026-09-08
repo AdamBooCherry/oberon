@@ -1,3 +1,4 @@
+@icon("uid://bkutygbxro7yf")
 extends CharacterBody3D
 class_name Redcap
 

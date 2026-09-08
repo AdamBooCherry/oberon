@@ -18,10 +18,10 @@ elif {game_has_started} == true:
 	- Nothing right now.
 		[end_timeline]
 	- I'd like to buy a stamp please
-		Postmaster: Of course! That will be {Postmaster.cost_of_postage} gold please. 
-		- I'm sorry, I don't have enough money. | [if {InventoryManager.current_currency} <= {Postmaster.cost_of_postage}] [else="hide"]
+		Postmaster: Of course! That will be {GameManager.cost_of_postage} gold please. 
+		- I'm sorry, I don't have enough money. | [if {InventoryManager.current_currency} <= {GameManager.cost_of_postage}] [else="hide"]
 			jump SHOOT
-		- Here you go! (pay {Postmaster.cost_of_postage} gold) | [if {InventoryManager.current_currency} >= {Postmaster.cost_of_postage}] [else="hide"]
+		- Here you go! (pay {Postmaster.cost_of_postage} gold) | [if {InventoryManager.current_currency} >= {GameManager.cost_of_postage}] [else="hide"]
 			do InventoryManager.decrease_currency({Postmaster.cost_of_postage})
 			set {InventoryManager.has_postage} = true
 			jump STANDARD
@@ -50,5 +50,5 @@ if {Postmaster.has_shot_player} == false:
 	Postmaster: I'm shooting you with a gun! I'm killing you!
 else:
 	Postmaster: Another one? You got it!
-	
+
 [signal arg="POSTMASTER_SHOOT"]

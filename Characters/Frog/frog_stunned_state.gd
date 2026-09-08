@@ -22,7 +22,7 @@ var _original_mesh_pos: Vector3 = Vector3.ZERO
 var _visual_tween: Tween
 
 func enter() -> void:
-	print("[StunState] ENTERED")
+	#print("[StunState] ENTERED")
 	_timer = 0.0
 	_is_escaping = false
 	

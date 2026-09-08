@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cxlpblola0ils" path="res://Scenes/exit_door.gd" id="1_0flev"]
 [ext_resource type="Texture2D" uid="uid://rcmbuqxvak2w" path="res://Assets/Particle FX/star_06.png" id="1_mpywm"]
+[ext_resource type="Script" uid="uid://ct1mtv5r4q4ie" path="res://Scenes/area_root.gd" id="1_qvlii"]
 [ext_resource type="PackedScene" uid="uid://dkp4b2dv57aar" path="res://Assets/Environment/Mushroom_01.tscn" id="1_tw0sk"]
 [ext_resource type="Script" uid="uid://cts8llvtn3nav" path="res://Scenes/flagpole_orchestrator.gd" id="2_6qr2g"]
 [ext_resource type="PackedScene" uid="uid://30mbu523chth" path="res://Scenes/Shadow.tscn" id="2_bxb4o"]
@@ -21,7 +22,10 @@
 [ext_resource type="PackedScene" uid="uid://c4m3x1xtpkt8p" path="res://Characters/Whitehat/Whitehat.tscn" id="8_bxb4o"]
 [ext_resource type="Texture2D" uid="uid://dgk1yrqjq8mcu" path="res://Assets/Particle FX/window_04.png" id="9_4yug1"]
 [ext_resource type="Texture2D" uid="uid://3op5igx1w2f1" path="res://Assets/hang in there.jpg" id="9_386q2"]
+[ext_resource type="PackedScene" uid="uid://bly1gwkufrr7w" path="res://Scenes/StampModel.tscn" id="9_cmw0i"]
+[ext_resource type="FontFile" uid="uid://b3rxhyvrot46w" path="res://Styles/Academy Engraved LET Fonts.ttf" id="10_jbta2"]
 [ext_resource type="Script" uid="uid://us7xil373pqc" path="res://Scenes/whitehat_by_door.gd" id="11_lqkgr"]
+[ext_resource type="Texture2D" uid="uid://3nukv0wj2xvd" path="res://Assets/money_bag.svg" id="11_omhhm"]
 [ext_resource type="Resource" uid="uid://4bpku3cyxox1" path="res://addons/dialogic/Timelines/WhitehatByDoor.dtl" id="12_ohe8u"]
 [ext_resource type="Texture2D" uid="uid://cba6cigc72d7r" path="res://Assets/Particle FX/circle_03.png" id="19_ohe8u"]
 [ext_resource type="Texture2D" uid="uid://bhuyb2k4n10v4" path="res://Assets/Particle FX/fire_01.png" id="20_pk8lo"]
@@ -1307,6 +1311,32 @@ _data = {
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pe4ny"]
 
+[sub_resource type="GDScript" id="GDScript_omhhm"]
+script/source = "extends Label3D
+
+func _ready() -> void:
+	GameManager.oberon_score_changed.connect(_on_score_changed)
+	GameManager.player_score_changed.connect(_on_score_changed)
+	_update_text()
+
+func _on_score_changed(_value):
+	_update_text()
+
+func _update_text():
+	text = str(GameManager.cost_of_postage)
+"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qvlii"]
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+shading_mode = 0
+albedo_texture = ExtResource("11_omhhm")
+stencil_flags = 2
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_qvlii"]
+load_path = "res://.godot/imported/circle_05.png-ee8db1dd6564f786ccdd80be866f576d.s3tc.ctex"
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mpywm"]
 transparency = 1
 blend_mode = 1
@@ -1498,7 +1528,9 @@ gradient = SubResource("Gradient_pk8lo")
 width = 870
 height = 757
 
-[node name="Camp Post" type="Node3D" unique_id=1057817875]
+[node name="Camp Post" type="Node3D" unique_id=316482292]
+script = ExtResource("1_qvlii")
+metadata/_custom_type_script = "uid://ct1mtv5r4q4ie"
 
 [node name="Lights" type="Node3D" parent="." unique_id=246400755]
 
@@ -4129,6 +4161,38 @@ texture = SubResource("CompressedTexture2D_4yug1")
 root_node = NodePath("../arms_low_poly")
 libraries/ = SubResource("AnimationLibrary_i1e6w")
 
+[node name="PriceBoard" type="CSGBox3D" parent="Post Office" unique_id=865216475]
+transform = Transform3D(-0.04117533, 0, 0.99915195, 0, 1, 0, -0.99915195, 0, -0.04117533, 0.6055418, 1.8211004, -8.531485)
+use_collision = true
+size = Vector3(0.10644531, 1.2388535, 3.8635254)
+material = SubResource("StandardMaterial3D_pe4ny")
+
+[node name="StampModel" parent="Post Office/PriceBoard" unique_id=691174274 instance=ExtResource("9_cmw0i")]
+transform = Transform3D(2.2649371e-07, 0, -3, 0, 3, 0, 3, 0, 2.2649371e-07, -0.06780574, 0, -0.9597588)
+
+[node name="Label3D" type="Label3D" parent="Post Office/PriceBoard" unique_id=2043467072]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -0.079369515, 0.0072295666, -0.4412297)
+text = "="
+font = ExtResource("10_jbta2")
+font_size = 75
+outline_size = 20
+
+[node name="StampPrice" type="Label3D" parent="Post Office/PriceBoard" unique_id=63897617]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -0.079369545, -0.107370615, 0.20283145)
+text = "50
+"
+font = ExtResource("10_jbta2")
+font_size = 100
+outline_size = 20
+script = SubResource("GDScript_omhhm")
+
+[node name="Sprite3D" type="Sprite3D" parent="Post Office/PriceBoard" unique_id=657652420]
+transform = Transform3D(-2.0981465e-08, 0, -0.48, 0, 0.48, 0, 0.48, 0, -2.0981465e-08, -0.06221043, 0.03710437, 0.85557085)
+material_override = SubResource("StandardMaterial3D_qvlii")
+cast_shadow = 0
+pixel_size = 0.002
+texture = SubResource("CompressedTexture2D_qvlii")
+
 [node name="CSGs" type="Node3D" parent="Post Office" unique_id=1517282885]
 
 [node name="CSGBox3D" type="CSGBox3D" parent="Post Office/CSGs" unique_id=487863673]
@@ -4251,7 +4315,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.19, 0)
 curve = SubResource("Curve3D_8as8m")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="Mobs/Path3D" unique_id=27730672]
-transform = Transform3D(-0.998966, -0.00014656648, 0.045297235, 0, 0.9999667, 0.0032355615, -0.045298345, 0.003232236, -0.9989415, -2.8899221, 0.042602755, 1.0935059)
+transform = Transform3D(-0.998966, -0.0001465663, 0.045297176, 0, 0.99996537, 0.0032355573, -0.045298345, 0.0032322318, -0.99894017, -2.8899221, 0.042602755, 1.0935059)
 use_model_front = true
 tilt_enabled = false
 script = SubResource("GDScript_wuii1")
@@ -4349,11 +4413,11 @@ texture = SubResource("CompressedTexture2D_4yug1")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.1224296, 0.10358226, -7.5739236)
 script = SubResource("GDScript_4hc50")
 interaction_area = NodePath("InteractionArea")
-postmaster = NodePath("Postmaster")
+postmaster = NodePath("PostmasterBAYBEE")
 post_office = ExtResource("7_1qq0c")
 metadata/_edit_group_ = true
 
-[node name="Postmaster" parent="Mobs/PostOffice" unique_id=405108321 instance=ExtResource("7_npf7y")]
+[node name="PostmasterBAYBEE" parent="Mobs/PostOffice" unique_id=405108321 instance=ExtResource("7_npf7y")]
 
 [node name="InteractionArea" type="Area3D" parent="Mobs/PostOffice" unique_id=1175027093 node_paths=PackedStringArray("interaction_icon")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.1668482)

@@ -1,3 +1,4 @@
+@icon("uid://8ergbb5336ms")
 extends Node3D
 class_name FrogFlower
 

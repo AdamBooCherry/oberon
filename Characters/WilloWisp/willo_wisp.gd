@@ -20,7 +20,6 @@ class_name WilloWisp
 var _bob_timer: float = 0.0
 
 func _ready() -> void:
-	print("[%s] Wisp ready. Initializing signals..." % name)
 	if attractable_area:
 		attractable_area.attraction_started.connect(_on_attraction_started)
 		attractable_area.attraction_stopped.connect(_on_attraction_stopped)
@@ -47,20 +46,20 @@ func _apply_visual_float(delta: float) -> void:
 # ATTRACTABLE AREA HANDLERS
 # ==============================================================================
 
-func _on_attraction_started(attractor: AttractionArea) -> void:
-	print("[%s] Attraction STARTED by: %s" % [name, attractor.name if attractor else "Unknown"])
+func _on_attraction_started(_attractor: AttractionArea) -> void:
+	#print("[%s] Attraction STARTED by: %s" % [name, attractor.name if attractor else "Unknown"])
 	if state_machine:
 		state_machine.change_state("WispPanic")
 
 
-func _on_attraction_stopped(attractor: AttractionArea) -> void:
-	print("[%s] Attraction STOPPED by: %s" % [name, attractor.name if attractor else "Unknown"])
+func _on_attraction_stopped(_attractor: AttractionArea) -> void:
+	#print("[%s] Attraction STOPPED by: %s" % [name, attractor.name if attractor else "Unknown"])
 	if state_machine:
 		state_machine.change_state("WispWander")
 
 
 func _on_collected(collector: AttractionArea) -> void:
-	print("[%s] COLLECTED by player! Applying %.1f damage." % [name, collected_damage])
+	#print("[%s] COLLECTED by player! Applying %.1f damage." % [name, collected_damage])
 	if collector and collector.player and collector.player.health_component:
 		collector.player.health_component.take_damage(collected_damage)
 	queue_free()

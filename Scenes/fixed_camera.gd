@@ -1,3 +1,4 @@
+@icon("uid://r8kymeskgxme")
 extends Camera3D
 class_name FixedCamera
 

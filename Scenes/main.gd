@@ -21,6 +21,7 @@ class_name Main
 func _ready() -> void:
 	if GameManager:
 		GameManager.return_to_start.connect(_on_return_to_start)
+		#CutsceneManager.cutscene_ended.connect(_on_begin_round_lose)
 		GameManager.begin_round_lose.connect(_on_begin_round_lose)
 		GameManager.begin_round_win.connect(_on_begin_round_win)
 		GameManager.start_round.connect(_start_round)

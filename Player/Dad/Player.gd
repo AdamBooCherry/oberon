@@ -11,6 +11,7 @@ class_name Player
 @export_category("Animation Settings")
 @export var default_blend_time := 0.5
 @export var blend_smooth_speed: float = 5.0
+@export var knockback_force: float = 4.0
 
 @export_category("Posture Speed Multipliers")
 @export var lowered_speed_multiplier: float = 0.8
@@ -27,13 +28,12 @@ var has_torch: bool = true
 var current_posture: float = 0.5
 var current_blend_pos: Vector2 = Vector2.ZERO
 
+# Tracked so DeathState can query custom death cutscenes
+var last_damage_source: Node = null
+
 func _ready() -> void:
 	if movement_tree:
 		movement_tree.active = true
-	#if movement_state_machine:
-		#movement_state_machine.init(self)
-	#if action_state_machine:
-		#action_state_machine.init(self)
 
 	if health_component:
 		health_component.health_depleted.connect(_on_health_depleted)
@@ -42,9 +42,14 @@ func _ready() -> void:
 	if hurtbox and health_component:
 		hurtbox.health_component = health_component
 
+	# Hook directly into GameStateManager locks
+	if GameStateManager:
+		GameStateManager.gameplay_locked.connect(_on_gameplay_locked)
+		GameStateManager.gameplay_unlocked.connect(_on_gameplay_unlocked)
+
 func _process(delta: float) -> void:
-	# Block idle state machine updates during dialogue
-	if Dialogic.current_timeline != null:
+	# Single check against GameStateManager
+	if GameStateManager.is_locked:
 		return
 
 	if movement_state_machine:
@@ -53,19 +58,17 @@ func _process(delta: float) -> void:
 		action_state_machine.update(delta)
 
 func _physics_process(delta: float) -> void:
-	# --- Centralized Dialogic Intercept ---
-	if Dialogic.current_timeline != null:
+	# Keep player idling in position during any gameplay lock (Cutscene, Dialogue, Pause)
+	if GameStateManager.is_locked:
 		velocity.x = 0.0
 		velocity.z = 0.0
 		if not is_on_floor():
 			velocity.y -= gravity * delta
 		
-		# Keep player visually idling in their current posture
 		update_animation_blend(0.0, current_posture, delta)
 		move_and_slide()
 		return
 
-	# --- Normal Game Loop ---
 	if not is_on_floor():
 		velocity.y -= gravity * delta
 		
@@ -90,6 +93,17 @@ func enable_action_control() -> void:
 	if action_state_machine:
 		action_state_machine.change_state("PostureNeutralState")
 
+# --- Lock Signal Callbacks ---
+
+func _on_gameplay_locked() -> void:
+	velocity = Vector3.ZERO
+	disable_action_control()
+
+func _on_gameplay_unlocked() -> void:
+	# Only restore control if alive
+	if health_component and health_component.current_health > 0:
+		enable_action_control()
+
 # --- Day & Lifecycle Management ---
 
 func begin_day() -> void:
@@ -109,33 +123,34 @@ func begin_victory() -> void:
 
 func reset_player_stats() -> void:
 	velocity = Vector3.ZERO
+	last_damage_source = null
 	
 	if health_component:
 		health_component.reset_health()
 
 # --- Damage & Health Integration ---
 
-@export var knockback_force: float = 4.0
-
 func _on_damage_taken(_current: float) -> void:
+	if hurtbox and hurtbox.last_attacker:
+		last_damage_source = hurtbox.last_attacker
+
 	var knockback_dir = -global_transform.basis.z.normalized()
 	velocity.x = knockback_dir.x * knockback_force
 	velocity.z = knockback_dir.z * knockback_force
 	
 	var spawn_pos = self.global_position + Vector3(0, 1.0, 0)
 	SceneHelper.spawn_effect("uid://y4xpheys777f", spawn_pos, self.get_parent(), knockback_dir)
-	## spawn hit particle here
 	
-	if health_component.current_health >= 0:
+	if health_component.current_health > 0 and action_state_machine:
 		action_state_machine.change_state("HitState")
-	
 
 func _on_health_depleted() -> void:
 	if movement_state_machine and movement_state_machine.current_state is DeathState:
 		return
 
 	disable_action_control()
-	movement_state_machine.change_state("DeathState")
+	if movement_state_machine:
+		movement_state_machine.change_state("DeathState")
 	EnvironmentManager.change_state(EnvironmentManager.EnvironmentState.DEATH)
 
 # --- Animation Tree Controls ---

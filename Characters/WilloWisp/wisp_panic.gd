@@ -9,6 +9,8 @@ func enter() -> void:
 	if wisp.omni_light_3d:
 		wisp.omni_light_3d.light_energy = 5.0 # Flare up light intensity during panic
 		wisp.omni_light_3d.light_color = Color.RED
+
+
 func exit() -> void:
 	if wisp.omni_light_3d:
 		wisp.omni_light_3d.light_energy = 1.0
