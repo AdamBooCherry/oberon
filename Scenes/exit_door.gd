@@ -24,7 +24,7 @@ func _open_door_start_game():
 	interaction_area.monitorable = false
 	GameManager.emit_start_round()
 	exit_door.play("open")
-	exit_door.play("DoorAction")
+	#exit_door.play("DoorAction")
 
 func _reset_door(_value):
 	exit_door.play_backwards("open")
