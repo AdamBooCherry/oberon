@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://b77pgo0q4f7v"
+path="res://.godot/imported/fail game lose level 3.wav-7b6590834f282a7ecb9df7ad8fac145b.sample"
+
+[deps]
+
+source_file="res://Audio/Music/fail game lose level 3.wav"
+dest_files=["res://.godot/imported/fail game lose level 3.wav-7b6590834f282a7ecb9df7ad8fac145b.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

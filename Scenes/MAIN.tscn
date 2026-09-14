@@ -13,8 +13,8 @@
 [ext_resource type="Environment" uid="uid://ddfwg2im0ypls" path="res://Scenes/Environments/CHASE.tres" id="4_n02r8"]
 [ext_resource type="PackedScene" uid="uid://dkp4b2dv57aar" path="res://Assets/Environment/Mushroom_01.tscn" id="5_4d07p"]
 [ext_resource type="AudioStream" uid="uid://7ctxmnbdivll" path="res://Audio/Ambient/five.ogg" id="5_fo0ua"]
-[ext_resource type="AudioStream" uid="uid://cfkrhebqqnoag" path="res://Audio/Music/Final Fantasy VII - Victory Fanfare [HD].mp3" id="5_hd7nf"]
-[ext_resource type="AudioStream" uid="uid://b30ueqwnrih5e" path="res://Audio/Music/FAIL.mp3" id="6_fo0ua"]
+[ext_resource type="AudioStream" uid="uid://c0eu8yf1ovy4m" path="res://Audio/Music/Victory Trumpet.mp3" id="6_77xmo"]
+[ext_resource type="AudioStream" uid="uid://b77pgo0q4f7v" path="res://Audio/Music/fail game lose level 3.wav" id="7_77xmo"]
 [ext_resource type="Environment" uid="uid://taliiown2kj3" path="res://Scenes/Environments/SAFE.tres" id="7_kjvde"]
 [ext_resource type="AudioStream" uid="uid://cwhus76517dk2" path="res://Audio/SFX/Akira_getoutofmyheadaaaaaa.mp3" id="10_whe6r"]
 [ext_resource type="Environment" uid="uid://dk3e4hn8wccq6" path="res://Scenes/Environments/INVESTIGATING.tres" id="11_bo7a1"]
@@ -934,8 +934,8 @@ player_spawn = NodePath("PlayerSpawn")
 camp_music = ExtResource("3_5tk2h")
 gameplay_music = ExtResource("4_4hw4r")
 gameplay_ambience = ExtResource("5_fo0ua")
-win_sting = ExtResource("5_hd7nf")
-lose_sting = ExtResource("6_fo0ua")
+win_sting = ExtResource("6_77xmo")
+lose_sting = ExtResource("7_77xmo")
 metadata/_custom_type_script = "uid://bk4c2nvs2ik8m"
 
 [node name="PlayerSpawn" type="Marker3D" parent="SubViewportContainer/SubViewport/MAIN" unique_id=596365389]

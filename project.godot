@@ -102,7 +102,7 @@ text/absolute_autopauses=false
 
 window/size/viewport_width=640
 window/size/viewport_height=480
-window/size/initial_position_type=0
+window/size/mode=4
 window/size/always_on_top=true
 window/stretch/mode="viewport"
 

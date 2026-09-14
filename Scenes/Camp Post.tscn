@@ -336,16 +336,16 @@ func _win_game() -> void:
 "
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_wuii1"]
-size = Vector3(5.5530176, 1, 9.249512)
+size = Vector3(6.037251, 1, 6.0746155)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_mhs8k"]
-size = Vector3(6, 1, 5.867196)
+size = Vector3(5.595581, 1, 5.867196)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_u7fix"]
 size = Vector3(2.9763184, 1, 10.224199)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_qbiqt"]
-size = Vector3(5.3528748, 1, 2.7094812)
+size = Vector3(4.7356186, 1, 1.9346967)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_jixpw"]
 size = Vector3(10.479492, 1, 4)
@@ -354,7 +354,16 @@ size = Vector3(10.479492, 1, 4)
 size = Vector3(6.0411377, 1, 9.066563)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_csh6n"]
-size = Vector3(11.197266, 1, 5.7263474)
+size = Vector3(11.197266, 1, 1.7879784)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rhcos"]
+size = Vector3(7.6240234, 1, 1.8343236)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qvlii"]
+size = Vector3(2.3303223, 1, 0.9018017)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_eotjs"]
+size = Vector3(3.6724854, 1, 1.7764758)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_npf7y"]
 size = Vector3(7.775879, 1, 19.848145)
@@ -670,7 +679,7 @@ texture = SubResource("CompressedTexture2D_4yug1")
 libraries/ = SubResource("AnimationLibrary_i1e6w")
 
 [node name="PriceBoard" type="CSGBox3D" parent="Post Office" unique_id=865216475]
-transform = Transform3D(-0.04117533, 0, 0.99915195, 0, 1, 0, -0.99915195, 0, -0.04117533, 0.6055418, 1.8211004, -8.531485)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0.6055418, 1.8211004, -8.531485)
 use_collision = true
 size = Vector3(0.10644531, 1.2388535, 3.8635254)
 material = SubResource("StandardMaterial3D_pe4ny")
@@ -714,12 +723,12 @@ use_collision = true
 size = Vector3(1, 3.6141357, 9.046631)
 
 [node name="CSGBox3D5" type="CSGBox3D" parent="Post Office/CSGs" unique_id=242304785]
-transform = Transform3D(-0.04117533, 0, 0.99915195, 0, 1, 0, -0.99915195, 0, -0.04117533, -2.2214983, 1.7444974, 4.791273)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -2.2214983, 1.7444974, 4.791273)
 use_collision = true
 size = Vector3(1, 3.6141357, 11.80307)
 
 [node name="CSGBox3D6" type="CSGBox3D" parent="Post Office/CSGs" unique_id=222654768]
-transform = Transform3D(-0.04117533, 0, 0.99915195, 0, 1, 0, -0.99915195, 0, -0.04117533, -2.0236602, 4.513983, -8.919662)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -2.0236602, 4.513983, -9.062162)
 use_collision = true
 size = Vector3(1, 9.153107, 11.898331)
 
@@ -728,11 +737,42 @@ transform = Transform3D(-0.04117533, 0, 0.99915195, 0, 1, 0, -0.99915195, 0, -0.
 use_collision = true
 size = Vector3(1, 1.0004272, 3.8635254)
 
-[node name="CSGBox3D8" type="CSGBox3D" parent="Post Office/CSGs" unique_id=1978233115]
-transform = Transform3D(-0.04117533, 0, 0.99915195, 0, 1, 0, -0.99915195, 0, -0.04117533, -4.6228123, 1.1889783, -8.077539)
+[node name="Poster Cabinet" type="Node3D" parent="Post Office/CSGs" unique_id=1850599469]
+transform = Transform3D(-0.3271136, 0, 0.9449851, 0, 1, 0, -0.9449851, 0, -0.3271136, -5.36321, 1.1889783, -7.552103)
+
+[node name="CSGBox3D8" type="CSGBox3D" parent="Post Office/CSGs/Poster Cabinet" unique_id=1978233115]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.12345815, -1.3279419)
 use_collision = true
-size = Vector3(1, 2.5030975, 3.8635254)
+size = Vector3(1, 2.5030975, 1.2076416)
 material = SubResource("StandardMaterial3D_pe4ny")
+
+[node name="CSGBox3D11" type="CSGBox3D" parent="Post Office/CSGs/Poster Cabinet" unique_id=1435071858]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.77866745, -0.90441585, -0.18640709)
+use_collision = true
+size = Vector3(0.48327637, 0.44734955, 3.2791595)
+material = SubResource("StandardMaterial3D_pe4ny")
+
+[node name="CSGBox3D9" type="CSGBox3D" parent="Post Office/CSGs/Poster Cabinet" unique_id=1860293172]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.12345815, -0.030782461)
+use_collision = true
+size = Vector3(1, 2.5030975, 1.2076416)
+material = SubResource("StandardMaterial3D_pe4ny")
+
+[node name="CSGBox3D10" type="CSGBox3D" parent="Post Office/CSGs/Poster Cabinet" unique_id=1696501816]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.9802322e-08, 0.12345815, 1.2290308)
+use_collision = true
+size = Vector3(1, 2.5030975, 1.2076416)
+material = SubResource("StandardMaterial3D_pe4ny")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Post Office/CSGs/Poster Cabinet" unique_id=312179971]
+transform = Transform3D(-0.32711357, 0.85962534, -0.39248043, 0, 0.4153298, 0.9096709, 0.944985, 0.2975657, -0.13586001, -0.8675871, 1.770459, -0.18898225)
+spot_range = 3.3398206
+spot_angle = 27.537468
+
+[node name="Sprite3D" type="Sprite3D" parent="Post Office/CSGs/Poster Cabinet" unique_id=1761179983]
+transform = Transform3D(-1.4901161e-07, 9.313226e-10, -0.7000001, 0.029312953, 0.699386, -3.8450327e-09, 0.699386, -0.029312953, -1.4901161e-07, -0.5030489, 0.29617465, 0.014562845)
+pixel_size = 0.001
+texture = ExtResource("9_386q2")
 
 [node name="CSGBox3D9" type="CSGBox3D" parent="Post Office/CSGs" unique_id=700079498]
 transform = Transform3D(-0.04117533, 0, 0.99915195, 0, 1, 0, -0.99915195, 0, -0.04117533, 1.808806, 0.45948613, -7.824207)
@@ -788,16 +828,6 @@ metadata/_edit_lock_ = true
 [node name="Node3D" type="Node3D" parent="Post Office/Interactives" unique_id=1362519569]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.8524194, 1.2447675, -7.532013)
 
-[node name="Sprite3D" type="Sprite3D" parent="Post Office/Interactives/Node3D" unique_id=1761179983]
-transform = Transform3D(0.76, 0, 0, 0, 0.76, 0, 0, 0, 0.76, 0, 0, 0)
-pixel_size = 0.001
-texture = ExtResource("9_386q2")
-
-[node name="SpotLight3D" type="SpotLight3D" parent="Post Office/Interactives/Node3D" unique_id=312179971]
-transform = Transform3D(1, 0, 0, 0, 0.4153298, 0.9096709, 0, -0.9096709, 0.4153298, 0, 1.7146696, 0.79206276)
-spot_range = 3.3398206
-spot_angle = 27.537468
-
 [node name="CPUParticles3D" type="CPUParticles3D" parent="." unique_id=1610763478]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.424511, 4.3718452, 0)
 amount = 500
@@ -823,7 +853,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.19, 0)
 curve = SubResource("Curve3D_8as8m")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="Mobs/Path3D" unique_id=27730672]
-transform = Transform3D(-0.998966, -0.00014656624, 0.045297157, 0, 0.999965, 0.0032355562, -0.045298345, 0.0032322307, -0.9989398, -2.8899221, 0.042602755, 1.0935059)
+transform = Transform3D(-0.998966, -0.00014656622, 0.045297153, 0, 0.9999649, 0.0032355557, -0.045298345, 0.0032322302, -0.9989397, -2.8899221, 0.042602755, 1.0935059)
 use_model_front = true
 tilt_enabled = false
 script = SubResource("GDScript_wuii1")
@@ -968,7 +998,7 @@ script = ExtResource("6_1qq0c")
 metadata/_custom_type_script = "uid://drpmv38e02bjw"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Cameras/FixedCamera 01/CameraTriggerArea" unique_id=924968411]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.4671826, 0, 1.2868652)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.709299, 0, -0.3005829)
 shape = SubResource("BoxShape3D_wuii1")
 debug_color = Color(1, 1, 0, 1)
 
@@ -987,7 +1017,7 @@ script = ExtResource("6_1qq0c")
 metadata/_custom_type_script = "uid://drpmv38e02bjw"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Cameras/FixedCamera 02/CameraTriggerArea" unique_id=838658300]
-transform = Transform3D(1, -2.646978e-23, 0, -3.5527137e-15, 1, 0, 0, 0, 1, -3.2456055, -0.0004414916, 0.31645498)
+transform = Transform3D(1, -2.646978e-23, 0, -3.5527137e-15, 1, 0, 0, 0, 1, -3.447815, -0.0004414618, 0.31645498)
 shape = SubResource("BoxShape3D_mhs8k")
 debug_color = Color(1, 1, 0, 1)
 
@@ -997,7 +1027,7 @@ shape = SubResource("BoxShape3D_u7fix")
 debug_color = Color(1, 1, 0, 1)
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="Cameras/FixedCamera 02/CameraTriggerArea" unique_id=557319793]
-transform = Transform3D(0.7234947, 4.0924366e-09, 0.6903299, -3.7054434e-08, 1, 3.2906367e-08, -0.6903299, -4.9387367e-08, 0.7234947, -2.5530305, -2.9802322e-08, 4.1237183)
+transform = Transform3D(0.7234947, 4.0924366e-09, 0.6903299, -3.7054434e-08, 1, 3.2906367e-08, -0.6903299, -4.9387367e-08, 0.7234947, -3.0437493, -2.9802322e-08, 4.0564976)
 shape = SubResource("BoxShape3D_qbiqt")
 debug_color = Color(1, 1, 0, 1)
 
@@ -1039,8 +1069,49 @@ script = ExtResource("6_1qq0c")
 metadata/_custom_type_script = "uid://drpmv38e02bjw"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Cameras/FixedCamera 03/CameraTriggerArea" unique_id=667121314]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3544922, 0, 0.77316)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3544922, 0, 2.7423444)
 shape = SubResource("BoxShape3D_csh6n")
+debug_color = Color(1, 1, 0, 1)
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Cameras/FixedCamera 03/CameraTriggerArea" unique_id=390401193]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4321289, 0, 1.1170259)
+shape = SubResource("BoxShape3D_rhcos")
+debug_color = Color(1, 1, 0, 1)
+
+[node name="FixedCamera 06" type="Node3D" parent="Cameras" unique_id=208037558]
+transform = Transform3D(0.9573638, 0, 0.28888503, 0, 1, 0, -0.28888503, 0, 0.9573638, -6.079874, 0, -8.758385)
+
+[node name="Camera3D" type="Camera3D" parent="Cameras/FixedCamera 06" unique_id=647914923 node_paths=PackedStringArray("trigger_area")]
+transform = Transform3D(0.99515414, 0.09275843, -0.032620087, -0.038166903, 0.6701444, 0.7412487, 0.09061727, -0.7364119, 0.6704374, 0.89999247, 2.9908652, 3.7656007)
+script = ExtResource("5_4hc50")
+trigger_area = NodePath("../CameraTriggerArea")
+metadata/_custom_type_script = "uid://bkbqspmutvdh1"
+
+[node name="CameraTriggerArea" type="Area3D" parent="Cameras/FixedCamera 06" unique_id=1206307000]
+script = ExtResource("6_1qq0c")
+metadata/_custom_type_script = "uid://drpmv38e02bjw"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Cameras/FixedCamera 06/CameraTriggerArea" unique_id=429968947]
+transform = Transform3D(1.0000007, 0, -5.9604645e-08, 0, 1, 0, 5.9604645e-08, 0, 1.0000007, -0.009886026, 0, 2.2992573)
+shape = SubResource("BoxShape3D_qvlii")
+debug_color = Color(1, 1, 0, 1)
+
+[node name="FixedCamera 07" type="Node3D" parent="Cameras" unique_id=1383162691]
+transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, -2.314972, 0, 2.1122818)
+
+[node name="Camera3D" type="Camera3D" parent="Cameras/FixedCamera 07" unique_id=2134485723 node_paths=PackedStringArray("trigger_area")]
+transform = Transform3D(-0.9865722, 0.13492328, -0.092038505, 0, 0.5635264, 0.82609814, 0.16332598, 0.8150054, -0.55595946, -0.01887846, 3.8210545, -0.37613654)
+script = ExtResource("5_4hc50")
+trigger_area = NodePath("../CameraTriggerArea")
+metadata/_custom_type_script = "uid://bkbqspmutvdh1"
+
+[node name="CameraTriggerArea" type="Area3D" parent="Cameras/FixedCamera 07" unique_id=1459238002]
+script = ExtResource("6_1qq0c")
+metadata/_custom_type_script = "uid://drpmv38e02bjw"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Cameras/FixedCamera 07/CameraTriggerArea" unique_id=1534967632]
+transform = Transform3D(0.99999017, 0, -5.9604037e-08, 0, 1, 0, 5.9604037e-08, 0, 0.99999017, 0.7615075, 0, 1.7121139)
+shape = SubResource("BoxShape3D_eotjs")
 debug_color = Color(1, 1, 0, 1)
 
 [node name="FixedCamera 05" type="Node3D" parent="Cameras" unique_id=179464536]
@@ -1191,3 +1262,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -36.94911, 0.09279391, 4.5258
 
 [node name="FrogFlower" parent="." unique_id=1651507190 instance=ExtResource("24_tw0sk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.876938, 0.032844424, 0.24080086)
+
+[node name="Label3D" type="Label3D" parent="." unique_id=214511101]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -1.8284498, 1.5402237, 4.240951)
+text = "Reveal door added here.
+Lead to tutorial zone
+that explains how the
+Hand of Glory works"
